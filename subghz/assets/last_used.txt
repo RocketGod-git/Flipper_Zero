@@ -1,0 +1,7 @@
+Filetype: Flipper SubGhz Last Setting File
+Version: 1
+Preset: AM270
+Frequency: 433920000
+Hopping: 1
+DetectRaw: 3
+Rssi: -72

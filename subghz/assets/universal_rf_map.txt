@@ -1,0 +1,12 @@
+Filetype: Flipper SubGhz RAW File
+Version: 1
+UP: /any/subghz/Vehicles/Tesla/Tesla_charge_AM270.sub
+DOWN: /any/subghz/Handicap/handicap_push_door.sub
+LEFT: /any/subghz/Gas_Station/S_gas.sub
+RIGHT: /any/subghz/Restaurant_Pagers/BruteForceRest.sub
+OK: /any/subghz/LED/RITSEC_Neon_Light/Pwr.sub
+ULABEL: TeslaAM270
+DLABEL: HandicapDoor
+LLABEL: GasStationPrice
+RLABEL: RestaurantPager
+OKLABEL: RITSEC_Neon_Light
