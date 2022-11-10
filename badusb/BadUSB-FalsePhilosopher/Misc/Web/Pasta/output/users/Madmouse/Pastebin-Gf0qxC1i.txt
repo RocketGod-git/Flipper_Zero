@@ -1,0 +1,46 @@
+typedef void (*fun_ptr) (void);
+#define lambda(type, body) ({ type lambda body lambda; })
+
+
+void preinit(int argc, char **argv, char **envp)
+{
+    puts(__FUNCTION__);
+}
+
+void init(int argc, char **argv, char **envp)
+{
+    puts(__FUNCTION__);
+}
+
+void fini()
+{
+    puts(__FUNCTION__);
+}
+
+__attribute__((section(".init_array"))) typeof(init)* __init = init;
+__attribute__((section(".preinit_array"))) typeof(preinit)* __preinit = preinit;
+__attribute__((section(".fini_array"))) typeof(fini)* __fini = fini;
+
+
+void  __attribute__((constructor)) constructor()
+{
+    puts(__FUNCTION__);
+}
+
+void __attribute__((destructor)) destructor()
+{
+    puts(__FUNCTION__);
+}
+
+int main(int argc, const char** argv, const char** envp)
+{
+    puts(__FUNCTION__);
+    lambda(fun_ptr, (){
+        puts("1");
+        return lambda(void, (){
+            puts("2");
+        });
+    })()();
+    
+    return 0;
+}

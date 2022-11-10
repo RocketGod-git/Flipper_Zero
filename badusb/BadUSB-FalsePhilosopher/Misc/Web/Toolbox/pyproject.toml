@@ -1,0 +1,10 @@
+[tool.pytest.ini_options]
+minversion = "6.0"
+addopts = "-ra -v"
+testpaths = [
+    "tests"
+]
+markers = "focus: mark a test as focused"
+
+[tool.black]
+exclude = "third_party|toolbox/server/templates"

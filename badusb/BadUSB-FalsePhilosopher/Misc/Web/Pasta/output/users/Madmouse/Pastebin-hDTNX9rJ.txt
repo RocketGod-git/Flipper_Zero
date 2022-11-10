@@ -1,0 +1,11 @@
+_print_foo:
+	mov rdx, rsi	; move size argument into rcx
+	mov rsi, rdi	; move the the text pointer to rsi for printing
+	mov rax, 0x1	; write stuff to stdout
+	mov rdi, rax
+	syscall
+	xor rax, rax	; return 0
+	xor rdi, rdi
+	ret
+
+; void print_foo(const char* text, unsigned int size);

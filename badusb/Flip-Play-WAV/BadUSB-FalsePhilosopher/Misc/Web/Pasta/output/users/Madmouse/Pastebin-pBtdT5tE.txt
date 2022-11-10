@@ -1,0 +1,53 @@
+// ------------------------------------------------------------------------------
+// THE BEER-WARE LICENSE (Revision 43):
+// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return
+// ------------------------------------------------------------------------------
+// Madcode example/test file
+
+x = 0;
+print x+2;
+
+is(x == 2){				// if then else
+	print "x is 2";
+}
+else{
+	print "x is not 2";
+}						// <<
+
+x = 5;
+y = (x >= 10) ? 0 : x;	// turnery
+
+while(x <= 9){			// while
+	print x;
+	x = x+1;
+}
+
+x = 0;
+y = int(x){ -> x+2; };	// anonymous function
+print (y);
+
+fun:int(x){			// declarative function
+	print "im inside a function";
+	-> x*2;
+}
+
+fun2:str(){			// declarative function
+	-> "a return string";
+}
+
+fun3:str(){			// declarative function
+	print "a return string";
+}
+
+
+x = fun(2);
+y = fun2();
+
+print x;
+print y;
+
+fun3();
+
+exit 0;

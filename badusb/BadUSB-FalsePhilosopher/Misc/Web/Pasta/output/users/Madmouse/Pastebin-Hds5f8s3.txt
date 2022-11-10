@@ -1,0 +1,123 @@
+
+// ----------------------------------------------------------------------------
+// "THE BEER-WARE LICENSE" (Revision 43):
+// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return Aaron R. Yool
+// ----------------------------------------------------------------------------
+// the no libc thing is refering to the assembly project this is a probe for, obviously this uses libc :P
+
+
+#include <dirent.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <sys/syscall.h>
+
+#include <stddef.h>
+#include <stdio.h>
+#include <stdint.h>
+
+#define handle_error(msg) \
+	do { perror(msg); exit(EXIT_FAILURE); } while (0)
+
+
+typedef struct linux_dirent {
+	long           d_ino;
+	off_t          d_off;
+	unsigned short d_reclen;
+	char           d_name[];
+} dent;
+
+print_dent_offsets()
+{
+	printf("ino: %i\n", offsetof(dent, d_ino));
+	printf("off: %i\n", offsetof(dent, d_off));
+	printf("reclen: %i\n", offsetof(dent, d_reclen));
+	printf("name: %i\n", offsetof(dent, d_name));
+}
+
+
+int Mopendir(const char* dirstr)
+{
+	int fd;
+	asm(
+		".intel_syntax noprefix\n"
+		"xor rax, rax\n"
+		"mov al, 2\n"
+		"mov rdi, %1\n"
+		"mov rsi, 0x10000\n"
+		"xor rdx, rdx\n"
+		"syscall\n"
+		:"+a"(fd) : "r"(dirstr)
+	);
+	return fd;
+}
+
+void* Mmalloc(uint64_t size)
+{
+	void* ptr;
+	asm(
+		"xor rax, rax\n"	//; char* buf=(char*)sbrk(1024);
+		"mov al, 12\n"
+		"xor rdi, rdi\n"	//; 		//end=brk(0) <- get the current end value
+		"syscall\n"
+		"lea r9, [rax]\n"
+		"xor rax, rax\n"
+		"mov al, 12\n"
+		"add r9, %1\n"
+		"mov rdi, r9\n"		//; 		//brk(end+1024) <- get the current end value
+		"syscall\n"
+		:"+a"(ptr) : "r"(size)
+	);
+	return ptr;
+}
+
+Mgetdents(uint64_t fd, void* buf, uint64_t size)
+{
+	int nread;
+	asm(
+		"xor rax, rax\n"	//; 	nread = syscall(SYS_getdents, fd, buf, sizeof(buf));
+		"mov al, 78\n"
+		"mov rdi, %1\n"
+		"mov rsi, %2\n"
+		"mov rdx, %3\n"
+		"syscall\n"
+		:"+a"(nread) :"r"(fd), "r"(buf),  "r"(size)
+	);
+	return nread;
+}
+
+main()
+{
+	int fd, nread;
+	// opendir
+	fd = Mopendir(".");
+	if (fd == -1)
+		handle_error("open");
+	
+	char* buf = Mmalloc(1024);
+	
+	// list dir
+	nread = Mgetdents(fd, buf, 1024);
+	if (nread == -1)
+		handle_error("getdents");
+	
+	
+	int bpos = 0;
+	for (bpos = 0; bpos < nread;)
+	{
+		dent* d ;//= (struct linux_dirent *) (buf + bpos);
+		asm("lea %0, [%1+%2]" :"=r"(d) : "r"(buf), "r"((uint64_t)bpos));
+		
+		int d_type = *(buf + bpos + d->d_reclen - 1);
+		if(d_type == DT_REG)
+			printf("%8d %s\n", d->d_reclen, d->d_name);
+		
+		bpos += d->d_reclen;
+	}
+	// closedir
+	close(fd);
+}

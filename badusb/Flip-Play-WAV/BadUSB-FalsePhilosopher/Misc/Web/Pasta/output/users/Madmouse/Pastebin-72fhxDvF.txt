@@ -1,0 +1,26 @@
+def string_tokens(l):
+    result = list()
+    for s in l:
+        token = str()
+        for c in s:
+            token += "N" if is_number(c) else "A" if is_alpha(c) else "S" if is_white(c) else "-"
+        result.append(token)
+    return list(set(result))
+
+def group_tokens(l):
+    r = list()
+    for s in l:
+        i = 0
+        x = 0
+        o = s[0]
+        t = list()
+        for c in s:
+            if c != o:
+                t.append(s[x : i])
+                x = i
+            i += 1
+            o = c
+        if x != i:
+            t.append(s[x:])
+        r.append(t)
+    return r

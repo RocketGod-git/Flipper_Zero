@@ -1,0 +1,17 @@
+REM FalsePhilosopher
+REM Target win
+REM WIP changes numpad keys to mouse and inputs upwards mouse movements.
+DELAY 300
+ALT-SHIFT NUMLOCK
+DELAY 1500
+ENTER
+KP_8
+REPEAT 99
+KP_8
+REPEAT 99
+KP_8
+REPEAT 99
+KP_8
+REPEAT 99
+KP_8
+REPEAT 99

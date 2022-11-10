@@ -1,0 +1,29 @@
+/*
+; bool scan(void* code, unsigned int depth);
+scan:
+   mov rcx, rsi   ; move size argument into rcx for the loop
+   mov rsi, rdi   ; move the the text pointer to rsi for printing
+loop:
+   cmp byte [rsi], 0xCC ; check for break point
+   je fuck_you
+   inc rsi
+loop loop
+   xor rdi, rdi
+   ret
+fuck_you:
+   xor rdi, rdi
+   mov al, 1
+   ret
+*/
+
+bool scan_for_breakpoints(void (*fun), int depth)	/// scans a section of a function for break points
+{
+	int i;
+	for(i=0;i<=depth;i++)	/// count from offset start to depth
+	{
+		unsigned int inst = (*(volatile unsigned int *)((unsigned int)fun + i) & 0xff);	/// get the instruction
+		if (inst == 0xCC)	/// if this is a break point
+			return true;	/// return true
+	}
+	return false;
+}

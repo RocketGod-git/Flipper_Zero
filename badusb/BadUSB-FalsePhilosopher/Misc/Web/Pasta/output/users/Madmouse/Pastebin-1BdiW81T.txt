@@ -1,0 +1,14 @@
+[anon@localhost regexgen]$ ./regex.py test
+Pass 1 = AAAAS-SNNNNNNNNNN
+Pass 2 = ['AAAA', 'S', '-', 'S', 'NNNNNNNNNN']
+
+Pass 1 = AAAAS-SNNNNNNNNNNS-SNNN
+Pass 2 = ['AAAA', 'S', '-', 'S', 'NNNNNNNNNN', 'S', '-', 'S', 'NNN']
+
+Pass 1 = NNNNNNNNNNS-SNN
+Pass 2 = ['NNNNNNNNNN', 'S', '-', 'S', 'NN']
+
+Pass 1 = AAAAS-SNNNNNNNNNNS-SN
+Pass 2 = ['AAAA', 'S', '-', 'S', 'NNNNNNNNNN', 'S', '-', 'S', 'N']
+
+[anon@localhost regexgen]$

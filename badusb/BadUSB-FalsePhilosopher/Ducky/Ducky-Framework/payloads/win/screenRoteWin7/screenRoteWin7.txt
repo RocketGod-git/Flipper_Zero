@@ -1,0 +1,22 @@
+REM Author: BrokenProphet Description: rotate the screen 180' on Windows 7 Target: Windows 7 Duckencoder: 1.2 Side Notes: if target pc is slow put more delays in. :3
+
+CONTROL ESCAPE
+DELAY 50
+STRING Screen Resolution
+DELAY 50
+ENTER
+DELAY 100
+TAB
+TAB
+TAB
+DOWN
+DOWN
+TAB
+TAB
+TAB
+TAB
+TAB
+ENTER
+TAB
+ENTER
+REM if you find an error email me at "brayden.h96@gmail.com".

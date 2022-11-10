@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29123.88
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UAC-Escaper", "UAC-Escaper\UAC-Escaper.csproj", "{95359279-5CFA-46F6-B400-E80542A7336A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{95359279-5CFA-46F6-B400-E80542A7336A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95359279-5CFA-46F6-B400-E80542A7336A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95359279-5CFA-46F6-B400-E80542A7336A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95359279-5CFA-46F6-B400-E80542A7336A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CF943270-399B-422D-A62F-E11A0365A859}
+	EndGlobalSection
+EndGlobal

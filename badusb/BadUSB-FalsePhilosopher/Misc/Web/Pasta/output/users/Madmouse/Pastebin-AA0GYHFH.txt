@@ -1,0 +1,45 @@
+/*
+#############################
+# MIPS breakpoint detection #
+#############################
+
+.text
+.abicalls
+.global scan    
+
+# bool scan(void* code, unsigned int size);
+scan:
+        li $t0, 0x5000D                 # breakpoint constant
+loop:
+        lw $t3, ($a0)                   # load bytecode
+        beq $t3, $t0, fuck              # if this is a breakpoint fucked
+        beq $t3, 0, safe                # if the counter is 0 we are safe 
+        subu $a1, 1                     # decrement counter
+        addu $a0, 1                     # increment our pointer
+        j loop                          # if we are looping loop
+
+safe:
+        li $v0, 0x0     # return false
+        li $v1, 0x0
+        jr $ra
+
+fuck:
+        li $v0, 0x1     # return true
+        li $v1, 0x0
+        jr $ra
+
+*/
+
+
+bool scan(void (*fun), unsigned int depth)	/// scans a function for break points
+{
+	int i;
+	long unsigned int inst;
+	for(i=0;i<=depth;i+=sizeof(inst))	/// count from offset start to depth
+	{
+		inst = (*(volatile unsigned int *)((unsigned int)fun + i));
+		if (inst == 0x5000D)	/// if this is a break point
+			return true;	/// return true
+	}
+	return false;
+}

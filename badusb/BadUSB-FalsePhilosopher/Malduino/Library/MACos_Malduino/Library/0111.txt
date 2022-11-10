@@ -1,0 +1,25 @@
+REM enter instagram profile link under second string - Increase delay after enter if wifi is slow
+DELAY 1000
+GUI SPACE
+DELAY 1500
+STRING terminal
+DELAY 1750
+ENTER
+Delay 7500
+STRING clear
+DELAY 1000
+ENTER
+DELAY 1000
+STRING open -a "Google Chrome"
+DELAY 5500
+ENTER
+DELAY 5000
+STRING https://www.instagram.com/*profileName*/?hl=en
+DELAY 2000
+ENTER
+DELAY 2000
+TAB
+DELAY 2000
+TAB
+DELAY 1500
+ENTER

@@ -1,0 +1,49 @@
+// ------------------------------------------------------------------------------
+// THE BEER-WARE LICENSE (Revision 43):
+// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return
+// ------------------------------------------------------------------------------
+
+#include <iostream>
+#include <windows.h>
+
+unsigned vmware(void)
+{
+__asm{
+	mov eax, 0x564d5868
+	mov cl, 0xa
+	mov dx, 0x5658
+	in eax, dx
+	cmp ebx, 0
+	jne matrix
+	xor eax, eax
+	ret
+	matrix:
+	mov eax, 1};
+}
+
+int seh_filter(unsigned code, struct _EXCEPTION_POINTERS* ep)
+{
+	return EXCEPTION_EXECUTE_HANDLER;
+}
+
+int _tmain(int a, _TCHAR* argv[])
+{
+	__try
+	{
+		if(vmware()) goto matrix;
+	}
+	__except(seh_filter(GetExceptionCode(), GetExceptionInformation()))
+	{
+		goto stage2;
+	}
+
+stage2:
+	std::cout << "Isn't real life boring?"<<std::endl;
+	exit(0);
+
+matrix:
+	std::cout << "The Matrix haz you Neo..."<<std::endl;
+	exit(1);
+}

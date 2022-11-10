@@ -1,0 +1,5 @@
+DELAY 300
+REM insert opening cmd+delay
+REM launch ie to open link to index.html
+DELAY 200
+ENTER

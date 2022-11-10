@@ -1,0 +1,77 @@
+function computerInstaller()
+    term.clear()
+    term.setCursorPos(1, 1)
+
+    shell.run("pastebin", "get", "P8UG6HQ7", "/startup")
+
+
+    term.write("done!")
+    os.pullEvent("key")
+end
+
+function turtleInstaller()
+    term.clear()
+    term.setCursorPos(1, 1)
+
+
+    fs.makeDir("/programs")
+    shell.run("pastebin", "get", "t8ge8bfZ", "/programs/stripmine")
+    shell.run("pastebin", "get", "WQqc03us", "/programs/excavate")
+    shell.run("pastebin", "get", "hJ6LnRtq", "/programs/bridge")
+    shell.run("pastebin", "get", "P8UG6HQ7", "/startup")
+
+
+    term.write("done!")
+    os.pullEvent("key")
+end
+
+function compactComputerInstaller()
+    term.clear()
+    term.setCursorPos(1, 1)
+
+    shell.run("pastebin", "get", "ksHXdwML", "/startup")
+
+
+    term.write("done!")
+    os.pullEvent("key")
+end
+
+selected = 1
+devices = {
+    {"computer", computerInstaller},
+    {"turtle", turtleInstaller},
+    {"compactComputer", compactComputerInstaller},
+}
+while true do
+    term.clear()
+    term.setCursorPos(3, 1)
+    term.write("Installer")
+    term.setCursorPos(1, 5)
+    for i, value in ipairs(devices) do
+        term.write(value[1])
+        if selected==i then
+            print(" <-")
+        else
+            print("")
+        end
+    end
+
+    local event, key, isheld = os.pullEvent("key")
+    if(key==keys.up and not isheld)then
+        selected=selected-1
+    elseif(key==keys.down and not isheld)then
+        selected=selected+1
+    elseif(key==keys.enter)then
+        devices[selected][2]()
+        break
+        
+    end
+
+    if(selected<1)then
+        selected=#devices
+    elseif(selected>#devices)then
+        selected=1
+    end
+end
+
+os.reboot()

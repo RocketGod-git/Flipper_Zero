@@ -1,0 +1,91 @@
+// this encrypted shellcode function takes an encrypted string,
+// decrypts it, prints it out, then RE ENCRYPTS IT before exiting
+//
+// [user@n0 ~]$ nano example.c
+// [user@n0 ~]$ gcc example.c -fno-stack-protector -z execstack -o example
+// [user@n0 ~]$ ./example
+// TELL ME YOU DIDN'T RUN THIS!!!!
+//
+// GO HOME NOOB, YOU ARE DRUNK xD
+// [user@n0 ~]$
+// EVIL, huh? lol
+// the shellcode:
+/*
+[bits 64]
+section .text
+global _start
+_start:
+        mov rcx, rsi    ; move size argument into rcx for the loop
+        mov rsi, rdi    ; move the the text pointer to rsi for printing
+        xor rax, rax    ; clear out registers
+        xor rdx, rdx
+        xor rdi, rdi
+        push rsi                ; push the text for decoder
+        push rcx                ; push the size for decoder
+        push rsi                ; push the text for ecoder
+        push rcx                ; push the size for encoder
+decode:                         ; decode text
+        xor byte [rsi], 0xFF
+        inc rsi
+loop decode
+        pop rcx                 ; pop size
+        pop rsi                 ; pop text
+        mov al, 0x1             ; write stuff to stdout
+        mov dil, al
+        mov dl, cl
+        syscall
+        xor rax, rax
+        pop rcx                 ; pop size
+        pop rsi                 ; pop text
+encode:                         ; encode text
+        xor byte [rsi], 0xFF
+        inc rsi
+loop encode
+        ret
+*/
+ 
+#include <string.h>
+ 
+typedef unsigned char BYTE;
+ 
+// key data
+BYTE print_key[] = \
+	"\x8a\x28\x32\xae\xad\x81\xc9\x0c\xf3\x6a\x8f\xed"\
+	"\x7a\x8e\x15\x6c\xd2\x9b\x08\xa3\xa1\xbb\xbd\x59"\
+	"\x5d\x40\xc2\x42\xcc\xc9\x42\x20\x75\x63\xd6\x16"\
+	"\x1a\x0c\x46\xc3\xb4\x1f\x1c\x24\x6a\xeb\x7f\x87"\
+	"\xb4\xb8\xfa\x4b\xd6\xfa";
+
+// encrypted code
+BYTE evil_print[] = \
+	"\xc2\xa1\xc3\xe6\x24\x7f\x81\x3d\x33\x22\xbe\x3f"\
+	"\x32\xbf\xea\x3a\x83\xcd\x59\x23\x97\x44\xf5\xa6"\
+	"\x9b\xa2\x3a\x1b\x92\x79\x43\x60\xfd\xa4\x5e\xdc"\
+	"\x15\x09\x0e\xf2\x74\x46\x42\xa4\x5c\x14\x37\x78"\
+	"\x72\x5a\x02\x88\xd6\xd1";
+
+ 
+// encrypted message
+BYTE message[] = \
+        "\xab\xba\xb3\xb3\xdf\xb2\xba\xdf\xa6\xb0\xaa\xdf"\
+        "\xbb\xb6\xbb\xb1\xd8\xab\xdf\xad\xaa\xb1\xdf\xab"\
+        "\xb7\xb6\xac\xde\xde\xde\xde\xf5\xf5\xb8\xb0\xdf"\
+        "\xb7\xb0\xb2\xba\xdf\xb1\xb0\xb0\xbd\xd3\xdf\xa6"\
+        "\xb0\xaa\xdf\xbe\xad\xba\xdf\xbb\xad\xaa\xb1\xb4"\
+        "\xdf\x87\xbb\xf5";
+ 
+// function that decrypts the shellcode
+void decode(const BYTE* key, BYTE* code)
+{
+        int i;
+        for(i=0;i<strlen(code);i++)
+                code[i]=0xFF&(key[i]^code[i]);
+}
+ 
+main()
+{
+        decode(print_key, evil_print);                                  // decrypts the shellcode
+        ((void(*)(char*,int)) evil_print)(message, strlen(message));    // decrypts the message, prints it, then re-encrypts the message
+        decode(print_key, evil_print);                                  // encrypts the shellcode again
+        //! ... Profit
+}

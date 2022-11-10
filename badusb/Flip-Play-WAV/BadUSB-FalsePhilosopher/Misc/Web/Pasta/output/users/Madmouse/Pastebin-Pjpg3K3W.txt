@@ -1,0 +1,64 @@
+// ------------------------------------------------------------------------------
+// THE BEER-WARE LICENSE (Revision 43):
+// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return
+// ------------------------------------------------------------------------------
+// this is an original POC, if you steal it, I will know :P
+#include <unistd.h>
+#include <stdio.h>
+
+inline unsigned long rdtsc(void)
+{
+	unsigned long x;
+	asm volatile ("rdtsc" : "=A" (x));
+	return x;
+}
+
+unsigned long check_time(void* fun)
+{
+	static unsigned long StartingTime, EndingTime;
+	
+	StartingTime = rdtsc();
+	((void(*)(void))fun)();
+	EndingTime = rdtsc();
+	return (EndingTime - StartingTime);
+}
+
+void test(void)
+{
+	int i=0;
+	for(;i!=100;i++)
+	asm volatile (
+		"add eax, ecx\n"
+		"imul eax, ebx\n"
+		"sub eax, ebx\n"
+		"neg eax\n"
+		"sbb eax, ecx\n"
+	);
+}
+
+int pass(void)
+{
+	int i=0;
+	unsigned long x;
+	for(;i!=10000;i++)
+	{
+		x=check_time(test);
+		if(x>15000) return 1;
+	}
+	return 0;
+}
+
+int main()
+{
+	int i=0,x=0;
+	for(;i!=1000;i++)
+		x+=pass();
+	
+	if(x>200)
+		puts("matrix");
+	else
+		puts("realness");
+	return 0;
+}

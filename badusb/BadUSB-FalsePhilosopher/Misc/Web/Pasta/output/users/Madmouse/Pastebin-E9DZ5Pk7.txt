@@ -1,0 +1,49 @@
+// ------------------------------------------------------------------------------
+// THE BEER-WARE LICENSE (Revision 43):
+// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return
+// ------------------------------------------------------------------------------
+
+#include <iostream>
+#include <windows.h>
+
+unsigned qemu(void)
+{
+__asm{
+        mov eax, 0x90		// move a nop into eax for copying
+        mov ecx, 9		// move 9 into ecx for the number of bytes the byte code is from the offset to the jmp
+off:    mov edi, offset off	// mov the address of the start of this instruction into edi for rep
+        rep stosb		// finally, repeat that byte over the memory region
+        jmp _qemu		// this should be overwritten, if it isnt, some naughty child is running an old version of qemu lol, and they are in the matrix
+        jecxz noqemu		// if ecx is 0, we are not in the matrix by definition lol, if it is not 0, then
+_qemu:				// this is the matrix
+        mov eax, 1		// follow cdecl calling convention and return 1 in eax
+        ret
+noqemu:				// this is not the matrix
+	xor eax, eax};		// return 0 according to cdecl calling convention
+}
+
+int seh_filter(unsigned code, struct _EXCEPTION_POINTERS* ep)
+{
+	return EXCEPTION_EXECUTE_HANDLER;
+}
+
+int _tmain(int a, _TCHAR* argv[])
+{
+	DWORD funSize, oldProtect;
+	VirtualProtect(qemu, 0x14, PAGE_EXECUTE_READWRITE, &oldProtect);
+	__try
+	{
+		if(qemu()) goto matrix;
+	}
+	__except(seh_filter(GetExceptionCode(), GetExceptionInformation()))
+	{
+		goto matrix;
+	}
+	std::cout << "Isn't real life boring?"<<std::endl;
+	exit(0);
+matrix:
+	std::cout << "The Matrix haz you Neo..."<<std::endl;
+	exit(1);
+}

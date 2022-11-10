@@ -1,0 +1,27 @@
+// ----------------------------------------------------------------------------
+// THE BEER-WARE LICENSE (Revision 43):
+// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return
+// ----------------------------------------------------------------------------
+
+#define SIZE_BYTE 8
+#define SIZE_WORD 16
+#define SIZE_DOUBLEWORD 32
+#define SIZE_QUADWORD 64
+#define SIZE_DOUBLEQUADWORD 128
+
+int Madnsize(long unsigned x)
+{
+	return	x&0xFFFFFFFF00000000 ? SIZE_QUADWORD :
+			x&0xFFFF0000 ? SIZE_DOUBLEWORD :
+				x&0xFF00 ? SIZE_WORD:
+					SIZE_BYTE;
+}
+
+int Madstrtoul(std::string s)	// better stoul
+{
+	return (s.find("h") != std::string::npos || s.find("0x") != std::string::npos ||
+		s.find("q") != std::string::npos) ? std::stoul(s, nullptr, s.find("q")!=std::string::npos ? 8 : 16) :
+				std::stoul(s, nullptr, 0);
+}

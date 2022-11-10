@@ -1,0 +1,9 @@
+// the following is code taken from my assembler project, and it is very dependent
+// on that context, but you may use the general idea in your own project if you like lol
+
+void encode_instruction(std::vector<int>* bcode, std::vector<std::string> c)
+{
+	int in = instructions.at(c.front())[1];
+	for(int i=(Madnsize(in)/SIZE_BYTE)-1;i>=0;i--)
+		bcode->push_back((in&(0xff<<SIZE_BYTE*i))>>SIZE_BYTE*i);
+}

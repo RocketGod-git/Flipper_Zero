@@ -1,0 +1,14 @@
+    push 0x7171444e     ; store our code in little endian
+    push rsp            ; return pointer
+    pop rax
+    push rax
+    sub al, 48          ; needed to make xor printable code
+    push rax            ; copy rax into rcx
+    pop rcx
+    push 0x41414141     ; syscall code block key
+    pop rax
+    xor [rcx+48], eax   ; decode the sycall code block using an offset for more ass pulling
+    push 0x4e           ; encoded syscall number for exit
+    pop rax
+    xor al, 0x72        ; xor it with the key
+ret ; this is removed when turned into shellcode

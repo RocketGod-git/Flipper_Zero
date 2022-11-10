@@ -1,0 +1,27 @@
+// ------------------------------------------------------------------------------
+// THE BEER-WARE LICENSE (Revision 43):
+// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return
+// ------------------------------------------------------------------------------
+
+unsigned __rand(unsigned y)
+{
+// Implementation of George Marsaglia's xorshift PRNG
+// gets a number between 1 and 255
+asm(
+	"cpy %0, %1\n\t"
+	"eor %0, %0, %0, lsl #13\n\t"
+	"eor %0, %0, %0, lsr #9\n\t"
+	"eor %0, %0, %0, lsr #7\n\t"
+	"ldr r1, =255\n\t"
+	"ldr r2, =0x1010102\n\t"
+	"umull r3, r2, %0, r2\n\t"
+	"mul r1, r2\n\t"
+	"sub %0, r1, %0\n\t"
+	"and %0, %0, #0xff\n\t"
+	"add %0, %0, #1\n\t"
+	: "=r"(y) : "r"(y) : );
+	return y;
+
+}

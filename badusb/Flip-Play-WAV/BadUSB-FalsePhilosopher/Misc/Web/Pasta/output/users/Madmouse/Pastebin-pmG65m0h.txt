@@ -1,0 +1,49 @@
+/*
+
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+@ Arm / Thumb Anti debugging 101  @
+@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+.section .text
+.global scan
+
+@ scan(void* code, unsigned int depth);
+scan:
+	.code 32
+	ldr r3, =0xE7F00000	@ load breakpoint constant
+	ldr r4, =0xFFFF0000	@ mask
+loop:
+	ldr r2, [r0]	@ load byte code into r2
+	and r2, r4	@ clear out extra data in bytecode with mask
+	cmp r2, r3	@ is it a breakpoint?
+	beq fuck	@ if so FUCK
+	cmp r1, #0	@ are we at the end?
+	beq safe	@ if so we are safe
+	sub r1, #1	@ decrement the counter
+	add r0, #1	@ increment our pointer
+	bne loop	@ if we are still looping, loop
+safe:
+	mov r0, #0	@ return false
+	mov r1, r0
+	bx lr
+fuck:
+	mov r0, #0x1	@ return true
+	mov r1, #0
+	bx lr
+
+
+
+*/
+
+bool scan(void (*fun), unsigned int depth)	/// scans a section of a function for break points
+{
+	int i;
+	unsigned int inst;
+	for(i=0;i<=depth;i+=sizeof(inst))	/// count from offset start to depth
+	{
+		inst = (*(volatile unsigned int *)((unsigned int)fun + i) & 0xffff0000)>>16;
+		if (inst == 0xE7F0)	/// if this is a break point
+			return true;	/// return true
+	}
+	return false;
+}

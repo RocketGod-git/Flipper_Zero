@@ -1,0 +1,4 @@
+Press: 131 + 114
+PrintLine: cmd /C "RUNDLL32 USER32.DLL,SwapMouseButton"
+Rem: End of payload* you can unplug the device when you see the led flash
+BlinkLED: 5

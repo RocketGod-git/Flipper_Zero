@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 3.2 Final//EN"><html>
+<title>Toolbox</title>
+<head>
+    <link href="data:image/x-icon;base64,x" rel="icon" type="image/x-icon" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='bootstrap-4.0.0.min.css')}}" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous"/>
+    <script src="{{ url_for('static', filename='jquery-3.5.1.slim.min.js')}}" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='popper-1.16.1.min.js')}}" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="{{ url_for('static', filename='bootstrap-4.5.3.min.js')}}" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<main role="main" class="container mt-3">
+    <h2>Directory listing for /{{server_path}}</h2>
+    <hr />
+
+    {% include 'views/_upload_form.html' %}
+
+    {% with files=view_model.directory_listing.user_files %}
+        {% include "views/_directory_list.html" %}
+    {% endwith %}
+
+    {%- if view_model.directory_listing.server_path == '' %}
+        <h2>Inbuilt files</h2>
+
+        {% with files=view_model.directory_listing.toolbox_files %}
+            {% include "views/_directory_list.html" %}
+        {% endwith %}
+
+        <h2>Shells</h2>
+        <hr>
+
+        {% set default_lhost = view_model.payload_generator.default_lhost %}
+        {% set default_lport = view_model.payload_generator.default_lport %}
+        {%- for module_name in view_model.payload_generator.module_names %}
+            <h3>{{ module_name }}</h3>
+            <ul>
+                <li><a href="/shells/{{module_name}}">/shells/{{module_name}}</a> - running on default host/port {{default_lhost}} {{default_lport}}</li>
+                <li><a href="/shells/{{module_name}}/{{default_lport}}">/shells/{{module_name}}/{{default_lport}}</a> - custom port</li>
+                <li><a href="/shells/{{module_name}}/{{default_lhost}}/{{default_lport}}">/shells/{{module_name}}/{{default_lhost}}/{{default_lport}}</a> - custom host and port</li>
+            </ul>
+        {%- endfor %}
+    {%- endif %}
+</main>
+<script>
+    $(function () {
+        $('[data-toggle="tooltip"]').tooltip()
+    })
+</script>
+</body>
+</html>

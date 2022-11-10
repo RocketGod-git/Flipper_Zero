@@ -1,0 +1,76 @@
+#!/usr/bin/env python
+
+from __future__ import print_function
+
+import re, sys, string
+
+files = list(sys.argv)
+files.remove(sys.argv[0])
+
+if not files:
+    print("Usage: %s <list of files>" % (sys.argv[0]))
+    exit(-1)
+
+def is_number(c):
+    try:
+        int(c)
+        return True
+    except ValueError:
+        return False
+
+def is_alpha(c):
+    return c in string.letters
+
+def is_upper(c):
+    return c in string.uppercase
+
+def is_white(c):
+    return c in string.whitespace
+
+
+def string_tokens(l):
+    r = list()
+    for s in l:
+        token = str()
+        for c in s:
+            token += "N" if is_number(c) else ("A" if is_upper(c) else "a") if is_alpha(c) else "S" if is_white(c) else "-"
+        r.append(token)
+    return list(set(r))
+
+def group_tokens(l):
+    r = list()
+    for s in l:
+        i = 0
+        x = 0
+        o = s[0]
+        t = list()
+        for c in s:
+            if c != o:
+                t.append(s[x : i])
+                x = i
+            i += 1
+            o = c
+        if x != i:
+            t.append(s[x:])
+        r.append(t)
+    return r
+
+
+if __name__ == "__main__":
+    for cf in files:
+        result = str()
+        with open(cf) as f:
+            l = filter(None, f.read().splitlines())
+            pass_1 = string_tokens(l)
+            pass_2 = group_tokens(pass_1)
+            
+            pass_1.sort(key = lambda e: len(e))
+            pass_2.sort(key = lambda e: len(e))
+            
+            print("Pass_1 = ")
+            for e in pass_1:
+                print("\t%s" % (e))
+            
+            print("Pass_2 = ")
+            for e in pass_2:
+                print("\t%s" % (e))

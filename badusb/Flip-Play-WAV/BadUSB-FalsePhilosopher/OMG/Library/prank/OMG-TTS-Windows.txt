@@ -1,0 +1,20 @@
+REM       OMG: TTS-Windows
+REM       Version 1.0
+REM       OS: Windows 7 - 11 (Present)
+REM       Author: Kalani
+REM       Requirements: Any DuckyScript Capable Device
+REM       Description: On Windows, Launch Powershell and use the System.speech to read 
+REM       out a string.
+
+DELAY 200
+GUI r
+DELAY 200
+STRING Powershell
+ENTER
+DELAY 200
+STRING Add-Type -AssemblyName System.speech
+ENTER
+STRING $speak = New-Object System.Speech.Synthesis.SpeechSynthesizer
+ENTER
+STRING $speak.Speak("We have been trying to reach you concerning your vehicles extended warranty. You should have received a notice in the mail about your cars extended warranty eligibility. Since we have not gotten a response, we are giving you a final courtesy call before we close out your file. Press 2 to be removed and placed on our do-not-call list. To speak to someone about possibly extending or reinstating your vehicles warranty, press 1 to speak with a warranty specialist.")
+ENTER

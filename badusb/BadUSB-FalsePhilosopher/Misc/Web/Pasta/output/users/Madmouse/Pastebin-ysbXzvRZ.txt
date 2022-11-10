@@ -1,0 +1,104 @@
+
+//
+//  A program example to mark an executable with a specified unique identification number
+//  Written By: MadMouse
+////////////////////////////////////////////////////////////////////////////////////////////
+// example implementation
+////////////////////////////////////////////////////////////////////////////////////////////
+/*	#include <unistd.h>
+	main()
+	{
+		static const char poop[] = "\xDE\xAD\xBE\xEF!ca419c121f43ab9c91a23e5cb727cef6";
+		puts((char*)poop+5);
+	}
+*/
+////////////////////////////////////////////////////////////////////////////////////////////
+// Example run:
+////////////////////////////////////////////////////////////////////////////////////////////
+// [user@n0 identifier]$ gcc test.c -o test
+// [user@n0 identifier]$ ./test
+// ca419c121f43ab9c91a23e5cb727cef6
+// [user@n0 identifier]$ g++ identifier.cc -o identifier
+// [user@n0 identifier]$ ./identifier test $(date|md5sum)
+// Writting version after magic sequence
+// Old: ca419c121f43ab9c91a23e5cb727cef6
+// New: e68658eacedafb864fbf1b3484781c1e
+// [user@n0 identifier]$ ./test
+// e68658eacedafb864fbf1b3484781c1e
+// [user@n0 identifier]$ 
+
+#include <cstring>
+#include <fstream>
+#include <iostream>
+#include <stdlib.h>
+
+typedef unsigned char BYTE;
+
+// Get the size of a file
+long getfilesize(FILE *file)
+{
+    long end;
+    fseek(file, 0L, SEEK_END);
+    end = ftell(file);
+    fseek(file, 0L, SEEK_SET);
+    return end;
+}
+
+void usage(const char* name)
+{
+	std::cout << "Usage: " << name << " <file> <md5hash>" << std::endl;
+	exit(1);
+}
+
+int main(int argc,const char** argv)
+{
+	if(argc != 4) usage(argv[0]);
+	else if(strlen(argv[2])<32) usage(argv[0]);
+	
+	FILE* file = NULL;  // declare a file pointer
+	BYTE* buffer;   // buffer for file
+	
+	std::cout << "Writting version after magic sequence" << std::endl;
+	if ((file = fopen(argv[1], "rb")) == NULL)  // open the file for reading
+	{
+		std::cout << "Could not open file..." << std::endl;
+		return 1;       // return fail
+	}
+	
+	long fsize = getfilesize(file); // get the size of the exe
+	buffer = new BYTE[fsize];       // allocate space to store exe in mem
+	fread(buffer, fsize, 1, file);  // read the exe into memory
+
+	long counter=0; // counter... lol
+	for(;counter<fsize;++counter)   // count through the file in memory
+	{
+		// if we find the magic sequence
+		if(buffer[counter]==0xDE&&buffer[counter+1]==0xAD&&buffer[counter+2]==0xBE&&buffer[counter+3]==0xEF&&buffer[counter+4]=='!')
+		{
+			std::cout << "Old: " <<(BYTE*) buffer+(counter+5) << std::endl;
+			break;
+		}
+	}
+	fclose(file);       // close the file
+	if(counter==fsize)
+	{
+		std::cerr << "We did not find the magic number..." << std::endl;
+		return 1;
+	}
+	for(unsigned int i=0;i<=strlen(argv[2]);++i)
+	{
+		buffer[(counter+5)+i]=argv[2][i];
+		if ((file = fopen(argv[1], "wb")) == NULL)  // open the file for writing
+		{
+			delete[] buffer;    // free buffer
+			std::cout << "Failed to write to file..." << std::endl;
+			return 1;       // return fail
+		}
+	}
+
+	fwrite(buffer,sizeof(BYTE),fsize,file);  // write the new identifier
+	std::cout<<"New: " << argv[2] << std::endl;
+	delete[] buffer;    // free the buffer
+	fclose(file);       // close the file
+	return 0;        // return success
+}

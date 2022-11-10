@@ -1,0 +1,16 @@
+REM Makes your malduino into a physical computer key.
+
+REM Type Login
+DELAY 1000
+STRING *password_1*
+ENTER
+DELAY 1000
+ENTER
+DELAY 1000
+STRING *password_2*
+ENTER
+DELAY 1000
+ENTER
+DELAY 1000
+STRING *password_3*
+ENTER

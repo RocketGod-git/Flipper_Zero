@@ -1,0 +1,10 @@
+madmouse@madmouse-RN657AA-ABA-a1777c:~$ curl -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36" "https://www.scribd.com/embeds/307434329/content?start_page=1&amp;view_mode=scroll&amp;show_recommendations=true" 2> /dev/null | grep -o 'http:\/\/html\.scribd\.com\/.*\/images\/.*\.jpg'
+http://html.scribd.com/1vhip4khkw5679nv/images/1-256f6d4fb7.jpg
+http://html.scribd.com/1vhip4khkw5679nv/images/2-7793d7965e.jpg
+http://html.scribd.com/1vhip4khkw5679nv/images/3-1f20e09799.jpg
+madmouse@madmouse-RN657AA-ABA-a1777c:~$ curl -A "Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2227.0 Safari/537.36" "https://www.scribd.com/embeds/307434329/content?start_page=1&amp;view_mode=scroll&amp;show_recommendations=true" 2> /dev/null | grep -o 'https:\/\/html2-f\.scribdassets\.com\/.*\/pages\/.*\.jsonp'
+https://html2-f.scribdassets.com/1vhip4khkw5679nv/pages/4-18235c745b.jsonp
+https://html2-f.scribdassets.com/1vhip4khkw5679nv/pages/5-488b5e2e6e.jsonp
+https://html2-f.scribdassets.com/1vhip4khkw5679nv/pages/6-c132f34c25.jsonp
+https://html2-f.scribdassets.com/1vhip4khkw5679nv/pages/9-1a234c53f9.jsonp
+madmouse@madmouse-RN657AA-ABA-a1777c:~$

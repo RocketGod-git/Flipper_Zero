@@ -1,0 +1,28 @@
+politeness
+
+count negative statements by a weight table, checking for racist slang, rude language,
+and personal equivalence which I will define later and keep simple now.
+
+rudeness = Word count * phrase weight
+
+for example:
+phrase_type =
+[
+    racist     = 10
+    sexual     = 8
+    personal   = 5
+    gross      = 2
+]
+
+"My you are a hideous pile of shit."
+              * personal      * gross
+word count = 2
+word weight = personal + gross = 7
+result = wc * ww = 14
+
+"Your mother likes to suck niggers  cocks in the parking lot"
+      * personal           * racist * sexual
+
+word count = 3
+word weight = personal + racist + sexual = 23
+result = wc * ww = 69

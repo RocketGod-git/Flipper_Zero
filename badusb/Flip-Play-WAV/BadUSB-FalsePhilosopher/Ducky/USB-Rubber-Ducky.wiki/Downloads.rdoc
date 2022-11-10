@@ -1,0 +1,24 @@
+=====Duck Encoder
+
+[duckencoder] is the cross platform java compiler that converts the ducky script files into hex files necessary for execution.
+
+====Latest Version (2.6.4 as of Sep 13, 2016) 
+{Download}[https://github.com/hak5darren/USB-Rubber-Ducky/blob/master/duckencoder.jar?raw=true]
+
+
+====Version 1.2
+{Download}[https://github.com/downloads/hak5darren/USB-Rubber-Ducky/duckencode.jar]
+
+V 1.2
+ CRLF fix
+
+V 1.1
+ Minor bug fixes
+
+V 1.0
+ Release
+
+* {DuckyScript UDL v2}[http://www.mediafire.com/download/d6f8mhcmsazmb8p/DuckyScript_UDL.zip] - [[DuckyScript]] User Defined Language for Notepad++ (v2)
+
+=====Firmware
+1 v - {Download}[https://github.com/downloads/hak5darren/USB-Rubber-Ducky/Duck%20Firmware.hex]

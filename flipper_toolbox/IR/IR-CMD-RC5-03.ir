@@ -1,0 +1,388 @@
+Filetype: IR signals file
+Version: 1
+#
+# generated with flipper_toolbox
+#
+name: Code_63
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 3F 00 00 00
+#
+name: Code_62
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 3E 00 00 00
+#
+name: Code_61
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 3D 00 00 00
+#
+name: Code_60
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 3C 00 00 00
+#
+name: Code_59
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 3B 00 00 00
+#
+name: Code_58
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 3A 00 00 00
+#
+name: Code_57
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 39 00 00 00
+#
+name: Code_56
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 38 00 00 00
+#
+name: Code_55
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 37 00 00 00
+#
+name: Code_54
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 36 00 00 00
+#
+name: Code_53
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 35 00 00 00
+#
+name: Code_52
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 34 00 00 00
+#
+name: Code_51
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 33 00 00 00
+#
+name: Code_50
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 32 00 00 00
+#
+name: Code_49
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 31 00 00 00
+#
+name: Code_48
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 30 00 00 00
+#
+name: Code_47
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 2F 00 00 00
+#
+name: Code_46
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 2E 00 00 00
+#
+name: Code_45
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 2D 00 00 00
+#
+name: Code_44
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 2C 00 00 00
+#
+name: Code_43
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 2B 00 00 00
+#
+name: Code_42
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 2A 00 00 00
+#
+name: Code_41
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 29 00 00 00
+#
+name: Code_40
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 28 00 00 00
+#
+name: Code_39
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 27 00 00 00
+#
+name: Code_38
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 26 00 00 00
+#
+name: Code_37
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 25 00 00 00
+#
+name: Code_36
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 24 00 00 00
+#
+name: Code_35
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 23 00 00 00
+#
+name: Code_34
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 22 00 00 00
+#
+name: Code_33
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 21 00 00 00
+#
+name: Code_32
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 20 00 00 00
+#
+name: Code_31
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 1F 00 00 00
+#
+name: Code_30
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 1E 00 00 00
+#
+name: Code_29
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 1D 00 00 00
+#
+name: Code_28
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 1C 00 00 00
+#
+name: Code_27
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 1B 00 00 00
+#
+name: Code_26
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 1A 00 00 00
+#
+name: Code_25
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 19 00 00 00
+#
+name: Code_24
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 18 00 00 00
+#
+name: Code_23
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 17 00 00 00
+#
+name: Code_22
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 16 00 00 00
+#
+name: Code_21
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 15 00 00 00
+#
+name: Code_20
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 14 00 00 00
+#
+name: Code_19
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 13 00 00 00
+#
+name: Code_18
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 12 00 00 00
+#
+name: Code_17
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 11 00 00 00
+#
+name: Code_16
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 10 00 00 00
+#
+name: Code_15
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 0F 00 00 00
+#
+name: Code_14
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 0E 00 00 00
+#
+name: Code_13
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 0D 00 00 00
+#
+name: Code_12
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 0C 00 00 00
+#
+name: Code_11
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 0B 00 00 00
+#
+name: Code_10
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 0A 00 00 00
+#
+name: Code_09
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 09 00 00 00
+#
+name: Code_08
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 08 00 00 00
+#
+name: Code_07
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 07 00 00 00
+#
+name: Code_06
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 06 00 00 00
+#
+name: Code_05
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 05 00 00 00
+#
+name: Code_04
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 04 00 00 00
+#
+name: Code_03
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 03 00 00 00
+#
+name: Code_02
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 02 00 00 00
+#
+name: Code_01
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 01 00 00 00
+#
+name: Code_00
+type: parsed
+protocol: RC5
+address: 03 00 00 00
+command: 00 00 00 00

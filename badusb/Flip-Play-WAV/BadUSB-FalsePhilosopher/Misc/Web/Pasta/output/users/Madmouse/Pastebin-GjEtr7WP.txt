@@ -1,0 +1,37 @@
+engine:
+mov rcx, 4
+
+call prng_seed
+eloop:
+; copy address in lookup table iterator
+mov r9, qword [r8]
+
+; flip a coin
+call prng
+and rax, 2
+
+; modify operation
+jnz b_jmp15
+
+shr r10, 32
+mov dword [r9], r10d
+jmp end_jmp15
+b_jmp15:
+mov dword [r9], r10d
+end_jmp15:
+
+; flip a coin
+call prng
+and rax, 2
+
+; shift in nops if zero
+jnz no_shift
+shl dword [r9], 16
+or dword [r9], 0x9090
+no_shift:
+
+; iterate to next address
+add r8, 8
+loop eloop
+
+ret

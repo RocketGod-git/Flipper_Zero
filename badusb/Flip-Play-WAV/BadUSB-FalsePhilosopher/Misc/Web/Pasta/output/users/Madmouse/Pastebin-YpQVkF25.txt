@@ -1,0 +1,95 @@
+#!/usr/bin/env rdmd
+
+import std.stdio;
+import std.conv;
+import std.c.stdlib;
+import std.string;
+import std.array;
+
+void main(string[] args)
+{
+	void usage(){writeln("Example: ^ 2 (+ 1 (+ 2 (* 2 2)))");}
+	
+	while(true)
+	{
+		stdout.write("> ");	// print prompt
+		string input = chop(stdin.readln());	// chop the new line character
+		
+		string[] temp = input.split(" ");
+		real answer=0;
+		bool parsing_error = false;
+		while(temp.length >= 3 && !parsing_error)
+		{
+			auto oper = temp[$-3].removechars("()");
+			//stdout.writeln("chunk: ", oper);
+			
+			real a,b;
+			auto bite = temp[$-2].removechars("()");
+			if((bite[0]<='9'&&bite[0]>='0')||((bite[0]=='-'||bite[0]=='.')&&bite[0]<='9'&&bite[1]>'0'))
+				a = to!real(bite);
+			else
+			{
+				parsing_error = true;
+				break;
+			}
+			//stdout.writeln("chunk: ", bite);
+			
+			bite = temp[$-1].removechars("()");
+			if((bite[0]<='9'&&bite[0]>='0')||((bite[0]=='-'||bite[0]=='.')&&bite[0]<='9'&&bite[1]>'0'))
+				b = to!real(bite);
+			else
+			{
+				parsing_error = true;
+				break;
+			}
+			//stdout.writeln("chunk: ", bite);
+			
+			switch(oper)
+			{
+				case "+":
+					answer = a+b;
+					stdout.writeln("(+ ", a, " ", b, ") = ", answer);
+					break;
+				case "-":
+					answer = a-b;
+					stdout.writeln("(- ", a, " ", b, ") = ", answer);
+					break;
+				case "*":
+					answer = a*b;
+					stdout.writeln("(* ", a, " ", b, ") = ", answer);
+					break;
+				case "/":
+					answer = a && b ? a/b : 0;
+					a && b ? stdout.writeln("(/ ", a, " ", b, ") = ", answer) : writeln("Cannot divide by zero...");
+					break;
+				case "^":
+					answer = a^^b;
+					stdout.writeln("(^ ", a, " ", b, ") = ", answer);
+					break;
+				case "%":
+					answer = a && b ? a%b : 0;
+					a && b ? stdout.writeln("(% ", a, " ", b, ") = ", answer) : writeln("Cannot divide by zero...");
+					break;
+				default:
+					parsing_error = true;
+					break;
+			}
+			temp.popBack();
+			temp.popBack();
+			temp.popBack();
+			temp ~= join([to!string(answer), ")"]);
+			//stdout.writeln(temp);
+			if(temp.length == 1)
+			{
+				temp.popBack();
+				break;
+			}
+		}
+		//stdout.writeln(temp," -> ",temp.length);
+		if(parsing_error || temp.length > 0)
+		{
+			stdout.writeln("Invalid syntax...");
+			usage();
+		}
+	}
+}

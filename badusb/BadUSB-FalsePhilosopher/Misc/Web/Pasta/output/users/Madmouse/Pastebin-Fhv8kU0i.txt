@@ -1,0 +1,15 @@
+#define BKPT 0xde01
+
+bool scan_for_breakpoints(void (*fun), int start, int depth)	/// scans a section of a function for break points
+{
+	int i;
+	unsigned int inst;
+	for(i=start-1;i<=depth;i+=2)	/// count from offset start to depth
+	{
+		inst = (*(volatile unsigned int *)((unsigned int)fun + i) & 0xffff);
+		//printf("instruction: %x\r\n",inst);
+		if (inst == BKPT)	/// if this is a break point
+			return true;	/// return true
+	}
+	return false;
+}

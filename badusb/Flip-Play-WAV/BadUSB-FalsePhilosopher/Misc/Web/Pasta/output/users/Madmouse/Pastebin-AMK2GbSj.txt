@@ -1,0 +1,16 @@
+
+DECIMAL       HEXADECIMAL     DESCRIPTION
+--------------------------------------------------------------------------------
+178           0xB2            OpenSSL encryption, salted, salt: 0x2086EE1D14A0C9FD
+3282          0xCD2           OpenSSL encryption, salted, salt: 0x33D70308AC918205
+6386          0x18F2          OpenSSL encryption, salted, salt: 0xB5375D122C560DC7
+9490          0x2512          OpenSSL encryption, salted, salt: 0x1B3437B9DB5FD65E
+501130807     0x1DDEA637      VMware4 disk image
+508503083     0x1E4F242B      Cisco IOS experimental microcode for ""
+554139990     0x21078156      TROC filesystem, -555979340 file entries
+868193477     0x33BF94C5      Realtek firmware header, ROME bootloader, header version: 134, created: 94/255/54951, image size: 574065349 bytes, body checksum: 0x58, header checksum: 0xAF
+1004049251    0x3BD89363      rzip compressed data - version 255.50 (1643373678 bytes)
+1045544379    0x3E51BDBB      XIP, Microsoft Xbox data
+1323078471    0x4EDC9347      TIFF image data, little-endian
+1567502337    0x5D6E3001      XTF, Microsoft Xbox data
+1567943665    0x5D74EBF1      TIFF image data, little-endian

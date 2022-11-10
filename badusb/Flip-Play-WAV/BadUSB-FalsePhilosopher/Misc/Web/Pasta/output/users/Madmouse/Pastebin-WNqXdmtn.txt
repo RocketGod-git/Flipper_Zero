@@ -1,0 +1,14 @@
+// QEMU vulnerable to disclosing real host values for cpuid, this is bad for security and for breaking reliant code
+
+bool is_64(void)
+{
+    register int eax asm("eax");
+    register int esi asm("esi");
+    asm(".intel_syntax noprefix\n"
+    "xor eax, eax\n"
+    "cpuid\n"
+    "mov esi, eax\n"
+    "mov eax, 0x80000000\n"
+    "cpuid\n");
+    return (eax == esi) ? false : true;
+}

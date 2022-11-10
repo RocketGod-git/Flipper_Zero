@@ -1,0 +1,16 @@
+{
+    "server": [
+        {
+          "server_path": "/enum_linux.sh",
+          "local_path": "third_party/enum_scripts/linux/enum.sh"
+        },
+        {
+          "server_path": "/enum_windows.exe",
+          "local_path": "third_party/enum_scripts/windows/enum.exe"
+        },
+        {
+          "server_path": "/my_custom_namespace",
+          "local_path": "third_party/enum_scripts"
+        }
+    ]
+}

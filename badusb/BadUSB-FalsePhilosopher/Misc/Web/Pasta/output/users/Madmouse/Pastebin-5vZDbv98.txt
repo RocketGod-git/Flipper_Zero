@@ -1,0 +1,296 @@
+
+// ----------------------------------------------------------------------------
+// "THE BEER-WARE LICENSE" (Revision 43):
+// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return Aaron R. Yool
+// ----------------------------------------------------------------------------
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+typedef enum{false, true = !false} bool;
+
+usage(const char *name)
+{
+	printf("Usage: %s <grid size> <origin > 0>\n", name);
+	exit(-1);
+}
+
+cursor(unsigned int x, unsigned int y)
+{
+	printf("\033[%i;%iH", y, x);
+}
+
+color(unsigned int quality, unsigned int color)
+{
+	printf("\033[%i;%im", quality, color);
+}
+
+clear_screen()
+{
+	printf("\033[1;1H\033[2J");
+}
+
+int digits_needed(long double n)
+{
+	int i=0, c;
+	for(c=n;c>0;c=c/10)i++;
+	return i;
+}
+
+// corners work like this where o = 1 and n = 10:
+//
+// f(n) = n^2-n+o
+// 1, 3, 7, 13, 21, 31, 43, 57, 73, 91
+// R  L  R   L   R   L   R   L   R   L
+//
+// f(n) = n^2+o
+// 2, 5, 10, 17, 26, 37, 50, 65, 82, 101
+// U  D   U   D   U   D   U   D   U    D
+
+#define RIGHT 0x1
+#define LEFT 0x2
+
+#define UP 0x3
+#define DOWN 0x4
+
+bool crf(long double n, long double o, long double x)
+{
+	long double f, i = n; n = 1;
+	for(i;i > 0;--i)
+	{
+		f = 4*powl(n,2)-3*n+o;
+		if(x == f) return true;
+		n++;
+	}
+	return false;
+}
+
+bool clf(long double n, long double o, long double x)
+{
+	long double f, i = n; n = 1;
+	for(i;i > 0;--i)
+	{
+		f = 4*powl(n,2)+n+o;
+		if(x == f) return true;
+		n++;
+	}
+	return false;
+}
+
+bool cuf(long double n, long double o, long double x)
+{
+	long double f, i = n; n = 1;
+	for(i;i > 0;--i)
+	{
+		f = 4*powl(n,2)-n+o;
+		if(x == f) return true;
+		n++;
+	}
+	return false;
+}
+
+bool cdf(long double n, long double o, long double x)
+{
+	long double f, i = n; n = 1;
+	for(i;i > 0;--i)
+	{
+		f = 4*powl(n,2)+3*n+o;
+		if(x == f) return true;
+		n++;
+	}
+	return false;
+}
+
+
+char crdf(long double n, long double o, long double x)
+{
+	long double f, i = n; n = 1;
+	for(i;i > 0;--i)
+	{
+		f = powl(n,2)-n+o;
+		if(x == f) return fmod(n, 2) ? RIGHT : LEFT;
+		n++;
+	}
+	return 0;
+}
+
+
+char cldf(long double n, long double o, long double x)
+{
+	long double f, i = n; n = 1;
+	for(i;i > 0;--i)
+	{
+		f = powl(n,2)+o;
+		if(x == f) return fmod(n, 2) ? UP : DOWN;
+		n++;
+	}
+	return 0;
+}
+
+bool prime(long double x)
+{
+	long double i;
+	if(x == 2) return true;
+	else if(x < 2 || fmod(x, 2) == 0) return false;
+	for(i=3;i<=sqrtl(x);i++)
+	{
+		if(fmod(x, i) == 0) return false;
+	}
+	return true;
+}
+
+generate_grid(long double n, long double o)
+{
+	long double direction, i, c, cld, crd, x = fmod(n, 2) ? n/2 : n/2-1, y=n/2, digits = digits_needed(n*n+o);
+	clear_screen();
+	
+	for(c=0;c<n;c++)
+	for(i=0;i<=n;i++)
+	{
+		cursor((i*(digits+1))+1,c+3);
+		putchar('|');
+	}
+	
+	for(i=o;i<=n*n+o-1;i++)
+	{
+		crd = crdf(n, o, i);
+		cld = cldf(n, o, i);
+		if(prime(i)) color(4,31);
+		if(crd){direction = crd;color(1,102);}
+		else if(cld){direction = cld;color(1,43);}
+		else if(crf(n, o, i))color(1,44);
+		else if(clf(n, o, i))color(1,45);
+		else if(cuf(n, o, i))color(1,46);
+		else if(cdf(n, o, i))color(1,42);
+		
+		cursor((x*(digits+1))+2,3+y);
+		
+		for(c=digits-digits_needed(i);c>0;c--)
+			putchar('0');
+		printf("%i",i);
+		color(0,0);
+		
+		switch((int)direction)
+		{
+			case RIGHT: x++;break;
+			case LEFT: x--;break;
+			case UP: y--;break;
+			case DOWN: y++;break;
+			default: break;
+		}
+	}
+	
+	cursor(0,n+3);
+}
+
+main(unsigned int count, const char **args)
+{
+	long double i = 0, f, n = 0, o = 0;
+	
+	if(count == 3 ? (args[1][0] >= '0' && args[1][0] <= '9') : false)
+		n = atoll(args[1]);
+	else
+		usage(args[0]);
+	
+	if(args[2][0] >= '0' && args[2][0] <= '9')
+		o = atoll(args[2]);
+	else
+		usage(args[0]);
+	
+	if(o<1) usage(args[0]);
+	
+	generate_grid(n,o);
+	printf("\n\no = %.0LF\n", o);
+	
+	// right diagonal from origin
+	color(1,32);
+	printf("f1(n) = n^2-n+o\n");
+	i = n+100;n = 1;
+	for(i;i > 0;--i)
+	{
+		f = powl(n,2)-n+o;
+		color(0,0);
+		if(prime(f)) color(1,31);
+		i > 1 ? printf("%.0LF, ", f) : printf("%.0LF\n\n", f);
+		n++;
+		color(0,0);
+	}
+	color(0,0);
+	
+	// left diagonal from origin
+	color(1,33);
+	printf("f2(n) = n^2+o\n");
+	i = n-2;n = 1;
+	for(i;i > 0;--i)
+	{
+		f = powl(n,2)+o;
+		color(0,0);
+		if(prime(f)) color(1,31);
+		i > 1 ? printf("%.0LF, ", f) : printf("%.0LF\n\n", f);
+		n++;
+	}
+	color(0,0);
+	
+	// right of origin
+	color(1,34);
+	printf("f3(n) = 4n^2-3n+o\n");
+	i = n/2;n = 1;
+	for(i;i > 0;--i)
+	{
+		f = 4*powl(n,2)-3*n+o;
+		color(0,0);
+		if(prime(f)) color(1,31);
+		i > 1 ? printf("%.0LF, ", f) : printf("%.0LF\n\n", f);
+		n++;
+	}
+	color(0,0);
+	
+	// down from origin
+	color(0,32);
+	printf("f4(n) = 4n^2+3n+o\n");
+	i = n-2;n = 1;
+	for(i;i > 0;--i)
+	{
+		f = 4*powl(n,2)+3*n+o;
+		color(0,0);
+		if(prime(f)) color(1,31);
+		i > 1 ? printf("%.0LF, ", f) : printf("%.0LF\n\n", f);
+		n++;
+	}
+	color(0,0);
+	
+	// up from origin
+	color(1,36);
+	printf("f5(n) = 4n^2-n+o\n");
+	i = n;n = 1;
+	for(i;i > 0;--i)
+	{
+		f = 4*powl(n,2)-n+o;
+		color(0,0);
+		if(prime(f)) color(1,31);
+		i > 1 ? printf("%.0LF, ", f) : printf("%.0LF\n\n", f);
+		n++;
+	}
+	color(0,0);
+	
+	// to the left of origin
+	color(1,35);
+	printf("f6(n) = 4n^2+n+o\n");
+	i = n-2;n = 1;
+	for(i;i > 0;--i)
+	{
+		f = 4*powl(n,2)+n+o;
+		color(0,0);
+		if(prime(f)) color(1,31);
+		i > 1 ? printf("%.0LF, ", f) : printf("%.0LF\n\n", f);
+		n++;
+	}
+	color(0,0);
+	
+	return;
+}

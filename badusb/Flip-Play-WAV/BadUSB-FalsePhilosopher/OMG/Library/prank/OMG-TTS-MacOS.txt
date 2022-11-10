@@ -1,0 +1,22 @@
+REM       OMG: TTS-MacOS
+REM       Version 1.0
+REM       OS: macOS 10.4 - 12.3.1 (Present)
+REM       Author: Kalani
+REM       Requirements: Any DuckyScript Capable Device
+REM       Description: On macOS, Launch terminal and use the command 
+REM       'say' to read out a string.
+
+DELAY 200
+GUI SPACE
+DELAY 200
+STRING Terminal
+ENTER
+DELAY 200
+STRING say "We have been trying to reach you concerning your vehicles 
+extended warranty. You should have received a notice in the mail about 
+your cars extended warranty eligibility. Since we have not gotten a 
+response, we are giving you a final courtesy call before we close out your 
+file. Press 2 to be removed and placed on our do-not-call list. To speak 
+to someone about possibly extending or reinstating your vehicles warranty, 
+press 1 to speak with a warranty specialist."
+ENTER

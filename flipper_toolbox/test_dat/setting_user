@@ -1,0 +1,79 @@
+Filetype: Flipper SubGhz Setting File
+Version: 1
+
+# Add All Standard frequencies
+#Add_standard_frequencies: true
+
+# Default Frequency: used as default for "Read" and "Read Raw"
+#Default_frequency: 433920000
+
+# Frequencies used for "Read", "Read Raw" and "Frequency Analyzer" - they added after default ones if enabled in Add_standard_frequencies
+Frequency: 302757000
+Frequency: 307000000
+Frequency: 307500000
+Frequency: 307800000
+Frequency: 309000000
+Frequency: 312000000
+Frequency: 312100000
+Frequency: 313850000
+Frequency: 314000000
+Frequency: 314350000
+Frequency: 345000000
+Frequency: 348000000
+Frequency: 387000000
+Frequency: 433220000
+Frequency: 433889000
+Frequency: 464000000
+Frequency: 779000000
+Frequency: 928000000
+
+# Frequencies used for hopping mode (keep this list small or flipper will miss signal) - they added after default ones if enabled in Add_standard_frequencies
+#Hopper_frequency: 300000000
+Hopper_frequency: 345000000
+Hopper_frequency: 434420000
+
+# Custom preset
+# format for CC1101 "Custom_preset_data:" XX YY XX YY .. 00 00 ZZ ZZ ZZ ZZ ZZ ZZ ZZ ZZ, where: XX-register, YY - register data, 00 00 - end load register, ZZ - 8 byte Pa table register
+
+#Custom_preset_name: AM_1
+#Custom_preset_module: CC1101
+#Custom_preset_data: 02 0D 03 07 08 32 0B 06 14 00 13 00 12 30 11 32 10 17 18 18 19 18 1D 91 1C 00 1B 07 20 FB 22 11 21 B6 00 00 00 C0 00 00 00 00 00 00
+
+#Custom_preset_name: AM_2
+#Custom_preset_module: CC1101
+#Custom_preset_data: 02 0D 03 07 08 32 0B 06 14 00 13 00 12 30 11 32 10 17 18 18 19 18 1D 91 1C 00 1B 07 20 FB 22 11 21 B6 00 00 00 C0 00 00 00 00 00 00
+
+## Default presets as examples :
+
+# PresetOok270Async
+Custom_preset_name: AM270
+Custom_preset_module: CC1101
+Custom_preset_data: 02 0d 03 47 08 32 0b 06 14 00 13 00 12 30 11 32 10 67 18 18 19 18 1d 40 1c 00 1b 03 20 fb 22 11 21 b6 00 00 00 C0 00 00 00 00 00 00
+
+# PresetOok650Async
+Custom_preset_name: AM650
+Custom_preset_module: CC1101
+Custom_preset_data: 02 0d 03 07 08 32 0b 06 14 00 13 00 12 30 11 32 10 17 18 18 19 18 1d 91 1c 00 1b 07 20 fb 22 11 21 b6 00 00 00 C0 00 00 00 00 00 00
+
+# Preset2FSKDev238Async
+Custom_preset_name: FM238
+Custom_preset_module: CC1101
+Custom_preset_data: 02 0d 0b 06 08 32 07 04 14 00 13 02 12 04 11 83 10 67 15 04 18 18 19 16 1d 91 1c 00 1b 07 20 fb 22 10 21 56 00 00 C0 00 00 00 00 00 00 00
+
+
+# Preset2FSKDev476Async
+Custom_preset_name: FM476
+Custom_preset_module: CC1101
+Custom_preset_data: 02 0d 0b 06 08 32 07 04 14 00 13 02 12 04 11 83 10 67 15 47 18 18 19 16 1d 91 1c 00 1b 07 20 fb 22 10 21 56 00 00 C0 00 00 00 00 00 00 00
+
+
+# PresetMSK99_97KbAsync
+Custom_preset_name: MSK99_9
+Custom_preset_module: CC1101
+Custom_preset_data: 02 06 03 07 04 46 05 4c 09 00 06 00 0a 00 08 05 0c 23 0b 06 14 f8 13 22 12 72 11 f8 10 5b 15 47 18 18 19 16 1d b2 1c 00 1b c7 22 10 21 56 1a 1c 29 59 00 00 C0 00 00 00 00 00 00 00
+
+
+# PresetGFSK9_99KbAsync
+Custom_preset_name: GFSK9_99
+Custom_preset_module: CC1101
+Custom_preset_data: 02 06 03 47 08 05 0b 06 04 46 05 4c 09 00 06 00 10 c8 11 93 12 12 15 34 18 18 19 16 1b 43 1c 40 1d 91 20 fb 00 00 C0 00 00 00 00 00 00 00

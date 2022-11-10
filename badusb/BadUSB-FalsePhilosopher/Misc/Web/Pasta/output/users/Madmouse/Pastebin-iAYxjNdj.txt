@@ -1,0 +1,127 @@
+// play like this lol:
+// $ gcc -fno-stack-protector -z execstack lol.c -o lol
+/////////////////////////////////////////////////////////
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+//; I SPEAK TEH TRUFF
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+//_start:
+//      xor eax, eax
+//      mov al, 0x1
+//      xor rdi, rdi
+//      ret
+//
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+//; decoder foo
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+//_start:
+//      mov rcx, rsi    ; move size argument into rcx for the loop
+//      mov rsi, rdi    ; move the the text pointer to rsi
+//      xor rax, rax    ; clear out registers
+//      xor rdi, rdi
+//decode:                               ; decode text
+//      xor byte [rsi], 0xFF
+//      inc rsi
+//loop decode
+//      xor rax, rax
+//      ret
+//
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+//; breakpoints huh?
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+//_start:
+//	mov rcx, rsi	; move size argument into rcx for the loop
+//	mov rsi, rdi	; move the the text pointer to rsi for printing
+//	xor rax, rax	; clear out registers
+//	xor rdi, rdi
+//scan:
+//	cmp byte [rsi], 0xCC ; check for break point
+//	je fuck_you
+//	inc rsi
+//loop scan
+//	xor rdi, rdi
+//	ret
+//fuck_you:
+//	xor rdi, rdi
+//	mov al, 1
+//	ret
+//
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+//; decoder foo
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+//;_start:
+//;	mov rcx, rsi	; move size argument into rcx for the loop
+//;	mov rsi, rdi	; move the the text pointer to rsi for printing
+//;	xor rax, rax	; clear out registers
+//;	xor rdx, rdx
+//;	xor rdi, rdi
+//;	push rsi		; push the text for decoder
+//;	push rcx		; push the size for decoder
+//;	push rsi		; push the text for ecoder
+//;	push rcx		; push the size for encoder
+//;decode:				; decode text
+//;	xor byte [rsi], 0xFF
+//;	inc rsi
+//;loop decode
+//;	pop rcx			; pop size
+//;	pop rsi			; pop text
+//;	mov al, 0x1		; write stuff to stdout
+//;	mov dil, al
+//;	mov dl, cl
+//;	syscall
+//;	xor rax, rax
+//;	pop rcx			; pop size
+//;	pop rsi			; pop text
+//;encode:				; encode text
+//;	xor byte [rsi], 0xFF
+//;	inc rsi
+//;loop encode
+//;	ret
+
+
+typedef unsigned char by;
+
+
+main(m,k)
+{
+	// functional shellcode that takes
+	// encrypted shellcode and encodes / decodes it
+	m = \
+	"\x48\x89\xf1\x48\x89\xfe\x48\x31\xc0"\
+	"\x48\x31\xd2\x48\x31\xff\x80\x36\xff"\
+	"\x48\xff\xc6\xe2\xf8\xc3";
+
+	// encrypted opaque predicate
+	by e[] = "\xce\x3f\x4f\xfe\xb7\xce\x00\x3c";
+    
+	// encrypted breakpoint detector    
+	by b[] = \
+	"\xb7\x76\x0e\xb7\x76\x01\xb7\xce\x3f"\
+	"\xb7\xce\x00\x7f\xc1\x33\x8b\xf6\xb7"\
+	"\x00\x39\x1d\x09\xb7\xce\x00\x3c\xb7"\
+	"\xce\x000\x4f\xfe\x3c";
+	
+	// encrypted string printer
+	k = \
+	"\x48\x89\xf1\x48\x89\xfe\x48\x31\xc0"\
+	"\x48\x31\xd2\x48\x31\xff\x56\x51\x56"\
+	"\x51\x80\x36\xff\x48\xff\xc6\xe2\xf8"\
+	"\x59\x5e\xb0\x01\x40\x88\xc7\x88\xca"\
+	"\x0f\x05\x48\x31\xc0\x59\x5e\x80\x36"\
+	"\xff\x048\xff\x0c6\xe2\xf8\x0c3";
+
+        // decode e, check for always true, and re encode the shellcode
+        if(((int(*)(void*,int))m)(e,8)+((int(*)())e)()+((int(*)(void*,int))m)(e,8))
+        {
+        	// encrypted message
+        	by message[] = \
+        	"\xb6\xdf\x8c\x8f\x9e\x9a\x94\xdf\x8b"\
+        	"\x9a\x97\xdf\x8b\x8d\x8a\x99\x99\xf5";
+		// decrypt breakpoint detector
+		((int(*)(void*,int))m)(b,32);
+		if(!((int(*)(void*,int))b)(k,18)) // check for breakpoints
+			// if none are found print encrypted message
+			((void(*)(void*,int))k)(message,18);
+        }
+        else
+        	puts("This NEVER happens, ever lol");
+}

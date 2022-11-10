@@ -1,0 +1,25 @@
+#!/bin/bash
+###############################################################################
+# A shellcode extractor
+# written by madmouse
+# ----------------------------------------------------------------------------
+# "THE BEER-WARE LICENSE" (Revision 43):
+# <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+# can do whatever you want with this stuff. If we meet some day, and you think
+# this stuff is worth it, you can buy me a beer in return Aaron R. Yool
+# ----------------------------------------------------------------------------
+
+echo -ne '\n\n// C/C++\nconst char evil[] = "';
+for i in $(objdump -d $1 -M intel |grep "^ " |cut -f2);
+	do echo -n '\x'$i;
+done;echo -e '";\n\n'
+
+echo -ne '# Python\nevil = "';
+for i in $(objdump -d $1 -M intel |grep "^ " |cut -f2);
+	do echo -n '\x'$i;
+done;echo -e '"\n\n'
+
+echo -ne '# Bash\n./shellcode $(echo -en "';
+for i in $(objdump -d $1 -M intel |grep "^ " |cut -f2);
+	do echo -n '\x'$i;
+done;echo -e '")\n\n'

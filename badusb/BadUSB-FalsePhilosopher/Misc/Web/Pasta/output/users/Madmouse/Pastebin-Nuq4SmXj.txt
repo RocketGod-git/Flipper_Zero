@@ -1,0 +1,48 @@
+// ----------------------------------------------------------------------------
+// "THE BEER-WARE LICENSE" (Revision 43):
+// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return Aaron R. Yool
+// ----------------------------------------------------------------------------
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <math.h>
+
+typedef enum{false, true = !false} bool;
+
+usage(const char *name)
+{
+	printf("Usage: %s <starting number> <number of iterations>\n", name);
+	exit(-1);
+}
+
+main(unsigned int count, const char **args)
+{
+	long double i, a = 0, b = 0, c = 0;
+	if(count == 3 ? (args[1][0] >= '0' && args[1][0] <= '9') || (strlen(args[1])>1 ? (args[1][0] == '-' && args[1][1] >= '0' && args[1][1] <= '9') : true) : false)
+		b = atoll(args[1]);
+	else
+		usage(args[0]);
+	
+	if(count == 3 ? (args[2][0] >= '0' && args[2][0] <= '9') || (strlen(args[2])>1 ? (args[2][0] == '-' && args[2][1] >= '0' && args[2][1] <= '9') : true) : false)
+		i = atoll(args[2]);
+	else
+		usage(args[0]);
+
+	for(i;i > 0;--i)
+	{
+		c = a;
+		a = a+b;
+		b = c;
+		if(isinf(a))
+		{
+			printf("\n\nWe had to stop here: %.0LF\n", i);
+			exit(-1);
+		}
+		i != 1 ? printf("%.0LF, ", a) : printf("%.0LF\n", a);
+	}
+	
+	return;
+}

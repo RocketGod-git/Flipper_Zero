@@ -1,0 +1,56 @@
+........
+	registers["ax"]		=	{ SIZE_WORD, Rw, NA, 0, };
+	registers["bx"]		=	{ SIZE_WORD, Rw, NA, 3, };
+	registers["cx"]		=	{ SIZE_WORD, Rw, NA, 1, };
+	registers["dx"]		=	{ SIZE_WORD, Rw, NA, 2, };
+	registers["bp"]		=	{ SIZE_WORD, Rw, NA, 5, };
+	registers["si"]		=	{ SIZE_WORD, Rw, NA, 6, };
+	registers["di"]		=	{ SIZE_WORD, Rw, NA, 7, };
+	registers["sp"]		=	{ SIZE_WORD, Rw, NA, 4, };
+
+	registers["r8w"]	=	{ SIZE_WORD, Rw, NA, 0, };
+	registers["r9w"]	=	{ SIZE_WORD, Rw, NA, 1, };
+	registers["r10w"]	=	{ SIZE_WORD, Rw, NA, 2, };
+	registers["r11w"]	=	{ SIZE_WORD, Rw, NA, 3, };
+	registers["r12w"]	=	{ SIZE_WORD, Rw, NA, 4, };
+	registers["r13w"]	=	{ SIZE_WORD, Rw, NA, 5, };
+	registers["r14w"]	=	{ SIZE_WORD, Rw, NA, 6, };
+	registers["r15w"]	=	{ SIZE_WORD, Rw, NA, 7, };
+........
+
+	instructions["push"]	=	{ 2, G2, Ib|Iz|Rw|Rq|M, 0x50,    0x51,    0x52,     0x53,     0x54,     0x55,     0x56,     0x57,     0x0E,  0x1E,  0x06,  0x16,  0xA0,  0xA8,  0x68,  0x6A }; //
+	instructions["pop"]		=	{ 2, G2, Rw|Rq|M,       0x58,    0x59,    0x5A,     0x5B,     0x5C,     0x5D,     0x5E,     0x5F,     0x00,  0x1D,  0x07,  0x17,  0xA1,  0xA9,  0x00,  0x00 }; // 
+
+
+[user@n0 asmconsole]$ ./asmconsole
+>> push ax
+>> push cx
+>> push bx
+>> push dx
+>> push si
+>> push di
+>> code
+ 66 50			push ax 
+ 66 51			push cx 
+ 66 53			push bx 
+ 66 52			push dx 
+ 66 56			push si 
+ 66 57			push di 
+
+>> 
+
+[user@n0 asmconsole]$ objdump -D probe.o
+
+probe.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <_start>:
+   0:	66 50                	push   %ax
+   2:	66 51                	push   %cx
+   4:	66 53                	push   %bx
+   6:	66 52                	push   %dx
+   8:	66 56                	push   %si
+   a:	66 57                	push   %di
+[user@n0 asmconsole]$

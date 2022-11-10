@@ -1,0 +1,12 @@
+[user@n0 obfuscation]$ ./test kjlk
+can haz kitteh?
+Meow...
+meow, meow
+I spaek teh truff
+Meow...
+moo!!! squirk...
+31 26 c2 8a 64 f1 97 b9 fb 91 16 81 ec 
+41 37 a5 9b b2 3b 5b f5 88 52 fe cf b3 
+9f f4 0f c1 2a 80 05 cd df 9b 14 8f fe 
+�  L  �      2  �  1  :  }  �     
+[user@n0 obfuscation]$

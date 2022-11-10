@@ -1,0 +1,53 @@
+First we tokenize the entire string:
+
+aaaa - 1111111111
+AAAAS-SNNNNNNNNNN
+aaaa - 1411334411 - 987
+AAAAS-SNNNNNNNNNNS-SNNN
+aaaa - 1197887191 - 8
+AAAAS-SNNNNNNNNNNS-SN
+
+this can then be broken down into like pieces:
+
+aaaa - 1111111111
+[AAAA][S][-][S][NNNNNNNNNN]
+aaaa - 1411334411 - 987
+[AAAA][S][-][S][NNNNNNNNNN][S][-][S][NNN]
+aaaa - 1197887191 - 8
+[AAAA][S][-][S][NNNNNNNNNN][S][-][S][N]
+
+which can then be broken down into like groups of tokens:
+
+aaaa - 1111111111
+[
+	[AAAA]
+	[
+		[S][-][S]
+	]
+	[NNNNNNNNNN]
+]
+aaaa - 1411334411 - 987
+[
+	[AAAA]
+	[
+		[S][-][S]
+	]
+	[NNNNNNNNNN]
+]
+[
+	[S][-][S]
+]
+[NNN]
+
+aaaa - 1197887191 - 8
+[
+	[AAAA]
+	[
+		[S][-][S]
+	]
+	[NNNNNNNNNN]
+]
+[
+	[S][-][S]
+]
+[N]

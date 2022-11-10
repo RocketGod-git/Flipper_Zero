@@ -1,0 +1,78 @@
+#!/usr/bin/env python
+
+import numpy as np
+import time, random
+
+class GeneticALG():
+    def __init__(self, chromosome_size, population_size, fitness_test, crossover=0.7, mutation=0.001, elite_pool=0.10):
+        self.chromosome_size = chromosome_size
+        self.crossover       = crossover
+        self.mutation        = mutation
+        self.elite_pool      = elite_pool
+        self.population_size = population_size
+        self.fitness_test    = fitness_test
+        self.population      = list()
+        self.generation      = 0
+        np.random.seed([int(time.time() * 1e9) % 4294967296])
+        random.seed(time.time())
+        for i in xrange(population_size):
+            self.population.append([
+                np.random.choice([0, 1], size=(chromosome_size,)),
+                0
+             ])
+    
+    
+    def test_fitness(self):
+        # test fitness
+        for c in self.population:
+            c[1] = self.fitness_test(c[0])
+    
+    def breed(self):
+        # choose two mates
+        op = sorted(self.population, key=lambda x: x[1], reverse=True)
+        for i in xrange(int(self.population_size * self.crossover)):
+            male   = random.randint(0, self.population_size - 1)
+            female = random.choice(op[:int(self.population_size * self.elite_pool)])
+            splice = random.randint(0, self.chromosome_size - 1)
+            
+            for p in xrange(self.chromosome_size - splice):
+                index = p + splice
+                self.population[male][0][index] = female[0][index]
+        
+        # mutate
+        for i in xrange(int(self.population_size * self.mutation)):
+            cancer   = random.randint(0, self.chromosome_size - 1)
+            victim   = random.randint(0, self.population_size - 1)
+            self.population[victim][0][cancer] = 0 if self.population[victim][0][cancer] else 1
+        
+        # test fitness
+        self.test_fitness()
+        self.generation += 1
+
+if __name__ == "__main__":
+    from numpy import array_equal
+    def fitness(x):
+        r = 0
+        if np.array_equal(x & np.array([0,0,0,0,0,0,0,0,1,0,1,1]), np.array([0,0,0,0,0,0,0,0,1,0,1,1])):
+            r += 1
+        if np.array_equal(x & np.array([0,1,0,0,1,0,0,0,0,0,0,0]), np.array([0,1,0,0,1,0,0,0,0,0,0,0])):
+            r += 2
+        if np.array_equal(x & np.array([0,0,0,0,0,1,1,0,0,0,0,0]), np.array([0,0,0,0,0,1,1,0,0,0,0,0])):
+            r += 3
+        if np.array_equal(x , np.array([0,1,0,0,1,1,1,0,1,0,1,1])):
+            r *= 7
+        return r
+        
+    species = GeneticALG(12, 500, fitness)
+    
+    print "[*] Starting population generated:"
+    
+    while True:
+        print "[+] Generation %i breeding:" % species.generation
+        species.breed()
+        print "[+] Top 5 census:"
+        census = sorted(species.population, key=lambda x: x[1], reverse=True)
+        for i in xrange(5):
+            print "\t%s" % census[i]
+            if census[i][1] > 6:
+                exit(1)

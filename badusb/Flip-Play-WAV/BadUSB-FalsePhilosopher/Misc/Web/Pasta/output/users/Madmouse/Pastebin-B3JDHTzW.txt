@@ -1,0 +1,24 @@
+<?php
+// A php obfuscater/encryption wrapper for php
+// written by madmouse
+///////////////////////////////////////////////////////////////////
+$file = "onion.php";
+$key = "b448811d234bde472d4ffabde916d22e";
+
+
+for($i = 1; $i <=7; ++$i)
+{
+	$c = chr($i + 97);
+	$s = php_strip_whitespace($file);
+	$s=base64_encode(gzcompress(mcrypt_encrypt(MCRYPT_RIJNDAEL_256, md5($key.$c), gzcompress($s), MCRYPT_MODE_CBC, md5(md5($key.$c)))));
+	$code = '<?php $payload = "'.$s.'";$f'.$c.'=realpath(dirname(__FILE__))."/'.$c.'.php";file_put_contents($f'.$c.',rtrim(gzuncompress(mcrypt_decrypt(MCRYPT_RIJNDAEL_256, md5('.$key.$c.'), gzuncompress(base64_decode($payload)), MCRYPT_MODE_CBC, md5(md5('.$key.$c.')))), "\0"));include($f'.$c.');if(is_file("$f'.$c.'")){unlink($f'.$c.');} ?>';
+	file_put_contents($file,$code);
+
+	$s = php_strip_whitespace($file);
+	$code = '<?php $payload = "'.base64_encode(gzcompress($s)).'";$f'.$i.'=realpath(dirname(__FILE__))."/'.$i.'.php";file_put_contents($f'.$i.',gzuncompress(base64_decode($payload)));include($f'.$i.');if(is_file("$f'.$i.'")){unlink($f'.$i.');} ?>';
+	file_put_contents($file,$code);
+}
+
+echo "All Done!!!";
+
+?>

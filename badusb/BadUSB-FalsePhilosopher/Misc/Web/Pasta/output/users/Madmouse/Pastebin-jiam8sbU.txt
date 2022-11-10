@@ -1,0 +1,4 @@
+_start:
+    ldr	r0, [sp, #4]
+    ldr r1, =spoof              @ name to spoof
+    bl strcpy                   @ rename this bitch

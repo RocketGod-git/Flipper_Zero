@@ -1,0 +1,19 @@
+typedef void (*command_fun_ptr) (int, char**);
+
+typedef struct command_t {
+    char command[MAX_COMMAND_LENGTH];
+    command_fun_ptr function;
+    char description[256];
+} command_t;
+
+#define command_list_size 4
+command_t command_list[command_list_size];
+void __attribute__((constructor)) debug_shell_init(void)
+{
+    command_list[0] = (command_t) {"clear", (void*) command_clear, "Clear the screen"};
+    command_list[1] = (command_t) {"exit", (void*) command_exit,   "Exit the shell"};
+    command_list[2] = (command_t) {"halt", (void*) command_exit,   "Halt the machine"};
+    command_list[3] = (command_t) {"echo", command_echo,           "Print out some text"};
+}
+
+.........

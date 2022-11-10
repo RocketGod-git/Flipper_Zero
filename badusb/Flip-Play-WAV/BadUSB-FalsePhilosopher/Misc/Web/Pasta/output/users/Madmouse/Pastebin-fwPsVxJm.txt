@@ -1,0 +1,17 @@
+sscode << (color?IWHITE:"") << i << (color?RESET:"") << ": ";
+for(auto b : a)
+{
+	bool isregister = [](auto machine, auto b)
+		{
+			if(machine->registers.count(b) == 0)
+				return false;
+			return true;
+		}(machine, b);
+	sscode << (color?((c)?
+		((b[0] == '\"')? RED:
+			(isregister?
+				CYAN:RESET)):
+					IGREEN):
+						"")<< b << RESET << ((c>=1&&c!=a.size()-1) ? ", " : " ");
+	c++;
+}

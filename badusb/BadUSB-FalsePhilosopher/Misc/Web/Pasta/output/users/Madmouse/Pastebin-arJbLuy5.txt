@@ -1,0 +1,25 @@
+Here are some links that may help in weighing whether or not I am a good candidate.
+
+Notable projects:
+https://github.com/aaronryool/MadOS
+https://github.com/aaronryool/madlibc
+
+Malware:
+http://aaronyool.blogspot.com/2015/08/wimax-worm-poc.html
+
+Binary foo:
+http://aaronyool.blogspot.com/2015/07/think-you-are-man-enough-to-solve-this.html
+http://aaronyool.blogspot.com/2015/07/blog-post.html
+http://aaronyool.blogspot.com/2015/12/better-visualizing-data-formats-using.html
+
+Hypervisor / sandbox detection:
+https://www.gironsec.com/blog/2015/02/vmware-detection/
+http://aaronyool.blogspot.com/2015/07/drive-by-multi-architecture-examples-of.html
+http://aaronyool.blogspot.com/2015/07/beer-ware-license-revision-43-wrote.html
+
+Reverse engineering:
+https://drive.google.com/open?id=0Byt-ReOLUrp_YkdRbVdCRmIxMDg
+
+Tutorials:
+http://aaronyool.blogspot.com/2015/08/simulating-router-firmware-for-live.html
+http://aaronyool.blogspot.com/2015/06/putting-linux-on-your-android-device.html

@@ -1,0 +1,13 @@
+[user@n0 poltut]$ nano test.s
+[user@n0 poltut]$ nasm -f elf64 test.s -o test.o
+[user@n0 poltut]$ objdump -d test.o
+
+test.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <_start>:
+   0:	b8 01 00 00 00       	mov    $0x1,%eax
+   5:	b0 01                	mov    $0x1,%al
+[user@n0 poltut]$

@@ -1,0 +1,10 @@
+DELAY 2000
+GUI SPACE
+DELAY 600
+STRING terminal
+DELAY 750
+ENTER
+DELAY 600
+STRING open http://nyan.cat/ & exit
+DELAY 150
+ENTER

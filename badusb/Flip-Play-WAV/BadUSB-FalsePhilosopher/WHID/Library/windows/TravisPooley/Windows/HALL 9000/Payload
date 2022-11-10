@@ -1,0 +1,4 @@
+Press: 131 + 114
+PrintLine: cmd /C start /MIN powershell "Add-Type -AssemblyName System.Speech;[System.Speech.Synthesis.SpeechSynthesizer]::New().Speak(\"I'm sorry $($env:username). I'm afraid I can't do that.\")"
+Rem: End of payload* you can unplug the device when you see the led flash
+BlinkLED: 5

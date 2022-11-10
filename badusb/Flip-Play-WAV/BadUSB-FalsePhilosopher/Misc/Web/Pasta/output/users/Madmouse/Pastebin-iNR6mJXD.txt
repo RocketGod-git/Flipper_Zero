@@ -1,0 +1,251 @@
+#!/usr/bin/env python
+import socket, ssl, time, base64, random, os
+
+     
+server = "irc.hackthissite.org"
+port = 6697
+channel = "#hell"
+
+# entity lists
+noneuter_list = ["madmouse"]
+neuter_list = ["kage", "weekend", "#hackthissite", "nickserv", "chanserv", "memoserv"]
+dicks = ["test", "_3uph0ny", "stan", "vbaaaa", "knuckle_head", "agro", "linearinterpol", "wisdomewaze"]
+
+# conversation
+greetings = ["hey", "hi", "hello", "welcome", "hai", "<3"]
+slurs = ["Go fuck yourself you conceited bastard ;)", "You sir, are a nigger if you don't mind me saying.", "Shut up whore", "Go die bitch", "Hello :D", "B===D"]
+
+# net lists
+youtube_list = ["https://www.youtube.com/watch?v=HgunNdurZOI", "https://www.youtube.com/watch?v=8bD3LRxjtJ4"]
+code_list = []
+
+# dicts
+copycats = {}
+
+def is_url(url):
+    import re
+    regex = re.compile(
+        r'^https?://'  # http:// or https://
+        r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+[A-Z]{2,6}\.?|'  # domain...
+        r'localhost|'  # localhost...
+        r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' # ...or ip
+        r'(?::\d+)?'  # optional port
+        r'(?:/?|[/?]\S+)$', re.IGNORECASE)
+    return url is not None and regex.search(url)
+
+def reconnect():
+    s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    ircsock = ssl.wrap_socket(s)
+    ircsock.connect((server, port))
+
+def sendmsg(chan , msg):
+    ircsock.send("PRIVMSG "+ chan +" :"+ msg +"\r\n") 
+
+def joinchan(chan):
+    ircsock.send("JOIN "+ chan +"\r\n")
+
+def hello(person):
+    random.seed(time.time())
+    sendmsg(person, random.choice(slurs))
+
+def copy(nick,chan):
+    copycats[nick] = chan
+    
+def register():
+    random.seed(time.time())
+    botnick = base64.b64encode(str(time.time()*random.randint(0, 10)))
+    botnick = ''.join(random.sample(botnick,len(botnick)))[:5]
+    ircsock.send("USER "+ botnick +" "+ botnick +" "+ botnick +" :"+botnick+"\r\n")
+    ircsock.send("NICK "+ botnick +"\r\n")
+
+def quit(msg):
+    ircsock.send("QUIT :"+ msg +"\r\n")
+
+def bomb(cunt):
+    random.seed(time.time())
+    sendmsg(cunt, random.choice(slurs))
+
+def youtube(person, command, option):
+    if command == "add" and option not in youtube_list:
+        if not is_url(option):
+            return
+        youtube_list.insert(0, option)
+        with open(os.path.expanduser("~/tools/bot/lists/youtube"), "a") as f:
+            f.write(option+'\n')
+    elif command == "random":
+        random.seed(time.time())
+        sendmsg(person, random.choice(youtube_list))
+        return
+    elif command == "list":
+        sendmsg(person, str(youtube_list))
+
+def code(person, command, option):
+    if command == "add" and option not in code_list:
+        if not is_url(option):
+            return
+        code_list.insert(0, option)
+        with open(os.path.expanduser("~/tools/bot/lists/code"), "a") as f:
+            f.write(option+'\n')
+    elif command == "random":
+        random.seed(time.time())
+        sendmsg(person, random.choice(code_list))
+        return
+    elif command == "list":
+        sendmsg(person, str(code_list))
+
+def slur(person, command, option):
+    if command == "add" and option not in slurs:
+        slurs.insert(0, option)
+        with open(os.path.expanduser("~/tools/bot/lists/slurs"), "a") as f:
+            f.write(option+'\n')
+    elif command == "random":
+        random.seed(time.time())
+        sendmsg(person, random.choice(slurs))
+        return
+    elif command == "list":
+        sendmsg(person, str(slurs))
+
+
+# load files
+with open(os.path.expanduser("~/tools/bot/lists/youtube")) as f:
+    youtube_list = youtube_list + [line.rstrip('\n') for line in f]
+
+with open(os.path.expanduser("~/tools/bot/lists/code")) as f:
+    code_list = code_list + [line.rstrip('\n') for line in f]
+
+with open(os.path.expanduser("~/tools/bot/lists/neuter")) as f:
+    neuter_list = neuter_list + [line.rstrip('\n') for line in f]
+
+with open(os.path.expanduser("~/tools/bot/lists/noneuter")) as f:
+    noneuter_list = noneuter_list + [line.rstrip('\n') for line in f]
+
+with open(os.path.expanduser("~/tools/bot/lists/slurs")) as f:
+    slurs = slurs + [line.rstrip('\n') for line in f]
+
+
+# connect to irc
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+ircsock = ssl.wrap_socket(s)
+ircsock.connect((server, port))
+register()
+while 1:
+    ircmsg = ircsock.recv(2048)
+    if len(ircmsg) == 0:
+        ircsock.close()
+        time.sleep(3)
+        reconnect()
+        register()
+        continue
+    if ircmsg.find("PING ") != -1:
+        x = ircmsg.find("PING ")
+        ircmsg = ircmsg[x:]
+        y = ircmsg.find("\r\n")
+        ircsock.send("PONG "+ircmsg[6:y+2])
+        print("PONG "+ircmsg[6:y])
+        joinchan(channel)
+        continue
+    command = ircmsg.split()
+    print(command)
+
+    try:
+        if command[1] == "432":
+            register()
+            continue
+        elif command[1] == "451" or command[1] == "001":
+            joinchan(channel)
+            continue
+    # special actions
+        elif command[0].split("!")[0][1:].lower() in neuter_list:
+            continue
+        elif command[0].split("!")[0][1:].lower() in dicks or command[2].lower() in dicks:
+            bomb(command[2])
+            continue
+        # commands
+        keyword = command[3].translate(None, ":").lower()
+        if keyword in greetings:
+            hello(command[2])
+            continue
+        if len(command) >= 5 and command[4].lower() in neuter_list:
+        	sendmsg(command[2], "This entity is neuter_listed, give up.")
+        	continue
+        elif keyword == "@youtube":
+           if len(command) == 6:
+              youtube(command[2], command[4], command[5])
+           elif len(command) == 5:
+              youtube(command[2], command[4], 0)
+           continue
+        elif keyword == "@slur":
+           if len(command) >= 6:
+              slur(command[2], command[4], " ".join(command[5:]))
+           elif len(command) == 5:
+              slur(command[2], command[4], 0)
+           continue
+
+        elif keyword == "@code":
+           if len(command) == 6:
+              code(command[2], command[4], command[5])
+           elif len(command) == 5:
+              code(command[2], command[4], 0)
+           continue
+        elif keyword == "@join":
+            joinchan(command[4])
+            continue
+        elif keyword == "@penis" and command[4].lower() not in noneuter_list:
+            dicks.insert(0, command[4].lower())
+            sendmsg(command[2], str(dicks))
+            continue
+        elif keyword == "@rpenis":
+            dicks.remove(command[4].lower())
+            sendmsg(command[2], str(dicks))
+            continue
+        elif keyword == "@neuter" and command[4].lower() not in noneuter_list and command[4].lower() not in neuter_list:
+            with open(os.path.expanduser("~/tools/bot/lists/neuter"), "a") as f:
+                f.write(command[4].lower()+'\n')
+            neuter_list.insert(0, command[4].lower())
+            sendmsg(command[2], str(neuter_list))
+            continue
+        elif keyword == "@noneuter" and command[4].lower() not in noneuter_list:
+            with open(os.path.expanduser("~/tools/bot/lists/noneuter"), "a") as f:
+                f.write(command[4].lower()+'\n')
+            noneuter_list.insert(0, command[4].lower())
+            sendmsg(command[2], str(noneuter_list))
+            continue
+        elif keyword == "@say":
+            sendmsg(command[4],' '.join(command[5:]))
+            continue
+        elif keyword == "@copy":
+            if command[5].lower() in neuter_list:
+                sendmsg(command[2], "This entity is neuter_listed, give up.")
+                continue
+            else:
+                copy(command[4].lower(), command[5].lower())
+                sendmsg(command[2], str(copycats))
+                continue
+        elif keyword == "@rcopy":
+            del copycats[command[4].lower()]
+            continue
+        elif keyword == "@nick":
+            botnick = command[4]
+            ircsock.send("USER "+ botnick +" "+ botnick +" "+ botnick +" :"+botnick+"\r\n")
+            ircsock.send("NICK "+ botnick +"\r\n")
+            continue
+        elif keyword == "@renew":
+            register()
+            continue
+        elif keyword == "@bomb":
+            bomb(command[4])
+            continue
+        elif keyword == "@sepuku":
+            if len(command) >= 5:
+                quit(' '.join(command[4:]))
+                exit(0)
+            else:
+                quit("bye")
+                exit(0)
+        elif command[0].split("!")[0][1:].lower() in copycats:
+            sendmsg(copycats[command[0].split("!")[0][1:]], command[3][1:]+" "+" ".join(command[4:]))
+        elif command[2].lower() in copycats:
+            sendmsg(copycats[command[2]], command[3][1:]+" "+" ".join(command[4:]))
+
+    except:
+        print("I make a pop poo\r\n")

@@ -1,0 +1,163 @@
+* Author: Darren Kitchen
+* Duckencoder: 1.0
+* Target: Windows 7
+* Description: Minimizes all windows to desktop, takes screenshot, disables desktop icons, saves screenshot in %userprofile% and sets as wallpaper
+ GUI d
+ DELAY 500
+ PRINTSCREEN
+ DELAY 100
+ MENU
+ DELAY 300
+ STRING V
+ DELAY 40
+ STRING D
+ DELAY 300
+ GUI r
+ DELAY 700
+ STRING mspaint
+ ENTER
+ DELAY 1200
+ CTRL v
+ DELAY 500
+ CTRL s
+ DELAY 1000
+ STRING %userprofile%\a.bmp
+ ENTER
+ DELAY 500
+ ALT f
+ DELAY 400
+ STRING K
+ DELAY 100
+ STRING F
+ DELAY 1000
+ ALT F4
+ DELAY 300
+ GUI d
+
+
+
+-----------------------------------------------------------------
+
+* Author: FlyinGrub
+* Target: Windows 7
+* Description: same things but better :P, (work on french windows 7, some shortcut differs ...)
+ DELAY 10000
+ GUI d
+ DELAY 100
+ PRINTSCREEN
+ DELAY 100
+ MENU
+ DELAY 70
+ STRING h
+ DELAY 50
+ STRING b
+ DELAY 50
+ GUI r
+ DELAY 200
+ STRING mspaint
+ ENTER
+ DELAY 500
+ CTRL v
+ DELAY 300
+ ALT f
+ DELAY 300
+ STRING b
+ DELAY 300
+ ENTER
+ DELAY 300
+ STRING a1z2.png
+ ENTER
+ ALT F4
+ DELAY 300
+ GUI d
+
+
+
+-----------------------------------------------------------------
+
+* Author: C4PT4IN B4RCODE
+* Target: Windows 10
+* Description: same thing with the addition of hiding the desktop icons (work on Portuguese windows 10)
+```
+GUI d
+DELAY 500
+PRINTSCREEN
+DELAY 100
+MENU
+DELAY 300
+STRING V
+DELAY 40
+STRING D
+DELAY 300
+GUI r
+DELAY 700
+STRING mspaint
+ENTER
+DELAY 1200
+CTRL v
+DELAY 500
+ALT f
+STRING c
+DELAY 1000
+STRING %userprofile%\a.bmp
+ENTER
+DELAY 500
+ALT f
+DELAY 400
+STRING F
+DELAY 1000
+ALT F4
+DELAY 300
+GUI d
+DELAY 300
+SHIFT F10
+DELAY 100
+DOWN
+DELAY 100
+RIGHT
+DELAY 100
+UP
+DELAY 100
+ENTER
+```
+-----------------------------------------------------------------
+
+* Author: Blue
+* Target: Windows 10
+* Description: As above but faster and works
+```
+REM Desktop wallpaper prank
+DELAY 1000
+GUI d
+DELAY 100
+PRINTSCREEN
+DELAY 100
+MENU
+DELAY 300
+STRING V
+DELAY 10
+RIGHT
+DELAY 10
+STRING D
+DELAY 10
+GUI r
+DELAY 100
+STRING mspaint
+ENTER
+DELAY 300
+CTRL v
+DELAY 300
+ALT f
+STRING s
+DELAY 200
+STRING %userprofile%\a.bmp
+ENTER
+DELAY 100
+ALT f
+DELAY 200
+STRING b
+DELAY 200
+ALT F4
+DELAY 300
+GUI d
+```

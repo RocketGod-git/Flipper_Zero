@@ -1,0 +1,310 @@
+prism.exe:     file format vms-alpha
+
+
+Disassembly of section $LOCAL_000$:
+
+0000000000010000 <$LOCAL_000$>:
+   10000:	89 30 08 00 	call_pal	0x83089
+   10004:	00 22 00 00 	call_pal	0x2200
+   10008:	b0 00 03 00 	call_pal	0x300b0
+   1000c:	00 00 00 00 	halt
+   10010:	20 00 00 00 	call_pal	0x20
+   10014:	00 00 34 00 	call_pal	0x340000
+   10018:	00 00 00 20 	lda	R0,0(R0)
+   1001c:	00 00 00 00 	halt
+   10020:	00 00 02 00 	call_pal	0x20000
+   10024:	00 00 00 00 	halt
+   10028:	a0 00 01 00 	call_pal	0x100a0
+   1002c:	00 00 00 00 	halt
+   10030:	00 00 01 00 	call_pal	0x10000
+	...
+   10040:	e0 46 00 00 	call_pal	0x46e0
+	...
+   10050:	d9 30 38 00 	call_pal	0x3830d9
+   10054:	00 22 00 00 	call_pal	0x2200
+   10058:	00 00 03 00 	call_pal	0x30000
+   1005c:	00 00 00 00 	halt
+   10060:	50 00 00 00 	call_pal	0x50
+   10064:	00 00 30 00 	call_pal	0x300000
+   10068:	04 00 00 20 	lda	R0,4(R0)
+	...
+   10078:	08 00 00 00 	call_pal	0x8
+   1007c:	00 00 00 00 	halt
+   10080:	00 20 00 00 	call_pal	0x2000
+	...
+   10090:	b0 07 00 00 	call_pal	0x7b0
+	...
+   100a0:	54 68 65 20 	lda	R3,26708(R5)
+   100a4:	66 6c 61 67 	pal19	0x3616c66
+   100a8:	20 73 74 61 	.long 0x61747320
+   100ac:	72 74 73 20 	lda	R3,29810(R19)
+   100b0:	68 65 72 65 	pal19	0x1726568
+   100b4:	3a 20 30 78 	pal1e	0x30203a
+   100b8:	25 6c 78 0a 	.long 0xa786c25
+   100bc:	6d 61 69 6e 	pal1b	0x269616d
+   100c0:	28 29 20 69 	jmp	R9,(R0),0xa564
+   100c4:	73 20 68 65 	pal19	0x1682073
+   100c8:	72 65 3a 20 	lda	R1,25970(RA)
+   100cc:	30 78 25 6c 	pal1b	0x257830
+   100d0:	78 0a 59 6f 	pal1b	0x3590a78
+   100d4:	75 20 73 68 	jmp	R3,(R19),0x82ac
+   100d8:	6f 75 6c 64 	pal19	0x6c756f
+   100dc:	20 6c 65 61 	.long 0x61656c20
+   100e0:	72 6e 20 74 	pal1d	0x206e72
+   100e4:	6f 20 75 6e 	pal1b	0x275206f
+   100e8:	64 65 72 73 	.long 0x73726564
+   100ec:	74 61 6e 64 	pal19	0x6e6174
+   100f0:	20 74 68 65 	pal19	0x1687420
+   100f4:	20 61 72 63 	.long 0x63726120
+   100f8:	68 69 74 65 	pal19	0x1746968
+   100fc:	63 74 75 72 	.long 0x72757463
+   10100:	65 20 62 65 	pal19	0x1622065
+   10104:	66 6f 72 65 	pal19	0x1726f66
+   10108:	20 79 6f 75 	pal1d	0x16f7920
+   1010c:	20 67 65 74 	pal1d	0x656720
+   10110:	20 61 6e 79 	pal1e	0x16e6120
+   10114:	20 69 64 65 	pal19	0x1646920
+   10118:	61 73 2e 2e 	ldq_u	R17,29537(R14)
+   1011c:	2e 00 00 00 	call_pal	0x2e
+	...
+   10128:	ff ff ff ff 	bgt	RZ,0x10128
+   1012c:	ff ff ff ff 	bgt	RZ,0x1012c
+	...
+
+Disassembly of section $LOCAL_001$:
+
+0000000000020000 <$LOCAL_001$>:
+   20000:	f9 9e b2 c6 	fbeq	F21,0xffffffffffcc7be8
+	...
+
+Disassembly of section $CODE_002$:
+
+0000000000030000 <$CODE_002$>:
+   30000:	b0 ff de 23 	lda	SP,-80(SP)
+   30004:	38 00 5e b7 	stq	RA,56(SP)
+   30008:	40 00 5b a7 	ldq	RA,64(PV)
+   3000c:	00 00 7e b7 	stq	PV,0(SP)
+   30010:	00 20 df 22 	lda	R22,8192
+   30014:	30 00 1e 23 	lda	R24,48(SP)
+   30018:	08 00 fe b7 	stq	RZ,8(SP)
+   3001c:	40 00 5e b4 	stq	R2,64(SP)
+   30020:	19 34 e1 47 	mov	0x9,AI
+   30024:	48 00 be b7 	stq	FP,72(SP)
+   30028:	00 00 ff 63 	trapb
+   3002c:	1d 04 fe 47 	mov	SP,FP
+   30030:	02 04 fb 47 	mov	PV,R2
+   30034:	e0 ff de 23 	lda	SP,-32(SP)
+   30038:	20 00 1d 20 	lda	R0,32(FP)
+   3003c:	00 00 fe b7 	stq	RZ,0(SP)
+   30040:	00 00 1e b7 	stq	R24,0(SP)
+   30044:	28 00 1d 23 	lda	R24,40(FP)
+   30048:	08 00 dd b6 	stq	R22,8(FP)
+   3004c:	48 00 62 a7 	ldq	PV,72(R2)
+   30050:	08 00 1e b7 	stq	R24,8(SP)
+   30054:	10 00 1e b4 	stq	R0,16(SP)
+   30058:	11 5b 5a 6b 	jsr	RA,(RA),0x36ca0
+   3005c:	28 00 3d a2 	ldl	R17,40(FP)
+   30060:	30 00 1d a2 	ldl	R16,48(FP)
+   30064:	b0 ff 62 23 	lda	PV,-80(R2)
+   30068:	11 00 40 d3 	bsr	RA,0x300b0
+   3006c:	30 00 42 a7 	ldq	RA,48(R2)
+   30070:	10 04 e0 47 	mov	R0,R16
+   30074:	19 34 e0 47 	mov	0x1,AI
+   30078:	38 00 62 a7 	ldq	PV,56(R2)
+   3007c:	00 00 fe 2f 	unop	
+   30080:	a7 6c 5a 6b 	jsr	RA,(RA),0x2b320
+   30084:	00 00 ff 63 	trapb
+   30088:	1e 04 fd 47 	mov	FP,SP
+   3008c:	38 00 5d a7 	ldq	RA,56(FP)
+   30090:	40 00 5d a4 	ldq	R2,64(FP)
+   30094:	48 00 bd a7 	ldq	FP,72(FP)
+   30098:	50 00 de 23 	lda	SP,80(SP)
+   3009c:	00 00 fe 2f 	unop	
+   300a0:	01 80 fa 6b 	ret
+   300a4:	00 00 fe 2f 	unop	
+   300a8:	00 00 fe 2f 	unop	
+   300ac:	00 00 fe 2f 	unop	
+   300b0:	20 00 5b a6 	ldq	R18,32(PV)
+   300b4:	e0 ff de 23 	lda	SP,-32(SP)
+   300b8:	38 21 3f 24 	ldah	R1,8504
+   300bc:	49 35 3f 26 	ldah	R17,13641
+   300c0:	00 00 7e b7 	stq	PV,0(SP)
+   300c4:	08 00 5e b7 	stq	RA,8(SP)
+   300c8:	39 41 21 20 	lda	R1,16697(R1)
+   300cc:	21 93 31 22 	lda	R17,-27871(R17)
+   300d0:	40 00 5b a7 	ldq	RA,64(PV)
+   300d4:	19 74 e0 47 	mov	0x3,AI
+   300d8:	00 00 12 a0 	ldl	R0,0(R18)
+   300dc:	10 00 be b7 	stq	FP,16(SP)
+   300e0:	1d 04 fe 47 	mov	SP,FP
+   300e4:	00 08 01 44 	xor	R0,R1,R0
+   300e8:	00 00 12 b0 	stl	R0,0(R18)
+   300ec:	00 00 12 a2 	ldl	R16,0(R18)
+   300f0:	10 04 11 46 	or	R16,R17,R16
+   300f4:	00 00 12 b2 	stl	R16,0(R18)
+   300f8:	00 00 12 a0 	ldl	R0,0(R18)
+   300fc:	40 00 1f 40 	s4addl	R0,RZ,R0
+   30100:	00 00 12 b0 	stl	R0,0(R18)
+   30104:	00 00 32 a2 	ldl	R17,0(R18)
+   30108:	91 f7 20 4a 	sra	R17,0x7,R17
+   3010c:	00 00 32 b2 	stl	R17,0(R18)
+   30110:	00 00 12 a2 	ldl	R16,0(R18)
+   30114:	38 21 1f 24 	ldah	R0,8504
+   30118:	11 04 f2 47 	mov	R18,R17
+   3011c:	33 76 00 20 	lda	R0,30259(R0)
+   30120:	00 00 00 46 	and	R16,R0,R0
+   30124:	28 00 1b a6 	ldq	R16,40(PV)
+   30128:	00 00 12 b0 	stl	R0,0(R18)
+   3012c:	30 00 5b a6 	ldq	R18,48(PV)
+   30130:	48 00 7b a7 	ldq	PV,72(PV)
+   30134:	de 58 5a 6b 	jsr	RA,(RA),0x364b0
+   30138:	1e 04 fd 47 	mov	FP,SP
+   3013c:	08 00 5d a7 	ldq	RA,8(FP)
+   30140:	10 00 bd a7 	ldq	FP,16(FP)
+   30144:	00 04 ff 47 	clr	R0
+   30148:	20 00 de 23 	lda	SP,32(SP)
+   3014c:	00 00 fe 2f 	unop	
+   30150:	01 80 fa 6b 	ret
+	...
+
+Disassembly of section $FIXUPVEC$:
+
+0000000000040000 <$FIXUPVEC$>:
+	...
+   40018:	54 00 00 00 	call_pal	0x54
+	...
+   40028:	58 00 00 00 	call_pal	0x58
+	...
+   40034:	70 00 00 00 	call_pal	0x70
+   40038:	90 00 00 00 	call_pal	0x90
+   4003c:	b8 00 00 00 	call_pal	0xb8
+   40040:	02 00 00 00 	draina
+	...
+   40058:	01 00 00 00 	call_pal	0x1
+   4005c:	00 00 00 00 	halt
+   40060:	70 00 00 00 	call_pal	0x70
+   40064:	20 3a 00 00 	call_pal	0x3a20
+	...
+   40070:	03 00 00 00 	call_pal	0x3
+   40074:	00 00 00 00 	halt
+   40078:	40 00 00 00 	call_pal	0x40
+   4007c:	80 00 00 00 	bpt
+   40080:	90 00 00 00 	call_pal	0x90
+	...
+   40090:	02 00 00 00 	draina
+   40094:	00 00 03 00 	call_pal	0x30000
+   40098:	00 00 00 00 	halt
+   4009c:	00 02 00 00 	call_pal	0x200
+   400a0:	0d 00 00 00 	call_pal	0xd
+	...
+   400ac:	00 02 00 00 	call_pal	0x200
+   400b0:	0f 00 00 00 	call_pal	0xf
+	...
+   400c8:	40 00 00 00 	call_pal	0x40
+   400cc:	00 00 00 00 	halt
+   400d0:	08 44 45 43 	addq	RA,R5,R8
+   400d4:	43 24 53 48 	mskll	R2,R19,R3
+   400d8:	52 00 00 00 	call_pal	0x52
+	...
+   40108:	40 00 00 00 	call_pal	0x40
+   4010c:	00 00 00 00 	halt
+   40110:	12 53 59 53 	.long 0x53595312
+   40114:	24 50 55 42 	.long 0x42555024
+   40118:	4c 49 43 5f 	.long 0x5f43494c
+   4011c:	56 45 43 54 	.long 0x54434556
+   40120:	4f 52 53 00 	call_pal	0x53524f
+	...
+
+Disassembly of section $STACK$:
+
+000000007fff0000 <$STACK$>:
+	...
+
+Disassembly of section DECC$SHR_001:
+
+0000000000000000 <DECC$SHR_001>:
+	...
+
+Disassembly of section SYS$PUBLIC_VECTORS_001:
+
+0000000000000000 <SYS$PUBLIC_VECTORS_001>:
+	...
+
+Disassembly of section $DST$:
+
+0000000000000000 <$DST$>:
+   0:	21 00 bc 00 	call_pal	0xbc0021
+   4:	02 00 07 00 	call_pal	0x70002
+   8:	00 00 01 00 	call_pal	0x10000
+   c:	12 00 05 50 	.long 0x50050012
+  10:	52 49 53 4d 	.long 0x4d534952
+  14:	0d 48 50 20 	lda	R2,18445(R16)
+  18:	43 20 56 37 	stw	RA,8259(R22)
+  1c:	2e 31 2d 30 	ldwu	R1,12590(R13)
+  20:	31 35 1a 00 	call_pal	0x1a3531
+  24:	17 00 01 00 	call_pal	0x10017
+  28:	00 01 00 11 	.long 0x11000100
+  2c:	54 52 41 4e 	.long 0x4e415254
+  30:	53 46 45 52 	.long 0x52454653
+  34:	24 42 52 45 	.long 0x45524224
+  38:	41 4b 24 47 	.long 0x47244b41
+  3c:	4f 11 00 be 	stq_c	R16,4431(R0)
+  40:	00 80 b0 00 	call_pal	0xb08000
+  44:	03 00 00 00 	call_pal	0x3
+  48:	01 00 04 6d 	pal1b	0x1040001
+  4c:	61 69 6e 08 	.long 0x86e6961
+  50:	00 b9 00 10 	.long 0x1000b900
+  54:	b0 00 03 00 	call_pal	0x300b0
+  58:	4c 00 b9 00 	call_pal	0xb9004c
+  5c:	09 74 0e 00 	call_pal	0xe7409
+  60:	0e 04 09 72 	.long 0x7209040e
+  64:	0e 00 02 01 	call_pal	0x102000e
+  68:	fc fc 0e 04 	.long 0x40efcfc
+  6c:	09 72 0e 00 	call_pal	0xe7209
+  70:	02 01 f8 fc 	bgt	R7,0xffffffffffe0047c
+  74:	02 03 fc 0e 	.long 0xefc0302
+  78:	08 09 74 0e 	.long 0xe740908
+  7c:	00 0e 04 09 	.long 0x9040e00
+  80:	72 0e 00 02 	call_pal	0x2000e72
+  84:	01 f8 f8 f4 	bne	R7,0xffffffffffe3e08c
+  88:	f4 f4 f8 0e 	.long 0xef8f4f4
+  8c:	04 09 78 0e 	.long 0xe780904
+  90:	00 f8 0e 04 	.long 0x40ef800
+  94:	09 78 0e 00 	call_pal	0xe7809
+  98:	fc 02 03 f4 	bne	R0,0xc0c8c
+  9c:	0e 0c 09 7c 	pal1f	0x90c0e
+  a0:	0e 00 fc 0e 	.long 0xefc000e
+  a4:	0c 08 00 bf 	stq_c	R24,2060(R0)
+  a8:	00 00 a4 00 	call_pal	0xa40000
+  ac:	00 00 13 00 	call_pal	0x130000
+  b0:	be 00 80 00 	call_pal	0x8000be
+  b4:	00 03 00 50 	.long 0x50000300
+  b8:	00 01 00 06 	.long 0x6000100
+  bc:	5f 5f 6d 61 	.long 0x616d5f5f
+  c0:	69 6e 08 00 	call_pal	0x86e69
+  c4:	b9 00 10 00 	call_pal	0x1000b9
+  c8:	00 03 00 09 	.long 0x9000300
+  cc:	00 b9 00 09 	.long 0x900b900
+  d0:	72 0e 00 0e 	.long 0xe000e72
+  d4:	b0 08 00 bf 	stq_c	R24,2224(R0)
+  d8:	00 00 b0 00 	call_pal	0xb00000
+  dc:	00 00 03 00 	call_pal	0x30000
+  e0:	bd 00 00 00 	call_pal	0xbd
+	...
+
+Disassembly of section $DMT$:
+
+0000000000000000 <$DMT$>:
+   0:	00 00 00 00 	halt
+   4:	e2 00 00 00 	call_pal	0xe2
+   8:	05 00 00 00 	call_pal	0x5
+   c:	20 01 01 00 	call_pal	0x10120
+  10:	10 00 00 00 	call_pal	0x10
+  14:	00 00 02 00 	call_pal	0x20000
+  18:	04 00 00 00 	call_pal	0x4
+  1c:	00 00 03 00 	call_pal	0x30000
+  20:	54 01 00 00 	call_pal	0x154
+  24:	a0 00 01 00 	call_pal	0x100a0
+  28:	7f 00 00 00 	call_pal	0x7f
+  2c:	00 00 01 00 	call_pal	0x10000
+  30:	a0 00 00 00 	call_pal	0xa0

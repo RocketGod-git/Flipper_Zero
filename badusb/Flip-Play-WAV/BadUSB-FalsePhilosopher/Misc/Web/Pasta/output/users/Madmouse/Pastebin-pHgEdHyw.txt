@@ -1,0 +1,10 @@
+# servers
+connections = {
+#           0     1        2                3          4      5 6 7
+# Server    ssl?  port  [channels]         thread     socket  power lists
+    "irc.hackthissite.org": [True,  6697, ["#bots", "#8====D", "#coffeesh0p"],    0, 0,   noneuter_list,  neuter_list,  dicks ],
+    "irc.blackcatz.org":    [True,  6697, ["#default", "#blackcatz"],             0, 0,   noneuter_list,  neuter_list,  dicks ],
+    "irc.freenode.org":     [True,  6697, ["##linux", "##asm", "##math"],         0, 0,   noneuter_list,  neuter_list,  dicks ],
+    "rcode.ca":             [False, 6667, ["#rcode"],                             0, 0,   noneuter_list,  neuter_list,  dicks ],
+
+}

@@ -1,0 +1,15 @@
+  4000ed:	68 84 00 00 00       	pushq  $0x84
+  4000f2:	ba 60 e6 ff dc       	mov    $0xdcffe660,%edx
+  4000f7:	b8 65 76 6f 4c       	mov    $0x4c6f7665,%eax
+  4000fc:	48 c1 e0 20          	shl    $0x20,%rax
+  400100:	48 35 65 74 61 48    	xor    $0x48617465,%rax
+  400106:	34 0f                	xor    $0xf,%al
+  400108:	5b                   	pop    %rbx
+  400109:	48 35 00 00 39 47    	xor    $0x47390000,%rax
+  40010f:	48 c1 e2 20          	shl    $0x20,%rdx
+  400113:	80 eb 3c             	sub    $0x3c,%bl
+  400116:	48 31 d0             	xor    %rdx,%rax
+  400119:	30 dc                	xor    %bl,%ah
+  40011b:	48 89 05 00 00 00 00 	mov    %rax,0x0(%rip)        # 0x400122
+  400122:	48 31 c0             	xor    %rax,%rax
+  400125:	eb c6                	jmp    0x4000ed

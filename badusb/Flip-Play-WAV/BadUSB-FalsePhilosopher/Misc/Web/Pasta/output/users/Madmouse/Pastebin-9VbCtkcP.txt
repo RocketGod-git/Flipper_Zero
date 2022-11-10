@@ -1,0 +1,33 @@
+std::vector<std::string> parsev(std::string input)
+{
+	std::vector<std::string> inputv, returnv;
+	
+	if(input.find(";") == std::string::npos ||
+		input.find("#") == std::string::npos ||
+			input.find("@") == std::string::npos)
+	{
+		boost::split(inputv, input, boost::is_any_of("\t\r\n ,<>()"));
+	
+		for(auto i : inputv)
+		{
+			if(i!="")
+				returnv.push_back(i);
+		}
+		if(returnv.size() == 3 && 
+			(returnv[2].find("%") != std::string::npos||
+				returnv[1].find("$") != std::string::npos))
+		{
+			std::string swap = returnv.at(1);
+			returnv.erase(returnv.begin()+1);
+			returnv.push_back(swap);
+			
+			boost::algorithm::trim_left_if(returnv.at(1),boost::algorithm::is_any_of("%$"));
+			boost::algorithm::trim_left_if(returnv.at(2),boost::algorithm::is_any_of("%$"));
+		}
+		else if(returnv.size() == 2 && registers.count(returnv.at(1).substr(1)) != 0)
+			boost::algorithm::trim_left_if(returnv.at(1),boost::algorithm::is_any_of("%$"));
+	}
+	else
+		returnv.push_back(input);
+	return returnv;
+}

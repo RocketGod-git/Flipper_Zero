@@ -1,0 +1,187 @@
+//////////////////////////////////
+// KEY                          //
+//////////////////////////////////
+// TEXT:  tree label            //
+// //     comment               //
+// |      branch                //
+// +      normal node           //
+// *      virtual node          //
+// ?      logical node          //
+// $      blackbox node         //
+// *--|   virtual branch        //
+//////////////////////////////////
+
+
+/////////////////
+// fat12 tree  //
+/////////////////
+partition:
+    |
+    |--+ BPB
+    |  | byte jmp_code[3]
+    |  | byte oem[8]
+    |  | word bytes_per_sector
+    |  | byte sectors per cluster
+    |  | word reserved_sectors
+    |  | byte number_of_fats
+    |  | word directory_entries
+    |  | word logical_sectors
+    |  | byte media_type
+    |  | word sectors_per_fat
+    |  | word sectors_per_track
+    |  | word heads
+    |  | dword hidden_sectors
+    |  | dword large_sectors
+    |
+    |--+ EBR
+    |  | byte drive
+    |  | byte reserved_flags
+    |  | byte signiture
+    |  | dword serial
+    |  | byte label[11]
+    |  | byte identifier[8]
+    |  | byte boot_code[448]
+    |  | word bootable_partition_sign
+    |
+    |--? DATA
+       |--? FATS
+       |  |--+ FAT
+       |  |
+       |  | FAT_ENTRY
+       |  ?
+       |
+       |
+       |--? DIRECTORY
+       |  |
+       |  |--+ DIRECTORY_ENTRY
+       |  |  | byte name[11]
+       |  |  | byte attributes
+       |  |  | word reserved
+       |  |  | word creation_time
+       |  |  | word creation_date
+       |  |  | word access_date
+       |  |  | word write_time
+       |  |  | word write_date
+       |  |  | word cluster_address_lower
+       |  |  | dword size
+       |  |
+       |  ?
+       |
+       | FILE_DATA
+       |
+       ?
+
+
+////////////////
+// Boot tree  //
+////////////////
+
+_start(magic, mbi):
+    |--$ // set up stack + multiboot stuff
+    |
+    |--+ __init(magic, mbi)
+    |  |
+    |  |--$ mem_initialize(magic, mbi)  // setup physical memory management
+    |  |
+    |  | i = __init_array_end - __init_array_start;
+    |  |--? (i--)
+    |     |--$ (*__init_array_start[i])(magic, mbi);    // setup pre main() kernel plugins
+    |     |
+    |     ?
+    |
+    |--+ main(magic, mbi)
+    |  |--$ // verify multiboot structure
+    |  |
+    |  |--? (i = 0, mod = mbi->mods_addr;i < mbi->mods_count;i++, mod++)
+    |     |
+    |     |--? (fs_table[i]->is_type(mod->mod_start))
+    |     |  |
+    |     |  |--$ fs_table[i]->load_module(mod->cmdline, mod->mod_start)  // load ramdisk filesystems loaded as multiboot modules
+    |     |
+    |     |--? (exec_table[i]->is_type(mod->mod_start))
+    |     |  |
+    |     |  |--$ exec_table[i]->load_module(mod->cmdline, mod->mod_start)  // load executable multiboot modules
+    |     |
+    |     ?
+    |
+    |--+ __fini
+    |  |
+    |  | i = __fini_array_end - __fini_array_start
+    |  |--? (i--)
+    |     |--$ (*__fini_array_start[i])(magic, mbi);  // setup post main() kernel plugins
+    |     |
+    |     ?
+    |
+    |--+ hang
+       |--$ hang()
+
+
+/////////////////////////
+// memory manager map  //
+/////////////////////////
+
+mem_initialize(magic, mbi):
+    |--? (magic != MULTIBOOT_BOOTLOADER_MAGIC)
+    |  |--*
+    |
+    |--? (CHECK_FLAG (mbi->flags, 6))
+    |  |
+    |  |--? (mmap = mbi->mmap_addr;mmap < mbi->mmap_addr + mbi->mmap_length;mmap = mmap + mmap->size + sizeof(mmap->size))
+    |     |
+    |     |--? (mmap->type == MULTIBOOT_MEMORY_AVAILABLE && mmap->addr >= &KERNEL_END)
+    |     |  | MEM_POOL_SIZE = mmap->len - (mmap->addr - &KERNEL_END);
+    |     |  |
+    |     |  |--*
+    |     |
+    |     ?
+    |
+    *--|
+       |--$ // setup memory map as a doubly linked list
+
+
+combine_free_blocks:
+    |---? (p = MEM_POOL;p->next != MEM_POOL_END;p = p->next)
+        |
+        |---? (p->free)
+        |   |
+        |   |---? (c = p;;c = c->next)
+        |       |
+        |       |---? (! c->free)
+        |       |   |
+        |       |   |--? (c->prev != p)
+        |       |   |  |
+        |       |   |  | p->next = c
+        |       |   |  | c->prev = p
+        |       |   |
+        |       |   |--*
+        |       |
+        |       |--? (c->next == MEM_POOL_END)
+        |       |  |
+        |       |  |--*
+        |       |
+        |       ?
+        *--|
+           ?
+
+
+mget_free_block(p, size):
+    |--$ combine_free_blocks
+    |
+    |--? (p->ptr != MEM_POOL_END)
+    |  |--? (p->free && p->next - p->ptr) >= size)
+    |  |  |--*
+    |  |
+    |  | p = p->next;
+    |  |
+    |  ?
+    |
+    *--| p
+
+split_block(selected, size):
+    | end_marker = selected->next
+    | split->free = true
+    | split->prev = selected
+    | split->ptr = split + sizeof(mem_entry_t)
+    | split->next = end_marker
+    | selected->next = split
+    | end_marker->prev = split

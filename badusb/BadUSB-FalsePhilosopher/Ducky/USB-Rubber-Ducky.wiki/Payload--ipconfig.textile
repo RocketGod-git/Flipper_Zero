@@ -1,0 +1,31 @@
+                ____________________________________Payload- ipconfig____________________________________
+
+
+
+REM BY Ilianleboss
+DELAY 4000
+GUI r
+DELAY 1000
+STRING cmd
+DELAY 2000
+ENTER
+DELAY 1000
+STRING ipconfig
+DELAY 1000
+ENTER
+DELAY 2000
+CONTROL a
+DELAY 2000
+CONTROL c
+DELAY 1000
+STRING exit
+DELAY 1000
+ENTER
+DELAY 1000
+GUI r
+DELAY 1000
+STRING notepad
+DELAY 1000
+ENTER
+DELAY 2000
+CONTROL v

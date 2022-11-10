@@ -1,0 +1,268 @@
+version = "5"
+  term.clear()
+  term.setCursorPos(1, 1)
+--print(version)
+sleep(3)
+done = 0
+for l=1,10 do
+if fs.exists("goto") == false 
+then do
+print("downloading goto")
+shell.run("pastebin","get","Rj9UiYUJ","goto")
+     if fs.exists("goto") == true then
+            print("download complete") 
+                elseif fs.exists("goto") == false then
+                print("download failed")
+                end
+end
+else do
+            
+  term.clear()
+  term.setCursorPos(1, 1)                           
+ print("recentering")           
+while true do
+if done ~= 4 then do
+
+
+
+                        
+   
+  --CHANGE HERE START
+
+--"Normal" or "Pumpkin/Melon"                      
+Mode = "Pumpkin/Melon"
+                        
+lenth = 5
+st_width = 7
+
+totalstages = 1 
+                        
+                        
+                        
+                        
+  --chest location                      
+      chestX =  304
+      chestY =  66                
+      chestZ =  327                 
+--CHANGE HERE END
+                      
+                        
+                        
+
+       
+                        
+                        
+totalsteps = totalstages                                               
+endsteps = totalsteps + 1                    
+sub_lenth = lenth - 1                      
+function chest()                        
+ term.clear()
+        term.setCursorPos(1, 1)                                
+       print("going to chest")                         
+shell.run("goto", chestX, chestY, chestZ)
+                          
+    if Mode == "Pumpkin/Melon" then
+     chest = 1
+      elseif  Mode == "Normal" then                         
+    chest = 2
+                                    end
+        term.clear()
+        term.setCursorPos(1, 1)                          
+    print("putting in chest")
+    while chest <= 16 do
+    turtle.select(chest)
+    turtle.dropDown()
+    chest = chest + 1 
+  end
+     term.clear()
+        term.setCursorPos(1, 1)                                
+       print("Resetting")                        
+   sleep(20) 
+   os.reboot()                         
+ end                               
+                                
+                                
+                                
+function turn()
+                                    
+if right == 1 then 
+                                   --print("right")
+turtle.turnRight()
+turtle.forward()
+turtle.turnRight()
+
+dist = sub_lenth
+width = width - 1
+right = 0
+else
+                                    --print("left")
+turtle.turnLeft()
+turtle.forward()
+turtle.turnLeft()
+dist = sub_lenth
+width = width - 1
+right = 1
+end
+end
+
+                        
+function recenter() 
+                            
+                            
+shell.run("goto", "304", "66", "327")
+shell.run("goto", "304", "66", "326")
+
+right = 1
+turtle.select(1)
+dist = lenth - 1
+                
+turtle.forward()                             
+end
+                        
+                        
+
+if width == 0 or width == nil  then
+ done = done + 1 
+      --print ("add")                      
+    --print ("Steps: " .. done) 
+  if done == endsteps then
+                               recenter() 
+                                chest()
+                                  done = 0
+                                    end
+
+width = st_width 
+                            --print("width: " .. width)
+                            recenter()
+ elseif width ~= 0 then
+                                
+                            
+                            
+if dist ~= 0 then                           
+           
+                          
+if done == 1 then
+term.clear() 
+   while width ~= 0 do                                 
+    while dist ~= 0 do
+                                            
+                 ---REPLACE LATER!!!!!!                           
+                                       term.setCursorPos(1, 1) 
+                   term.clearLine()                         
+                 print ("Stage: " .. done .. "/" .. totalsteps.. " Harvest and Plant")                             
+       success, data = turtle.inspectDown()  
+         if success then                                    
+                                            --term.setCursorPos(1, 2)
+                                                --term.clearLine()
+                                               -- percentagefloat = (data.state.age - 0) / (7 - 0) * 100 
+                                                --percentage = math.floor(percentagefloat+0.5)
+                                                
+                                                --print("Crop Age: " .. percentage .. "%")
+                                            
+     if data.name == "minecraft:pumpkin" then
+           --print("Age Check 2: " .. data.state.age)                                          
+        turtle.digDown()
+                 turtle.suckDown()                                   
+                 --term.setCursorPos(1, 3)
+                  --term.clearLine()                                   
+                 --print("dig")                               
+              end 
+                end 
+                                            
+                  if Mode == "Normal" then                          
+                  turtle.placeDown()                            
+                    end                            
+                 ---REPLACE LATER END!!!!!!                           
+                                            
+                                            
+                   turtle.forward()                         
+                   term.setCursorPos(1, 1) 
+                   term.clearLine()                         
+                 print ("Stage: " .. done .. "/" .. totalsteps.. " Harvest and Plant")                             
+       success, data = turtle.inspectDown()  
+         if success then                                    
+                                            term.setCursorPos(1, 2)
+                                               -- term.clearLine()
+                                              --  percentagefloat = (data.state.age - 0) / (7 - 0) * 100 
+                                              --  percentage = math.floor(percentagefloat+0.5)
+                                                
+                                              --  print("Crop Age: " .. percentage .. "%")
+                                            
+     if data.name == "minecraft:pumpkin" then
+           --print("Age Check 2: " .. data.state.age)                                          
+        turtle.digDown()
+                 turtle.suckDown()                                   
+                 --term.setCursorPos(1, 3)
+                  --term.clearLine()                                   
+                 --print("dig")                               
+              end 
+                end 
+                if Mode == "Normal" then                          
+                  turtle.placeDown()                            
+                    end             
+         
+                                                
+--print("dig")
+       dist = dist - 1
+                                                    
+              
+         end                               
+   turn()
+   
+       end                             
+
+elseif done == 5 then
+     term.clear()                                
+   while width ~= 0 do                                  
+    while dist ~= 0 do
+                     ---REPLACE LATER!!!!!!  
+                                         term.setCursorPos(1, 1)   
+                                        term.clearLine()
+                                            print ("Stage: " .. done .. "/" .. totalsteps .. " Cleanup")                                    
+        turtle.suckDown()
+                   ---REPLACE LATER END!!!!!!                          
+        turtle.forward()
+        term.setCursorPos(1, 1)
+                                 term.clearLine()
+                                            print ("Stage: " .. done .. "/" .. totalsteps .. " Cleanup")                                    
+        turtle.suckDown()
+       
+                                    --print("grab")
+                                               
+       dist = dist - 1
+       end
+       turn()                                 
+    end
+                                        
+--unused planting phase not needed because in can be done after digging
+elseif done == 4 then
+    
+   while width ~= 0 do                                 
+    while dist ~= 0 do
+        turtle.placeDown()
+        turtle.forward()
+       print("plant")
+            print ("Steps: " .. done)                                  
+   dist = dist - 1
+       end
+       turn()                                       
+    end
+      --end- unused planting phase end                         
+
+ end
+
+                                    end
+
+
+                               
+
+
+
+
+end
+end
+end
+end                    
+end                    
+    end                
+    end                

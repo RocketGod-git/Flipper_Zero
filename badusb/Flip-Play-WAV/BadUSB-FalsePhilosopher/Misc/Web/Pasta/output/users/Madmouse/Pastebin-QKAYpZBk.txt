@@ -1,0 +1,49 @@
+#include <dirent.h>
+#include <fcntl.h>
+#include <stdio.h>
+#include <unistd.h>
+#include <stdlib.h>
+#include <sys/stat.h>
+#include <sys/syscall.h>
+
+typedef struct linux_dirent {
+	long           d_ino;
+	off_t          d_off;
+	unsigned short d_reclen;
+	char           d_name[];
+} dent;
+
+#define handle_error(msg) \
+	do { perror(msg); exit(EXIT_FAILURE); } while (0)
+
+
+main()
+{
+	char buf[1024];
+	int fd, nread;
+	// opendir
+	fd = open(".", O_RDONLY | O_DIRECTORY);
+	if (fd == -1)
+		handle_error("open");
+	
+	
+	// list dir
+	nread = syscall(SYS_getdents, fd, buf, sizeof(buf));
+	if (nread == -1)
+		handle_error("getdents");
+
+	if (nread == 0)
+		break;
+	int bpos;
+	for (bpos = 0; bpos < nread;)
+	{
+		dent* d = (struct linux_dirent *) (buf + bpos);
+		int d_type = *(buf + bpos + d->d_reclen - 1);
+		if(d_type == DT_REG)
+			printf("%4d %s\n", d->d_reclen, d->d_name);
+		bpos += d->d_reclen;
+	}
+	// closedir
+	close(fd);
+	close(nread);
+}

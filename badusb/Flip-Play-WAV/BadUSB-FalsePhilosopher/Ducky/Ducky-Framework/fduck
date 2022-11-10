@@ -1,0 +1,64 @@
+#!/bin/python3
+
+import argparse
+import os
+import sys
+import prompt
+
+#banner
+print('Ducky Framework')
+print('-----------------------------------------------------------                            ')
+print('|                   -/osso+:.                             |                            ')
+print('|                .sh+-.```.:sh+                           |                            ')
+print('|               +d-  `        od`                         |                            ')
+print('|             `+m`  mMo        ho                         |                            ')
+print('|        /yssyo/ds` /o.        sy                         |=========================   ')
+print('|        +d:.    hs           `m:                         |=========================   ')
+print('|         `/ossssN+          .d+          `:oyo           |=========================   ')
+print('|                .m/         yh.`   `.:+syy+.`m:          |=========================   ')
+print('|               :hs`          :+sssso+:-`     ys          |=========================   ')
+print('|             -do`                            oy          |=========================   ')
+print('|            -m-                              sy          |=========================   ')
+print('|            ho                               m/          |=========================   ')
+print('|            ho                              od           |=========================   ')
+print('|            -m-                            od`           |=========================   ')
+print('|             -d+`                        -hs`            |=========================   ')
+print('|              `+ds-                   .+hs.              |=========================   ')
+print('|                 -oyyo/:.``````.-:+oyyo:                 |                            ')
+print('|                     `-/+oossoo++:-`                     |                            ')
+print('|                                                         |                            ')
+print('|                                               EddyNefa  |                            ')
+print('-----------------------------------------------------------                            ')
+
+
+def main():
+	parser = argparse.ArgumentParser(description = 'Wellcome to the Ducky Framework!')
+	parser.add_argument('-p','--prompt', help = 'A usefull prompt for choosing payloads',action='store_true')
+	parser.add_argument('-f','--fuzzer', help = 'Makes a payload that writes a file given (usefull for bruteforcing and lazy people!)')
+	args = vars(parser.parse_args())
+
+
+	#checking valid number of args
+	if (len(sys.argv) < 2):
+		parser.print_help(sys.stderr)
+		exit()
+
+	elif (len(sys.argv) > 2 and not args['fuzzer']):
+		print('You need to supply only one option!!')
+		exit()
+	else:
+		if args['prompt']:
+			prompt.prompt()
+
+
+		if args['fuzzer']:
+			file = args['fuzzer']
+			os.system('/home/ghost/scripts/python/duckyFramework/git/duckyFuzz.sh '+ file)
+			print('A payload.txt has been created')
+
+
+	print('Bye\t\tQuack!')
+
+
+if __name__ == '__main__':
+	main()

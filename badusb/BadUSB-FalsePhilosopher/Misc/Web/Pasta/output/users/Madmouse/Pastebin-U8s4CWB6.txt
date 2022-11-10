@@ -1,0 +1,122 @@
+PE File Detected
+Loading Information For Injection.
+
+File Header
+	Machine: 0000014c
+	Number of sections: 3
+	Characteristics: 0000010f
+
+Optional Header
+	Address Of Entry Point: 0x00012475
+	Image Base: 0x01000000
+	Section Alignment: 4096
+	File Alignment: 512
+	Major Subsystem Version: 4
+	Size Of Image: 126976
+
+Data Directory
+	Import Directory Virtual Address: 0x00012b80
+	Size: 140
+
+Section Header
+	.text
+		Virtual Size: 75440
+		Virtual Address: 0x00001000
+		Size Of Raw Data: 75776
+		Offset in file: 1024
+		Pointer to relocations: 00000000
+		Pointer to line numbers: 00000000
+		Number of relocations: 0
+		Number of line numbers: 0
+		Characteristics: 0x60000020
+	.data
+		Virtual Size: 4124
+		Virtual Address: 0x00014000
+		Size Of Raw Data: 2560
+		Offset in file: 76800
+		Pointer to relocations: 00000000
+		Pointer to line numbers: 00000000
+		Number of relocations: 0
+		Number of line numbers: 0
+		Characteristics: 0xc0000040
+	.rsrc
+		Virtual Size: 35168
+		Virtual Address: 0x00016000
+		Size Of Raw Data: 35328
+		Offset in file: 79360
+		Pointer to relocations: 00000000
+		Pointer to line numbers: 00000000
+		Number of relocations: 0
+		Number of line numbers: 0
+		Characteristics: 0x40000040
+Performing implant.
+
+Loader image
+	Loader Size: 6
+	Entry Point: 0x01012475
+	Key: 0x3ec7ec45
+	Flags: 0x00000000
+	Size: 22
+
+
+File Header
+	Machine: 0000014c
+	Number of sections: 4
+	Characteristics: 0000010f
+
+Optional Header
+	Address Of Entry Point: 0x0001f010
+	Image Base: 0x01000000
+	Section Alignment: 4096
+	File Alignment: 512
+	Major Subsystem Version: 4
+	Size Of Image: 131072
+
+Data Directory
+	Import Directory Virtual Address: 0x00012b80
+	Size: 140
+
+Section Header
+	.text
+		Virtual Size: 75440
+		Virtual Address: 0x00001000
+		Size Of Raw Data: 75776
+		Offset in file: 1024
+		Pointer to relocations: 00000000
+		Pointer to line numbers: 00000000
+		Number of relocations: 0
+		Number of line numbers: 0
+		Characteristics: 0x60000020
+	.data
+		Virtual Size: 4124
+		Virtual Address: 0x00014000
+		Size Of Raw Data: 2560
+		Offset in file: 76800
+		Pointer to relocations: 00000000
+		Pointer to line numbers: 00000000
+		Number of relocations: 0
+		Number of line numbers: 0
+		Characteristics: 0xc0000040
+	.rsrc
+		Virtual Size: 35168
+		Virtual Address: 0x00016000
+		Size Of Raw Data: 35328
+		Offset in file: 79360
+		Pointer to relocations: 00000000
+		Pointer to line numbers: 00000000
+		Number of relocations: 0
+		Number of line numbers: 0
+		Characteristics: 0x40000040
+	.edata
+		Virtual Size: 4096
+		Virtual Address: 0x0001f000
+		Size Of Raw Data: 512
+		Offset in file: 114688
+		Pointer to relocations: 00000000
+		Pointer to line numbers: 00000000
+		Number of relocations: 0
+		Number of line numbers: 0
+		Characteristics: 0xe00000e0
+calc.exe_new: PE32 executable (GUI) Intel 80386, for MS Windows
+115200  calc.exe_new
+114688  calc.exe

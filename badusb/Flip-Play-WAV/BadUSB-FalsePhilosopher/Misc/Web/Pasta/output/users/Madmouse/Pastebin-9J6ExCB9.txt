@@ -1,0 +1,65 @@
+; intel x86_64
+	mov rcx, rsi	; move size argument into rcx for the loop
+	mov rsi, rdi	; move the the text pointer to rsi for printing
+	xor rax, rax	; clear out registers
+	xor rdi, rdi
+scan:				; scan for breakpoints
+	cmp byte [rsi], 0xCC
+	je fuck_you
+	inc rsi
+loop scan
+	xor rdi, rdi
+	ret
+fuck_you:
+	xor rdi, rdi
+	mov al, 1
+	ret
+
+
+
+@ ARM
+scan:
+        .code 32
+        ldr r3, =0xE7F00000     @ load breakpoint constant
+        ldr r4, =0xFFFF0000     @ mask
+loop:
+        ldr r2, [r0]    @ load byte code into r2
+        and r2, r4      @ clear out extra data in bytecode with mask
+        cmp r2, r3      @ is it a breakpoint?
+        beq fuck        @ if so FUCK
+        cmp r1, #0      @ are we at the end?
+        beq safe        @ if so we are safe
+        sub r1, #1      @ decrement the counter
+        add r0, #1      @ increment our pointer
+        bne loop        @ if we are still looping, loop
+safe:
+        mov r0, #0      @ return false
+        mov r1, r0
+        bx lr
+fuck:
+        mov r0, #0x1    @ return true
+        mov r1, #0
+        bx lr
+
+
+
+# MIPS
+scan:
+        li $t0, 0x5000D                 # breakpoint constant
+loop:
+        lw $t3, ($a0)                   # load bytecode
+        beq $t3, $t0, fuck              # if this is a breakpoint fucked
+        beq $t3, 0, safe                # if the counter is 0 we are safe
+        subu $a1, 1                     # decrement counter
+        addu $a0, 1                     # increment our pointer
+        j loop                          # if we are looping loop
+ 
+safe:
+        li $v0, 0x0     # return false
+        li $v1, 0x0
+        jr $ra
+ 
+fuck:
+        li $v0, 0x1     # return true
+        li $v1, 0x0
+        jr $ra

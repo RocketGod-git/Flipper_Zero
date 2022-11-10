@@ -1,0 +1,41 @@
+REM       Ai-Cable
+REM       Version 2.0
+REM       OS: MULTI (Tested with the OMG-Plug on Google Chrome/Windows 10 at screen resolution 1920 x 1080)
+REM       Author: 0iphor13
+
+REM       This payload will write its own payload, until you kill it! Maybe, if you wait long enough, it will create a payload of the month...
+REM       Click run and let it happen, don't move! Might not work properly on every system due to timings, screen resolution, etc...
+
+DELAY 2000
+
+REM Language only needed if you are not using an US layout
+DUCKY_LANG de
+
+MOUSE MOVE -10000 -10000
+DELAY 200
+MOUSE MOVE 200 200
+DELAY 200
+MOUSE CLICK 1
+DELAY 200
+CTRL a
+DELAY 200
+CTRL x
+DELAY 200
+STRING  I will create the payload for you :)
+DELAY 3000
+CTRL a
+DELAY 200
+CTRL v
+DELAY 1000
+TAB     
+DELAY 100
+TAB
+DELAY 100
+TAB     
+DELAY 100
+MOUSE MOVE -10000 -10000
+DELAY 200
+MOUSE MOVE 200 200
+DELAY 200
+ENTER
+MOUSE CLICK 1

@@ -1,0 +1,43 @@
+// ------------------------------------------------------------------------------
+// THE BEER-WARE LICENSE (Revision 43):
+// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return
+// ------------------------------------------------------------------------------
+
+#include <unistd.h>
+#include <stdlib.h>
+#include <signal.h>
+#include <sys/mman.h>
+
+int main(unsigned a);
+
+__sighandler_t handler(int sig)		// our signal handler function
+{
+	switch(sig)
+	{
+		case SIGSEGV:		// when segfaults happen
+			main(0xC0DE);	// assume they have to be because of the bug and tell us we are in the matrix
+		break;
+	}
+}
+
+int main(unsigned a)
+{
+	if(a==0xC0DE) goto irl;		// if this shit is from a segfault, we are in real life :(
+	signal(SIGSEGV, &handler);	// register the segfault signal to be caught by our handler
+	
+asm(
+        ".intel_syntax noprefix\n"
+        "xor ecx, ecx\n"	// we arent actually copying anything, so the counter is zero
+        ".byte 0xf3, 0xf3, 0xf3, 0xf3, 0xf3\n"	// redundant rep prefixes
+        ".byte 0xf3, 0xf3, 0xf3, 0xf3, 0xf3\n"	// ...
+        ".byte 0xf3, 0xf3, 0xf3, 0xf3, 0xf3\n"	// ...
+        ".byte  0xa4\n"	// movsb
+);
+	puts("The Matrix haz you Neo...");	// this is where you would put ninja moves, jack in or jack off, your choice ;)
+	exit(1);
+irl:
+	puts("Isn't real life boring?");	// if we get here, this is boring reality :( no cool ninja moves today bro lol
+	exit(0);
+}

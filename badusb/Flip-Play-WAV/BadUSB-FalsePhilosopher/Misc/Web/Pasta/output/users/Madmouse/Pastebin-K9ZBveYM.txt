@@ -1,0 +1,126 @@
+////////////////////////////////////////////////////////////////////////////////
+// THE SCOTCH-WARE LICENSE (Revision 0):
+// <aaronryool/gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a shot of scotch in return
+////////////////////////////////////////////////////////////////////////////////
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <signal.h>
+
+typedef enum { false, true } bool;
+
+#define BGBLACK  "\033[40m"
+#define BGRED	 "\033[41m"
+#define BGWHITE  "\033[47m"
+#define RESET    "\033[0m"
+
+#define CLEAR           "\033[2J"
+#define HIDE_CURSOR     "\e[?25l"
+#define SHOW_CURSOR     "\e[?25h"
+
+#define CURSOR(x, y) printf("\033[%i;%iH\n", y, x)
+
+void __attribute__((noreturn)) usage(char** argv)
+{
+    printf("%s <#frames>\n", argv[0]);
+    exit(1);
+}
+
+void init(int argc, char** argv, char** envp)
+{
+    if(argc != 2)
+        usage(argv);
+    printf("%s", HIDE_CURSOR);
+    signal(SIGINT, exit);
+}
+
+void fini()
+{
+    printf("%s", SHOW_CURSOR);
+}
+
+__attribute__((section(".init_array"))) typeof(init)* __init = init;
+__attribute__((section(".fini_array"))) typeof(fini)* __fini = fini;
+
+int grid_check_neighbors(bool* grid, int width, int height, int x, int y)
+{
+#define SIZE (width * height)
+#define STATE(x, y, limit_comp) (int) (((x) * width + (y)) limit_comp ? grid[(x) * width + (y)] : false)
+    return STATE(x-1, y-1,>=0) + STATE(x-1,y,>=0) + STATE(x-1,y+1,>=0) + STATE(x,y-1,>=0) +
+        STATE(x,y+1,<SIZE) + STATE(x+1,y-1,<SIZE) + STATE(x+1,y,<SIZE) + STATE(x+1,y+1,<SIZE);
+}
+
+
+void grid_step(bool* grid, int width, int height)
+{
+#define SIZE (width * height)
+    unsigned int i, n;
+    bool t[SIZE];
+    memcpy(t, grid, SIZE*sizeof(bool));
+    for(i = 0;i < SIZE;i++)
+    {
+        n = grid_check_neighbors(grid, width, height, i / width, i % width);
+        if(!grid[i] && n == 3)
+                t[i] = true;
+        else if(n < 2 || n > 3)
+                t[i] = false;
+    }
+    memcpy(grid, t, SIZE*sizeof(bool));
+}
+
+int main(int argc, char** argv, char** envp)
+{
+#define SIZE (width * height)
+    const int width = 25,
+        height = 25;
+    int i, c;
+    unsigned int frames = atoi(argv[1]);
+    
+    if(! frames) usage(argv);
+    
+    bool grid[] = {
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,
+        0,0,0,0,0,1,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,1,0,1,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,1,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,1,1,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,1,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,1,1,1,0,0,0,0,0,0,1,1,1,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,
+        0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
+    };
+    
+    printf("%s", CLEAR);
+    for(i = 0;i < frames;i++)
+    {
+        CURSOR(0, 0);
+        for(c = 0;c < SIZE;c++)
+        {
+            printf(grid[c] ? "  %s" : "  %s", grid[c] ? BGRED : c % 2 ? BGBLACK : BGWHITE);
+            if((c + 1) % width == 0)
+                printf("%s\n", RESET);
+        }
+        grid_step(grid, width, height);
+        usleep(1000*100);
+    }
+    return 0;
+}

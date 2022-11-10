@@ -1,0 +1,4 @@
+Press: 131 + 114
+PrintLine: cmd /C "start /MIN powershell "Add-Type -AssemblyName System.speech;$speak = New-Object System.Speech.Synthesis.SpeechSynthesizer;$speak.Speak(\"Here is a joke. Why do Java programmers wear glasses? Because they can't C#.\");"
+Rem: End of payload* you can unplug the device when you see the led flash
+BlinkLED: 5

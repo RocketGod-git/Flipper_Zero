@@ -1,0 +1,21 @@
+[user@n0 asmconsole]$ ./plasm -c probe.s
+; plasm test file 
+0: call 16          	         e8 0b 00 00 00
+5: db "hello, world", 0x0a       68 65 6c 6c 6f 77 6f 72 6c 64 0a
+; print out data 
+16: pop rsi          	         5e
+17: mov al, 0x1          	 b0 01
+19: mov dil, 0x1          	 40 b7 01
+22: mov dl, 12          	 b2 0c
+24: syscall          	         0f 05
+;exit() 
+26: mov al, 60          	 b0 3c
+; I haven't implemented xor
+28: push 1          	         6a 01
+30: pop rdi          	         5f
+31: dec rdi          	         48 ff cf
+;;;;;;;;;;;;;;;;;;;;;;;;;;;
+34: syscall          	         0f 05
+
+Total size: 36
+[user@n0 asmconsole]$

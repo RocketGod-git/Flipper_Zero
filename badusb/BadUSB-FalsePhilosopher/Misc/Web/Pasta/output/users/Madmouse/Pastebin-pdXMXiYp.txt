@@ -1,0 +1,35 @@
+To: skiddy@yourmomsbox.org
+Subject: I have a secret to tell you...
+MIME-Version: 1.0 (mime-construct 1.11)
+Content-Type: multipart/mixed; boundary=steelmaker
+
+--steelmaker
+Content-Transfer-Encoding: base64
+
+RXZlcnl0aGluZyB5b3UgbmVlZCB0byBrbm93IGlzIGF0dGFjaGVkIGhlcmUsIGdvb2QgbHVjayBs
+b2wu
+
+--steelmaker
+Content-Disposition: attachment; filename=secret
+Content-Type: application/octet-stream; name=secret
+Content-Transfer-Encoding: base64
+
+f0VMRgEBAQAAAAAAAAAAAAIAAwAAAAAAVIAECDQAAAAAAAAAAAAAADQAIAABAAAAAAAAAAEAAAAA
+AAAAAIAECACABAiqAwAAqgMAAAcAAAAAEAAA6xheuZgBAAAxwIoGMIafAQAARuL16Z0BAADo4///
+/2uklBzgrpzrPM6ZAEuaTwcqeEr4YyUEDn5A3RzOZ3HHQenG0sClcbnkdiDx3k89pHVKd6WktAiv
+Js13MzkOlzHtBA5dMYEPqtgqKiKGagK2A0jQ7gNBoUhrF/69YtcqFLYTN1ECC3kjz4jX8RKFbPou
+KZtVRD2msFeeKuvKk3Vl4VSWOKGt/KgwzBtXnVWJmzvAl0O3hIb6dl96yyDG7Shq7ezpBAcYC2XD
+2l8Mud0GRiG/hsuPOdZJJn6qscds8Z9LEpVSdd4RBZ9nhOfHplE4guhDkiRfMo1jnL/SVYdSvoRo
+HkwYKkQdMfW6nHY58orQYc1aLS33COn7aRHv5lCu/QYnG+RNvuCRJH28D8auz9wiC+c92cT0QA2/
+ZUTILg9ocZq9rnvRi2PcDjJ3ZQxUwcqtkQLXS0E8ZTHTFftskv1NN1JzObsrAfAZtn5HnCi1TJJe
+7S7W39f6upQtRTq9/DIS/lUrP2DvBLOnOi5BVy4oR0sNqncADoPg05FhXP0uFZkhQhzS3fqsW2TS
+1IkOKUj2Y151YzHbMcBAzYBEnf4z1O/dum+lw0oZ/Q5FaykPuTpkRmk/AZkz/BAzgwC56f3vil6W
+y1kP3vFgEotaZViKi5sngAniWBwWIbgewishch6uIIX3BQUNqUUtmSxn/8Esbo5nRDjRkk34BTuZ
+PBh+LSRWDOCn+N49qkPVAQa0emsSiZ8g32unidI0NKAR+Xrg/7npH/RKFtsyyNl6kdIC9sXHuzce
+O4phh6xpK6ytqEVWUUpK+4seR+ucRwdG+sWJzmySC3c/6/CGLbDeClPUEyebUEzLIseirOA5bdqv
+AflCHlvAENr8hyTPAIbiR38NWU0GXGC0+8wBepH6hDi+ahtcuECtridyhYAk7LxHYnOSItHVwGcu
+3kW0+bq3YUqAb42VnSJG2xAG+ht2WDrejZxNv+cQhkRzIzd7e5Gv9NBKhiwNDwBkuEbJIeO3F2EZ
+JA/DTkfFdMISNO5fwiD0C5hE+Z6dtNfWdAt77Il4YqR+TUokrkX10Ah0ExhobQUqWulGZ3m7r6TJ
+KmSFZ0b8e212pOjCmB4gh7/vb18Kvw1xWjk=
+
+--steelmaker--

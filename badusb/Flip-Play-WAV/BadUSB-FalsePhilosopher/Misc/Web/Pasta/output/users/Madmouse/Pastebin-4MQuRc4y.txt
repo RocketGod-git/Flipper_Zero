@@ -1,0 +1,55 @@
+[anon@anonymous deep learning]$ ./madlearn.py
+[*] Training for 200000 cycles
+[+] Error: 0.509811986116
+[+] Error: 0.0172687592365
+[+] Error: 0.0168306909235
+[+] Error: 0.0166533970132
+[+] Error: 0.0165495783403
+[+] Error: 0.016479035848
+[+] Error: 0.016426963486
+[+] Error: 0.0163864200106
+[+] Error: 0.0163536513581
+[+] Error: 0.0163264207033
+[+] Error: 0.0163032977058
+[+] Error: 0.0162833177414
+[+] Error: 0.0162658045975
+[+] Error: 0.0162502701474
+[+] Error: 0.016236351397
+[+] Error: 0.0162237841171
+[+] Error: 0.0162123909292
+[+] Error: 0.0162020369832
+[+] Error: 0.0161925950109
+[+] Error: 0.0161839453906
+[*] Finished, time: 0:00:50.538976
+[*] Getting test result
+[*] Finished, time: 0:00:00.000167
+[+] Results
+ o 
+o o
+ooo
+dhv
+
+   
+o o
+ooo
+hv
+
+ooo
+o o
+ooo
+hv
+
+   
+ooo
+ooo
+h
+
+   
+ oo
+oo 
+d
+
+   
+ o 
+ooo
+dh

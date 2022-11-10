@@ -1,0 +1,21 @@
+[[source]]
+name = "pypi"
+url = "https://pypi.org/simple"
+verify_ssl = true
+
+[dev-packages]
+pytest = "==6.1.2"
+pdbpp = "==0.10.2"
+snapshottest = "==0.5.1"
+
+[packages]
+click = "==7.1.2"
+netifaces = { version="==0.10.9", sys_platform = "!= 'win32'" }
+flask = "==1.1.2"
+flask-wtf = "0.14.3"
+pytest-mock = "*"
+beautifulsoup4 = "*"
+flask-httpauth = "*"
+
+[requires]
+python_version = "3.9"

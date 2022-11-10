@@ -1,0 +1,8 @@
+<?xml version="1.0" ?>
+<job id="Partially works">
+<script language="VBScript">
+
+         Set oShell = CreateObject ("WScript.Shell") 
+         oShell.run "calc"
+</script>
+</job>

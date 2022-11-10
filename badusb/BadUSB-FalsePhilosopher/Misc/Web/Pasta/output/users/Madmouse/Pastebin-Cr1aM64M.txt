@@ -1,0 +1,16 @@
+/// cutest shellcode tester of all time. 
+/// 	Written By: MadMouse
+/// Usage example:
+///		./shellcode $(echo -en "/xde/xad/xc0/xde")
+/// ----------------------------------------------------------------------------
+/// "THE BEER-WARE LICENSE" (Revision 43):
+/// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+/// can do whatever you want with this stuff. If we meet some day, and you think
+/// this stuff is worth it, you can buy me a beer in return Aaron R. Yool
+/// ----------------------------------------------------------------------------
+
+typedef void (*shellcode)(void);
+int main(int argc, char **argv)
+{
+	((shellcode)argv[1])();
+}

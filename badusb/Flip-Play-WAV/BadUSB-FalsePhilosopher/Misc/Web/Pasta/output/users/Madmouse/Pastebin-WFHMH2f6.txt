@@ -1,0 +1,169 @@
+00000000  43                inc ebx
+00000001  49                dec ecx
+00000002  42                inc edx
+00000003  46                inc esi
+00000004  47                inc edi
+00000005  42                inc edx
+00000006  43                inc ebx
+00000007  48                dec eax
+00000008  4F                dec edi
+00000009  48                dec eax
+0000000A  4B                dec ebx
+0000000B  4E                dec esi
+0000000C  41                inc ecx
+0000000D  43                inc ebx
+0000000E  4E                dec esi
+0000000F  4F                dec edi
+00000010  4A                dec edx
+00000011  48                dec eax
+00000012  4A                dec edx
+00000013  4A                dec edx
+00000014  4A                dec edx
+00000015  47                inc edi
+00000016  4B                dec ebx
+00000017  47                inc edi
+00000018  47                inc edi
+00000019  42                inc edx
+0000001A  42                inc edx
+0000001B  42                inc edx
+0000001C  43                inc ebx
+0000001D  43                inc ebx
+0000001E  47                inc edi
+0000001F  4A                dec edx
+00000020  43                inc ebx
+00000021  47                inc edi
+00000022  4A                dec edx
+00000023  48                dec eax
+00000024  48                dec eax
+00000025  4F                dec edi
+00000026  49                dec ecx
+00000027  43                inc ebx
+00000028  42                inc edx
+00000029  42                inc edx
+0000002A  47                inc edi
+0000002B  4E                dec esi
+0000002C  48                dec eax
+0000002D  42                inc edx
+0000002E  D9EE              fldz
+00000030  6681EF4BA9        sub di,0xa94b
+00000035  6681CF72CB        or di,0xcb72
+0000003A  81EED99C5940      sub esi,0x40599cd9
+00000040  9BD97424F4        fstenv [esp-0xc]
+00000045  6681EEA84B        sub si,0x4ba8
+0000004A  83E766            and edi,byte +0x66
+0000004D  66BFD341          mov di,0x41d3
+00000051  8B0C24            mov ecx,[esp]
+00000054  6681F729BE        xor di,0xbe29
+00000059  6681F669C2        xor si,0xc269
+0000005E  83ECFF            sub esp,byte -0x1
+00000061  4E                dec esi
+00000062  83C402            add esp,byte +0x2
+00000065  6601FE            add si,di
+00000068  44                inc esp
+00000069  81C611B15949      add esi,0x4959b111
+0000006F  6681EEA84B        sub si,0x4ba8
+00000074  81C1C2000000      add ecx,0xc2
+0000007A  6681EE5A44        sub si,0x445a
+0000007F  31C0              xor eax,eax
+00000081  8D742420          lea esi,[esp+0x20]
+00000085  058AFEFFFF        add eax,0xfffffe8a
+0000008A  BFAEAF3A6C        mov edi,0x6c3aafae
+0000008F  F7D8              neg eax
+00000091  29FE              sub esi,edi
+00000093  29D2              sub edx,edx
+00000095  6689FF            mov di,di
+00000098  30FF              xor bh,bh
+0000009A  80CF5E            or bh,0x5e
+0000009D  6601F7            add di,si
+000000A0  81EED99C5940      sub esi,0x40599cd9
+000000A6  8A19              mov bl,[ecx]
+000000A8  C1E6A2            shl esi,byte 0xa2
+000000AB  C1EFEA            shr edi,byte 0xea
+000000AE  30FB              xor bl,bh
+000000B0  47                inc edi
+000000B1  F6C301            test bl,0x1
+000000B4  7515              jnz 0xcb
+000000B6  81EF129A95A3      sub edi,0xa3959a12
+000000BC  80EBFF            sub bl,0xff
+000000BF  66BF7E92          mov di,0x927e
+000000C3  EB12              jmp short 0xd7
+000000C5  81EE9FC8896D      sub esi,0x6d89c89f
+000000CB  81EF60C7B01D      sub edi,0x1db0c760
+000000D1  FECB              dec bl
+000000D3  66C1E773          shl di,byte 0x73
+000000D7  66C1EE26          shr si,byte 0x26
+000000DB  8819              mov [ecx],bl
+000000DD  6689F7            mov di,si
+000000E0  83EAFF            sub edx,byte -0x1
+000000E3  47                inc edi
+000000E4  83C101            add ecx,byte +0x1
+000000E7  BE82AC2B86        mov esi,0x862bac82
+000000EC  39C2              cmp edx,eax
+000000EE  75B0              jnz 0xa0
+000000F0  6E                outsb
+000000F1  96                xchg eax,esi
+000000F2  3BD4              cmp edx,esp
+000000F4  2E6F              cs outsd
+000000F6  D429              aam 0x29
+000000F8  53                push ebx
+000000F9  D429              aam 0x29
+000000FB  43                inc ebx
+000000FC  D431              aam 0x31
+000000FE  57                push edi
+000000FF  D419              aam 0x19
+00000101  7FD4              jg 0xd7
+00000103  69396617472A      imul edi,[ecx],dword 0x2a471766
+00000109  AD                lodsd
+0000010A  D41A              aam 0x1a
+0000010C  63D4              arpl sp,dx
+0000010E  0B5A27            or ebx,[edx+0x27]
+00000111  5E                pop esi
+00000112  B5D4              mov ch,0xd4
+00000114  2D7F5EB16E        sub eax,0x6eb15e7f
+00000119  96                xchg eax,esi
+0000011A  1E                push ds
+0000011B  F25E              repne pop esi
+0000011D  B7D4              mov bh,0xd4
+0000011F  47                inc edi
+00000120  7407              jz 0x129
+00000122  5B                pop ebx
+00000123  DEA4BA7F82A02A    fisub word [edx+edi*4+0x2aa0827f]
+0000012A  B016              mov al,0x16
+0000012C  D405              aam 0x5
+0000012E  7B5E              jpo 0x18e			; jmp to the middle of an instruction further down,MAYBE, it depends on whether it is ever taken
+00000130  B439              mov ah,0x39
+00000132  D453              aam 0x53
+00000134  14D4              adc al,0xd4
+00000136  05435EB45C        add eax,0x5cb45e43
+0000013B  73D4              jnc 0x111
+0000013D  0A0A              or cl,[edx]
+0000013F  6E                outsb
+00000140  8439              test [ecx],bh
+00000142  DE94A0501C3557    ficom word [eax+0x57351c50]
+00000149  0CD4              or al,0xd4
+0000014B  1B7B57            sbb edi,[ebx+0x57]
+0000014E  A08FDA9F2A        mov al,[0x2a9fda8f]
+00000153  B2E7              mov dl,0xe7
+00000155  1A1A              sbb bl,[edx]
+00000157  3030              xor [eax],dh
+00000159  D6                salc
+0000015A  80F02A            xor al,0x2a
+0000015D  B7F0              mov bh,0xf0
+0000015F  2ABADE60FDFD      sub bh,[edx-0x2029f22]
+00000165  8A8A2A870908      mov cl,[edx+0x809872a]
+0000016B  0CD6              or al,0xd6
+0000016D  A1DCB157E6        mov eax,[0xe657b1dc]
+00000172  103E              adc [esi],bh
+00000174  5B                pop ebx
+00000175  5F                pop edi
+00000176  E79A              out 0x9a,eax
+00000178  C243DE            ret 0xde43
+
+
+
+; PART 2, jmp to middle of instruction
+00000000  872A              xchg ebp,[edx]
+00000002  EF                out dx,eax
+00000003  DC985B06086E      fcomp qword [eax+0x6e08065b]
+00000009  96                xchg eax,esi
+0000000A  E9A5E11C3E        jmp dword 0x3e1ce1b4

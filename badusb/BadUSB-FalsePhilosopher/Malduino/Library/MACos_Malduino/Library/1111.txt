@@ -1,0 +1,16 @@
+REM fake apple update
+REM
+REM let the ducky HID enumerate
+DELAY 2000
+GUI SPACE
+DELAY 600
+STRING terminal
+DELAY 750
+ENTER
+DELAY 4500
+STRING open https://fakeupdate.net/apple/
+ENTER
+DELAY 1500
+GUI SHIFT f
+REM is likely that have slow internet connection
+DELAY 4000

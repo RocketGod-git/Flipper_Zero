@@ -1,0 +1,45 @@
+import piexif
+
+
+# http://www.cipa.jp/std/documents/e/DC-008-2012_E.pdf
+# GPS INDEX MAP FROM DOCUMENTATION on page 68:
+
+rational = lambda x: str(float(x[0]) / float(x[1])
+rational_list = lambda x: " ".join([str(float(v[0]) / float(v[1])) for v in x])
+integer =  lambda x: str(x)
+string = lambda x: x.upper()
+
+gps_tag_map = {
+    0:  ("Gps_Version", lambda x: ".".join([str(v) for v in x])),
+    1:  ("Gps_Latitude_Reference", string),
+    2:  ("Gps_Latitude", rational_list),
+    3:  ("Gps_Longitude_Reference", string),
+    4:  ("Gps_Longitude", rational_list),
+    5:  ("Gps_Altitude_Reference", integer),
+    6:  ("Gps_Altitude", rational),
+    7:  ("Gps_Timestamp", rational_list),
+    8:  ("Gps_Satelites", string),
+    9:  ("Gps_Status", string),
+    10: ("Gps_Measure_Mode", string),
+    11: ("Gps_DOP", rational),
+    12: ("Gps_Speed_Reference", string),
+    13: ("Gps_Speed", rational),
+    14: ("Gps_Track_Reference", string),
+    15: ("Gps_Track", rational),
+    16: ("Gps_Image_Direction_Reference", string),
+    17: ("Gps_Image_Direction", rational),
+    18: ("Gps_Map_Datum", string),
+    19: ("Gps_Destination_Latitude_Reference", string),
+    20: ("Gps_Destination_Latitude", rational_list),
+    21: ("Gps_Destination_Longitude_Reference", string),
+    22: ("Gps_Destination_Longitude", rational_list),
+    23: ("Gps_Destination_Bearing_Reference", string),
+    24: ("Gps_Destination_Bearing", rational),
+    25: ("Gps_Destination_Distance_Reference", string),
+    26: ("Gps_Destination_Distance", rational),
+    27: ("Gps_Processing_Method", string),
+    28: ("Gps_Area_Information", string),
+    29: ("Gps_Datestamp", string),
+    30: ("Gps_Diferential", integer),
+    31: ("Gps_Positioning_Error", rational)
+}

@@ -1,0 +1,910 @@
+#	Reserved Strings
+#
+#	Strings which may be used elsewhere in code
+
+dW5kZWZpbmVk
+dW5kZWY=
+bnVsbA==
+TlVMTA==
+KG51bGwp
+bmls
+TklM
+dHJ1ZQ==
+ZmFsc2U=
+VHJ1ZQ==
+RmFsc2U=
+VFJVRQ==
+RkFMU0U=
+Tm9uZQ==
+aGFzT3duUHJvcGVydHk=
+dGhlbg==
+XA==
+XFw=
+
+#	Numeric Strings
+#
+#	Strings which can be interpreted as numeric
+
+MA==
+MQ==
+MS4wMA==
+JDEuMDA=
+MS8y
+MUUy
+MUUwMg==
+MUUrMDI=
+LTE=
+LTEuMDA=
+LSQxLjAw
+LTEvMg==
+LTFFMg==
+LTFFMDI=
+LTFFKzAy
+MS8w
+MC8w
+LTIxNDc0ODM2NDgvLTE=
+LTkyMjMzNzIwMzY4NTQ3NzU4MDgvLTE=
+LTA=
+LTAuMA==
+KzA=
+KzAuMA==
+MC4wMA==
+MC4uMA==
+Lg==
+MC4wLjA=
+MCwwMA==
+MCwsMA==
+LA==
+MCwwLDA=
+MC4wLzA=
+MS4wLzAuMA==
+MC4wLzAuMA==
+MSwwLzAsMA==
+MCwwLzAsMA==
+LS0x
+LQ==
+LS4=
+LSw=
+OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5
+OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5OTk5
+TmFO
+SW5maW5pdHk=
+LUluZmluaXR5
+SU5G
+MSNJTkY=
+LTEjSU5E
+MSNRTkFO
+MSNTTkFO
+MSNJTkQ=
+MHgw
+MHhmZmZmZmZmZg==
+MHhmZmZmZmZmZmZmZmZmZmZm
+MHhhYmFkMWRlYQ==
+MTIzNDU2Nzg5MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5
+MSwwMDAuMDA=
+MSAwMDAuMDA=
+MScwMDAuMDA=
+MSwwMDAsMDAwLjAw
+MSAwMDAgMDAwLjAw
+MScwMDAnMDAwLjAw
+MS4wMDAsMDA=
+MSAwMDAsMDA=
+MScwMDAsMDA=
+MS4wMDAuMDAwLDAw
+MSAwMDAgMDAwLDAw
+MScwMDAnMDAwLDAw
+MDEwMDA=
+MDg=
+MDk=
+Mi4yMjUwNzM4NTg1MDcyMDExZS0zMDg=
+
+#	Special Characters
+#
+# ASCII punctuation.  All of these characters may need to be escaped in some
+# contexts.  Divided into three groups based on (US-layout) keyboard position.
+
+LC4vOydbXVwtPQ==
+PD4/OiJ7fXxfKw==
+IUAjJCVeJiooKWB+
+
+# Non-whitespace C0 controls: U+0001 through U+0008, U+000E through U+001F,
+# and U+007F (DEL)
+# Often forbidden to appear in various text-based file formats (e.g. XML),
+# or reused for internal delimiters on the theory that they should never
+# appear in input.
+# The next line may appear to be blank or mojibake in some viewers.
+AQIDBAUGBwgODxAREhMUFRYXGBkaGxwdHh9/
+
+# Non-whitespace C1 controls: U+0080 through U+0084 and U+0086 through U+009F.
+# Commonly misinterpreted as additional graphic characters.
+# The next line may appear to be blank, mojibake, or dingbats in some viewers.
+woDCgcKCwoPChMKGwofCiMKJworCi8KMwo3CjsKPwpDCkcKSwpPClMKVwpbCl8KYwpnCmsKbwpzC
+ncKewp8=
+
+# Whitespace: all of the characters with category Zs, Zl, or Zp (in Unicode
+# version 8.0.0), plus U+0009 (HT), U+000B (VT), U+000C (FF), U+0085 (NEL),
+# and U+200B (ZERO WIDTH SPACE), which are in the C categories but are often
+# treated as whitespace in some contexts.
+# This file unfortunately cannot express strings containing
+# U+0000, U+000A, or U+000D (NUL, LF, CR).
+# The next line may appear to be blank or mojibake in some viewers.
+# The next line may be flagged for "trailing whitespace" in some viewers.
+CwwgwoXCoOGagOKAgOKAgeKAguKAg+KAhOKAheKAhuKAh+KAiOKAieKAiuKAi+KAqOKAqeKAr+KB
+n+OAgA==
+
+# Unicode additional control characters: all of the characters with
+# general category Cf (in Unicode 8.0.0).
+# The next line may appear to be blank or mojibake in some viewers.
+wq3YgNiB2ILYg9iE2IXYnNud3I/hoI7igIvigIzigI3igI7igI/igKrigKvigKzigK3igK7igaDi
+gaHigaLigaPigaTigabigafigajiganigarigavigaziga3iga7iga/vu7/vv7nvv7rvv7vwkYK9
+8JuyoPCbsqHwm7Ki8Juyo/CdhbPwnYW08J2FtfCdhbbwnYW38J2FuPCdhbnwnYW686CAgfOggKDz
+oICh86CAovOggKPzoICk86CApfOggKbzoICn86CAqPOggKnzoICq86CAq/OggKzzoICt86CArvOg
+gK/zoICw86CAsfOggLLzoICz86CAtPOggLXzoIC286CAt/OggLjzoIC586CAuvOggLvzoIC886CA
+vfOggL7zoIC/86CBgPOggYHzoIGC86CBg/OggYTzoIGF86CBhvOggYfzoIGI86CBifOggYrzoIGL
+86CBjPOggY3zoIGO86CBj/OggZDzoIGR86CBkvOggZPzoIGU86CBlfOggZbzoIGX86CBmPOggZnz
+oIGa86CBm/OggZzzoIGd86CBnvOggZ/zoIGg86CBofOggaLzoIGj86CBpPOggaXzoIGm86CBp/Og
+gajzoIGp86CBqvOggavzoIGs86CBrfOgga7zoIGv86CBsPOggbHzoIGy86CBs/OggbTzoIG186CB
+tvOggbfzoIG486CBufOggbrzoIG786CBvPOggb3zoIG+86CBvw==
+
+# "Byte order marks", U+FEFF and U+FFFE, each on its own line.
+# The next two lines may appear to be blank or mojibake in some viewers.
+77u/
+77++
+
+#	Unicode Symbols
+#
+#	Strings which contain common unicode symbols (e.g. smart quotes)
+
+zqniiYjDp+KImuKIq8ucwrXiiaTiiaXDtw==
+w6XDn+KIgsaSwqnLmeKIhsuawqzigKbDpg==
+xZPiiJHCtMKu4oCgwqXCqMuGw7jPgOKAnOKAmA==
+wqHihKLCo8Ki4oiewqfCtuKAosKqwrrigJPiiaA=
+wrjLm8OH4peKxLHLnMOCwq/LmMK/
+w4XDjcOOw4/LncOTw5Tvo7/DksOaw4bimIM=
+xZLigJ7CtOKAsMuHw4HCqMuGw5jiiI/igJ3igJk=
+YOKBhOKCrOKAueKAuu+sge+sguKAocKwwrfigJrigJTCsQ==
+4oWb4oWc4oWd4oWe
+0IHQgtCD0ITQhdCG0IfQiNCJ0IrQi9CM0I3QjtCP0JDQkdCS0JPQlNCV0JbQl9CY0JnQmtCb0JzQ
+ndCe0J/QoNCh0KLQo9Ck0KXQptCn0KjQqdCq0KvQrNCt0K7Qr9Cw0LHQstCz0LTQtdC20LfQuNC5
+0LrQu9C80L3QvtC/0YDRgdGC0YPRhNGF0YbRh9GI0YnRitGL0YzRjdGO0Y8=
+2aDZodmi2aPZpNml2abZp9mo2ak=
+
+#	Unicode Subscript/Superscript/Accents
+#
+#	Strings which contain unicode subscripts/superscripts; can cause rendering issues
+
+4oGw4oG04oG1
+4oKA4oKB4oKC
+4oGw4oG04oG14oKA4oKB4oKC
+4LiU4LmJ4LmJ4LmJ4LmJ4LmJ4LmH4LmH4LmH4LmH4LmH4LmJ4LmJ4LmJ4LmJ4LmJ4LmH4LmH4LmH
+4LmH4LmH4LmJ4LmJ4LmJ4LmJ4LmJ4LmJ4LmJ4LmJ4LmH4LmH4LmH4LmH4LmH4LmJ4LmJ4LmJ4LmJ
+4LmJ4LmH4LmH4LmH4LmH4LmH4LmJ4LmJ4LmJ4LmJ4LmJ4LmJ4LmJ4LmJ4LmH4LmH4LmH4LmH4LmH
+4LmJ4LmJ4LmJ4LmJ4LmJ4LmH4LmH4LmH4LmH4LmH4LmJ4LmJ4LmJ4LmJ4LmJ4LmJ4LmJ4LmJ4LmH
+4LmH4LmH4LmH4LmH4LmJ4LmJ4LmJ4LmJ4LmJ4LmH4LmH4LmH4LmHIOC4lOC5ieC5ieC5ieC5ieC5
+ieC5h+C5h+C5h+C5h+C5h+C5ieC5ieC5ieC5ieC5ieC5h+C5h+C5h+C5h+C5h+C5ieC5ieC5ieC5
+ieC5ieC5ieC5ieC5ieC5h+C5h+C5h+C5h+C5h+C5ieC5ieC5ieC5ieC5ieC5h+C5h+C5h+C5h+C5
+h+C5ieC5ieC5ieC5ieC5ieC5ieC5ieC5ieC5h+C5h+C5h+C5h+C5h+C5ieC5ieC5ieC5ieC5ieC5
+h+C5h+C5h+C5h+C5h+C5ieC5ieC5ieC5ieC5ieC5ieC5ieC5ieC5h+C5h+C5h+C5h+C5h+C5ieC5
+ieC5ieC5ieC5ieC5h+C5h+C5h+C5hyDguJTguYnguYnguYnguYnguYnguYfguYfguYfguYfguYfg
+uYnguYnguYnguYnguYnguYfguYfguYfguYfguYfguYnguYnguYnguYnguYnguYnguYnguYnguYfg
+uYfguYfguYfguYfguYnguYnguYnguYnguYnguYfguYfguYfguYfguYfguYnguYnguYnguYnguYng
+uYnguYnguYnguYfguYfguYfguYfguYfguYnguYnguYnguYnguYnguYfguYfguYfguYfguYfguYng
+uYnguYnguYnguYnguYnguYnguYnguYfguYfguYfguYfguYfguYnguYnguYnguYnguYnguYfguYfg
+uYfguYc=
+
+#	Quotation Marks
+#
+#	Strings which contain misplaced quotation marks; can cause encoding errors
+
+Jw==
+Ig==
+Jyc=
+IiI=
+JyIn
+IicnJyciJyI=
+IiciJyInJycnIg==
+PGZvbyB2YWw94oCcYmFy4oCdIC8+
+PGZvbyB2YWw94oCcYmFy4oCdIC8+
+PGZvbyB2YWw94oCdYmFy4oCcIC8+
+PGZvbyB2YWw9YGJhcicgLz4=
+
+#	Two-Byte Characters
+#
+#	Strings which contain two-byte characters: can cause rendering issues or character-length issues
+
+55Sw5Lit44GV44KT44Gr44GC44GS44Gm5LiL44GV44GE
+44OR44O844OG44Kj44O844G46KGM44GL44Gq44GE44GL
+5ZKM6KO95ryi6Kqe
+6YOo6JC95qC8
+7IKs7ZqM6rO87ZWZ7JuQIOyWtO2VmeyXsOq1rOyGjA==
+7LCm7LCo66W8IO2DgOqzoCDsmKgg7Y6y7Iuc66eo6rO8IOyRm+uLpOumrCDrmKDrsKnqsIHtlZg=
+56S+5pyD56eR5a246Zmi6Kqe5a2456CU56m25omA
+7Jq4656A67CU7Yag66W0
+8KCcjvCgnLHwoJ258KCxk/CgsbjwoLKW8KCzjw==
+
+#	Special Unicode Characters Union
+#
+#	A super string recommended by VMware Inc. Globalization Team: can effectively cause rendering issues or character-length issues to validate product globalization readiness.
+#
+#	表          CJK_UNIFIED_IDEOGRAPHS (U+8868)
+#	ポ          KATAKANA LETTER PO (U+30DD)
+#	あ          HIRAGANA LETTER A (U+3042)
+#	A           LATIN CAPITAL LETTER A (U+0041)
+#	鷗          CJK_UNIFIED_IDEOGRAPHS (U+9DD7)
+#	Œ           LATIN SMALL LIGATURE OE (U+0153)
+#	é           LATIN SMALL LETTER E WITH ACUTE (U+00E9)
+#	Ｂ           FULLWIDTH LATIN CAPITAL LETTER B (U+FF22)
+#	逍          CJK_UNIFIED_IDEOGRAPHS (U+900D)
+#	Ü           LATIN SMALL LETTER U WITH DIAERESIS (U+00FC)
+#	ß           LATIN SMALL LETTER SHARP S (U+00DF)
+#	ª           FEMININE ORDINAL INDICATOR (U+00AA)
+#	ą           LATIN SMALL LETTER A WITH OGONEK (U+0105)
+#	ñ           LATIN SMALL LETTER N WITH TILDE (U+00F1)
+#	丂          CJK_UNIFIED_IDEOGRAPHS (U+4E02)
+#	㐀          CJK Ideograph Extension A, First (U+3400)
+#	𠀀          CJK Ideograph Extension B, First (U+20000)
+
+6KGo44Od44GCQem3l8WSw6nvvKLpgI3DnMOfwqrEhcOx5LiC45CA8KCAgA==
+
+#	Changing length when lowercased
+#
+#	Characters which increase in length (2 to 3 bytes) when lowercased
+#	Credit: https://twitter.com/jifa/status/625776454479970304
+
+yLo=
+yL4=
+
+#	Japanese Emoticons
+#
+#	Strings which consists of Japanese-style emoticons which are popular on the web
+
+44O94Ly84LqI2YTNnOC6iOC8ve++iSDjg73gvLzguojZhM2c4LqI4Ly9776J
+KO+9oeKXlSDiiIAg4peV772hKQ==
+772A772oKMK04oiA772A4oip
+X1/vvpsoLF8sKik=
+44O7KO+/o+KIgO+/oynjg7s6Kjo=
+776f772l4py/44O+4pWyKO+9oeKXleKAv+KXle+9oSnilbHinL/vvaXvvp8=
+LOOAguODuzoqOuODu+OCnOKAmSgg4pi7IM+JIOKYuyAp44CC44O7Oio644O744Kc4oCZ
+KOKVr8Kw4pahwrDvvInila/vuLUg4pS74pSB4pS7KQ==
+KO++ieCypeebiuCype+8ie++ie+7vyDilLvilIHilLs=
+4pSs4pSA4pSs44OOKCDCuiBfIMK644OOKQ==
+KCDNocKwIM2cypYgzaHCsCk=
+wq9cXyjjg4QpXy/Crw==
+
+#	Emoji
+#
+#	Strings which contain Emoji; should be the same behavior as two-byte characters, but not always
+
+8J+YjQ==
+8J+RqfCfj70=
+8J+RqOKAjfCfprAg8J+RqPCfj7/igI3wn6awIPCfkajigI3wn6axIPCfkajwn4+/4oCN8J+msSDwn6a58J+Pv+KAjeKZgu+4jw==
+8J+RviDwn5mHIPCfkoEg8J+ZhSDwn5mGIPCfmYsg8J+ZjiDwn5mN
+8J+QtSDwn5mIIPCfmYkg8J+Zig==
+4p2k77iPIPCfkpQg8J+SjCDwn5KVIPCfkp4g8J+SkyDwn5KXIPCfkpYg8J+SmCDwn5KdIPCfkp8g
+8J+SnCDwn5KbIPCfkpog8J+SmQ==
+4pyL8J+PvyDwn5Kq8J+PvyDwn5GQ8J+PvyDwn5mM8J+PvyDwn5GP8J+PvyDwn5mP8J+Pvw==
+8J+aviDwn4aSIPCfhpMg8J+GlSDwn4aWIPCfhpcg8J+GmSDwn4+n
+MO+4j+KDoyAx77iP4oOjIDLvuI/ig6MgM++4j+KDoyA077iP4oOjIDXvuI/ig6MgNu+4j+KDoyA3
+77iP4oOjIDjvuI/ig6MgOe+4j+KDoyDwn5Sf
+
+#       Regional Indicator Symbols
+#
+#       Regional Indicator Symbols can be displayed differently across
+#       fonts, and have a number of special behaviors
+
+8J+HuvCfh7jwn4e38J+HuvCfh7gg8J+HpvCfh6vwn4em8J+HsvCfh7g=
+8J+HuvCfh7jwn4e38J+HuvCfh7jwn4em8J+Hq/Cfh6bwn4ey
+8J+HuvCfh7jwn4e38J+HuvCfh7jwn4em
+
+#	Unicode Numbers
+#
+#	Strings which contain unicode numbers; if the code is localized, it should see the input as numeric
+
+77yR77yS77yT
+2aHZotmj
+
+#	Right-To-Left Strings
+#
+#	Strings which contain text that should be rendered RTL if possible (e.g. Arabic, Hebrew)
+
+2KvZhSDZhtmB2LMg2LPZgti32Kog2YjYqNin2YTYqtit2K/Zitiv2IwsINis2LLZitix2KrZiiDY
+qNin2LPYqtiu2K/Yp9mFINij2YYg2K/ZhtmILiDYpdiwINmH2YbYp9ifINin2YTYs9iq2KfYsSDZ
+iNiq2YbYtdmK2Kgg2YPYp9mGLiDYo9mH2ZHZhCDYp9mK2LfYp9mE2YrYp9iMINio2LHZiti32KfZ
+htmK2Kct2YHYsdmG2LPYpyDZgtivINij2K7YsC4g2LPZhNmK2YXYp9mG2Iwg2KXYqtmB2KfZgtmK
+2Kkg2KjZitmGINmF2KcsINmK2LDZg9ixINin2YTYrdiv2YjYryDYo9mKINio2LnYrywg2YXYudin
+2YXZhNipINio2YjZhNmG2K/Yp9iMINin2YTYpdi32YTYp9mCINi52YQg2KXZitmILg==
+15HWsNa816jWtdeQ16nWtNeB15nXqiwg15HWuNa816jWuNeQINeQ1rHXnNa515TWtNeZ150sINeQ
+1rXXqiDXlNa316nWuNa814HXnta315nWtNedLCDXldaw15DWtdeqINeU1rjXkNa416jWttel
+15TWuNeZ1rDXqta415R0ZXN02KfZhNi12YHYrdin2Kog2KfZhNiq2ZHYrdmI2YQ=
+77e9
+77e6
+2YXZj9mG2Y7Yp9mC2Y7YtNmO2KnZjyDYs9mP2KjZj9mE2ZAg2KfZkNiz2ZLYqtmQ2K7Zktiv2Y7Y
+p9mF2ZAg2KfZhNmE2ZHZj9i62Y7YqdmQINmB2ZDZiiDYp9mE2YbZkdmP2LjZj9mF2ZAg2KfZhNmS
+2YLZjtin2KbZkNmF2Y7YqdmQINmI2Y7ZgdmQ2YrZhSDZitmO2K7Zj9i12ZHZjiDYp9mE2KrZkdmO
+2LfZktio2ZDZitmC2Y7Yp9iq2Y8g2KfZhNmS2K3Yp9iz2Y/ZiNio2ZDZitmR2Y7YqdmP2Iw=
+
+#	Ogham Text
+#
+#	The only unicode alphabet to use a space which isn't empty but should still act like a space.
+
+4Zqb4ZqE4ZqT4ZqQ4ZqL4ZqS4ZqE4ZqA4ZqR4ZqE4ZqC4ZqR4ZqP4ZqF4Zqc
+4Zqb4ZqA4ZqA4ZqA4ZqA4ZqA4ZqA4ZqA4ZqA4ZqA4ZqA4ZqA4ZqA4ZqA4ZqA4ZqA4ZqA4ZqA4ZqcCg==
+
+# Trick Unicode
+#
+#	Strings which contain unicode with unusual properties (e.g. Right-to-left override) (c.f. http://www.unicode.org/charts/PDF/U2000.pdf)
+
+4oCq4oCqdGVzdOKAqg==
+4oCrdGVzdOKAqw==
+4oCpdGVzdOKAqQ==
+dGVzdOKBoHRlc3TigKs=
+4oGmdGVzdOKBpw==
+
+#	Zalgo Text
+#
+#	Strings which contain "corrupted" text. The corruption will not appear in non-HTML text, however. (via http://www.eeemo.net)
+
+4bmwzLrMusyVb82eIMy3acyyzKzNh8yqzZluzJ3Ml82VdsyfzJzMmMymzZ9vzLbMmcywzKBrw6jN
+msyuzLrMqsy5zLHMpCDMlnTMnc2VzLPMo8y7zKrNnmjMvM2TzLLMpsyzzJjMsmXNh8yjzLDMpsys
+zY4gzKLMvMy7zLHMmGjNms2OzZnMnMyjzLLNhWnMpsyyzKPMsMykdsy7zY1lzLrMrcyzzKrMsC1t
+zKJpzYVuzJbMusyezLLMr8ywZMy1zLzMn82ZzKnMvMyYzLMgzJ7MpcyxzLPMrXLMm8yXzJhlzZlw
+zaByzLzMnsy7zK3Ml2XMusygzKPNn3PMmM2HzLPNjcydzYllzYnMpcyvzJ7Mss2azKzNnMe5zKzN
+js2OzJ/Mls2HzKR0zY3MrMykzZPMvMytzZjNhWnMqsyxbs2gZ8y0zYkgzY/Nic2FY8yszJ9ozaFh
+zKvMu8yvzZhvzKvMn8yWzY3MmcydzYlzzJfMpsyyLsyozLnNiMyj
+zKHNk8yezYVJzJfMmMymzZ1uzYfNh82ZdsyuzKtva8yyzKvMmc2IacyWzZnMrcy5zKDMnm7Mocy7
+zK7Mo8y6Z8yyzYjNmcytzZnMrM2OIMywdM2UzKZozJ7MsmXMosykIM2NzKzMss2WZsy0zJjNlcyj
+w6jNluG6ucylzKlszZbNlM2aac2TzZrMps2gbs2WzY3Ml82TzLPMrmfNjSDMqG/NmsyqzaFmzJjM
+o8ysIMyWzJjNlsyfzZnMrmPSic2UzKvNls2TzYfNls2FaMy1zKTMo82azZTDocyXzLzNlc2Fb8y8
+zKPMpXPMsc2IzLrMlsymzLvNoi7Mm8yWzJ7MoMyrzLA=
+zJfMus2WzLnMr82T4bmuzKTNjcylzYfNiGjMssyBZc2PzZPMvMyXzJnMvMyjzZQgzYfMnMyxzKDN
+k82NzYVOzZXNoGXMl8yxesyYzJ3MnMy6zZlwzKTMusy5zY3Mr82aZcygzLvMoM2ccsyozKTNjcy6
+zJbNlMyWzJZkzKDMn8ytzKzMnc2facymzZbMqc2TzZTMpGHMoMyXzKzNicyZbs2azZwgzLvMnsyw
+zZrNhWjMtc2JacyzzJ52zKLNh+G4mc2OzZ8t0onMrcypzLzNlG3MpMytzKtpzZXNh8ydzKZuzJfN
+meG4jcyfIMyvzLLNlc2ex6vMn8yvzLDMss2ZzLvMnWYgzKrMsMywzJfMlsytzJjNmGPMps2NzLLM
+ns2NzKnMmeG4pc2aYcyuzY7Mn8yZzZzGocypzLnNjnPMpC7MncydINKJWsyhzJbMnM2WzLDMo82J
+zJxhzZbMsM2ZzKzNoWzMssyrzLPNjcypZ8yhzJ/MvMyxzZrMnsyszYVvzJfNnC7Mnw==
+zKZIzKzMpMyXzKTNnWXNnCDMnMylzJ3Mu82NzJ/MgXfMlWjMlsyvzZNvzJ3NmcyWzY7MscyuINKJ
+zLrMmcyezJ/NiFfMt8y8zK1hzLrMqs2NxK/NiM2VzK3NmcyvzJx0zLbMvMyuc8yYzZnNlsyVIMyg
+zKvMoELMu82NzZnNicyzzYVlzLVozLXMrM2HzKvNmWnMuc2TzLPMs8yuzY7Mq8yVbs2fZMy0zKrM
+nMyWIMywzYnMqc2HzZnMss2ezYVUzZbMvM2TzKrNomjNj82TzK7Mu2XMrMydzJ/NhSDMpMy5zJ1X
+zZnMnsydzZTNh82dzYVhzY/Nk82UzLnMvMyjbMy0zZTMsMykzJ/NlOG4vcyrLs2V
+WsyuzJ7MoM2ZzZTNheG4gMyXzJ7NiMy7zJfhuLbNmc2OzK/MucyezZNHzLtPzK3Ml8yu
+
+#	Unicode Upsidedown
+#
+#	Strings which contain unicode with an "upsidedown" effect (via http://www.upsidedowntext.com)
+
+y5nJkG5i4bSJbMmQIMmQdcaDyZDJryDHncm5b2xvcCDKh8edIMedyblvccmQbCDKh24gyod1bnDh
+tIlw4bSJyZR14bSJIMm5b2TJr8edyocgcG/Jr3Nu4bSJx50gb3AgcMedcyAnyofhtIlsx50gxoN1
+4bSJyZRz4bSJZOG0iXDJkCDJuW7Kh8edyofJlMedc3VvyZQgJ8qHx53Jr8mQIMqH4bSJcyDJuW9s
+b3Agya9uc2ThtIkgya/Hncm5b8ul
+MDDLmcaWJC0=
+
+#	Unicode font
+#
+#	Strings which contain bold/italic/etc. versions of normal characters
+
+77y0772I772FIO+9ke+9le+9ie+9g++9iyDvvYLvvZLvvY/vvZfvvY4g772G772P772YIO+9iu+9
+le+9je+9kO+9kyDvvY/vvZbvvYXvvZIg772U772I772FIO+9jO+9ge+9mu+9mSDvvYTvvY/vvYc=
+8J2Qk/CdkKHwnZCeIPCdkKrwnZCu8J2QovCdkJzwnZCkIPCdkJvwnZCr8J2QqPCdkLDwnZCnIPCd
+kJ/wnZCo8J2QsSDwnZCj8J2QrvCdkKbwnZCp8J2QrCDwnZCo8J2Qr/CdkJ7wnZCrIPCdkK3wnZCh
+8J2QniDwnZCl8J2QmvCdkLPwnZCyIPCdkJ3wnZCo8J2QoA==
+8J2Vv/Cdlo3wnZaKIPCdlpbwnZaa8J2WjvCdlojwnZaQIPCdlofwnZaX8J2WlPCdlpzwnZaTIPCd
+lovwnZaU8J2WnSDwnZaP8J2WmvCdlpLwnZaV8J2WmCDwnZaU8J2Wm/CdlorwnZaXIPCdlpnwnZaN
+8J2WiiDwnZaR8J2WhvCdlp/wnZaeIPCdlonwnZaU8J2WjA==
+8J2Ru/CdkonwnZKGIPCdkpLwnZKW8J2SivCdkoTwnZKMIPCdkoPwnZKT8J2SkPCdkpjwnZKPIPCd
+kofwnZKQ8J2SmSDwnZKL8J2SlvCdko7wnZKR8J2SlCDwnZKQ8J2Sl/CdkobwnZKTIPCdkpXwnZKJ
+8J2ShiDwnZKN8J2SgvCdkpvwnZKaIPCdkoXwnZKQ8J2SiA==
+8J2To/Cdk7HwnZOuIPCdk7rwnZO+8J2TsvCdk6zwnZO0IPCdk6vwnZO78J2TuPCdlIDwnZO3IPCd
+k6/wnZO48J2UgSDwnZOz8J2TvvCdk7bwnZO58J2TvCDwnZO48J2Tv/Cdk67wnZO7IPCdk73wnZOx
+8J2TriDwnZO18J2TqvCdlIPwnZSCIPCdk63wnZO48J2TsA==
+8J2Vi/CdlZnwnZWWIPCdlaLwnZWm8J2VmvCdlZTwnZWcIPCdlZPwnZWj8J2VoPCdlajwnZWfIPCd
+lZfwnZWg8J2VqSDwnZWb8J2VpvCdlZ7wnZWh8J2VpCDwnZWg8J2Vp/CdlZbwnZWjIPCdlaXwnZWZ
+8J2VliDwnZWd8J2VkvCdlavwnZWqIPCdlZXwnZWg8J2VmA==
+8J2ag/CdmpHwnZqOIPCdmprwnZqe8J2akvCdmozwnZqUIPCdmovwnZqb8J2amPCdmqDwnZqXIPCd
+mo/wnZqY8J2aoSDwnZqT8J2anvCdmpbwnZqZ8J2anCDwnZqY8J2an/Cdmo7wnZqbIPCdmp3wnZqR
+8J2ajiDwnZqV8J2aivCdmqPwnZqiIPCdmo3wnZqY8J2akA==
+4pKv4pKj4pKgIOKSrOKSsOKSpOKSnuKSpiDikp3ikq3ikqrikrLikqkg4pKh4pKq4pKzIOKSpeKS
+sOKSqOKSq+KSriDikqrikrHikqDikq0g4pKv4pKj4pKgIOKSp+KSnOKSteKStCDikp/ikqrikqI=
+
+#	Script Injection
+#
+#	Strings which attempt to invoke a benign script injection; shows vulnerability to XSS
+
+PHNjcmlwdD5hbGVydCgxMjMpPC9zY3JpcHQ+
+Jmx0O3NjcmlwdCZndDthbGVydCgmIzM5OzEyMyYjMzk7KTsmbHQ7L3NjcmlwdCZndDs=
+PGltZyBzcmM9eCBvbmVycm9yPWFsZXJ0KDEyMykgLz4=
+PHN2Zz48c2NyaXB0PjEyMzwxPmFsZXJ0KDEyMyk8L3NjcmlwdD4=
+Ij48c2NyaXB0PmFsZXJ0KDEyMyk8L3NjcmlwdD4=
+Jz48c2NyaXB0PmFsZXJ0KDEyMyk8L3NjcmlwdD4=
+PjxzY3JpcHQ+YWxlcnQoMTIzKTwvc2NyaXB0Pg==
+PC9zY3JpcHQ+PHNjcmlwdD5hbGVydCgxMjMpPC9zY3JpcHQ+
+PCAvIHNjcmlwdCA+PCBzY3JpcHQgPmFsZXJ0KDEyMyk8IC8gc2NyaXB0ID4=
+b25mb2N1cz1KYVZhU0NyaXB0OmFsZXJ0KDEyMykgYXV0b2ZvY3Vz
+IiBvbmZvY3VzPUphVmFTQ3JpcHQ6YWxlcnQoMTIzKSBhdXRvZm9jdXM=
+JyBvbmZvY3VzPUphVmFTQ3JpcHQ6YWxlcnQoMTIzKSBhdXRvZm9jdXM=
+77ycc2NyaXB077yeYWxlcnQoMTIzKe+8nC9zY3JpcHTvvJ4=
+PHNjPHNjcmlwdD5yaXB0PmFsZXJ0KDEyMyk8L3NjPC9zY3JpcHQ+cmlwdD4=
+LS0+PHNjcmlwdD5hbGVydCgxMjMpPC9zY3JpcHQ+
+IjthbGVydCgxMjMpO3Q9Ig==
+JzthbGVydCgxMjMpO3Q9Jw==
+SmF2YVNDcmlwdDphbGVydCgxMjMp
+O2FsZXJ0KDEyMyk7
+c3JjPUphVmFTQ3JpcHQ6cHJvbXB0KDEzMik=
+Ij48c2NyaXB0PmFsZXJ0KDEyMyk7PC9zY3JpcHQgeD0i
+Jz48c2NyaXB0PmFsZXJ0KDEyMyk7PC9zY3JpcHQgeD0n
+PjxzY3JpcHQ+YWxlcnQoMTIzKTs8L3NjcmlwdCB4PQ==
+IiBhdXRvZm9jdXMgb25rZXl1cD0iamF2YXNjcmlwdDphbGVydCgxMjMp
+JyBhdXRvZm9jdXMgb25rZXl1cD0namF2YXNjcmlwdDphbGVydCgxMjMp
+PHNjcmlwdFx4MjB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPmphdmFzY3JpcHQ6YWxlcnQoMSk7PC9z
+Y3JpcHQ+
+PHNjcmlwdFx4M0V0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPmphdmFzY3JpcHQ6YWxlcnQoMSk7PC9z
+Y3JpcHQ+
+PHNjcmlwdFx4MER0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPmphdmFzY3JpcHQ6YWxlcnQoMSk7PC9z
+Y3JpcHQ+
+PHNjcmlwdFx4MDl0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPmphdmFzY3JpcHQ6YWxlcnQoMSk7PC9z
+Y3JpcHQ+
+PHNjcmlwdFx4MEN0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPmphdmFzY3JpcHQ6YWxlcnQoMSk7PC9z
+Y3JpcHQ+
+PHNjcmlwdFx4MkZ0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPmphdmFzY3JpcHQ6YWxlcnQoMSk7PC9z
+Y3JpcHQ+
+PHNjcmlwdFx4MEF0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiPmphdmFzY3JpcHQ6YWxlcnQoMSk7PC9z
+Y3JpcHQ+
+J2AiPjxceDNDc2NyaXB0PmphdmFzY3JpcHQ6YWxlcnQoMSk8L3NjcmlwdD4=
+J2AiPjxceDAwc2NyaXB0PmphdmFzY3JpcHQ6YWxlcnQoMSk8L3NjcmlwdD4=
+QUJDPGRpdiBzdHlsZT0ieFx4M0FleHByZXNzaW9uKGphdmFzY3JpcHQ6YWxlcnQoMSkiPkRFRg==
+QUJDPGRpdiBzdHlsZT0ieDpleHByZXNzaW9uXHg1QyhqYXZhc2NyaXB0OmFsZXJ0KDEpIj5ERUY=
+QUJDPGRpdiBzdHlsZT0ieDpleHByZXNzaW9uXHgwMChqYXZhc2NyaXB0OmFsZXJ0KDEpIj5ERUY=
+QUJDPGRpdiBzdHlsZT0ieDpleHBceDAwcmVzc2lvbihqYXZhc2NyaXB0OmFsZXJ0KDEpIj5ERUY=
+QUJDPGRpdiBzdHlsZT0ieDpleHBceDVDcmVzc2lvbihqYXZhc2NyaXB0OmFsZXJ0KDEpIj5ERUY=
+QUJDPGRpdiBzdHlsZT0ieDpceDBBZXhwcmVzc2lvbihqYXZhc2NyaXB0OmFsZXJ0KDEpIj5ERUY=
+QUJDPGRpdiBzdHlsZT0ieDpceDA5ZXhwcmVzc2lvbihqYXZhc2NyaXB0OmFsZXJ0KDEpIj5ERUY=
+QUJDPGRpdiBzdHlsZT0ieDpceEUzXHg4MFx4ODBleHByZXNzaW9uKGphdmFzY3JpcHQ6YWxlcnQo
+MSkiPkRFRg==
+QUJDPGRpdiBzdHlsZT0ieDpceEUyXHg4MFx4ODRleHByZXNzaW9uKGphdmFzY3JpcHQ6YWxlcnQo
+MSkiPkRFRg==
+QUJDPGRpdiBzdHlsZT0ieDpceEMyXHhBMGV4cHJlc3Npb24oamF2YXNjcmlwdDphbGVydCgxKSI+
+REVG
+QUJDPGRpdiBzdHlsZT0ieDpceEUyXHg4MFx4ODBleHByZXNzaW9uKGphdmFzY3JpcHQ6YWxlcnQo
+MSkiPkRFRg==
+QUJDPGRpdiBzdHlsZT0ieDpceEUyXHg4MFx4OEFleHByZXNzaW9uKGphdmFzY3JpcHQ6YWxlcnQo
+MSkiPkRFRg==
+QUJDPGRpdiBzdHlsZT0ieDpceDBEZXhwcmVzc2lvbihqYXZhc2NyaXB0OmFsZXJ0KDEpIj5ERUY=
+QUJDPGRpdiBzdHlsZT0ieDpceDBDZXhwcmVzc2lvbihqYXZhc2NyaXB0OmFsZXJ0KDEpIj5ERUY=
+QUJDPGRpdiBzdHlsZT0ieDpceEUyXHg4MFx4ODdleHByZXNzaW9uKGphdmFzY3JpcHQ6YWxlcnQo
+MSkiPkRFRg==
+QUJDPGRpdiBzdHlsZT0ieDpceEVGXHhCQlx4QkZleHByZXNzaW9uKGphdmFzY3JpcHQ6YWxlcnQo
+MSkiPkRFRg==
+QUJDPGRpdiBzdHlsZT0ieDpceDIwZXhwcmVzc2lvbihqYXZhc2NyaXB0OmFsZXJ0KDEpIj5ERUY=
+QUJDPGRpdiBzdHlsZT0ieDpceEUyXHg4MFx4ODhleHByZXNzaW9uKGphdmFzY3JpcHQ6YWxlcnQo
+MSkiPkRFRg==
+QUJDPGRpdiBzdHlsZT0ieDpceDAwZXhwcmVzc2lvbihqYXZhc2NyaXB0OmFsZXJ0KDEpIj5ERUY=
+QUJDPGRpdiBzdHlsZT0ieDpceEUyXHg4MFx4OEJleHByZXNzaW9uKGphdmFzY3JpcHQ6YWxlcnQo
+MSkiPkRFRg==
+QUJDPGRpdiBzdHlsZT0ieDpceEUyXHg4MFx4ODZleHByZXNzaW9uKGphdmFzY3JpcHQ6YWxlcnQo
+MSkiPkRFRg==
+QUJDPGRpdiBzdHlsZT0ieDpceEUyXHg4MFx4ODVleHByZXNzaW9uKGphdmFzY3JpcHQ6YWxlcnQo
+MSkiPkRFRg==
+QUJDPGRpdiBzdHlsZT0ieDpceEUyXHg4MFx4ODJleHByZXNzaW9uKGphdmFzY3JpcHQ6YWxlcnQo
+MSkiPkRFRg==
+QUJDPGRpdiBzdHlsZT0ieDpceDBCZXhwcmVzc2lvbihqYXZhc2NyaXB0OmFsZXJ0KDEpIj5ERUY=
+QUJDPGRpdiBzdHlsZT0ieDpceEUyXHg4MFx4ODFleHByZXNzaW9uKGphdmFzY3JpcHQ6YWxlcnQo
+MSkiPkRFRg==
+QUJDPGRpdiBzdHlsZT0ieDpceEUyXHg4MFx4ODNleHByZXNzaW9uKGphdmFzY3JpcHQ6YWxlcnQo
+MSkiPkRFRg==
+QUJDPGRpdiBzdHlsZT0ieDpceEUyXHg4MFx4ODlleHByZXNzaW9uKGphdmFzY3JpcHQ6YWxlcnQo
+MSkiPkRFRg==
+PGEgaHJlZj0iXHgwQmphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgwRmphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHhDMlx4QTBqYXZhc2NyaXB0OmphdmFzY3JpcHQ6YWxlcnQoMSkiIGlkPSJmdXp6
+ZWxlbWVudDEiPnRlc3Q8L2E+
+PGEgaHJlZj0iXHgwNWphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHhFMVx4QTBceDhFamF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHgxOGphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgxMWphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHhFMlx4ODBceDg4amF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHhFMlx4ODBceDg5amF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHhFMlx4ODBceDgwamF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHgxN2phdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgwM2phdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgwRWphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgxQWphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgwMGphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgxMGphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHhFMlx4ODBceDgyamF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHgyMGphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgxM2phdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgwOWphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHhFMlx4ODBceDhBamF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHgxNGphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgxOWphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHhFMlx4ODBceEFGamF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHgxRmphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHhFMlx4ODBceDgxamF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHgxRGphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHhFMlx4ODBceDg3amF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHgwN2phdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHhFMVx4OUFceDgwamF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHhFMlx4ODBceDgzamF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHgwNGphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgwMWphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgwOGphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHhFMlx4ODBceDg0amF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHhFMlx4ODBceDg2amF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHhFM1x4ODBceDgwamF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHgxMmphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgwRGphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgwQWphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgwQ2phdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgxNWphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHhFMlx4ODBceEE4amF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHgxNmphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgwMmphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgxQmphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHgwNmphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHhFMlx4ODBceEE5amF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHhFMlx4ODBceDg1amF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHgxRWphdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iXHhFMlx4ODFceDlGamF2YXNjcmlwdDpqYXZhc2NyaXB0OmFsZXJ0KDEpIiBpZD0i
+ZnV6emVsZW1lbnQxIj50ZXN0PC9hPg==
+PGEgaHJlZj0iXHgxQ2phdmFzY3JpcHQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iamF2YXNjcmlwdFx4MDA6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iamF2YXNjcmlwdFx4M0E6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iamF2YXNjcmlwdFx4MDk6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iamF2YXNjcmlwdFx4MEQ6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+PGEgaHJlZj0iamF2YXNjcmlwdFx4MEE6amF2YXNjcmlwdDphbGVydCgxKSIgaWQ9ImZ1enplbGVt
+ZW50MSI+dGVzdDwvYT4=
+YCInPjxpbWcgc3JjPXh4eDp4IFx4MEFvbmVycm9yPWphdmFzY3JpcHQ6YWxlcnQoMSk+
+YCInPjxpbWcgc3JjPXh4eDp4IFx4MjJvbmVycm9yPWphdmFzY3JpcHQ6YWxlcnQoMSk+
+YCInPjxpbWcgc3JjPXh4eDp4IFx4MEJvbmVycm9yPWphdmFzY3JpcHQ6YWxlcnQoMSk+
+YCInPjxpbWcgc3JjPXh4eDp4IFx4MERvbmVycm9yPWphdmFzY3JpcHQ6YWxlcnQoMSk+
+YCInPjxpbWcgc3JjPXh4eDp4IFx4MkZvbmVycm9yPWphdmFzY3JpcHQ6YWxlcnQoMSk+
+YCInPjxpbWcgc3JjPXh4eDp4IFx4MDlvbmVycm9yPWphdmFzY3JpcHQ6YWxlcnQoMSk+
+YCInPjxpbWcgc3JjPXh4eDp4IFx4MENvbmVycm9yPWphdmFzY3JpcHQ6YWxlcnQoMSk+
+YCInPjxpbWcgc3JjPXh4eDp4IFx4MDBvbmVycm9yPWphdmFzY3JpcHQ6YWxlcnQoMSk+
+YCInPjxpbWcgc3JjPXh4eDp4IFx4MjdvbmVycm9yPWphdmFzY3JpcHQ6YWxlcnQoMSk+
+YCInPjxpbWcgc3JjPXh4eDp4IFx4MjBvbmVycm9yPWphdmFzY3JpcHQ6YWxlcnQoMSk+
+ImAnPjxzY3JpcHQ+XHgzQmphdmFzY3JpcHQ6YWxlcnQoMSk8L3NjcmlwdD4=
+ImAnPjxzY3JpcHQ+XHgwRGphdmFzY3JpcHQ6YWxlcnQoMSk8L3NjcmlwdD4=
+ImAnPjxzY3JpcHQ+XHhFRlx4QkJceEJGamF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHhFMlx4ODBceDgxamF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHhFMlx4ODBceDg0amF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHhFM1x4ODBceDgwamF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHgwOWphdmFzY3JpcHQ6YWxlcnQoMSk8L3NjcmlwdD4=
+ImAnPjxzY3JpcHQ+XHhFMlx4ODBceDg5amF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHhFMlx4ODBceDg1amF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHhFMlx4ODBceDg4amF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHgwMGphdmFzY3JpcHQ6YWxlcnQoMSk8L3NjcmlwdD4=
+ImAnPjxzY3JpcHQ+XHhFMlx4ODBceEE4amF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHhFMlx4ODBceDhBamF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHhFMVx4OUFceDgwamF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHgwQ2phdmFzY3JpcHQ6YWxlcnQoMSk8L3NjcmlwdD4=
+ImAnPjxzY3JpcHQ+XHgyQmphdmFzY3JpcHQ6YWxlcnQoMSk8L3NjcmlwdD4=
+ImAnPjxzY3JpcHQ+XHhGMFx4OTBceDk2XHg5QWphdmFzY3JpcHQ6YWxlcnQoMSk8L3NjcmlwdD4=
+ImAnPjxzY3JpcHQ+LWphdmFzY3JpcHQ6YWxlcnQoMSk8L3NjcmlwdD4=
+ImAnPjxzY3JpcHQ+XHgwQWphdmFzY3JpcHQ6YWxlcnQoMSk8L3NjcmlwdD4=
+ImAnPjxzY3JpcHQ+XHhFMlx4ODBceEFGamF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHg3RWphdmFzY3JpcHQ6YWxlcnQoMSk8L3NjcmlwdD4=
+ImAnPjxzY3JpcHQ+XHhFMlx4ODBceDg3amF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHhFMlx4ODFceDlGamF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHhFMlx4ODBceEE5amF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHhDMlx4ODVqYXZhc2NyaXB0OmFsZXJ0KDEpPC9zY3JpcHQ+
+ImAnPjxzY3JpcHQ+XHhFRlx4QkZceEFFamF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHhFMlx4ODBceDgzamF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHhFMlx4ODBceDhCamF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHhFRlx4QkZceEJFamF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHhFMlx4ODBceDgwamF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHgyMWphdmFzY3JpcHQ6YWxlcnQoMSk8L3NjcmlwdD4=
+ImAnPjxzY3JpcHQ+XHhFMlx4ODBceDgyamF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHhFMlx4ODBceDg2amF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHhFMVx4QTBceDhFamF2YXNjcmlwdDphbGVydCgxKTwvc2NyaXB0Pg==
+ImAnPjxzY3JpcHQ+XHgwQmphdmFzY3JpcHQ6YWxlcnQoMSk8L3NjcmlwdD4=
+ImAnPjxzY3JpcHQ+XHgyMGphdmFzY3JpcHQ6YWxlcnQoMSk8L3NjcmlwdD4=
+ImAnPjxzY3JpcHQ+XHhDMlx4QTBqYXZhc2NyaXB0OmFsZXJ0KDEpPC9zY3JpcHQ+
+PGltZyBceDAwc3JjPXggb25lcnJvcj0iYWxlcnQoMSkiPg==
+PGltZyBceDQ3c3JjPXggb25lcnJvcj0iamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBceDExc3JjPXggb25lcnJvcj0iamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBceDEyc3JjPXggb25lcnJvcj0iamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZ1x4NDdzcmM9eCBvbmVycm9yPSJqYXZhc2NyaXB0OmFsZXJ0KDEpIj4=
+PGltZ1x4MTBzcmM9eCBvbmVycm9yPSJqYXZhc2NyaXB0OmFsZXJ0KDEpIj4=
+PGltZ1x4MTNzcmM9eCBvbmVycm9yPSJqYXZhc2NyaXB0OmFsZXJ0KDEpIj4=
+PGltZ1x4MzJzcmM9eCBvbmVycm9yPSJqYXZhc2NyaXB0OmFsZXJ0KDEpIj4=
+PGltZ1x4NDdzcmM9eCBvbmVycm9yPSJqYXZhc2NyaXB0OmFsZXJ0KDEpIj4=
+PGltZ1x4MTFzcmM9eCBvbmVycm9yPSJqYXZhc2NyaXB0OmFsZXJ0KDEpIj4=
+PGltZyBceDQ3c3JjPXggb25lcnJvcj0iamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBceDM0c3JjPXggb25lcnJvcj0iamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBceDM5c3JjPXggb25lcnJvcj0iamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBceDAwc3JjPXggb25lcnJvcj0iamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBzcmNceDA5PXggb25lcnJvcj0iamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBzcmNceDEwPXggb25lcnJvcj0iamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBzcmNceDEzPXggb25lcnJvcj0iamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBzcmNceDMyPXggb25lcnJvcj0iamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBzcmNceDEyPXggb25lcnJvcj0iamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBzcmNceDExPXggb25lcnJvcj0iamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBzcmNceDAwPXggb25lcnJvcj0iamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBzcmNceDQ3PXggb25lcnJvcj0iamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBzcmM9eFx4MDlvbmVycm9yPSJqYXZhc2NyaXB0OmFsZXJ0KDEpIj4=
+PGltZyBzcmM9eFx4MTBvbmVycm9yPSJqYXZhc2NyaXB0OmFsZXJ0KDEpIj4=
+PGltZyBzcmM9eFx4MTFvbmVycm9yPSJqYXZhc2NyaXB0OmFsZXJ0KDEpIj4=
+PGltZyBzcmM9eFx4MTJvbmVycm9yPSJqYXZhc2NyaXB0OmFsZXJ0KDEpIj4=
+PGltZyBzcmM9eFx4MTNvbmVycm9yPSJqYXZhc2NyaXB0OmFsZXJ0KDEpIj4=
+PGltZ1thXVtiXVtjXXNyY1tkXT14W2Vdb25lcnJvcj1bZl0iYWxlcnQoMSkiPg==
+PGltZyBzcmM9eCBvbmVycm9yPVx4MDkiamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBzcmM9eCBvbmVycm9yPVx4MTAiamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBzcmM9eCBvbmVycm9yPVx4MTEiamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBzcmM9eCBvbmVycm9yPVx4MTIiamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBzcmM9eCBvbmVycm9yPVx4MzIiamF2YXNjcmlwdDphbGVydCgxKSI+
+PGltZyBzcmM9eCBvbmVycm9yPVx4MDAiamF2YXNjcmlwdDphbGVydCgxKSI+
+PGEgaHJlZj1qYXZhJiMxJiMyJiMzJiM0JiM1JiM2JiM3JiM4JiMxMSYjMTJzY3JpcHQ6amF2YXNj
+cmlwdDphbGVydCgxKT5YWFg8L2E+
+PGltZyBzcmM9InhgIGA8c2NyaXB0PmphdmFzY3JpcHQ6YWxlcnQoMSk8L3NjcmlwdD4iYCBgPg==
+PGltZyBzcmMgb25lcnJvciAvIiAnIj0gYWx0PWphdmFzY3JpcHQ6YWxlcnQoMSkvLyI+
+PHRpdGxlIG9ucHJvcGVydHljaGFuZ2U9amF2YXNjcmlwdDphbGVydCgxKT48L3RpdGxlPjx0aXRs
+ZSB0aXRsZT0+
+PGEgaHJlZj1odHRwOi8vZm9vLmJhci8jeD1geT48L2E+PGltZyBhbHQ9ImA+PGltZyBzcmM9eDp4
+IG9uZXJyb3I9amF2YXNjcmlwdDphbGVydCgxKT48L2E+Ij4=
+PCEtLVtpZl0+PHNjcmlwdD5qYXZhc2NyaXB0OmFsZXJ0KDEpPC9zY3JpcHQgLS0+
+PCEtLVtpZjxpbWcgc3JjPXggb25lcnJvcj1qYXZhc2NyaXB0OmFsZXJ0KDEpLy9dPiAtLT4=
+PHNjcmlwdCBzcmM9Ii9cJShqc2NyaXB0KXMiPjwvc2NyaXB0Pg==
+PHNjcmlwdCBzcmM9IlxcJShqc2NyaXB0KXMiPjwvc2NyaXB0Pg==
+PElNRyAiIiI+PFNDUklQVD5hbGVydCgiWFNTIik8L1NDUklQVD4iPg==
+PElNRyBTUkM9amF2YXNjcmlwdDphbGVydChTdHJpbmcuZnJvbUNoYXJDb2RlKDg4LDgzLDgzKSk+
+PElNRyBTUkM9IyBvbm1vdXNlb3Zlcj0iYWxlcnQoJ3h4cycpIj4=
+PElNRyBTUkM9IG9ubW91c2VvdmVyPSJhbGVydCgneHhzJykiPg==
+PElNRyBvbm1vdXNlb3Zlcj0iYWxlcnQoJ3h4cycpIj4=
+PElNRyBTUkM9JiMxMDY7JiM5NzsmIzExODsmIzk3OyYjMTE1OyYjOTk7JiMxMTQ7JiMxMDU7JiMx
+MTI7JiMxMTY7JiM1ODsmIzk3OyYjMTA4OyYjMTAxOyYjMTE0OyYjMTE2OyYjNDA7JiMzOTsmIzg4
+OyYjODM7JiM4MzsmIzM5OyYjNDE7Pg==
+PElNRyBTUkM9JiMwMDAwMTA2JiMwMDAwMDk3JiMwMDAwMTE4JiMwMDAwMDk3JiMwMDAwMTE1JiMw
+MDAwMDk5JiMwMDAwMTE0JiMwMDAwMTA1JiMwMDAwMTEyJiMwMDAwMTE2JiMwMDAwMDU4JiMwMDAw
+MDk3JiMwMDAwMTA4JiMwMDAwMTAxJiMwMDAwMTE0JiMwMDAwMTE2JiMwMDAwMDQwJiMwMDAwMDM5
+JiMwMDAwMDg4JiMwMDAwMDgzJiMwMDAwMDgzJiMwMDAwMDM5JiMwMDAwMDQxPg==
+PElNRyBTUkM9JiN4NkEmI3g2MSYjeDc2JiN4NjEmI3g3MyYjeDYzJiN4NzImI3g2OSYjeDcwJiN4
+NzQmI3gzQSYjeDYxJiN4NkMmI3g2NSYjeDcyJiN4NzQmI3gyOCYjeDI3JiN4NTgmI3g1MyYjeDUz
+JiN4MjcmI3gyOT4=
+PElNRyBTUkM9ImphdiAgIGFzY3JpcHQ6YWxlcnQoJ1hTUycpOyI+
+PElNRyBTUkM9ImphdiYjeDA5O2FzY3JpcHQ6YWxlcnQoJ1hTUycpOyI+
+PElNRyBTUkM9ImphdiYjeDBBO2FzY3JpcHQ6YWxlcnQoJ1hTUycpOyI+
+PElNRyBTUkM9ImphdiYjeDBEO2FzY3JpcHQ6YWxlcnQoJ1hTUycpOyI+
+cGVybCAtZSAncHJpbnQgIjxJTUcgU1JDPWphdmFcMHNjcmlwdDphbGVydChcIlhTU1wiKT4iOycg
+PiBvdXQ=
+PElNRyBTUkM9IiAmIzE0OyAgamF2YXNjcmlwdDphbGVydCgnWFNTJyk7Ij4=
+PFNDUklQVC9YU1MgU1JDPSJodHRwOi8vaGEuY2tlcnMub3JnL3hzcy5qcyI+PC9TQ1JJUFQ+
+PEJPRFkgb25sb2FkISMkJSYoKSp+Ky1fLiw6Oz9AWy98XF1eYD1hbGVydCgiWFNTIik+
+PFNDUklQVC9TUkM9Imh0dHA6Ly9oYS5ja2Vycy5vcmcveHNzLmpzIj48L1NDUklQVD4=
+PDxTQ1JJUFQ+YWxlcnQoIlhTUyIpOy8vPDwvU0NSSVBUPg==
+PFNDUklQVCBTUkM9aHR0cDovL2hhLmNrZXJzLm9yZy94c3MuanM/PCBCID4=
+PFNDUklQVCBTUkM9Ly9oYS5ja2Vycy5vcmcvLmo+
+PElNRyBTUkM9ImphdmFzY3JpcHQ6YWxlcnQoJ1hTUycpIg==
+PGlmcmFtZSBzcmM9aHR0cDovL2hhLmNrZXJzLm9yZy9zY3JpcHRsZXQuaHRtbCA8
+XCI7YWxlcnQoJ1hTUycpOy8v
+PHUgb25jb3B5PWFsZXJ0KCk+IENvcHkgbWU8L3U+
+PGkgb253aGVlbD1hbGVydCgxKT4gU2Nyb2xsIG92ZXIgbWUgPC9pPg==
+PHBsYWludGV4dD4=
+aHR0cDovL2EvJSUzMCUzMA==
+PC90ZXh0YXJlYT48c2NyaXB0PmFsZXJ0KDEyMyk8L3NjcmlwdD4=
+
+#	SQL Injection
+#
+#	Strings which can cause a SQL injection if inputs are not sanitized
+
+MTtEUk9QIFRBQkxFIHVzZXJz
+MSc7IERST1AgVEFCTEUgdXNlcnMtLSAx
+JyBPUiAxPTEgLS0gMQ==
+JyBPUiAnMSc9JzE=
+
+JQ==
+Xw==
+
+#	Server Code Injection
+#
+#	Strings which can cause user to run code on server as a privileged user (c.f. https://news.ycombinator.com/item?id=7665153)
+
+LQ==
+LS0=
+LS12ZXJzaW9u
+LS1oZWxw
+JFVTRVI=
+L2Rldi9udWxsOyB0b3VjaCAvdG1wL2JsbnMuZmFpbCA7IGVjaG8=
+YHRvdWNoIC90bXAvYmxucy5mYWlsYA==
+JCh0b3VjaCAvdG1wL2JsbnMuZmFpbCk=
+QHtbc3lzdGVtICJ0b3VjaCAvdG1wL2JsbnMuZmFpbCJdfQ==
+
+#	Command Injection (Ruby)
+#
+#	Strings which can call system commands within Ruby/Rails applications
+
+ZXZhbCgicHV0cyAnaGVsbG8gd29ybGQnIik=
+U3lzdGVtKCJscyAtYWwgLyIp
+YGxzIC1hbCAvYA==
+S2VybmVsLmV4ZWMoImxzIC1hbCAvIik=
+S2VybmVsLmV4aXQoMSk=
+JXgoJ2xzIC1hbCAvJyk=
+
+#      XXE Injection (XML)
+#
+#	String which can reveal system files when parsed by a badly configured XML parser
+
+PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iSVNPLTg4NTktMSI/PjwhRE9DVFlQRSBmb28g
+WyA8IUVMRU1FTlQgZm9vIEFOWSA+PCFFTlRJVFkgeHhlIFNZU1RFTSAiZmlsZTovLy9ldGMvcGFz
+c3dkIiA+XT48Zm9vPiZ4eGU7PC9mb28+
+
+#	Unwanted Interpolation
+#
+#	Strings which can be accidentally expanded into different strings if evaluated in the wrong context, e.g. used as a printf format string or via Perl or shell eval. Might expose sensitive data from the program doing the interpolation, or might just represent the wrong string.
+
+JEhPTUU=
+JEVOVnsnSE9NRSd9
+JWQ=
+JXMlcyVzJXMlcw==
+ezB9
+JSouKnM=
+JUA=
+JW4=
+RmlsZTovLy8=
+
+#	File Inclusion
+#
+#	Strings which can cause user to pull in files that should not be a part of a web server
+
+Li4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vZXRjL3Bhc3N3ZCUwMA==
+Li4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vLi4vZXRjL2hvc3Rz
+
+#	Known CVEs and Vulnerabilities
+#
+#	Strings that test for known vulnerabilities
+
+KCkgeyAwOyB9OyB0b3VjaCAvdG1wL2JsbnMuc2hlbGxzaG9jazEuZmFpbDs=
+KCkgeyBfOyB9ID5fWyQoJCgpKV0geyB0b3VjaCAvdG1wL2JsbnMuc2hlbGxzaG9jazIuZmFpbDsg
+fQ==
+PDw8ICVzKHVuPSclcycpID0gJXU=
+KysrQVRIMA==
+
+#	MSDOS/Windows Special Filenames
+#
+#	Strings which are reserved characters in MSDOS/Windows
+
+Q09O
+UFJO
+QVVY
+Q0xPQ0sk
+TlVM
+QTo=
+Wlo6
+Q09NMQ==
+TFBUMQ==
+TFBUMg==
+TFBUMw==
+Q09NMg==
+Q09NMw==
+Q09NNA==
+
+#   IRC specific strings
+#
+#   Strings that may occur on IRC clients that make security products freak out
+
+RENDIFNFTkQgU1RBUlRLRVlMT0dHRVIgMCAwIDA=
+
+#	Scunthorpe Problem
+#
+#	Innocuous strings which may be blocked by profanity filters (https://en.wikipedia.org/wiki/Scunthorpe_problem)
+
+U2N1bnRob3JwZSBHZW5lcmFsIEhvc3BpdGFs
+UGVuaXN0b25lIENvbW11bml0eSBDaHVyY2g=
+TGlnaHR3YXRlciBDb3VudHJ5IFBhcms=
+SmltbXkgQ2xpdGhlcm9l
+SG9ybmltYW4gTXVzZXVt
+c2hpdGFrZSBtdXNocm9vbXM=
+Um9tYW5zSW5TdXNzZXguY28udWs=
+aHR0cDovL3d3dy5jdW0ucWMuY2Ev
+Q3JhaWcgQ29ja2J1cm4sIFNvZnR3YXJlIFNwZWNpYWxpc3Q=
+TGluZGEgQ2FsbGFoYW4=
+RHIuIEhlcm1hbiBJLiBMaWJzaGl0eg==
+bWFnbmEgY3VtIGxhdWRl
+U3VwZXIgQm93bCBYWFg=
+bWVkaWV2YWwgZXJlY3Rpb24gb2YgcGFyYXBldHM=
+ZXZhbHVhdGU=
+bW9jaGE=
+ZXhwcmVzc2lvbg==
+QXJzZW5hbCBjYW5hbA==
+Y2xhc3NpYw==
+VHlzb24gR2F5
+RGljayBWYW4gRHlrZQ==
+YmFzZW1lbnQ=
+
+#	Human injection
+#
+#	Strings which may cause human to reinterpret worldview
+
+SWYgeW91J3JlIHJlYWRpbmcgdGhpcywgeW91J3ZlIGJlZW4gaW4gYSBjb21hIGZvciBhbG1vc3Qg
+MjAgeWVhcnMgbm93LiBXZSdyZSB0cnlpbmcgYSBuZXcgdGVjaG5pcXVlLiBXZSBkb24ndCBrbm93
+IHdoZXJlIHRoaXMgbWVzc2FnZSB3aWxsIGVuZCB1cCBpbiB5b3VyIGRyZWFtLCBidXQgd2UgaG9w
+ZSBpdCB3b3Jrcy4gUGxlYXNlIHdha2UgdXAsIHdlIG1pc3MgeW91Lg==
+
+#	Terminal escape codes
+#
+#	Strings which punish the fools who use cat/type on this file
+
+Um9zZXMgYXJlIBtbMDszMW1yZWQbWzBtLCB2aW9sZXRzIGFyZSAbWzA7MzRtYmx1ZS4gSG9wZSB5
+b3UgZW5qb3kgdGVybWluYWwgaHVl
+QnV0IG5vdy4uLhtbMjBDZm9yIG15IGdyZWF0ZXN0IHRyaWNrLi4uG1s4bQ==
+VGhlIHF1aWMICAgICAhrIGJyb3duIGZvBwcHBwcHBwcHBwd4Li4uIFtCZWVlZXBd
+
+#	iOS Vulnerabilities
+#
+#	Strings which crashed iMessage in various versions of iOS
+
+UG93ZXLZhNmP2YTZj9i12ZHYqNmP2YTZj9mE2LXZkdio2Y/Ysdix2Ysg4KWjIOClo2gg4KWjIOCl
+o+WGlw==
+8J+PszDwn4yI77iP
+4LCc4LGN4LCe4oCM4LC+
+=======
+
+# Persian special characters
+#
+# This is a four characters string which includes Persian special characters (گچپژ)
+
+2q/ahtm+2pg=
+
+# jinja2 injection
+#
+# first one is supposed to raise "MemoryError" exception
+# second, obviously, prints contents of /etc/passwd
+
+eyUgcHJpbnQgJ3gnICogNjQgKiAxMDI0KiozICV9
+e3sgIiIuX19jbGFzc19fLl9fbXJvX19bMl0uX19zdWJjbGFzc2VzX18oKVs0MF0oIi9ldGMvcGFz
+c3dkIikucmVhZCgpIH19

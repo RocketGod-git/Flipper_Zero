@@ -1,0 +1,29 @@
+[anon@yourmomsb0x madcrypt]$ make clean;make;./madcrypt -v calc.exe
+rm madcrypt
+rm *.o
+gcc -m32 -I./include -c madcrypt.c -o madcrypt.o
+nasm -f elf stubs/win32_exe.s -o win32_exe.o
+gcc -m32 -o madcrypt madcrypt.o win32_exe.o
+PE format detected.
+Loading Information For Injection.
+
+File Header
+	Number of sections: 3
+
+Optional Header
+	Address Of Entry Point: 0x00012475
+	Image Base: 0x01000000
+	Section Alignment: 4096
+	File Alignment: 512
+	Size Of Image: 126976
+
+Data Directory
+	Virtual Address: 0x00012b80
+	Size: 140
+
+Loader image
+	Loader Size: 47
+	Entry Point: 0x01012475
+	Key: 0xc0ffeeee
+	Size: 63
+[anon@yourmomsb0x madcrypt]$

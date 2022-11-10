@@ -1,0 +1,10 @@
+REM start with the mario head as a base to modify that to go
+through custom bsod list till one obviosly works
+REM add VID/PID
+DELAY 300
+REM add cmd opening functions+delay
+REM insert webget functions to start custom mario head
+Delay 300
+ENTER
+REM ??????
+REM PROFIT!!!

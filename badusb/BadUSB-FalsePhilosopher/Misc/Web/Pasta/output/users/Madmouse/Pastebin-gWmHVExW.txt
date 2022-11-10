@@ -1,0 +1,510 @@
+
+#include <madlib.h>
+
+///!!!!!!!!!!!!!!!!!!!!!!!!! SPECIAL LIBC MAGIX !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+extern void (*__preinit_array_start []) (int, char **, char **);
+extern void (*__preinit_array_end []) (int, char **, char **);
+extern void (*__init_array_start []) (int, char **, char **);
+extern void (*__init_array_end []) (int, char **, char **);
+extern void (*__fini_array_start []) (void);
+extern void (*__fini_array_end []) (void);
+
+extern void _init (void);
+extern void _fini (void);
+
+char** __environ;
+int errno;
+
+
+void __libc_csu_fini(int e)
+{
+#if defined(DEBUG)
+    puts(__FUNCTION__);
+#endif
+    size_t i = __fini_array_end - __fini_array_start;
+    while(i-- > 0)
+        (*__fini_array_start[i])();
+    _fini();
+    exit(e);
+}
+
+
+void __libc_init(int argc, char** argv, char** envp)
+{
+    const size_t size = __preinit_array_end - __preinit_array_start;
+    size_t i;
+    for(i = 0; i < size; i++)
+        (*__preinit_array_start[i])(argc, argv, envp);
+}
+
+void __libc_init_first(int argc, char** argv, char** envp)
+{
+#if defined(DEBUG)
+    puts(__FUNCTION__);
+#endif
+    __environ = envp;
+    __libc_init(argc, argv, envp);
+}
+
+void __libc_csu_init(int argc, char** argv, char** envp)
+{
+#if defined(DEBUG)
+    puts(__FUNCTION__);
+#endif
+    _init();
+    
+    size_t i;
+    const size_t size = __init_array_end - __init_array_start;
+    for(i = 0; i < size; i++)
+        (*__init_array_start[i])(argc, argv, envp);
+}
+
+
+void __attribute__((noreturn)) __libc_start_main(
+    int (*main) (int, char**, char**),
+    int argc, char** ubp_av,
+    void (*init) (int, char**, char**),
+    void (*fini) (int),
+    void (*rtld_fini) (void),
+    void (*stack_end))
+{
+#if defined(DEBUG)
+    puts(__FUNCTION__);
+#endif
+    char** argv = (char**) ubp_av;
+    char** envp = &argv[argc + 1];
+    int ret;
+
+    char* ld_show_auxv = envpv(envp, "LD_SHOW_AUXV");
+    if(ld_show_auxv != NULL && ld_show_auxv[0] == '1')
+    {
+        char** p = envp;
+        while(*p++ != NULL);
+#if defined(__x86_64__)
+        Elf64_auxv_t* auxv;
+        for(auxv = (Elf64_auxv_t*) p; auxv->a_type != AT_NULL; auxv++)
+#elif defined(__i386__)
+        Elf32_auxv_t* auxv;
+        for(auxv = (Elf32_auxv_t*) p; auxv->a_type != AT_NULL; auxv++)
+#elif defined(__arm__)
+        Elf32_auxv_t* auxv;
+        for(auxv = (Elf32_auxv_t*) p; auxv->a_type != AT_NULL; auxv++)
+#endif
+        {
+            switch(auxv->a_type)
+            {
+                case AT_IGNORE:
+                    break;
+                case AT_EXECFD:
+                    printf("AT_EXECFD:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_PHDR:
+                    printf("AT_PHDR:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_PHENT:
+                    printf("AT_PHENT:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_PHNUM:
+                    printf("AT_PHNUM:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_PAGESZ:
+                    printf("AT_PAGESZ:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_BASE:
+                    printf("AT_BASE:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_FLAGS:
+                    printf("AT_FLAGS:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_ENTRY:
+                    printf("AT_ENTRY:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_NOTELF:
+                    printf("AT_NOTELF:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_UID:
+                    printf("AT_UID:\t\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_EUID:
+                    printf("AT_EUID:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_GID:
+                    printf("AT_GID:\t\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_EGID:
+                    printf("AT_EGID:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_CLKTCK:
+                    printf("AT_CLKTCK:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_PLATFORM:
+                    printf("AT_PLATFORM:\t%s\n", (char*) auxv->a_un.a_val);
+                    break;
+                case AT_HWCAP:
+                    printf("AT_hwcap:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_FPUCW:
+                    printf("AT_FPUCW:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_DCACHEBSIZE:
+                    printf("AT_DCACHEBSIZE:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_ICACHEBSIZE:
+                    printf("AT_ICACHEBSIZE:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_UCACHEBSIZE:
+                    printf("AT_UCACHEBSIZE:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_IGNOREPPC:
+                    printf("AT_IGNOREPPC:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_SECURE:
+                    printf("AT_SECURE:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_BASE_PLATFORM:
+                    printf("AT_BASE_PLATFORM:\t%s\n", (char*) auxv->a_un.a_val);
+                    break;
+                case AT_RANDOM:
+                    printf("AT_RANDOM:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_HWCAP2:
+                    printf("AT_HWCAP2:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_EXECFN:
+                    printf("AT_EXECFN:\t%s\n", (char*) auxv->a_un.a_val);
+                    break;
+                case AT_SYSINFO:
+                    printf("AT_SYSINFO:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_SYSINFO_EHDR:
+                    printf("AT_SYSINFO_EHDR:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_L1I_CACHESHAPE:
+                    printf("AT_L1I_CACHESHAPE:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_L1D_CACHESHAPE:
+                    printf("AT_L1D_CACHESHAPE:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_L2_CACHESHAPE:
+                    printf("AT_L2_CACHESHAPE:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                case AT_L3_CACHESHAPE:
+                    printf("AT_L3_CACHESHAPE:\t%i\n", (int) auxv->a_un.a_val);
+                    break;
+                default:
+                    break;
+            }
+        }
+
+    }
+    __libc_init_first(argc, argv, envp);
+    init(argc, argv, envp);
+
+    ret = main(argc, argv, envp);
+    fini(ret);
+    __builtin_unreachable();
+}
+
+// This prints an "Assertion failed" message and aborts.
+void __attribute__((noreturn)) __assert_fail (
+    const char* __assertion, const char* __file,
+    unsigned int __line, const char* __function)
+{
+    printf("%s:%i: %s: Assertion (%s) failed.\n", __file, __line, __function, __assertion);
+    exit(-1);
+    __builtin_unreachable();
+}
+
+// Likewise, but prints the error text for ERRNUM.
+void __attribute__((noreturn)) __assert_perror_fail(
+    int __errnum, const char* __file,
+    unsigned int __line, const char* __function)
+{
+    printf("Errnum: %i -> %s:%i:%s\n", __errnum, __file, __line, __function);
+    exit(-1);
+    __builtin_unreachable();
+}
+
+
+// The following is not at all used here but needed for standard compliance.
+void __attribute__((noreturn)) __assert(
+    const char* __assertion,
+    const char* __file, int __line)
+{
+    printf("%s:%i: Assertion (%s) failed.\n", __file, __line, __assertion);
+    exit(-1);
+    __builtin_unreachable();
+}
+
+
+///!!!!!!!!!!!!!!!!!!!!!!!!!!! SYSCALL STUFF !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+long int syscall(size_t size, ...)
+{
+    va_list argp;
+    long int*  a[7];
+    size_t i;
+    
+    va_start(argp, size);
+    for(i = 0;i <= size && size <= 7;i++)
+        a[i] = (long int*) va_arg(argp, long int);
+    va_end(argp);
+
+#if defined(__x86_64__)
+    register uint64_t ret asm("rax");
+    asm(".intel_syntax noprefix\n"
+        "push %6\n"
+        "push %5\n"
+        "push %4\n"
+        "push %3\n"
+        "push %2\n"
+        "push %1\n"
+        "push %0\n"
+        "pop rax\n"
+        "pop rdi\n"
+        "pop rsi\n"
+        "pop rdx\n"
+        "pop r10\n"
+        "pop r8\n"
+        "pop r9\n"
+	"syscall\n"
+	::"g"((uint64_t) a[0]),
+            "g"((uint64_t) a[1]),
+            "g"((uint64_t) a[2]),
+            "g"((uint64_t) a[3]),
+            "g"((uint64_t) a[4]),
+            "g"((uint64_t) a[5]),
+            "g"((uint64_t) a[6])
+    );
+
+#elif defined(__i386__)
+    register uint32_t ret asm("eax");
+    asm(".intel_syntax noprefix\n"
+        "push %5\n"
+        "push %4\n"
+        "push %3\n"
+        "push %2\n"
+        "push %1\n"
+        "push %0\n"
+        "pop eax\n"
+        "pop ebx\n"
+        "pop ecx\n"
+        "pop edx\n"
+        "pop esi\n"
+        "pop edi\n"
+	"int 0x80\n"
+	::"g"((uint32_t) a[0]),
+        "g"((uint32_t) a[1]),
+        "g"((uint32_t) a[2]),
+        "g"((uint32_t) a[3]),
+        "g"((uint32_t) a[4]),
+        "g"((uint32_t) a[5])
+    );
+
+#elif defined(__arm__)
+
+#else
+#   error "Architecture not supported."
+#endif
+    return (errno = ret) >= 0 ? ret : -1;
+}
+
+///!!!!!!!!!!!!!!!!!!!!!!!!!!! SYSCALL FUNCTIONS !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+void __attribute__((noreturn)) exit(int e)
+{
+    syscall(1, SYS_EXIT, e);
+    __builtin_unreachable();
+}
+
+int brk(void* addr)
+{
+
+}
+
+void* sbrk(intptr_t increment)
+{
+
+}
+
+int unlink(const char* pathname)
+{
+    return syscall(1, SYS_UNLINK, pathname);
+}
+
+int unlinkat(int dirfd, const char* pathname, int flags)
+{
+    return syscall(3, SYS_UNLINKAT, dirfd, pathname, flags);
+}
+
+int rmdir(const char* pathname)
+{
+    return syscall(1, SYS_RMDIR, pathname);
+}
+
+
+///!!!!!!!!!!!!!!!!!!!!!!!!!!! MEMORY AND I/O !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+void* malloc(size_t size)
+{
+    void* p = sbrk(0);
+    void* request = sbrk(size);
+    if(request == (void*) -1)
+        return NULL; 
+    assert(p == request); // Not thread safe.
+    return p;
+}
+void free(void* ptr);
+
+void* calloc(size_t nmemb, size_t size);
+void* realloc(void* ptr, size_t size);
+
+void* memset(void* s, int c, size_t n)
+{
+    unsigned char* p = (unsigned char*) s;
+    for(;n > 0;n--)
+        p[n - 1] = (unsigned char) c;
+    return s;
+}
+
+void* memcpy(void* dest, const void* src, size_t n)
+{
+    unsigned char* a = (unsigned char*) dest;
+    const unsigned char* b = (const unsigned char*) src;
+    int i;
+    for(i = 0;i < n;i++) a[i] = b[i];
+    return dest;
+}
+
+
+
+int strcmp(const char* s1, const char* s2)
+{
+    int i,c;
+    if((c = strlen(s1) - strlen(s2)) != 0)
+        return c;
+    for(i = 0;i < strlen(s1);i++)
+        if(s1[i] != s2[i])
+            return -1;
+    return 0;
+}
+
+size_t strlen(const char* s)
+{
+    size_t size = 0;
+    for(;s[size] != 0;size++);
+    return size;
+}
+
+char* envpv(char** envp, char* key)
+{
+    int i,c;
+    for(i = 0;envp[i] != NULL;i++)
+        for(c = 0;envp[i][c] != NULL;c++)
+            if(envp[i][c] == '=')
+            {
+                char k[c + 1];
+                char* v = (char*) envp[i] + c + 1;
+                memset(k, 0, sizeof(k));
+                memcpy(k, envp[i], c);
+                if(strcmp(key, k) == 0)
+                    return v;
+                break;
+            }
+    return NULL;
+}
+
+int putch(char c)
+{
+    char s[1] = {c};
+    return syscall(3, SYS_WRITE, 0, s, 1);
+}
+
+int puts(const char* s)
+{
+    if(s == NULL) return -1;
+    int ret = syscall(3, SYS_WRITE, 0, s, strlen(s));
+    syscall(3, SYS_WRITE, 0, "\n", 1);
+    return ret;
+}
+
+char *getline(char* __s, int __size);
+char *gets(char* __s);
+char getch(void);
+
+
+int printf(const char* format, ...)
+{
+    va_list argp;
+    char* p;
+    int i, c, ip, ccount;
+    va_start(argp, format);
+    for(i = 0;format[i] != NULL;i++)
+    {
+        switch(format[i])
+        {
+            case '%':
+                i++;
+                switch(format[i])
+                {
+                    case 's':
+                        p = (char*) va_arg(argp, char*);
+                        for(c = 0;p[c] != NULL;c++)
+                            putch(p[c]);
+                            ccount++;
+                        continue;
+                    case 'i':
+                        ip = (int) va_arg(argp, int);
+                        ccount += printf(itoa(ip));
+                        continue;
+                    case '%':
+                        putch('%');
+                        ccount++;
+                        continue;
+                }
+                continue;
+            default:
+                putch(format[i]);
+                ccount++;
+                continue;
+        }
+    }
+    va_end(argp);
+    return ccount;
+}
+int fprintf(FILE* stream, const char* format, ...);
+int sprintf(char* str, const char* format, ...);
+int snprintf(char* str, size_t size, const char *format, ...);
+
+
+
+
+///!!!!!!!!!!!!!!!!!!!!!!!!!!! CONVERTION FUNCTIONS !!!!!!!!!!!!!!!!!!!!!!!!!!!!
+void reverse(char* s)
+{
+    int i, j;
+    char c;
+    for(i = 0, j = strlen(s) - 1; i<j; i++, j--)
+    {
+        c = s[i];
+        s[i] = s[j];
+        s[j] = c;
+    }
+}
+char* itoa(int n)
+{
+    int i, sign, size;
+    for(i=0;i > 0;i/=10)size++;
+    char s[size]; // make realistic when fixing 
+    if ((sign = n) < 0)
+        n = -n;
+    i = 0;
+    do
+    {   // generate digits in reverse order
+        s[i++] = n % 10 + '0';
+    } while ((n /= 10) > 0);
+    if (sign < 0)
+        s[i++] = '-';
+    s[i] = '\0';
+    reverse(s);
+    return s;
+}

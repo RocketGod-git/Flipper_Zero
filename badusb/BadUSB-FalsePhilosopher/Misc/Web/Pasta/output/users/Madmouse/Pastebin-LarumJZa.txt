@@ -1,0 +1,36 @@
+├── asm
+│   ├── (ebook pdf) Art of Assembly.pdf
+│   ├── [eBook] Windows Assembly Language & Systems Programming, 2nd edition (R&D Books).pdf
+│   ├── nasmdoc.pdf
+│   └── pcasm-book.pdf
+├── c - cpp
+│   ├── CodeWarrior C and C++ and Assembly Language Reference.pdf
+│   ├── Linux.C++.Programming.HOWTO.pdf
+│   ├── O'Reilly-C Programming.pdf
+│   └── Sams - C++ Unleashed-en-pdf.pdf
+├── extra advanced goodies for later
+│   ├── A_Buffer_Overflow_Study_-_Attacks_and_Defenses_(2002).pdf
+│   ├── advanced polymorphic techniques.pdf
+│   ├── Anti Debugging Tricks Release 2 by Inbar Raz.txt
+│   ├── ANTI HEURISTIC TECHNIQUES.txt
+│   ├── bof-demystified.txt
+│   ├── CD And DVD Forensics.pdf
+│   ├── CRC Press - Cyber Crime Investigator's Field Guide.pdf
+│   ├── Designing BSD Rootkits - An Introduction to Kernel Hacking~tqw~_darksiderg.pdf
+│   ├── exploitng windows device drivers.pdf
+│   ├── Freebie - How to Create Keygens.pdf
+│   ├── linux-shellcode.txt
+│   ├── PE.pdf
+│   ├── shellcode-handbook.pdf
+│   └── utf8_shellcodes.txt
+├── python
+│   ├── python_for_data_analysis.pdf
+│   ├── thinkpython.pdf
+│   └── Violent_Python_A_Cookbook_for_Hackers_Forensic_Ana.pdf
+└── reverse engineering
+    ├── biosdisassembly.pdf
+    ├── Computer - Programming - C - C++_Reverse_Engineering_Tutorial.pdf
+    ├── Crackproof Your Software (2002).pdf
+    ├── Reverse_engineering_for_beginners-en.pdf
+    ├── Springer.Reverse.Engineering.of.Object.Oriented.Code.Monographs.in.Computer.Science.eBook-kB.pdf
+    └── Wiley.Reversing.Secrets.of.Reverse.Engineering.Apr.2005.eBook-DDU.pdf

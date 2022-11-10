@@ -1,0 +1,74 @@
+[bits 64]
+
+section .text
+global _start
+
+org 0x08048000
+ehdr:                                      ; Elf64_Ehdr
+	db 0x7F, "ELF", 2, 1, 1, 0         ;   e_ident
+	times 8 db      0
+	dw 2                               ;   e_type
+	dw 62                              ;   e_machine
+	dd 1                               ;   e_version
+	dq _start                          ;   e_entry
+	dq phdr - $$                       ;   e_phoff
+	dq 0                               ;   e_shoff
+	dd 0                               ;   e_flags
+	dw ehdrsize                        ;   e_ehsize
+	dw phdrsize                        ;   e_phentsize
+	dw 1                               ;   e_phnum
+	dw 0                               ;   e_shentsize
+	dw 0                               ;   e_shnum
+	dw 0                               ;   e_shstrndx
+	ehdrsize equ $ - ehdr
+phdr:                                      ; Elf64_Phdr
+	dd 1                               ;   p_type
+	dd 7                               ;   p_flags
+	dq 0                               ;   p_offset
+	dq $$                              ;   p_vaddr
+	dq $$                              ;   p_paddr
+	dq filesize                        ;   p_filesz
+	dq filesize                        ;   p_memsz
+	dq 0x1000                          ;   p_align
+	phdrsize equ $ - phdr
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+_start:
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; exit syscall
+    mov rax, 0x909090050f583c6a
+    push rax            ; push the code above to stack
+
+;    xor rdx, rdx
+;    mov dl, 15
+;    syscall
+    mov rax, 0x90050f0fb2d23148
+    push rax
+
+;    xor rax, rax
+;    mov al, 1
+;    mov rdi, rax
+    mov rax, 0xc7894801b0c03148
+    push rax
+
+;    push rsi
+;    push rsp
+;    pop rsi
+;    xor rdx, rdx
+;    mov dl, 8
+    mov rax, 0x08b2d231485e5456
+    push rax
+
+;    sub rsp, 32
+;    mov rsi, 0x0a2121216f6c6548
+    mov rax, 0x0a2121216f6c6548
+    push rax
+    mov rax, 0xbe4820ec83489090
+    push rax
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+    push rsp            ; return pointer
+    ret ; run code
+
+filesize equ $ - $$

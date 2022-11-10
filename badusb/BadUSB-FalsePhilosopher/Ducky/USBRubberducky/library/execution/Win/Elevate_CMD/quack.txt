@@ -1,0 +1,3 @@
+REM FalsePhilosopher
+REM Target win 7-11
+REM build script using info

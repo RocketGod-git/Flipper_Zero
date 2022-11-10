@@ -1,0 +1,150 @@
+[bits 64]
+global _start
+exit:
+mov rax, 60
+xor rdi, rdi
+syscall
+
+
+_start:
+mov rcx, 1
+lea r8, [jmprcx_lookup]
+mov r10, qword [jmprcx_replacement]
+call engine
+
+mov rcx, 2
+lea r8, [jmprax_lookup]
+mov r10, qword [jmprax_replacement]
+call engine
+
+mov rcx, 3
+lea r8, [jmprbx_lookup]
+mov r10, qword [jmprbx_replacement]
+call engine
+
+mov rax, exit
+jmp10: jmp rax
+nop
+nop
+mov rax, exit
+jmp12: jmp rax
+nop
+nop
+
+mov rcx, exit
+jmp15: jmp rcx
+nop
+nop
+
+mov rbx, exit
+jmp18: jmp rbx
+nop
+nop
+mov rbx, exit
+jmp20: jmp rbx
+nop
+nop
+mov rbx, exit
+jmp22: jmp rbx
+nop
+nop
+
+
+
+
+
+
+
+; George Marsaglia's xorshift PRNG
+; t = rsi
+prng_state:
+w: dq 60
+x: dq 0
+y: dq 3000
+z: dq 99999
+
+prng_seed:
+rdtsc
+mov qword [x], rax
+ret
+
+prng:
+; t = x
+mov rsi, qword [x]
+; t ^= t << 11
+mov rax, rsi
+shl rax, 11
+xor rsi, rax
+; t ^= t >> 8
+mov rax, rsi
+shr rax, 8
+xor rsi, rax
+; x = y, y = z, z = w
+push qword [w]
+push qword [y]
+push qword [z]
+pop qword [y]
+pop qword [x]
+pop qword [z]
+; w ^= w >> 19
+mov rax, [w]
+shr rax, 19
+xor qword [w], rax
+; w ^= t
+xor qword [w], rsi
+
+; return w
+mov rax, qword [w]
+ret
+
+
+; counter set externally
+engine:
+
+call prng_seed
+eloop:
+; copy address in lookup table iterator
+mov r9, qword [r8]
+
+; flip a coin
+call prng
+and rax, 2
+
+; modify operation
+jnz b_jmp
+
+shr r10, 32
+mov dword [r9], r10d
+jmp end_jmp
+b_jmp:
+mov dword [r9], r10d
+end_jmp:
+
+; flip a coin
+call prng
+and rax, 2
+
+; shift in nops if zero
+jnz no_shift
+shl dword [r9], 16
+or dword [r9], 0x9090
+no_shift:
+
+; iterate to next address
+add r8, 8
+loop eloop
+
+ret
+
+jmprcx_replacement: dq 0x9090e1ff9090c351
+jmprcx_lookup:
+dq jmp15
+jmprax_replacement: dq 0x9090e0ff9090c350
+jmprax_lookup:
+dq jmp10
+dq jmp12
+jmprbx_replacement: dq 0x9090e3ff9090c353
+jmprbx_lookup:
+dq jmp18
+dq jmp20
+dq jmp22

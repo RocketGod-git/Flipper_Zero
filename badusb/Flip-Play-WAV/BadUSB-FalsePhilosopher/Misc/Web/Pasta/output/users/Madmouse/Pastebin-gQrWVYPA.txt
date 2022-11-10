@@ -1,0 +1,30 @@
+[anon@localhost regexgen]$ cat test
+(888)745-6601
+5037456503
+503-745-6503
+5037456503
+(503) 745-6601
+
+5037456503
+5037456503
+(503)745-6601
+5037456503
+(503)745-6601
+(503)745-6601
+5037456503
+(503)745-6601
+
+(503) 745-6601
+
+[anon@localhost regexgen]$ ./regex.py test
+Pass_1 = 
+	NNNNNNNNNN
+	NNN-NNN-NNNN
+	-NNN-NNN-NNNN
+	-NNN-SNNN-NNNN
+Pass_2 = 
+	['NNNNNNNNNN']
+	['NNN', '-', 'NNN', '-', 'NNNN']
+	['-', 'NNN', '-', 'NNN', '-', 'NNNN']
+	['-', 'NNN', '-', 'S', 'NNN', '-', 'NNNN']
+[anon@localhost regexgen]$

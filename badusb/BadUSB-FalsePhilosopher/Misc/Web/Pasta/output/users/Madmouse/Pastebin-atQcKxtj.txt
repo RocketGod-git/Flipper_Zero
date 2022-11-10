@@ -1,0 +1,45 @@
+// play like this lol:
+// $ gcc -fno-stack-protector -z execstack lol.c -o lol
+/////////////////////////////////////////////////////////
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+//; I SPEAK TEH TRUFF
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+//_start:
+//	xor eax, eax
+//	mov al, 0x1
+//	xor rdi, rdi
+//	ret
+//
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+//; decoder foo
+//;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+//_start:
+//	mov rcx, rsi	; move size argument into rcx for the loop
+//	mov rsi, rdi	; move the the text pointer to rsi
+//	xor rax, rax	; clear out registers
+//	xor rdi, rdi
+//decode:				; decode text
+//	xor byte [rsi], 0xFF
+//	inc rsi
+//loop decode
+//	xor rax, rax
+//	ret
+
+
+typedef unsigned char by;
+
+main(m)
+{
+	// functional shellcode that takes encrypted shellcode and encodes / decodes it
+	m="\x48\x89\xf1\x48\x89\xfe\x48\x31\xc0"\
+	  "\x48\x31\xd2\x48\x31\xff\x80\x36\xff"\
+	  "\x48\xff\xc6\xe2\xf8\xc3";
+	
+	// encrypted opaque predicate
+	by e[]="\xce\x3f\x4f\xfe\xb7\xce\x00\x3c";
+	((void(*)(void*,int))m)(e,8); // decode the opaque function
+
+	// check for always true, and re encode the shellcode
+	if(((int(*)())e)()+((int(*)(void*,int))m)(e,8))	
+		puts("I spaek teh truff");		// say something funny
+}

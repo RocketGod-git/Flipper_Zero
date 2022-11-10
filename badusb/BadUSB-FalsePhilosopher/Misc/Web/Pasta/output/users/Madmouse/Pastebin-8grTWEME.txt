@@ -1,0 +1,66 @@
+
+
+//
+// A program that generates encrypted executable code and a key for use in assembly
+//	Written by: MadMouse
+
+#include <stdio.h>
+#include <string.h>
+#include <unistd.h>
+#include <time.h>
+
+
+// a generic mix algorithm for seeding the random number generator
+long unsigned int mix(long unsigned int a, long unsigned int b, long unsigned int c)
+{
+	a=a-b;  a=a-c;  a=a^(c >> 13);
+	b=b-c;  b=b-a;  b=b^(a << 8);
+	c=c-a;  c=c-b;  c=c^(b >> 13);
+	a=a-b;  a=a-c;  a=a^(c >> 12);
+	b=b-c;  b=b-a;  b=b^(a << 16);
+	c=c-a;  c=c-b;  c=c^(b >> 5);
+	a=a-b;  a=a-c;  a=a^(c >> 3);
+	b=b-c;  b=b-a;  b=b^(a << 10);
+	c=c-a;  c=c-b;  c=c^(b >> 15);
+	return c;
+}
+
+// a semi reasonable seeding function
+void seed_prng(void)
+{
+	unsigned int urandom;
+	FILE* urandomF = fopen("/dev/urandom", "r");
+	fread(&urandom, sizeof(int), 1, urandomF);
+	fclose(urandomF);
+	long unsigned int seed = mix(clock(), urandom, getpid());
+
+	srand(seed);
+	return;
+}
+
+int main(void)
+{
+	const char evil[] = "\xe8\x0c\x00\x00\x00\x68\x65\x6c\x6c\x6f\x20\x77\x6f\x72\x6c\x64\x0a\x5e\xb0\x5e\xb0\x01\x40\x88\xc7\xb2\x0c\x0f\x05\xb0\x3c\x48\x31\xff\x0f\x05";
+	char key[sizeof(evil)];
+	
+	int i;
+	
+	printf("\n\t; key data\n\tdb ");	// print out a comment and start description of our data
+	for(i=0;i<=sizeof(evil);i++)		// for the size of evil payload
+	{
+		seed_prng();			// get some randomness
+		key[i] = rand()%255;		// write a random byte to the key
+		printf("0x%02x",0xFF&(key[i]));	// print it out
+		if(i!=sizeof(evil))printf(",");	// maintain commas because DUH lol
+	}
+	
+	printf("\n\t; encrypted code:\n\tdb ");	// same fluff as before
+	for(i=0;i<=sizeof(evil);i++)
+	{
+		printf("0x%02x",0xFF&(key[i]^evil[i])); // xor the curretn key byte with the current evil byte
+		if(i!=sizeof(evil))printf(",");	// maintain fluff
+	}
+	printf("\nsize: %i\n\n",i);	// print out the size so that we can set up offsets later
+	
+	return 0;	// WOOOT, all done ;)
+}

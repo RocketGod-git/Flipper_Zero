@@ -1,0 +1,22 @@
+class Intel_x86_64
+{
+	private:
+		std::map<std::string, std::array<unsigned, 64>> opcodes;
+		std::map<long unsigned, std::array<unsigned, 7>> operand_types;
+		std::map<long unsigned, std::array<unsigned, 7>> prefixes;
+		
+		void load_prefix_map(void);
+		void load_inst_map(void);
+		void load_reg_map(void);
+		void load_op_map(void);
+
+		bool encode_instruction(std::vector<int>* bcode, unsigned in);
+		void encode_little_endian(std::vector<int>* bcode, long unsigned in);
+		
+	public:
+		std::map<std::string, std::array<unsigned, 7>> registers;
+		
+		void init(void);
+		int check_syntax(std::vector<std::string> line);
+		std::vector<int> assemble(std::vector<std::string> code, long unsigned prev_bytes);
+};

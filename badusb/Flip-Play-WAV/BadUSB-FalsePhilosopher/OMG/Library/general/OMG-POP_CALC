@@ -1,0 +1,13 @@
+REM       OMG: POP_CALC
+REM       Version 1.0
+REM       OS: Windows and Linux
+REM       Author: Kalani
+REM       Requirements: Any O.MG device running v2.5 firmware or greater.
+REM       Description: On execution, this payload will cause the target 
+REM       computer to launch the Calculator. This is tested working on 
+REM       Windows 2000 - Windows 11, and multiple Linux distributions 
+REM       running KDE or Qt derivative Desktop Environments. It may run 
+REM       elsewhere, but has not been tested.
+
+DELAY 2000
+POP_CALC

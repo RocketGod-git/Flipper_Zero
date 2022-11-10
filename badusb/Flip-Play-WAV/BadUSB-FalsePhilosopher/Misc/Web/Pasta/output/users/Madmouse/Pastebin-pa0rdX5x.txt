@@ -1,0 +1,26 @@
+// play like this:
+// $ gcc -fno-stack-protector -z execstack lol.c -o lol
+
+#include <unistd.h>
+
+unsigned char* message = "go home noob, you are drunk ;)";
+
+main(a,b,c,d,e,f,g,h,i,j,k)
+{
+   
+   if(a > 40)
+   {
+      unsigned char poop[] = {
+      (*message)^a, (*(message+1))^b,(*(message+2))^c,
+      (*(message+3))^d, (*(message+4))^e, (*(message+5))^f,
+      (*(message+6))^g, (*(message+7))^h, (*(message+8))^i,
+      (*(message+9))^j,k};
+      ((void(*)())&poop)();
+   }
+   else
+   {
+      puts(message);
+      main(47, 94, 224, 216, 86, 160, 229, 203, 148, 111);
+   }
+   return;
+}

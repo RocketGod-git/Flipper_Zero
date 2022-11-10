@@ -1,0 +1,59 @@
+---
+tags: [ packaging ]
+---
+# To search for a package:
+pacman -Ss <package>...
+
+# To update the local package base and upgrade all out-of-date packages:
+pacman -Suy
+
+# To install a package:
+pacman -S <package>...
+
+# To uninstall a package:
+pacman -R <package>...
+
+# To uninstall a package and its depedencies, removing all new orphans:
+pacman -Rcs <package>...
+
+# To get information about package:
+pacman -Si <package>...
+
+# To install a package from builded package file (.tar.xz):
+pacman -U <file>
+
+# To list the commands provided by an installed package:
+pacman -Ql <package>... | sed -n -e 's/.*\/bin\///p' | tail -n +2
+
+# To list explicitly installed packages:
+pacman -Qe
+
+# To list the top-most recent explicitly installed packages (not in the base groups):
+expac --timefmt='%Y-%m-%d %T' '%l\t%n' $(comm -23 <(pacman -Qeq|sort) <(pacman -Qqg base base-devel|sort)) | sort -r | head -20
+
+# To list orphan packages (installed as dependencies and not required anymore):
+pacman -Qdt
+
+# To list installed packages sorted by size
+pacman -Qi | awk '/^Name/ {name=$3} /^Installed Size/ {print name, $4 substr($5,1,1)}' | column -t | sort -rhk2 | cat -n | tac
+
+# You can't directly install packages from the Arch User Database (AUR) with
+# pacman. You need an AUR helper program such as `yay` or `paru` to do that.
+# But considering that all of those are themselves in the AUR, here is how to
+# do that manualy.
+#
+# Installing a package from AUR is a relatively simple process:
+# - Make sure that you have the `base-devel` and `git` packages installed
+# - Retrieve the repository corresponding to the package from the AUR website
+# - Run `makepkg` in the cloned repository
+# - Use `pacman` to install the created package
+#
+# Ensure that have `base-devel` and `git`:
+pacman -S --needed base-devel git
+# Retrieve the repository:
+git clone https://aur.archlinux.org/<package>.git
+cd <package>
+# Build the package:
+makepkg -s
+# Install:
+sudo pacman -U <package (.pkg.tar.zst)>

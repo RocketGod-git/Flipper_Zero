@@ -1,0 +1,48 @@
+;////////////////////////////////////////////////////////////////////////////////
+;// THE SCOTCH-WARE LICENSE (Revision 0):
+;// <aaronryool/gmail.com> wrote this file. As long as you retain this notice you
+;// can do whatever you want with this stuff. If we meet some day, and you think
+;// this stuff is worth it, you can buy me a shot of scotch in return
+;////////////////////////////////////////////////////////////////////////////////
+
+; George Marsaglia's xorshift PRNG
+; t = r10
+prng_state:
+w: dq 99999
+x: dq 100
+y: dq 35
+z: dq 27365
+
+prng_seed:
+rdtsc
+mov qword [x], rax
+ret
+
+prng:
+; t = x
+mov r10, qword [x]
+; t ^= t << 11
+mov rax, r10
+shl rax, 11
+xor r10, rax
+; t ^= t >> 8
+mov rax, r10
+shr rax, 8
+xor r10, rax
+; x = y, y = z, z = w
+push qword [w]
+push qword [y]
+push qword [z]
+pop qword [y]
+pop qword [x]
+pop qword [z]
+; w ^= w >> 19
+mov rax, [w]
+shr rax, 19
+xor qword [w], rax
+; w ^= t
+xor qword [w], r10
+
+; return w
+mov rax, qword [w]
+ret

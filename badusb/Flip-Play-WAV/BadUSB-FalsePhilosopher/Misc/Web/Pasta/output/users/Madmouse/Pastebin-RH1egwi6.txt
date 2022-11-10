@@ -1,0 +1,24 @@
+// ----------------------------------------------------------------------------
+// "THE BEER-WARE LICENSE" (Revision 43):
+// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return Aaron R. Yool
+// ----------------------------------------------------------------------------
+// Email me your answers :D
+//
+// install gcc-multilib first...
+//
+// then compile like this:
+//   gcc -m32 challenge.c -o ima
+
+main(int count, char **arg)
+{
+// HINT: Follow the rabbit, and you will find the answer you are looking for while he rests.
+//	 you just have to read between the lines.
+   ((void(*)(void*))
+      "\x55\x89\xe5\x8b\x5d\x08\x31\xc0\x74\x04\x62"
+      "\x6d\x39\x76\x04\x09\x40\xcd\x80\xeb\x03\x59"
+      "\x69\x41\x31\xd9\x75\x05\x36\x55\x41\x3d\x3d"
+      "\xb0\x01\x31\xdb\xcd\x80"
+   )(arg[0]);
+}

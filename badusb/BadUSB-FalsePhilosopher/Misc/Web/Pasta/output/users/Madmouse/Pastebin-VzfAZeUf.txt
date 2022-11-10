@@ -1,0 +1,22 @@
+PE File Detected
+Loading Information For Injection.
+Performing implant.
+Injecting our nasty payload FUD style :D
+file offset of loader: 4168
+
+Loader image
+	Loader Size: 77
+	Entry Point: 0x00401280
+	Flags: 0x00000001
+	Canary: 0xc0ffeeee
+	Crypted canary: 0xe65c10da
+	Size: 93
+
+Key: 26a3fe34
+New entry point: 00401c58
+Old entry point: 00401280
+8704	test.exe
+8704	test_new.exe
+6986548db015e3e9a3eaac7557f043ea  test.exe
+055dfc687ad034a8a51c1053cf8f05b8  test_new.exe
+Hello world!

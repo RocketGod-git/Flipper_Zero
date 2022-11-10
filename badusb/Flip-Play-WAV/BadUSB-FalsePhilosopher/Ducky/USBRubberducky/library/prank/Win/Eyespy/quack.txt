@@ -1,0 +1,5 @@
+REM FalsePhilosopher
+REM wip
+REM target win
+REM After you press Windows Key + “+” a magnifying glass pop-up will appear. You need to drag this to the very bottom of the screen so it’s completely out of view (this is so your friend can’t close the programme). Once your friend hovers over something it will magnify in the top portion of the screen. It can be extremely annoying if you cannot close it. https://theverybesttop10.com/computer-shortcuts-that-could-be-used-for-evil/
+WINDOWS+“+”

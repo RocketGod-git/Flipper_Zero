@@ -1,0 +1,70 @@
+REM Title: Morphues
+REM Description: Installs wsl ubuntu on windows host > establishs new user/passwd > updates > installs cmatrix > fullscreen
+REM Author: evodefense
+REM Target: Windows 10/11
+REM This payload is usable to help windows users find there way out of the matrix, with a little help from 
+REM Morphues by Evodefense for use in good karma only with permission and within all applicable authoritys and regulations.
+REM This could be used to introduce windows user to linux as a start to escaping the matrix.
+REM I could not of made this without the community and amazing amount of educational material online for free. Thx
+
+REM open powershell
+GUI r
+DELAY 1000
+STRING powershell 
+DELAY 1000
+Enter
+DELAY 1000
+
+REM install windows sub linux subsitute distro of choice
+
+STRING wsl --install -d Ubuntu
+DELAY 2500
+ENTER
+DELAY 18000
+
+REM delay above this rem long delay for download adjust based speeds
+
+REM Mr. Anderson will be our user
+
+STRING neo
+DELAY 2500
+Enter
+DELAY 2500
+
+REM A password to follow rabbits or penguins work best
+
+STRING 1Whiter@bbit
+DELAY 2500
+Enter
+DELAY 2500
+STRING 1Whiter@bbit
+DELAY 2500
+Enter
+DELAY 2500
+
+REM need new repos needed
+
+STRING sudo apt update
+Delay 2500
+Enter
+STRING 1Whiter@bbit
+DELAY 2500
+Enter
+DELAY 18000
+
+REM Long delay for setup
+
+REM installing cmatrix 
+
+STRING sudo apt install cmatrix
+DELAY 2500
+Enter
+DELAY 5000
+STRING cmatrix
+DELAY 2500
+Enter
+DELAY 2500
+REM full screen
+GUI uparrow
+
+REM congrats your one set closer to using linux! 

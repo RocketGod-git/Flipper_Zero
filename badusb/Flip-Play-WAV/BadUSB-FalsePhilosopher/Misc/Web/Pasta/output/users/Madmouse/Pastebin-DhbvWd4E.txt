@@ -1,0 +1,61 @@
+ #region class List Combo test
+        void fillTestGrid()//Fills grid with all categories
+        {
+            List<Screwfix> scr = sc.GetAllScrewfixResults();
+            dgvTest.DataSource = scr;
+        }
+
+        void cbx1Test()//Fills combo1 with CategoryA
+        {
+            List<Screwfix> scr = sc.GetAllScrewfixResults();
+            this.comboBox1.DataSource = scr.Select(s => s.CategoryA).Distinct().ToList();
+            comboBox1.Text = "-Select-";
+        }
+        void cbx2Test()//Fills combo2 with CategoryB...not used in this example
+        {
+            List<Screwfix> scr = sc.GetAllScrewfixResults();
+            this.comboBox2.DataSource = scr.Select(s => s.CategoryB).Distinct().ToList();
+            comboBox2.Text = "-Select-";
+        }
+
+        private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Screwfix> scr = sc.GetAllScrewfixResults();
+            dgvTest.DataSource = scr.Where(x => x.CategoryA.Contains(comboBox1.Text)).ToList();
+
+            if (comboBox1.Text == "Brackets")//CategoryA
+            {
+                comboBox2.Items.Clear();
+                comboBox2.Text = "-Select-";
+                comboBox2.Items.Add("Plates");//CatB
+                comboBox2.Items.Add("Angled brackets");//CatB
+                return;
+            }
+            else
+            if (comboBox1.Text == "Plumbing")//CatA
+            {
+                comboBox2.Items.Clear();
+                comboBox2.Text = "-Select-";
+                comboBox2.Items.Add("Copper fittings");//CatB
+                comboBox2.Items.Add("Fittings");
+                comboBox2.Items.Add("Hoses and fittings");
+                comboBox2.Items.Add("Soldering");
+                comboBox2.Items.Add("Waste accessories");
+                comboBox2.Items.Add("Waste pipe and fittings");
+                comboBox2.Items.Add("Water pipe");
+                return;
+            }
+            //comboBox2.Enabled = true;
+        }
+        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            List<Screwfix> scr = sc.GetAllScrewfixResults();
+            dgvTest.DataSource = scr.Where(x => x.CategoryB.Contains(comboBox2.Text)).ToList();
+        }
+
+        private void txtTest_TextChanged(object sender, EventArgs e)//Works as expected
+        {
+            List<Screwfix> scr = sc.GetAllScrewfixResults();
+            dgvTest.DataSource = scr.Where(s => s.Description.ToLower().Contains(txtTest.Text.ToLower())).ToList();
+        }
+        #endregion

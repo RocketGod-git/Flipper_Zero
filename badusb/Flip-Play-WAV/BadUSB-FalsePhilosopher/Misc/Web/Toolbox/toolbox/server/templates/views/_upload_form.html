@@ -1,0 +1,87 @@
+{% set form = view_model.upload_token_form %}
+{% set upload_token = view_model.upload_token %}
+{% set has_uploads_enabled = view_model.has_uploads_enabled %}
+
+<p>
+    <a
+        class="btn btn-info"
+        data-toggle="collapse"
+        href="#upload_token_form"
+        role="button"
+        aria-expanded="false"
+    >
+        Upload File
+    </a>
+</p>
+
+{%- if upload_token %}
+    <div id="temporary-token" class="collapse show">
+        <div class="alert alert-success" role="alert">
+            <h4 class="alert-heading">Temporary upload token created</h4>
+            <div>Use the following command on the target machine to send the file:</div>
+            <hr>
+            <pre>curl -F "file=@./{{upload_token.file_name}}" -F "token_id={{upload_token.id}}" {{ url_for('serve.uploads', _external=True) }}</pre>
+
+            <a
+                class="btn btn-outline-secondary"
+                data-toggle="collapse"
+                href="#temporary-token"
+                role="button"
+                aria-expanded="false"
+            >
+                Close
+            </a>
+        </div>
+    </div>
+{%- endif %}
+
+<div id="upload_token_form" class="collapse {{ 'show' if form.file_name.data }}">
+    <div class="card card-body {{ 'alert alert-warning' if not has_uploads_enabled }}">
+        <h4>Upload File</h4>
+
+        {%- if not has_uploads_enabled %}
+            <div>
+                Upload support not currently enabled.
+
+                The webserver must be stopped and re-run with the <code>--password</code> option
+            </div>
+        {%- else %}
+            {% for error in form.errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+
+            <p>Create a temporary upload URL to upload files to remotely:</p>
+
+            <form method="POST" class="form" action="{{ url_for('serve.create_token') }}">
+                {{ form.csrf_token }}
+                <div class="form-group row">
+                    <label for="inputPassword3" class="col-sm-2 col-form-label">
+                        File name
+                        <a type="button" data-toggle="tooltip" data-placement="bottom" title="The local file name to save the file as">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" fill="currentColor" class="bi bi-question-circle text-primary" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                                <path d="M5.255 5.786a.237.237 0 0 0 .241.247h.825c.138 0 .248-.113.266-.25.09-.656.54-1.134 1.342-1.134.686 0 1.314.343 1.314 1.168 0 .635-.374.927-.965 1.371-.673.489-1.206 1.06-1.168 1.987l.003.217a.25.25 0 0 0 .25.246h.811a.25.25 0 0 0 .25-.25v-.105c0-.718.273-.927 1.01-1.486.609-.463 1.244-.977 1.244-2.056 0-1.511-1.276-2.241-2.673-2.241-1.267 0-2.655.59-2.75 2.286zm1.557 5.763c0 .533.425.927 1.01.927.609 0 1.028-.394 1.028-.927 0-.552-.42-.94-1.029-.94-.584 0-1.009.388-1.009.94z"/>
+                            </svg>
+                        </a>
+                    </label>
+                    <div class="col-sm-10">
+                        {{ form.file_name(size=20, class_='form-control', placeholder="some_file.txt") }}
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-outline-primary">
+                    Create
+                </button>
+                <a
+                    class="btn btn-outline-secondary"
+                    data-toggle="collapse"
+                    href="#upload_token_form"
+                    role="button"
+                    aria-expanded="false"
+                >
+                    Close
+                </a>
+            </form>
+        {%- endif %}
+    </div>
+    <br />
+</div>

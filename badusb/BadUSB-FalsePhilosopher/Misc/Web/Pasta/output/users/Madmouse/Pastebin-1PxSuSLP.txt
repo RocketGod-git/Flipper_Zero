@@ -1,0 +1,48 @@
+# ------------------------------------------------------------------------------
+# THE BEER-WARE LICENSE (Revision 43):
+# <aaronryool@gmail.com> wrote this file. As long as you retain this notice you
+# can do whatever you want with this stuff. If we meet some day, and you think
+# this stuff is worth it, you can buy me a beer in return
+# ------------------------------------------------------------------------------
+
+def is_url(url):
+    regex = re.compile(
+        r'^https?://'  # http:// or https://
+        r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+[A-Z]{2,6}\.?|'  # domain...
+        r'localhost|'  # localhost...
+        r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' # ...or ip
+        r'(?::\d+)?'  # optional port
+        r'(?:/?|[/?]\S+)$', re.IGNORECASE)
+    return url is not None and regex.search(url)
+
+def is_slink(url, regex):
+    regex = re.compile(regex, re.IGNORECASE)
+    return is_url(url) and regex.search(url)
+
+
+def scraperfun(keyword, person, command, option):
+    print(keyword,person,command,option)
+    if command == "add":
+        if not is_slink(option, scrapers[keyword]):
+            return
+        with open(os.path.expanduser("~/tools/bot/lists/"+keyword[1:]), "a+") as f:
+            if not any(option == l.rstrip("\r\n") for l in f):
+                f.write(option+'\n')
+    elif command == "random":
+        random.seed(time.time())
+        with open(os.path.expanduser("~/tools/bot/lists/"+keyword[1:]), "r") as f:
+            sendmsg(person, random_line(f))
+        return
+    elif command == "list":
+        f = open(os.path.expanduser("~/tools/bot/lists/"+keyword[1:]), "r")
+        t = threading.Thread(target=sendlist, args=(person, f))
+        t.daemon = True
+        t.start()
+
+scrapers = {
+    "@youtube": r".*youtube\.com/watch\?v\=[A-Z0-9_\-]{11}(&*.)?$|youtu.be/[A-Z0-9_\-]{11}$",
+    "@pastebin": r".*pastebin\.com/[A-Z0-9]{8}(&*.)?",
+    "@reddit": r".*reddit\.com/[A-Z]{1}/[A-Z0-9_\-]+/comments/[A-Z0-9]{6}/[A-Z0-9_]+/(\?ref=share&ref_source=link)?",
+    "@slashdot": r".*slashdot\.org/story/[0-9]{2}/[0-9]{2}/[0-9]{2}/[0-9]{1,10}/[A-Z0-9_]+",
+    "@hackthissite": r".*hackthissite\.org/forums/viewtopic.php\?f=[0-9]{1,10}&t=[0-9]{1,10}$"
+}

@@ -1,0 +1,44 @@
+#!/usr/bin/python
+
+#////////////////////////////////////////////////////////////////////////////////
+#// THE SCOTCH-WARE LICENSE (Revision 0):
+#//  wrote this file. As long as you retain this notice you
+#// can do whatever you want with this stuff. If we meet some day, and you think
+#// this stuff is worth it, you can buy me a shot of scotch in return
+#////////////////////////////////////////////////////////////////////////////////
+#
+# A gift for Aaron lol
+
+import sys, subprocess
+
+ps = None
+if len(sys.argv) != 3:
+    if len(sys.argv) == 2:
+        ps = 'bash'
+    else:
+        print(sys.argv[0]+' <PTS/TTY> <PROCESS NAME (default: bash)>')
+        exit(1)
+else:
+    ps = sys.argv[2]
+
+c = [
+    'stdbuf', '-oL',
+    'bash', '-c',
+    'strace -e trace=write -s1000 -fp '
+    '$(ps -t %s | grep -oP \'\\K^[0-9]+(?= .* %s)\') 2>&1 '
+    '| grep -oP \'(?<=write\\([0-9]{1}, \").*(?=\", [0-9]*\\))\' ' % (sys.argv[1], ps)
+]
+
+p = subprocess.Popen(c, stdout=subprocess.PIPE,
+    stderr=subprocess.STDOUT,
+    stdin=subprocess.PIPE,
+    shell=False,
+    bufsize=1,
+    universal_newlines=True)
+
+print('Watching %s on %s\n' % (ps, sys.argv[1]))
+while p.poll() == None:
+    out = p.stdout.readline().rstrip('\n')
+    out = out.decode('string_escape')
+    sys.stdout.write(out)
+    sys.stdout.flush()

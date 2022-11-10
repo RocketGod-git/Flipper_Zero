@@ -1,0 +1,41 @@
+Author: BrokenProphet
+Description: rotate the screen 180' on Windows 7
+Target: Windows 7
+Duckencoder: 1.2
+Side Notes: if target pc is slow put more delays in. :3
+ CONTROL ESCAPE
+ DELAY 50
+ STRING Screen Resolution
+ DELAY 50
+ ENTER
+ DELAY 100
+ TAB
+ TAB
+ TAB
+ DOWN
+ DOWN
+ TAB
+ TAB
+ TAB
+ TAB
+ TAB
+ ENTER
+ TAB
+ ENTER
+ REM if you find an error email me at "brayden.h96@gmail.com". 
+
+
+Author: Trump
+Description: Rotate the screen many times on Windows 10
+Target: Windows 10
+Duckencoder: 1.2
+Side Notes: Works on most Windows 10 Computers. Add more delays if PC is slow... very simple script compared to Windows 7.
+  DELAY 500
+  CTRL ALT RIGHT
+  DELAY 500
+  CTRL ALT DOWN
+  DELAY 500
+  CTRL ALT LEFT
+  DELAY 500
+  CTRL ALT UP
+  REM Have any problems? It probably dosent work on that computer...

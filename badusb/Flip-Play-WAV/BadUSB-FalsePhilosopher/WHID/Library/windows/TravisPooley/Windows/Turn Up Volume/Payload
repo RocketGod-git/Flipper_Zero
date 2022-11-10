@@ -1,0 +1,4 @@
+Press: 131 + 82
+PrintLine: %windir%\System32\SndVol.exe -f 49825268
+Press: 210
+Press: 177

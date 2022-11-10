@@ -1,0 +1,96 @@
+typedef struct dict_entry {
+    char* key;
+    void* value;
+} dict_entry_t;
+
+typedef struct dict_array {
+    int size;
+    dict_entry_t** entry;
+} dict_t;
+
+dict_t* dict()
+{
+    dict_t* d = malloc(sizeof(dict_t));
+    d->size = 0;
+    return d;
+}
+
+bool dict_in(dict_t* d, char* key)
+{
+    for(int i = 1;i <= d->size;i++)
+        if(strcmp(key, d->entry[i]->key) == 0)
+            return true;
+    return false;
+}
+
+bool dict_add(dict_t* d, char* key, void* value)
+{
+    if(dict_in(d, key)) return false;
+    d->size++;
+    d->entry[d->size] = malloc(sizeof(dict_entry_t));
+    d->entry[d->size]->key = key;
+    d->entry[d->size]->value = value;
+    return true;
+}
+
+void* dict_value(dict_t* d, char* key)
+{
+    for(int i = 1;i <= d->size;i++)
+        if(strcmp(key, d->entry[i]->key) == 0)
+            return d->entry[i]->value;
+    return (void*) -1;
+}
+
+void dict_copy(dict_t* from, dict_t* to)
+{
+    for(int i = 1;i <= from->size;i++)
+        dict_add(to, from->entry[i]->key, from->entry[i]->value);
+}
+
+void dict_free(dict_t* d)
+{
+    for(int i = 1;i <= d->size;i++)
+        free(d->entry[i]);
+    free(d);
+}
+
+void dict_remove(dict_t* d, char* key)
+{
+    for(int i = 0, c = 0;i <= d->size + 1;i++)
+    {
+        if(strcmp(d->entry[i]->key, key) == 0)
+        {
+            free(d->entry[i]);
+            d->size--;
+        }
+        else
+        {
+            d->entry[c] = d->entry[i];
+            c++;
+        }
+    }
+}
+
+bool dict_assign(dict_t* d, char* key, void* value)
+{
+    for(int i = 1;i <= d->size;i++)
+    {
+        if(strcmp(key, d->entry[i]->key) == 0)
+        {
+            d->entry[i]->value = value;
+            return true;
+        }
+    }
+    return false;
+}
+
+
+void main(void)
+{
+    dict_t* d = dict();
+    dict_add(d, "name", "Aaron Yool");
+    dict_add(d, "age", 23);
+    dict_assign(d, "name", "MadMouse");
+    printf("name: %s age: %i\n", dict_value(d, "name"), dict_value(d, "age"));
+    dict_free(d);
+}

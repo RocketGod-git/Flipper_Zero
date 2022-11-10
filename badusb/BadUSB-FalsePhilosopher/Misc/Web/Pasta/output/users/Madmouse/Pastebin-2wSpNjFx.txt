@@ -1,0 +1,179 @@
+(gdb) b * end_inc33
+Breakpoint 1 at 0x400417
+(gdb) r
+Starting program: /home/anon/polygen/test 
+
+Breakpoint 1, 0x0000000000400417 in end_inc33 ()
+(gdb) x /50i _start
+   0x400080 <_start>:	callq  0x4000f7 <engine>
+   0x400085 <inc6>:	add    $0x1,%rax
+   0x400089 <inc7>:	add    $0x1,%rax
+   0x40008d <inc8>:	add    $0x1,%rax
+   0x400091 <inc9>:	add    $0x1,%rax
+   0x400095 <inc10>:	inc    %rax
+   0x400098 <inc10+3>:	nop
+   0x400099 <inc11>:	inc    %rax
+   0x40009c <inc11+3>:	nop
+   0x40009d <inc12>:	add    $0x1,%rax
+   0x4000a1 <inc13>:	add    $0x1,%rax
+   0x4000a5 <inc13+4>:	add    $0x1,%rax
+   0x4000a9 <inc15>:	add    $0x1,%eax
+   0x4000ac <inc15+3>:	nop
+   0x4000ad <inc16>:	add    $0x1,%eax
+   0x4000b0 <inc16+3>:	nop
+   0x4000b1 <inc17>:	inc    %eax
+   0x4000b3 <inc17+2>:	nop
+   0x4000b4 <inc17+3>:	nop
+   0x4000b5 <inc18>:	inc    %eax
+   0x4000b7 <inc18+2>:	nop
+   0x4000b8 <inc18+3>:	nop
+   0x4000b9 <inc19>:	add    $0x1,%eax
+---Type <return> to continue, or q <return> to quit---
+   0x4000bc <inc19+3>:	nop
+   0x4000bd <inc20>:	inc    %eax
+   0x4000bf <inc20+2>:	nop
+   0x4000c0 <inc20+3>:	nop
+   0x4000c1 <inc21>:	add    $0x1,%eax
+   0x4000c4 <inc21+3>:	nop
+   0x4000c5 <inc22>:	add    $0x1,%eax
+   0x4000c8 <inc22+3>:	nop
+   0x4000c9 <inc22+4>:	add    $0x1,%eax
+   0x4000cc <inc25>:	inc    %ax
+   0x4000cf <inc25+3>:	nop
+   0x4000d0 <inc26>:	inc    %ax
+   0x4000d3 <inc26+3>:	nop
+   0x4000d4 <inc27>:	add    $0x1,%ax
+   0x4000d8 <inc28>:	inc    %ax
+   0x4000db <inc28+3>:	nop
+   0x4000dc <inc29>:	add    $0x1,%ax
+   0x4000e0 <inc30>:	inc    %ax
+   0x4000e3 <inc30+3>:	nop
+   0x4000e4 <inc31>:	add    $0x1,%ax
+   0x4000e8 <inc32>:	inc    %ax
+   0x4000eb <inc32+3>:	nop
+   0x4000ec <inc33>:	add    $0x1,%ax
+---Type <return> to continue, or q <return> to quit---
+   0x4000f0 <inc33+4>:	mov    $0x3c,%eax
+   0x4000f5 <inc33+9>:	syscall 
+   0x4000f7 <engine>:	rdtsc  
+   0x4000f9 <engine+2>:	and    $0x2,%rax
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/anon/polygen/test 
+
+Breakpoint 1, 0x0000000000400417 in end_inc33 ()
+(gdb) x /50i _start
+   0x400080 <_start>:	callq  0x4000f7 <engine>
+   0x400085 <inc6>:	add    $0x1,%rax
+   0x400089 <inc7>:	add    $0x1,%rax
+   0x40008d <inc8>:	add    $0x1,%rax
+   0x400091 <inc9>:	add    $0x1,%rax
+   0x400095 <inc10>:	add    $0x1,%rax
+   0x400099 <inc11>:	add    $0x1,%rax
+   0x40009d <inc12>:	add    $0x1,%rax
+   0x4000a1 <inc13>:	inc    %rax
+   0x4000a4 <inc13+3>:	nop
+   0x4000a5 <inc13+4>:	add    $0x1,%rax
+   0x4000a9 <inc15>:	add    $0x1,%eax
+   0x4000ac <inc15+3>:	nop
+   0x4000ad <inc16>:	add    $0x1,%eax
+   0x4000b0 <inc16+3>:	nop
+   0x4000b1 <inc17>:	add    $0x1,%eax
+   0x4000b4 <inc17+3>:	nop
+   0x4000b5 <inc18>:	add    $0x1,%eax
+   0x4000b8 <inc18+3>:	nop
+   0x4000b9 <inc19>:	inc    %eax
+   0x4000bb <inc19+2>:	nop
+   0x4000bc <inc19+3>:	nop
+   0x4000bd <inc20>:	add    $0x1,%eax
+---Type <return> to continue, or q <return> to quit---
+   0x4000c0 <inc20+3>:	nop
+   0x4000c1 <inc21>:	add    $0x1,%eax
+   0x4000c4 <inc21+3>:	nop
+   0x4000c5 <inc22>:	inc    %eax
+   0x4000c7 <inc22+2>:	nop
+   0x4000c8 <inc22+3>:	nop
+   0x4000c9 <inc22+4>:	add    $0x1,%eax
+   0x4000cc <inc25>:	add    $0x1,%ax
+   0x4000d0 <inc26>:	add    $0x1,%ax
+   0x4000d4 <inc27>:	add    $0x1,%ax
+   0x4000d8 <inc28>:	add    $0x1,%ax
+   0x4000dc <inc29>:	add    $0x1,%ax
+   0x4000e0 <inc30>:	add    $0x1,%ax
+   0x4000e4 <inc31>:	add    $0x1,%ax
+   0x4000e8 <inc32>:	add    $0x1,%ax
+   0x4000ec <inc33>:	add    $0x1,%ax
+   0x4000f0 <inc33+4>:	mov    $0x3c,%eax
+   0x4000f5 <inc33+9>:	syscall 
+   0x4000f7 <engine>:	rdtsc  
+   0x4000f9 <engine+2>:	and    $0x2,%rax
+   0x4000fd <engine+6>:	jne    0x40010c <b_inc6>
+   0x4000ff <engine+8>:	movl   $0x1c08348,0x400085
+   0x40010a <engine+19>:	jmp    0x400117 <end_inc6>
+---Type <return> to continue, or q <return> to quit---
+   0x40010c <b_inc6>:	movl   $0x90c0ff48,0x400085
+   0x400117 <end_inc6>:	rdtsc  
+   0x400119 <end_inc6+2>:	and    $0x2,%rax
+   0x40011d <end_inc6+6>:	jne    0x40012c <b_inc7>
+(gdb) 
+(gdb) r
+The program being debugged has been started already.
+Start it from the beginning? (y or n) y
+Starting program: /home/anon/polygen/test 
+
+Breakpoint 1, 0x0000000000400417 in end_inc33 ()
+(gdb) x /50i _start
+   0x400080 <_start>:	callq  0x4000f7 <engine>
+   0x400085 <inc6>:	add    $0x1,%rax
+   0x400089 <inc7>:	add    $0x1,%rax
+   0x40008d <inc8>:	add    $0x1,%rax
+   0x400091 <inc9>:	add    $0x1,%rax
+   0x400095 <inc10>:	inc    %rax
+   0x400098 <inc10+3>:	nop
+   0x400099 <inc11>:	add    $0x1,%rax
+   0x40009d <inc12>:	add    $0x1,%rax
+   0x4000a1 <inc13>:	inc    %rax
+   0x4000a4 <inc13+3>:	nop
+   0x4000a5 <inc13+4>:	add    $0x1,%rax
+   0x4000a9 <inc15>:	add    $0x1,%eax
+   0x4000ac <inc15+3>:	nop
+   0x4000ad <inc16>:	add    $0x1,%eax
+   0x4000b0 <inc16+3>:	nop
+   0x4000b1 <inc17>:	add    $0x1,%eax
+   0x4000b4 <inc17+3>:	nop
+   0x4000b5 <inc18>:	add    $0x1,%eax
+   0x4000b8 <inc18+3>:	nop
+   0x4000b9 <inc19>:	add    $0x1,%eax
+   0x4000bc <inc19+3>:	nop
+   0x4000bd <inc20>:	add    $0x1,%eax
+---Type <return> to continue, or q <return> to quit---
+   0x4000c0 <inc20+3>:	nop
+   0x4000c1 <inc21>:	add    $0x1,%eax
+   0x4000c4 <inc21+3>:	nop
+   0x4000c5 <inc22>:	inc    %eax
+   0x4000c7 <inc22+2>:	nop
+   0x4000c8 <inc22+3>:	nop
+   0x4000c9 <inc22+4>:	add    $0x1,%eax
+   0x4000cc <inc25>:	add    $0x1,%ax
+   0x4000d0 <inc26>:	add    $0x1,%ax
+   0x4000d4 <inc27>:	add    $0x1,%ax
+   0x4000d8 <inc28>:	add    $0x1,%ax
+   0x4000dc <inc29>:	add    $0x1,%ax
+   0x4000e0 <inc30>:	add    $0x1,%ax
+   0x4000e4 <inc31>:	add    $0x1,%ax
+   0x4000e8 <inc32>:	inc    %ax
+   0x4000eb <inc32+3>:	nop
+   0x4000ec <inc33>:	add    $0x1,%ax
+   0x4000f0 <inc33+4>:	mov    $0x3c,%eax
+   0x4000f5 <inc33+9>:	syscall 
+   0x4000f7 <engine>:	rdtsc  
+   0x4000f9 <engine+2>:	and    $0x2,%rax
+   0x4000fd <engine+6>:	jne    0x40010c <b_inc6>
+   0x4000ff <engine+8>:	movl   $0x1c08348,0x400085
+---Type <return> to continue, or q <return> to quit---
+   0x40010a <engine+19>:	jmp    0x400117 <end_inc6>
+   0x40010c <b_inc6>:	movl   $0x90c0ff48,0x400085
+   0x400117 <end_inc6>:	rdtsc  
+   0x400119 <end_inc6+2>:	and    $0x2,%rax
+(gdb)

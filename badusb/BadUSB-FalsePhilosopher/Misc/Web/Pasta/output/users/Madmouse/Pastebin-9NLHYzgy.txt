@@ -1,0 +1,88 @@
+[bits 64]
+section .text
+global _start
+
+org 0x08048000
+ehdr:                                      ; Elf64_Ehdr
+	db 0x7F, "ELF", 2, 1, 1, 0         ;   e_ident
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;	times 8 db      0
+; We can replace ^ this with the following for a code cave inside the elf header itself
+exit:
+	mov al, 60
+	xor rdi, rdi
+	syscall	
+	db 0	; the code in the cave is 7 bytes long, so we need one byte of padding
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	dw 2                               ;   e_type
+	dw 62                              ;   e_machine
+	dd 1                               ;   e_version
+	dq _start                          ;   e_entry
+	dq phdr - $$                       ;   e_phoff
+	dq 0                               ;   e_shoff
+	dd 0                               ;   e_flags
+	dw ehdrsize                        ;   e_ehsize
+	dw phdrsize                        ;   e_phentsize
+	dw 1                               ;   e_phnum
+	dw 0                               ;   e_shentsize
+	dw 0                               ;   e_shnum
+	dw 0                               ;   e_shstrndx
+	ehdrsize equ $ - ehdr
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; we can put things in between the ELF header and the program header like so:
+str:
+	push qword exit ; cleverly disguised push instruction for use with the ret instruction in main
+	call main
+;;;;;;;;;;;;;;;;;;GARBAGE;;;;;;;;;;;;;;;;;;;;;;
+; fake code to trick people who are not familiar with rop into believing that the ret actually returns after the call
+	xor rax, rax
+	mov rcx, 27
+	mov rsi, garbage
+decode:
+	mov al, byte [rsi+30]
+	xor byte [rsi], al
+	inc rsi
+loop decode
+	jmp rsi
+;;;;;;;;;;;;;;;;;;GARBAGE;;;;;;;;;;;;;;;;;;;;;;
+	db "Meow...", 0xa   ; silly message
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+phdr:                                      ; Elf64_Phdr
+	dd 1                               ;   p_type
+	dd 7                               ;   p_flags
+	dq 0                               ;   p_offset
+	dq $$                              ;   p_vaddr
+	dq $$                              ;   p_paddr
+	dq filesize                        ;   p_filesz
+	dq filesize                        ;   p_memsz
+	dq 0x1000                          ;   p_align
+	phdrsize equ $ - phdr
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+_start:
+	jmp str
+main:
+	pop rsi
+	add rsi, 30
+	xor rax, rax
+	xor rdx, rdx
+	xor rdi, rdi
+	mov al, 0x1
+	mov dil, al
+	mov dl, 8
+	syscall
+	xor rax, rax
+	ret      ; secretly, this is a rop jmp as described above lol
+;;;;;;;;;;;;;;;;;;GARBAGE;;;;;;;;;;;;;;;;;;;;;;
+; fake encrypted code
+garbage:
+	db 0x48, 0x31, 0xc0, 0xb0, 0x39, 0xcd, 0x80, 0xeb, 0xfa
+	db 0xe7, 0x57, 0x21, 0xd4, 0xad, 0xb5, 0x0e, 0xa8, 0x82
+	db 0x48, 0x31, 0xc0, 0xb0, 0x39, 0xcd, 0x80, 0xeb, 0xfa
+	db 0x43, 0x82, 0xb9, 0x7c, 0x9a, 0x1d, 0xcd, 0x71, 0xdc
+	db 0x48, 0x31, 0xc0, 0xb0, 0x39, 0xcd, 0x80, 0xeb, 0xfa
+	db 0xa8, 0x9d, 0xc9, 0xce, 0x02, 0x19, 0x1c, 0x57, 0xfd
+	db 0x48, 0x31, 0xc0, 0xb0, 0x39, 0xcd, 0x80, 0xeb, 0xfa
+	db 0x9a,0xc0,0x22,0x63,0xb4,0xad
+;;;;;;;;;;;;;;;;;;GARBAGE;;;;;;;;;;;;;;;;;;;;;;
+
+filesize equ $ - $$

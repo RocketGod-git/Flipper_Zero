@@ -1,99 +1,32 @@
-![Logo](https://github.com/I-Am-Jakoby/hak5-submissions/blob/main/Assets/logo-170-px.png?raw=true)
+# BadUSB scripts I've created, converted, or collected.
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li><a href="#Description">Description</a></li>
-    <li><a href="#getting-started">Getting Started</a></li>
-    <li><a href="#Contributing">Contributing</a></li>
-    <li><a href="#Version-History">Version History</a></li>
-    <li><a href="#Contact">Contact</a></li>
-    <li><a href="#Acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+Proper credit is always provided; I simply request the same.<br>
+[Check out this nice list of keys you can use in your scripts!](https://gist.github.com/methanoliver/efebfe8f4008e167417d4ab96e5e3cac)
 
-# Play-WAV
+## Many more should work from my other repos: [O.MG Devices](https://github.com/UberGuidoZ/Hak5-OMG-Payloads) and [Hak5](https://github.com/UberGuidoZ/Hak5-USBRubberducky-Payloads)
 
-A script used to download a WAV file and play it after a mouse movement is detected
+<b>Some have been converted to work for the Flipper already!</b> Check out the submodules above [or FalsePhilosopher's download and go](https://github.com/FalsePhilosopher/badusb).
 
-## Description
+Looking to break out of kisok mode for some shenanigans and educational value? [Here's some helpful tips](https://www.trustedsec.com/blog/kioskpos-breakout-keys-in-windows/) and a [script from nocomp](https://github.com/nocomp/Kiosk-evasion-BADUsb-Bruteforce)!
 
-This program starts off by using an Invoke-WebRequest to download a WAV file
-The system volume is then turned up to the max level
-Then the script will be paused until a mouse movement is detected 
-After one is the WAV file will be played
+Protip: Change the VID/PID to further trust of your device. [Great searchable list here](https://www.the-sz.com/products/usbid/)!
 
-## Getting Started
+Don't forget to check out some other friends too! [I-Am-Jakoby](https://github.com/I-Am-Jakoby) | [Øiphori3](https://github.com/0iphor13) | [Hak5](https://hak5.org/blogs/payloads)
 
-### Dependencies
+Thirsty for more? Here's some light reading (lol) about the [USB HID spec](https://usb.org/sites/default/files/hut1_3_0.pdf).
 
-* DropBox - Your Shared link for the intended file
-* Windows 10,11
+-----
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+I've had so many asking for me to add this.<br>
+![Flipper_Blush](https://user-images.githubusercontent.com/57457139/183561666-4424a3cc-679b-4016-a368-24f7e7ad0a88.jpg) ![Flipper_Love](https://user-images.githubusercontent.com/57457139/183561692-381d37bd-264f-4c88-8877-e58d60d9be6e.jpg)
 
-### Executing program
+**BTC**: `3AWgaL3FxquakP15ZVDxr8q8xVTc5Q75dS`<br>
+**BCH**: `17nWCvf2YPMZ3F3H1seX8T149Z9E3BMKXk`<br>
+**ETH**: `0x0f0003fCB0bD9355Ad7B124c30b9F3D860D5E191`<br>
+**LTC**: `M8Ujk52U27bkm1ksiWUyteL8b3rRQVMke2`
 
-* Plug in your device
-* Invoke-WebRequest will be entered in the Run Box to download your WAV file
-```
-powershell -w h -NoP -NonI -Exec Bypass iwr https:// < Your Shared link for the intended file> ?dl=1 -O $env:TMP\e.wav
-```
+So, here it is. All donations of *any* size are humbly appreciated.<br>
+![Flipper_Clap](https://user-images.githubusercontent.com/57457139/183561789-2e853ede-8ef7-41e8-a67c-716225177e5d.jpg) ![Flipper_OMG](https://user-images.githubusercontent.com/57457139/183561787-e21bdc1e-b316-4e67-b327-5129503d0313.jpg)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-## Contributing
-
-All contributors names will be listed here
-
-I am Jakoby
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-## Version History
-
-* 0.1
-    * Initial Release
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- CONTACT -->
-## Contact
-
-<div><h2>I am Jakoby</h2></div>
-  <p><br/>
-  
-  <img src="https://media.giphy.com/media/VgCDAzcKvsR6OM0uWg/giphy.gif" width="50"> 
-  
-  <a href="https://github.com/I-Am-Jakoby/">
-    <img src="https://img.shields.io/badge/GitHub-I--Am--Jakoby-blue">
-  </a>
-  
-  <a href="https://www.instagram.com/i_am_jakoby/">
-    <img src="https://img.shields.io/badge/Instagram-i__am__jakoby-red">
-  </a>
-  
-  <a href="https://twitter.com/I_Am_Jakoby/">
-    <img src="https://img.shields.io/badge/Twitter-I__Am__Jakoby-blue">
-  </a>
-  
-  <a href="https://www.youtube.com/c/IamJakoby/">
-    <img src="https://img.shields.io/badge/YouTube-I_am_Jakoby-red">
-  </a>
-
-  Project Link: [https://github.com/I-Am-Jakoby/hak5-submissions/tree/main/RubberDucky/Payloads/RD-Play-WAV)
-</p>
-
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* [Hak5](https://hak5.org/)
-* [MG](https://github.com/OMG-MG)
-
-
-<p align="right">(<a href="#top">back to top</a>)</p>
+Donations will be used for hardware (and maybe caffeine) to further testing!<br>
+![UberGuidoZ](https://cdn.discordapp.com/emojis/1000632669622767686.gif)
