@@ -1,0 +1,12 @@
+/any/subghz/KoreanBBQ_DoorChime.sub
+/any/subghz/Vehicles/Tesla/BEST_PORT_OPENER/Tesla_Port_Opener_315MHz_AM270.sub
+/any/lfrfid/Dock.rfid
+/any/lfrfid/Lacoe.rfid
+/any/nfc/UMC.nfc
+/any/subghz/Gas_Sign/Gas_Sign_Start.sub
+/any/nfc/Mvha_all_access.nfc
+/any/subghz/Jamming/Jam_315.00.sub
+/any/subghz/CVS_Assistance_Buttons/CVS_Stomach.sub
+/any/subghz/CVS_Assistance_Buttons/Walgreens_Cough.sub
+/any/subghz/Restaurant_Pagers/LRS_Pagers/jimilinuxguy_brutefrce.sub
+/any/subghz/Restaurant_Pagers/LRS_Pagers/Brute_first_12_loop.sub

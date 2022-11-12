@@ -1,2 +1,0 @@
-simple_term_menu
-rfcat
