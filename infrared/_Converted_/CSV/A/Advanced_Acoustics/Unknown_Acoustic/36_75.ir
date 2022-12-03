@@ -1,0 +1,56 @@
+Filetype: IR signals file
+Version: 1
+#
+name: CD
+type: parsed
+protocol: NECext
+address: 24 4B 00 00
+command: 08 00 00 00
+#
+name: AUX
+type: parsed
+protocol: NECext
+address: 24 4B 00 00
+command: 0C 00 00 00
+#
+name: digital
+type: parsed
+protocol: NECext
+address: 24 4B 00 00
+command: 10 00 00 00
+#
+name: VOL-
+type: parsed
+protocol: NECext
+address: 24 4B 00 00
+command: 14 00 00 00
+#
+name: TUNER
+type: parsed
+protocol: NECext
+address: 24 4B 00 00
+command: 48 00 00 00
+#
+name: phono
+type: parsed
+protocol: NECext
+address: 24 4B 00 00
+command: 4C 00 00 00
+#
+name: MUTE
+type: parsed
+protocol: NECext
+address: 24 4B 00 00
+command: 50 00 00 00
+#
+name: SLEEP
+type: parsed
+protocol: NECext
+address: 24 4B 00 00
+command: 54 00 00 00
+#
+name: VOL+
+type: parsed
+protocol: NECext
+address: 24 4B 00 00
+command: 55 00 00 00

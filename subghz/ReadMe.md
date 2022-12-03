@@ -1,6 +1,7 @@
 # Various SUB files I've found or created. Some tested, some not.
 
-Special thanks to [FalsePhilosopher](https://github.com/FalsePhilosopher) for organization help and everyone else that shares files!
+Special thanks to [FalsePhilosopher](https://github.com/FalsePhilosopher) for organization help and everyone else that shares files!<br>
+Worth a mention: If you have a HackRF, you can find a ton of files and info over at RocketGod's [HackRF Treasure Chest](https://github.com/RocketGod-git/HackRF-Treasure-Chest).
 
 ## How are the raw SUB files are formatted? (Adapted from a chat with [ImprovingRigmarole](https://github.com/improving-rigmarole)!)
 
@@ -8,6 +9,8 @@ This is a very quick and dirty explanation of the Flipper "raw" SUB format. Enou
 Each numerical value is the duration of a pulse in microseconds. Positive is `send` and negative is `pause`.<br>
 Example: `3607 -100 1789 -66` means send (positive) during the `3607µs` then pause (negative) for the `100µs`, etc.<br>
 You can easily plot any raw SUB (or IR) file at the [Official Pulse Plotter](https://my.flipp.dev/pulse-plotter) and see a graph to help decode patterns.
+
+Another take... positive numbers in the raw .SUB files tell you how long (in microseconds / μs) the signal was ON and the negative numbers tell you how long it was OFF. Usually on means 1 and off means 0. This also makes sense when you remember/realize OOK = `On Off Keying`.
 
 ## NOTE: The deBruijn and OpenSesame files have moved to the [Garages subfolder](https://github.com/UberGuidoZ/Flipper/tree/main/Sub-GHz/Garages/deBruijn).
 
@@ -61,9 +64,26 @@ Officially supported frequencies according to region (as manufactured and progra
 AM650 and FM650 modulation tries to cover more range of frequencies at the cost of less pickup distance.<br>
 AM270 and FM270 modulation offer a more narrow range, but have a cleaner pickup and slightly better distance.
 
-[Official documentation is an excellent read!](https://docs.flipperzero.one/sub-ghz/modulation)
+[Official documentation is an excellent read!](https://docs.flipperzero.one/sub-ghz/read-raw#HUe8f)
+
+evilpete has a script for creating custom modulations amoung various other flipper flipper file format generators/converters
+https://github.com/evilpete/flipper_toolbox
+
+# Plotting/analyzing signals
+ShotokanZH has a plotter
+https://github.com/ShotokanZH/flipper_sub_plotters_comparers
+The flipper lab website has one
+https://lab.flipper.net/pulse-plotter
+and a python script by paucoma
+https://gist.github.com/paucoma/57080d2845ba4b21b980b90842c38eb1
 
 -----
+
+## Donation Information
+
+Nothing is ever expected for the hoarding of digital files, creations I have made, or the people I may have helped.
+
+## Ordering from Lab401? [USE THIS LINK FOR 5% OFF!](https://lab401.com/r?id=vsmgoc) (Or code `UberGuidoZ` at checkout.)
 
 I've had so many asking for me to add this.<br>
 ![Flipper_Blush](https://user-images.githubusercontent.com/57457139/183561666-4424a3cc-679b-4016-a368-24f7e7ad0a88.jpg) ![Flipper_Love](https://user-images.githubusercontent.com/57457139/183561692-381d37bd-264f-4c88-8877-e58d60d9be6e.jpg)

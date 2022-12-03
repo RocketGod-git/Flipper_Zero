@@ -1,7 +1,18 @@
-# WARNING
+# WARNING ABOUT JAMMING - This is probably illegal to do.
 
-This is probably illegal to do. These files are for educational use to determine ways the Flipper can work and how to prevent such actions.<br>
-Files are UNTESTED and may cause magic smoke. Generated with a HackRF and recorded with the Flipper. (Credit: dandri#6962 on Discord)
+ These files are for educational use to determine ways the Flipper can work, how jamming works, and reviewing preventative actions.<br>
+Files are UNTESTED and may cause magic smoke. Generated with a HackRF and recorded with the Flipper. *(Credit: dandri#6962 on Discord)*
+
+-----
+
+**NOTE: Files have been removed because people can't be trusted. This is why we can't have nice things.**<br>
+If you hunt for them, they should not be too difficult to find. (Discord is where they were found...)<br>
+
+***Direct messaging me and asking for them will result in being ignored at best or blocked at worst! =)***
+
+I'll Google for you! [What is jamming](https://en.wikipedia.org/wiki/Radio_jamming) | [What is RF jamming](https://getsafeandsound.com/2018/07/rf-jamming/) | [5 things to know about jamming](https://phantom-technologies.com/rf-jamming-equipment/)
+
+-----
 
 ## United States
 
@@ -26,3 +37,57 @@ If you manufacture, import or distribute jammers, you may be committing a crime.
 The Electromagnetic Compatibility (EMC) Directive 2014/30/EU, which has been implemented into UK law by the Electromagnetic Compatibility Regulations 2016 (S.I. 2016/1091), places strict requirements on all electrical and electronic apparatus placed on the market or taken into service in the UK. The requirements state that apparatus must not cause excessive interference.
 
 Ofcom may take appropriate enforcement action, including prosecution, to enforce the EMC provisions. The maximum penalty convention under the regulations is three months imprisonment and/or an unlimited fine. The courts can order forfeiture of stocks of equipment.
+
+## CEPT Countries
+
+What does it mean to be a CEPT country? Member Nations of the European Conference of Postal and Telecommunications Administrations (CEPT) all share the same amateur radio reciprocal licensing requirements. Amateurs are permitted to operate from most European countries without the requirement of obtaining additional licensees or permits. This also means they share the same laws regarding things like jamming. The full list of countries ([more info](https://www.ero.dk/588adab6-30ee-4724-ba3a-33be7909832e.W5Doc?frames=no&mid=0A27BE3B-3BBD-45BB-8569-BE6C35C74159&)) is:
+
+```Albania
+Andorra
+Austria
+Azerbaijan
+Belarus
+Belgium
+Bosnia and Herzegovina
+Bulgaria (Rep.)
+Croatia
+Cyprus
+Czech Rep.
+Denmark
+Estonia
+Finland (including the Åland Islands)
+France
+Georgia
+Germany
+Greece
+Hungary
+Iceland
+Ireland
+Italy
+Latvia
+Liechtenstein
+Lithuania
+Luxembourg
+Malta
+Moldova
+Monaco
+Montenegro (Rep.)
+Netherlands
+North Macedonia
+Norway
+Poland
+Portugal
+Romania
+Russian Federation
+San Marino
+Serbia (Rep.)
+Slovakia
+Slovenia
+Spain
+Sweden
+Switzerland
+Türkiye
+Ukraine
+United Kingdom of Great Britain and Northern Ireland
+Vatican
+```
