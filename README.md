@@ -9,7 +9,7 @@ https://youtube.com/@lordRocketGod
 Come hang out with me at:
 https://discord.gg/5DMM6RNtG8
 
-Pretty much everything her is from @UberGuidoZ repo.
+Pretty much everything here is from @UberGuidoZ repo.
 https://github.com/UberGuidoZ/Flipper
 
 All updates and additions go there.
