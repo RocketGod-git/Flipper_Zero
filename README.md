@@ -6,6 +6,9 @@ Feel free to contribute and submit a PR.<br>
 
 https://youtube.com/@lordRocketGod
 
+Come hang out with me at:
+https://discord.gg/5DMM6RNtG8
+
 Pretty much everything her is from @UberGuidoZ repo.
 https://github.com/UberGuidoZ/Flipper
 
