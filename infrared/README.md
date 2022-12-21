@@ -1,86 +1,57 @@
-# Flipper-IRDB  
+Keeping all the IR files in my fork of the [Flipper-IRDB](https://github.com/UberGuidoZ/Flipper-IRDB)! (I'm now able to maintain the entire branch.)
 
-A **maintained** collective of different IR files for the Flipper! We'd love to have your additions! [See here.](https://github.com/UberGuidoZ/Flipper-IRDB/blob/main/README.md#organization)
+Did you know you can quickly generate your own IR files on the go at [Flipper Maker](https://flippermaker.github.io/)?
 
-Maintainers/Major contributors include:
-* [Lucaslhm](https://github.com/Lucaslhm) (*[Maintained Repo](https://github.com/Lucaslhm/Flipper-IRDB)*)
-* [UberGuidoZ](https://github.com/UberGuidoZ) (*[Maintained Fork](https://github.com/UberGuidoZ/Flipper-IRDB)*)
-* [ezod](https://github.com/ezod) (*[Maintained Fork](https://github.com/logickworkshop/Flipper-IRDB)*)
-* [amec0e](https://github.com/amec0e)
-* [DedHedZed](https://github.com/dedhedzed)
-* [SkeletonMan](https://github.com/SkeletonMan03/)
-* [jaroslavmraz](https://github.com/jaroslavmraz)
-* [darmiel](https://github.com/darmiel)
-* [E_Surge](https://github.com/ESurge)
-* [Zecred](https://github.com/bussardrobbie)
-* [wdoekes](https://github.com/wdoekes)
-* ... plus MANY others!
+ Looking for an updated Universal Remote files? Then you're in the right place! [Unleashed](https://github.com/Eng1n33r/flipperzero-firmware) and [RogueMaster](https://github.com/RogueMaster/flipperzero-firmware-wPlugins) both include these.<br>
+ ***Now with ALL buttons too!***  All files developed with support/testing from [UberGuidoZ](https://github.com/UberGuidoZ). HUGE thank you to [amec0e](https://github.com/amec0e) for maintenance!
+ 
+[TV universal remote](https://github.com/UberGuidoZ/Flipper/blob/main/Infrared/tv.ir) compiled by [Hyper_Mash](https://discord.com/channels/740930220399525928/954422774141710366/994121751023853668) and maintained by [amec0e](https://github.com/amec0e)<br>
+[AC universal remote](https://github.com/UberGuidoZ/Flipper/blob/main/Infrared/ac.ir) added by [JEREMYNO](https://github.com/jaroslavmraz) and maintained by [amec0e](https://github.com/amec0e).<br>
+[Soundbar/Speakers universal remote](https://github.com/UberGuidoZ/Flipper/blob/main/Infrared/audio.ir) added and maintained by [amec0e](https://github.com/amec0e).<br>
+[Projector universal remote](https://github.com/UberGuidoZ/Flipper/blob/main/Infrared/projectors.ir) added by [xMasterx](https://github.com/Eng1n33r/flipperzero-firmware/commit/029f82dc822e6d3515b39b839a2f70500dc9bb86) and maintained by [amec0e](https://github.com/amec0e).<br>
+[Fans universal remote](https://github.com/UberGuidoZ/Flipper/blob/main/Infrared/fans.ir) compiled by Edhel90 and maintained by [amec0e](https://github.com/amec0e)
 
-## Make your own manually!
+-----
 
-Did you know IR files are plain text files? If a remote is missing, you might be able to [make it manually](https://github.com/RandomDebugError/irdb).
+[Unleashed firmware](https://github.com/Eng1n33r/flipperzero-firmware/releases/latest) was the first to add all of the Universal Remotes. Highly advise checking out their work. (Thanks [xMasterx](https://github.com/xMasterx)!)
 
-## Organization  
+-----
 
-This repo is organized in the following fashion in descending order:  
-* Device Type
-* Device Brand
-* Device Series (Where known/applicable)
+Huge thank you to [ChaoticDynamic aka c-nagy](https://github.com/c-nagy) for some duplicate signal and file cleanup ([details here](https://github.com/UberGuidoZ/Flipper/pull/16).)<br>
 
-When adding remotes to this repo, it is helpful to ensure your device name(s) follow the `brand_model.ir` naming scheme. It is also helpful to ensure your model numbers are capitalized, as per the following example:
+**You may have manifest file issues if you do not compile your own firmware, or use one of the listed firmwares above!**<br>
+*Both unlocked firmwares have been tested successfully. Official has stated they will merge it at some point.*
 
-`LG_55UN7300AUD.ir`
+**NOTE: Long pauses are normal, including 10-15 seconds of no apparent activity. It's just skipping through the "other" buttons.**
 
-Please use this naming scheme for buttons.
+Click on the file of your choice and save it with a right-click from the `Raw` button here:
 
-**FOR TV**
+![Download_File](https://user-images.githubusercontent.com/57457139/174234554-555503d2-019f-4dbe-b129-29b3a0a9f1e6.png)
 
-POWER<br>
-MUTE<br>
-VOL+<br>
-CH+<br>
-VOL-<br>
-CH-
+Then, use qFlipper to transfer it to your Flipper and replace the existing one (or add a new one) here:
 
-**FOR AC**
+![Replace_This](https://user-images.githubusercontent.com/57457139/174234726-e39c1917-0d21-4b60-88c9-70fd60ee069f.png)
 
-POWER<br>
-TEMP+<br>
-TEMP-<br>
-MODE<br>
-SWING
+***Again, you may have manifest file issues if you do not compile your own or use a tested firmware above!***
 
-**FOR AUDIO**
+-----
 
-POWER<br>
-VOL+<br>
-VOL-<br>
-MUTE
+## Donation Information
 
-Lastly, it's helpful to add further information as a comment directly into the IR file if possible. Example:
+Nothing is ever expected for the hoarding of digital files, creations I have made, or the people I may have helped.
 
-`Filetype: IR signals file`<br>
-`Version: 1`<br>
-`#`<br>
-`# Dynex EN-21669D TV` <---<br>
-`#`<br>
-`name: POWER`<br>
+## Ordering from Lab401? [USE THIS LINK FOR 5% OFF!](https://lab401.com/r?id=vsmgoc) (Or code `UberGuidoZ` at checkout.)
 
-Make, model, link, or even a short description can be helpful if the name is changed (or just in general)!
+I've had so many asking for me to add this.<br>
+![Flipper_Blush](https://user-images.githubusercontent.com/57457139/183561666-4424a3cc-679b-4016-a368-24f7e7ad0a88.jpg) ![Flipper_Love](https://user-images.githubusercontent.com/57457139/183561692-381d37bd-264f-4c88-8877-e58d60d9be6e.jpg)
 
-## To Install New Remotes On Your Flipper:   
+**BTC**: `3AWgaL3FxquakP15ZVDxr8q8xVTc5Q75dS`<br>
+**BCH**: `17nWCvf2YPMZ3F3H1seX8T149Z9E3BMKXk`<br>
+**ETH**: `0x0f0003fCB0bD9355Ad7B124c30b9F3D860D5E191`<br>
+**LTC**: `M8Ujk52U27bkm1ksiWUyteL8b3rRQVMke2`
 
-1. Git clone this repo to your local PC. [Multiple options are explained here](https://docs.github.com/en/repositories/creating-and-managing-repositories/cloning-a-repository).
-2. Open the cloned repository in a File Explorer.
-3. Connect your Flipper to your PC using a USB-C cable.
-4. Open [QFlipper](https://flipperzero.one/update)
-5. Verify that your Flipper shows "Connected"
-6. Ensure your Flipper is fully up-to-date:
-    1. Look for the green "Update" button near the middle-right of the application.
-    2. Press "Update" and allow the Flipper to complete the Update process and then reboot before continuing.
-7. Open the File Manager by selecting the "File Manager" icon (piece of paper) on the top left of the QFlipper application.
-8. Select `SD Card`, then navigate to the `infrared` folder by double-clicking its icon.
-9. Drag the .ir files you want on your Flipper from the File Explorer into the QFlipper File Manager.
-10. Disconnect the Flipper from the PC and have fun!
+So, here it is. All donations of *any* size are humbly appreciated.<br>
+![Flipper_Clap](https://user-images.githubusercontent.com/57457139/183561789-2e853ede-8ef7-41e8-a67c-716225177e5d.jpg) ![Flipper_OMG](https://user-images.githubusercontent.com/57457139/183561787-e21bdc1e-b316-4e67-b327-5129503d0313.jpg)
 
-NOTE: If you plan to copy them all, it's highly recommended to [dismount the SD card](https://docs.flipperzero.one/basics/sd-card#g4-removing-the-sd-card) and plug it into the computer directly.
+Donations will be used for hardware (and maybe caffeine) to further testing!<br>
+![UberGuidoZ](https://cdn.discordapp.com/emojis/1000632669622767686.gif)
