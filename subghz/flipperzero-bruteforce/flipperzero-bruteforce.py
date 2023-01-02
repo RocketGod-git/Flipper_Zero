@@ -13,6 +13,7 @@ class Protocol:
         - stop_bit: APPENDED to each key in sub format, empty by default
         - frequency: protocol's frequency in Hz, 433920000 by default
         - repetition: number of times to repeat each key, 3 by default
+        - key_range: range of keys to generate, None by default
     """
 
     def __init__(
@@ -24,6 +25,7 @@ class Protocol:
         stop_bit="",
         frequency=433920000,
         repetition=3,
+        key_range=None,
     ):
         self.name = name
         self.n_bits = n_bits
@@ -31,6 +33,7 @@ class Protocol:
         self.pilot_period = pilot_period
         self.stop_bit = stop_bit
         self.repetition = repetition
+        self.key_range = key_range
         self.file_header = (
             "Filetype: Flipper SubGhz RAW File\n"
             + "Version: 1\n"
@@ -96,11 +99,19 @@ class Protocol:
                   folder [1..n_folders] will contain [2^1..2^n_folders] files,
                   each file containing [2^n_bits/2^1..2^n_bits/2^n_folders] keys.
         """
-        if self.n_bits > 12:  # take up too much space for github
+        if self.n_bits > 12 and self.key_range is None:  # take up too much space for github
             print(f"Skipping {self.name}, takes up too much space for github")
             return
         base_dir = f"sub_files/{self.name}"
         os.makedirs(base_dir, exist_ok=True)
+        # If key_range is defined, generate those keys only
+        if self.key_range is not None:
+            filename = f"{base_dir}/bf_{self.key_range[0]}-{self.key_range[-1]}.sub"
+            with open(filename, "w") as f:
+                f.write(self.file_header)
+                for key in self.key_range:
+                    f.write("RAW_Data: " + self.key_to_sub(key) * self.repetition + "\n")
+            return
         # Create debruijn.sub
         filename = f"{base_dir}/debruijn.sub"
         with open(filename, "w") as f:
@@ -206,8 +217,17 @@ protocols = [
         transposition_table={"0": "450 -1350 ", "1": "1350 -450 "},
         pilot_period="450 -13950 ",
     ),
+    Protocol(
+        name="Spacca_pager",
+        n_bits=24,
+        transposition_table={"0": "320 -960 ", "1": "960 -320 "},
+        pilot_period="320 -9920 ",
+        frequency=433650000,
+        key_range=range(0x11A01C, 0x11A0E4),  # 300 keys
+    ),
 ]
 
 for p in protocols:
+    # TODO multithread this
     p.generate_sub_files()
     print(f"{p.name} done")

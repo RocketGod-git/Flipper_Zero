@@ -1,7 +1,7 @@
 # F0-NFC-Trolls
 
 `Version: 0.7`
-  `Total: 63 Files`
+  `Total: 65 Files`
 
 **!! I DO NOT OWN ANY OF THESE LINKS/VIDEOS !!**
 
@@ -75,6 +75,7 @@ Here i will show you, how you can create your own NFC Tags like this. I will jus
 | `Awesome-Flipper` | `DolphinDP` | FlipperZero collection of many other repos and stuff for FLipperZero. | [https://github.com/djsime1/awesome-flipperzero](https://github.com/djsime1/awesome-flipperzero) |
 | `Unleashed` | `DolphinFW` | Unleashed firmware for FlipperZero. | [https://github.com/DarkFlippers/unleashed-firmware](https://github.com/DarkFlippers/unleashed-firmware) |
 | `RougeMaster` | `DolphinFW` | Unleashed firmware fork, just with more games and animations. | [https://github.com/RogueMaster/flipperzero-firmware-wPlugins](https://github.com/RogueMaster/flipperzero-firmware-wPlugins) |
+| `Flipper_TalkingSasquatch` | `Dolphin` | GitHub Repo with animations for Flipper Zero. | [https://github.com/skizzophrenic/Talking-Sasquach](https://github.com/skizzophrenic/Talking-Sasquach) |
 
 ## NFC_Files
 
@@ -91,6 +92,7 @@ Here i will show you, how you can create your own NFC Tags like this. I will jus
 | `Akinator_EN` | `Game` | Guy that tries to guess the object you think of. | [https://en.akinator.com/](https://en.akinator.com/) |
 | `Akinator_DE` | `Game` | German guy :) | [https://de.akinator.com/](https://de.akinator.com/) |
 | `*Ascii` | `Helpful` | Generator for ASCII artworks. | [https://www.ascii-art-generator.org/](https://www.ascii-art-generator.org/) |
+| `*Ascii_Archive` | `Helpful` | An archive with a lot of ASCII artworks. | [https://www.asciiart.eu/](https://www.asciiart.eu/) |
 | `Emkei_Email` | `Helpful` | Send anonymous emails. | [https://emkei.cz/](https://emkei.cz/) |
 | `Google Eastereggs` | `Helpful` | Collection of Google Easter eggs. | [https://elgoog.im/](https://elgoog.im/) |
 | `RevShells` | `Helpful` | ReverseShell generator. | [https://www.revshells.com/](https://www.revshells.com/) |

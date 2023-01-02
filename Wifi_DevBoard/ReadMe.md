@@ -30,11 +30,9 @@ Sequoia has been kind enough to create a [web flasher](https://sequoiasan.github
 
 Another deauther option can be found at [HEX0DAYS repo over here](https://github.com/HEX0DAYS/FlipperZero-PWNDTOOLS)! (Full instructions included.)
 
-# [Marauder](https://github.com/justcallmekoko/ESP32Marauder) install information<br>
+# [Marauder](https://github.com/justcallmekoko/ESP32Marauder) install information (easy flash for Windows: [HERE](https://github.com/UberGuidoZ/Flipper/tree/main/Wifi_DevBoard/FZ_Marauder_Flasher))
 
-## New easy flash tool for Windows now available! [CLICK HERE](https://github.com/UberGuidoZ/Flipper/tree/main/Wifi_DevBoard/FZ_Marauder_Flasher)
-
-Direct from the dev WillStunForFood on Discord - check out [his video walkthrough](https://www.youtube.com/watch?v=_YLTpNo5xa0) too!:
+Direct from the dev WillStunForFood (aka JustCallMeKoko) on Discord - check out [his video walkthrough](https://www.youtube.com/watch?v=_YLTpNo5xa0) too!:
 
 - Plug the WiFi dev board directly into your PC
 - Upload the MarauderOTA firmware from source via Arduino IDE
@@ -135,6 +133,12 @@ Frog also noted that it's wise to reflash the Flipper firmware if such issues ar
 Start with the Official firmware, test, then move to a unlocked one if desired.
 
 -----
+
+## Donation Information
+
+Nothing is ever expected for the hoarding of digital files, creations I have made, or the people I may have helped.
+
+## Ordering from Lab401? [USE THIS LINK FOR 5% OFF!](https://lab401.com/r?id=vsmgoc) (Or code `UberGuidoZ` at checkout.)
 
 I've had so many asking for me to add this.<br>
 ![Flipper_Blush](https://user-images.githubusercontent.com/57457139/183561666-4424a3cc-679b-4016-a368-24f7e7ad0a88.jpg) ![Flipper_Love](https://user-images.githubusercontent.com/57457139/183561692-381d37bd-264f-4c88-8877-e58d60d9be6e.jpg)
