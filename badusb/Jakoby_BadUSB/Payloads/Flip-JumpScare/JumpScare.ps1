@@ -10,7 +10,7 @@
 #                                  |   and yea curiosity killed the cat                        ( T   )     / #   Luther  )==*(`     `) ~ \   Hobo          #                                                                                              
 #                                  |    but satisfaction brought him back                     (((^_(((/(((_/ #          /     \     /     \                #    
 #__________________________________|_________________________________________________________________________#          |     |     ) ~   (                #
-#                                                                                                            #         /       \   /     ~ \               #
+#  tiktok.com/@i_am_jakoby                                                                                   #         /       \   /     ~ \               #
 #  github.com/I-Am-Jakoby                                                                                    #         \       /   \~     ~/               #         
 #  twitter.com/I_Am_Jakoby                                                                                   #   /\_/\_/\__  _/_/\_/\__~__/_/\_/\_/\_/\_/\_#                     
 #  instagram.com/i_am_jakoby                                                                                 #  |  |  |  | ) ) |  |  | ((  |  |  |  |  |  |#              
@@ -204,7 +204,7 @@ Clear-RecycleBin -Force -ErrorAction SilentlyContinue
 
 #----------------------------------------------------------------------------------------------------
 
-# This script repeadedly presses the capslock button, this snippet will make sure capslock is turned back off 
+# This script repeatedly presses the capslock button, this snippet will make sure capslock is turned back off
 
 Add-Type -AssemblyName System.Windows.Forms
 $caps = [System.Windows.Forms.Control]::IsKeyLocked('CapsLock')

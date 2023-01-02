@@ -10,7 +10,7 @@
 #                                  |   and yea curiosity killed the cat                        ( T   )     / #   Luther  )==*(`     `) ~ \   Hobo          #                                                                                              
 #                                  |    but satisfaction brought him back                     (((^_(((/(((_/ #          /     \     /     \                #    
 #__________________________________|_________________________________________________________________________#          |     |     ) ~   (                #
-#                                                                                                            #         /       \   /     ~ \               #
+#  tiktok.com/@i_am_jakoby                                                                                   #         /       \   /     ~ \               #
 #  github.com/I-Am-Jakoby                                                                                    #         \       /   \~     ~/               #         
 #  twitter.com/I_Am_Jakoby                                                                                   #   /\_/\_/\__  _/_/\_/\__~__/_/\_/\_/\_/\_/\_#                     
 #  instagram.com/i_am_jakoby                                                                                 #  |  |  |  | ) ) |  |  | ((  |  |  |  |  |  |#              
@@ -33,7 +33,11 @@
 ############################################################################################################################################################
 
 # Download Sound (When using your own link "dl=0" needs to be changed to "dl=1")
-iwr https:// <Your DropBox shared link intended for file> ?dl=1 -O $env:TMP\e.wav
+# This is for if you want to host your own instance of this script
+
+#$wav = ""
+
+iwr $wav -O $env:TMP\e.wav
 
 ############################################################################################################################################################
 

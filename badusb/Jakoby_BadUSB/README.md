@@ -1,20 +1,42 @@
-# Flipper-Zero-BadUSB 🐬
+<div align=center>
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li><a href="#Description">Description</a></li>
-    <li><a href="#The-Functions">The Functions</a></li>
-    <li><a href="#Contact">Contact</a></li>
-    <li><a href="#Acknowledgments">Acknowledgments</a></li>
-  </ol>
-</details>
+# 🐬 Flipper-Zero-BadUSB 🐬
+
+If you would like to support the work that I do, please consider becoming a subscriber in our Discord.
+
+[SUBSCRIBE](https://jakoby.lol/tah)
+
+*CURRENT SUBSCRIBERS*
+
+<img src="https://github.com/I-Am-Jakoby/I-Am-Jakoby/raw/main/discord-subscribers/Ghost-Coin.gif"/>
+<img src="https://github.com/I-Am-Jakoby/I-Am-Jakoby/raw/main/discord-subscribers/DelilahCoin.gif"/>  
+<img src="https://github.com/I-Am-Jakoby/I-Am-Jakoby/raw/main/discord-subscribers/cersei-Coin.gif"/>    
+<img src="https://github.com/I-Am-Jakoby/I-Am-Jakoby/raw/main/discord-subscribers/matzeCoin.gif"/>
+
+The more I grow this project the more I am spending to optimize it. All support is greatly appreciated. 
+
+Subscribing to my YouTube would also be really appreciated. 
+
+[<img src="https://custom-icon-badges.herokuapp.com/badge/-Subscribe-red?style=for-the-badge&logo=video&logoColor=white"/>](https://jakoby.lol/yno)
+
+<img src= https://github.com/I-Am-Jakoby/I-Am-Jakoby/raw/main/img/disclaimer.png width="600" alt="C#" />
+</div>                 
+
+# Table of Contents
+
+[Description](#Description)
+
+[The Payloads](#The-Payloads)
+
+[Contact](#Contact)
+
+[Acknowledgments](#Acknowledgments)
+
+
 
 # Unleash the power of your Flipper 🤓💻
 
-***
-
+***  
 
 ## Description 
 
@@ -25,23 +47,42 @@
 
 ⚠️ Please ENJOY and use RESPONSIBLY❗ 
 
-![hak 5](https://github.com/I-Am-Jakoby/hak5-submissions/blob/main/Assets/hak5-sub.png)
+![hak 5](https://github.com/I-Am-Jakoby/I-Am-Jakoby/raw/main/img/hak5-banner.png)
 
-## The Functions 
+## The Payloads 
+
+This repository has been optimized to facilitate plug and play functionality. 
+
+I purchased the domain `jakoby.lol` for the sole purpose of creating my own short URLs.
+
+I did this with the intention of making room for discord webhooks and dropbox tokens to fit in my one liners.
+
+This in turn makes it so the user no longer has to host their own version of the script.
 
 
-| Functions                                         | Description                                                                                                                                                         |
-| :------------------------------------------------ | :------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
-| [ADV-Recon](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-ADV-Recon)     | A script used to do an advanced level of Recon on the targets computer.                                                                          |
-| [AcidBurn](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-AcidBurn)      | A script I put together to be used on your friends as well.. or Foes. Prepare to be roasted.                                                                                                           |
-| [Jump-Scare](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-JumpScare)    | Just a little jumpscare ha.                                                                                                            |
-| [PineApple](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-PineApple)   | Connect a targets PC to your wifi PineApple                                                                                                                                                 |
-| [Play-WAV](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-Play-WAV)     | Download a WAV file and play it after a mouse movement is detected. 
-| [Rage-Pop-Ups](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-Rage-PopUps)   | Generates an infinite loop of insulting pop-ups.                                                  
-| [Subscribe](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-Subscribe)   | Used to make your target subscribe to your youtube channel.                                              
-| [WallPaper-Troll](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-Wallpaper-Troll)   | Collects sensitive info from target, displays it as their wallpaper to taunt them.
-| [We-Found-You](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-We-Found-You)   | Open a map with your targets current location on it
-
+| Payloads                                                                                                        | Description                                                                                       | Plug'n'Play | Author      |
+| :-------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------ | :-----------| :-----------|
+| [Hacker-Goose](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/blob/main/Payloads/Flip-HackerGoose/ReadMe.md)| A payload that hires a goose to hack your target in real time                                     |✅           | Jakoby      |      
+| [ADV-Recon](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-ADV-Recon)               | A script used to do an advanced level of Recon on the targets computer.                           |✅           | Jakoby      |      
+| [AcidBurn](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-AcidBurn)                 | A script I put together to be used on your friends as well.. or Foes. Prepare to be roasted       |✅           | Jakoby      | 
+| [Jump-Scare](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-JumpScare)              | Just a little jumpscare that changes the targets wallpaper                                        |✅           | Jakoby      |
+| [Jump-Scare V2](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-JumpScare-2.0)       | Just a little jumpscare that plays a video is int targets powershell console                      |✅           | Jakoby      |
+| [ADV-RickRoll](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-ADV-RickRoll)         | RickRoll that plays in the powershell console after mouse movement is detected                    |✅           | Jakoby      |
+| [PineApple](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-PineApple)               | Connect a targets PC to your wifi PineApple                                                       |⛔           | Jakoby      |
+| [Play-WAV](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-Play-WAV)                 | Download a WAV file and play it after a mouse movement is detected                                |✅           | Jakoby      |
+| [Rage-Pop-Ups](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-Rage-PopUps)          | Generates an infinite loop of insulting pop-ups                                                   |⛔           | Jakoby      |
+| [Subscribe](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-Subscribe)               | Used to make your target subscribe to your youtube channel                                        |✅           | Jakoby      |       
+| [Must Sub](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-MustSub)                  | A script used to make your target subscribe to 15 of jakoby's favorite channels                   |✅           | Jakoby      |
+| [PS-Draw](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-PS-Draw)                   | A script used to generate and draw images in the Powershell Window                                |✅           | Jakoby      |
+| [WallPaper-Troll](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-Wallpaper-Troll)   | Collects sensitive info from target, displays it as their wallpaper to taunt them                 |✅           | Jakoby      |
+| [WallPaper-URL](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-WallPaper-URL)       | Sets the targets wallpaper to an image you provide via url after mouse movement detected          |✅           | Jakoby      |
+| [We-Found-You](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-We-Found-You)         | Open a map with your targets current location on it                                               |✅           | Jakoby      |
+| [YT-Tripwire](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/blob/main/Payloads/Flip-YT-Tripwire/ReadMe.md) | Open any youtube video after a mouse movement is detected                                         |✅           | Jakoby      |
+| [Credz-Plz](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-Credz-Plz)               | A script used to prompt the target to enter their creds to later be exfiltrated                   |✅           | Jakoby      |
+| [Shortcut Jacker](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-ShortcutJacker)    | A script used to embed malware in the shortcut on your targets desktop                            |⛔           | Jakoby      |
+| [Wifi Grabber](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/blob/main/Payloads/Flip-WifiGrabber/README.md)| Grabs your targets wifi passwords and uploads them to either Dropbox, Discord, or both            |✅           | Jakoby      |
+| [Browser Data](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/blob/main/Payloads/Flip-BrowserData/README.md)| This payload can be used to retrieve the browsing history and bookmarks of your target            |✅           | Jakoby      |
+| [KeyLogger](https://github.com/I-Am-Jakoby/Flipper-Zero-BadUSB/tree/main/Payloads/Flip-Keylogger)               | This is a Powershell based keylogger that exfiltrates the logs to discord                         |✅           | Jakoby      |
 
 <!-- CONTACT -->
 ## Contact
@@ -74,13 +115,18 @@
       </a>
       <br>Discord
     </td>
+    <td align="center" width="96">
+      <a href="https://www.tiktok.com/@i_am_jakoby?lang=en">
+        <img src=https://github.com/I-Am-Jakoby/I-Am-Jakoby/raw/main/img/tiktok.svg width="48" height="48" alt="Jsonnet" />
+      </a>
+      <br>TikTok
+    </td>    
   </tr>
 </table>
 </div>
 
 <!-- ACKNOWLEDGMENTS -->
 ## Acknowledgments 
-❗
 
 * [Hak5](https://hak5.org/)
 * [Darren](https://github.com/hak5darren)

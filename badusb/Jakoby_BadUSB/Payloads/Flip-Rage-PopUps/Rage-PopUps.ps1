@@ -10,7 +10,7 @@
 #                                  |   and yea curiosity killed the cat                        ( T   )     / #   Luther  )==*(`     `) ~ \   Hobo          #                                                                                              
 #                                  |    but satisfaction brought him back                     (((^_(((/(((_/ #          /     \     /     \                #    
 #__________________________________|_________________________________________________________________________#          |     |     ) ~   (                #
-#                                                                                                            #         /       \   /     ~ \               #
+#  tiktok.com/@i_am_jakoby                                                                                   #         /       \   /     ~ \               #
 #  github.com/I-Am-Jakoby                                                                                    #         \       /   \~     ~/               #         
 #  twitter.com/I_Am_Jakoby                                                                                   #   /\_/\_/\__  _/_/\_/\__~__/_/\_/\_/\_/\_/\_#                     
 #  instagram.com/i_am_jakoby                                                                                 #  |  |  |  | ) ) |  |  | ((  |  |  |  |  |  |#              
@@ -19,10 +19,10 @@
 
 <#
 .SYNOPSIS
-	This script will open a series of pop ups in order to taunt your target. I wrote it initially to target call center scammers
+	This script will open a series of pop-ups in order to taunt your target. I wrote it initially to target call center scammers.
 
 .DESCRIPTION 
-	This program is to taunt your target. Below are a series insults you can modify as you like. The program will generate a PopUp 
+	This program is meant to taunt your target. Below are a series insults you can modify as you like. The program will generate a Pop-up 
 	for each one of them. 
 #>
 
@@ -34,7 +34,7 @@ Add-Type -AssemblyName System.Windows.Forms
 
 $cycles = 3
 
-# List as many questions here as you like, it will cycke through all of them
+# List as many questions here as you like, it will cycle through all of them
 
 $msgs = @(
 "Are all scammers as dumb as you?"

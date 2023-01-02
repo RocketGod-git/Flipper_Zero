@@ -418,3 +418,37 @@ ENTER
 ## Questions or Comments?
 
 Please feel free to [open an issue](https://github.com/dekuNukem/duckypad/issues), ask in the [official duckyPad discord](https://discord.gg/4sJCBx5), DM me on discord `dekuNukem#6998`, or email `dekuNukem`@`gmail`.`com` for inquires.
+
+## From this gist
+https://gist.github.com/methanoliver/efebfe8f4008e167417d4ab96e5e3cac
+
+# DuckyScript commands supported by Flipper's BadUSB
+
+Explanations are only given for commands not present in the original DuckyScript, for everything else refer to [DuckyScript documentation](https://docs.hak5.org/hak5-usb-rubber-ducky/).
+
+## Keys
+
+These mean exactly what one would expect and should need no further explanation.
+
++ Modifiers: `CTRL`, `CONTROL`, `SHIFT`, `ALT`, `GUI`, `WINDOWS`
++ Combos: `CTRL-ALT`, `CTRL-SHIFT`, `ALT-SHIFT`, `ALT-GUI`, `GUI-SHIFT`
++ Cursor: `DOWNARROW`, `DOWN`, `LEFTARROW`, `LEFT`, `RIGHTARROW`, `RIGHT`, `UPARROW`, `UP`
++ Control and navigation: `ENTER`, `BREAK`, `PAUSE`, `CAPSLOCK`, `DELETE`, `BACKSPACE`, `END`, `ESC`, `ESCAPE`, `HOME`, `INSERT`, `NUMLOCK`, `PAGEUP`, `PAGEDOWN`, `PRINTSCREEN`, `SCROLLOCK`, `SPACE`, `TAB`, `MENU`, `APP`, `SYSRQ`
++ Function: `F1`, `F2`, `F3`, `F4`, `F5`, `F6`, `F7`, `F8`, `F9`, `F10`, `F11`, `F12`
+
+## Input
+
++ `STRING`
++ `ALTSTRING <string>`, `ALTCODE <string>` -- Not present in DuckyScript, these are the equivalent of `STRING`, as if the string was typed in by holding Alt and entering the unicode code of every character, [as described in Windows documentation](https://support.microsoft.com/en-us/office/insert-ascii-or-unicode-latin-based-symbols-and-characters-d13f58d3-7bcb-44a7-a4d5-972ee12e50e0). This is the way to get around the fact that there are no standard ways to switch input keyboard language and important in parts of the world where default keyboard has no Latin characters on it at all. This only works on Windows.
++ `ALTCHAR <code>` -- Altstring is internally a sequence of `ALTCHAR` invocations.
+
+There is *no* support for `STRINGLN`.
+
+## Structural
+
++ `REM`
++ `ID <vendor:id>` - Equivalent to certain features of DuckyScript's `ATTACKMODE`. executed in preload phase, sets USB id of the keyboard device. For example, `ID 04d9:1702` is an AJAZZ keyboard.
++ `DELAY`
++ `DEFAULT_DELAY`, `DEFAULTDELAY`
++ `REPEAT`
++ `DUCKY_LANG` - ignored, recognized as a command purely for compatibility with existing scripts.

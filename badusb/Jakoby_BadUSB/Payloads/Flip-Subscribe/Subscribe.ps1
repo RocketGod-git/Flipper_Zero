@@ -10,7 +10,7 @@
 #                                  |   and yea curiosity killed the cat                        ( T   )     / #   Luther  )==*(`     `) ~ \   Hobo          #                                                                                              
 #                                  |    but satisfaction brought him back                     (((^_(((/(((_/ #          /     \     /     \                #    
 #__________________________________|_________________________________________________________________________#          |     |     ) ~   (                #
-#                                                                                                            #         /       \   /     ~ \               #
+#  tiktok.com/@i_am_jakoby                                                                                   #         /       \   /     ~ \               #
 #  github.com/I-Am-Jakoby                                                                                    #         \       /   \~     ~/               #         
 #  twitter.com/I_Am_Jakoby                                                                                   #   /\_/\_/\__  _/_/\_/\__~__/_/\_/\_/\_/\_/\_#                     
 #  instagram.com/i_am_jakoby                                                                                 #  |  |  |  | ) ) |  |  | ((  |  |  |  |  |  |#              
@@ -19,13 +19,13 @@
 
 <#
 .DESCRIPTION 
-	This program is designed to get your target to subscribe to your youtube channel
+	This program is designed to get your target to subscribe to your YouTube channel.
 #>
 #############################################################################################################################################
 
-# Enter your youtube channel URL here, but you should test this script with my URL first ;D
+# Enter your YouTube channel URL here, ONLY if you are rehosting this script yourself 
 
-$channel = "https://www.youtube.com/iamjakoby"
+# $channel = "https://www.youtube.com/iamjakoby"
 
 Add-Type -AssemblyName System.Windows.Forms
 $o=New-Object -ComObject WScript.Shell
