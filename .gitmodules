@@ -1,0 +1,3 @@
+[submodule "subghz/Customer_Assistance_Buttons/CVS/customer-assistance-buttons-sdr"]
+	path = subghz/Customer_Assistance_Buttons/CVS/customer-assistance-buttons-sdr
+	url = https://github.com/jimilinuxguy/customer-assistance-buttons-sdr.git
