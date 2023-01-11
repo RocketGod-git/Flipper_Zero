@@ -10,8 +10,8 @@ This uses a standard C-13/C-14 connector like a PC power cord.<br>
 <br>
 I haven't found a fog machine with any other rf remote than this one. So have fun.<br>
 <br>
-<big>RocketGod</big><br>
-https://discord.gg/8k5ecSyXmG<br>
-https://www.youtube.com/@lordRocketGod<br>
-https://github.com/RocketGod-git<br>
+**RocketGod**<br>
+<a href="https://discord.gg/8k5ecSyXmG">Discord</a><br>
+<a href="https://www.youtube.com/@lordRocketGod">YouTube</a><br>
+<a href="https://github.com/RocketGod-git">GitHub</a><br>
 <img src="https://avatars.githubusercontent.com/u/57732082?v=4"><br>
