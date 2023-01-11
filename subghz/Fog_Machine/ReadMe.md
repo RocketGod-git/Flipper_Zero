@@ -4,7 +4,7 @@ FCC ID: &emsp; &emsp; &nbsp; ZIFIL-1<br>
 Frequency: &ensp; &nbsp; 315 Mhz<br>
 FCC Reports: &nbsp; <a href="https://fcc.io/ZIFIL">https://fcc.io/ZIFIL</a><br>
 <br>
-There was an original upload to @UberGuidoZ repo by @the0bone for a Theefun TFM01 fog machine. Thanks!
+There was an original upload to @UberGuidoZ repo by @the0bone for a Theefun TFM01 fog machine. Thanks!<br>
 <br>
 I've found that this company makes most fog machines internal componants and sells to many manufacturers.<br>
 Global Special Effects, Fog Masters, Chauvet, American DJ, Eliminator, Magmatic, are all the same remote.<br>
