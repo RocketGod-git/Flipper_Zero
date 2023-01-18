@@ -15,4 +15,4 @@ https://github.com/UberGuidoZ/Flipper
 All updates and additions go there.
 You only need to use my repo if you know what you're looking for isn't there.
 
-<img src="https://avatars.githubusercontent.com/u/57732082?v=4"><br>
+![rocketgod_logo_transparent](https://user-images.githubusercontent.com/57732082/213221533-171b37da-46e5-4661-ac47-c7f23d24b816.png)
