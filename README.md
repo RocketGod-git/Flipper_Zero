@@ -7,7 +7,7 @@ Feel free to contribute and submit a PR.<br>
 <br>
 All my fun videos go here:<br>
 <a href="https://youtube.com/@lordRocketGod">RocketGod's YouTube Channel</a><br>
-<a href=“https://tiktok.com/@rocketgod.hacker”>RocketGod’s TikTok</a><br>
+<a href="https://tiktok.com/@rocketgod.hacker">RocketGod’s TikTok</a><br>
 <br>
 Buy cool hacker toys here and use code ROCKETGOD for 5% discount<br>
 <a href="https://lab401.com/r?id=iop7bf">Lab401</a><br>
