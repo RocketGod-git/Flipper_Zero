@@ -1,325 +1,460 @@
 <!DOCTYPE html>
-  <html lang="en">
+  <html lang="en" data-theme="light">
   <head>
-  <meta charset="utf-8">
-  <title>Pagger - Retekess T119</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="pico.min.css">
+    <title>Pagger - Retekess T119</title>
 
-  <style>
-    /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */html{line-height:1.15;-webkit-text-size-adjust:100%}body{margin:0}main{display:block}h1{font-size:2em;margin:.67em 0}hr{box-sizing:content-box;height:0;overflow:visible}pre{font-family:monospace,monospace;font-size:1em}a{background-color:transparent}abbr[title]{border-bottom:none;text-decoration:underline;text-decoration:underline dotted}b,strong{font-weight:bolder}code,kbd,samp{font-family:monospace,monospace;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}img{border-style:none}button,input,optgroup,select,textarea{font-family:inherit;font-size:100%;line-height:1.15;margin:0}button,input{overflow:visible}button,select{text-transform:none}[type=button],[type=reset],[type=submit],button{-webkit-appearance:button}[type=button]::-moz-focus-inner,[type=reset]::-moz-focus-inner,[type=submit]::-moz-focus-inner,button::-moz-focus-inner{border-style:none;padding:0}[type=button]:-moz-focusring,[type=reset]:-moz-focusring,[type=submit]:-moz-focusring,button:-moz-focusring{outline:1px dotted ButtonText}fieldset{padding:.35em .75em .625em}legend{box-sizing:border-box;color:inherit;display:table;max-width:100%;padding:0;white-space:normal}progress{vertical-align:baseline}textarea{overflow:auto}[type=checkbox],[type=radio]{box-sizing:border-box;padding:0}[type=number]::-webkit-inner-spin-button,[type=number]::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}[type=search]::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}details{display:block}summary{display:list-item}template{display:none}[hidden]{display:none}
-    body, html {
-      font-family: 'Times New Roman', Times, serif;
-      font-size: 16px;
-    }
-    #main {
-      background-color: #ececec;
-      width: 980px;
-      position: relative;
-      top: 0;
-      left: 50%;
-      margin-left: -490px;
-    }
-    #main a,
-    #main a:active,
-    #main a:visited {
-      text-decoration: none;
-      color: #000000;
-    }
-    #main a:hover {
-      text-decoration: none;
-      color: #eb8e36;
-    }
-    #main div {
-      padding: 5px;
-    }
-    #main input {
-      border: 1px solid #000000;
-    }
-    #main button {
-      height: 100%;
-      background-color: #eb8e36;
-      cursor: pointer;
-      border: 1px solid #000000;
-    }
-    #main label {
-      margin-bottom: 5px;
-    }
-    #main .generator-title {
-      font-size: 20px;
-      font-weight: bold;
-      text-align: left;
-      margin-top: 5px;
-      padding-bottom: 0px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-    }
-    #main .generator-title .title-model {
-      flex: 1;
-    }
-    #main .pane-title {
-      background-color: #eb8e36;
-      text-align: center;
-    }
-    #main .pane-body {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
-    }
-    #main .pane-body div {
-      display: flex;
-      flex-direction: column;
-      flex: 1;
-    }
-  </style>
-
-  <script>
-    function decToBin(num, length) {
-      var res = num.toString(2);
-
-      while (res.length < length) {
-        res = '0' + res;
+    <style>
+      [data-theme="light"],
+      :root:not([data-theme="dark"]) {
+        --primary: #757575;
+        --primary-hover: #616161;
+        --primary-focus: rgba(117, 117, 117, 0.125);
+        --primary-inverse: #FFF;
       }
-
-      return res;
-    }
-
-    function binToDec(bits) {
-      return parseInt(bits, 2);
-    }
-    
-    function hexToBin(hex) {
-      return (parseInt(hex, 16).toString(2)).padStart(24, '0');
-    }
-
-    function binToHex(bits) {
-      return parseInt(bits, 2).toString(16).toUpperCase().padStart(16, '0');
-    }
-    
-    function invert(bits) {
-      return bits.split('').map(function(b) {
-        return (1 - b).toString();
-      }).join('');
-    }
-
-    function reverse(bits) {
-      return bits.split('').reverse().join('');
-    }
-
-    function encManchester(bits, mode) {
-      var res = '';
-
-      for (var i = 0; i < bits.length; i++) {
-        var c = bits.charAt(i);
-        '0' == c ? res += mode ? '10' : '01' : '1' == c ? res += mode ? '01' : '10' : res += 'EE';
+      :root {
+        --font-size: 15px;
+        --spacing: 0.25rem;
+        --form-element-spacing-vertical: 0.375rem;
       }
-
-      return res;
-    }
-
-    function decManchester(bits, mode) {
-      var res = '';
-
-      for (var i = 1; i < bits.length; i += 2) {
-        var c = bits.charAt(i);
-        var p = bits.charAt(i - 1);
-        '0' == p && '1' == c ? res += mode ? '1' : '0' : '1' == p && '0' == c ? res += mode ? '0' : '1' : res += 'E';
+      h1 {
+        margin-bottom: 0;
       }
-
-      return res;
-    }
-
-    function genKeyData(hex) {
-      var formatted = hex.replace(/(.{2})/g, '$1 ').trim();
-      var res = 'Key: '+formatted+'\n';
-
-      return res;
-    }
-
-    function genRawData(zero, one, repeats, bits) {
-      bits += '0';
-      var line = 'RAW_Data: -6000';
-
-      for (var i = 0; i < bits.length; i++) {
-        var c = bits.charAt(i);
-        var p = bits.charAt(i - 1);
-        var t = c == '0' ? zero : one;
-
-        if (i % 2 == 0) {
-          line += ' ' + t;
-        } else {
-          line += ' -' + t;
+      h3 {
+        color: #757575;
+        --typography-spacing-vertical: 0rem;
+      }
+      article {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+        margin: 1.75rem 0;
+      }
+      article > header,
+      article > footer {
+        text-align: center;
+        margin-left: -0.75rem;
+        margin-right: -0.75rem;
+        padding: 0.375rem;
+      }
+      .container > header {
+        text-align: center;
+      }
+      .container > footer {
+        display: flex;
+      }
+      .container > footer .title {
+        flex: 1;
+      }
+      .container > footer .github,
+      .container > footer .home {
+        margin-left: 10px;
+      }
+      .orange-theme {
+        --primary: #fb8c00;
+        --primary-hover: #f57c00;
+        --primary-focus: rgba(251, 140, 0, 0.125);
+        --primary-inverse: #FFF;
+      }
+      .orange-theme h3 {
+        color: #fb8c00;
+      }
+      .orange-theme input:not([type=submit],[type=button],[type=reset],[role=switch],[readonly]):is(:active,:focus) {
+        --border-color: #fb8c00;
+      }
+      .orange-theme input:not([type=submit],[type=button],[type=reset],[type=range],[type=file],[readonly]):focus,
+      .orange-theme select:focus,
+      .orange-theme textarea:focus {
+        --box-shadow: 0 0 0 3px rgba(251, 140, 0, 0.125);
+      }
+      .green-theme {
+        --primary: #7cb342;
+        --primary-hover: #689f38;
+        --primary-focus: rgba(124, 179, 66, 0.125);
+        --primary-inverse: #FFF;
+      }
+      .green-theme h3 {
+        color: #7cb342;
+      }
+      .green-theme input:not([type=submit],[type=button],[type=reset],[role=switch],[readonly]):is(:active,:focus) {
+        --border-color: #7cb342;
+      }
+      .green-theme input:not([type=submit],[type=button],[type=reset],[type=range],[type=file],[readonly]):focus,
+      .green-theme select:focus,
+      .green-theme textarea:focus {
+        --box-shadow: 0 0 0 3px rgba(124, 179, 66, 0.125);
+      }
+      .blue-theme {
+        --primary: #039be5;
+        --primary-hover: #0288d1;
+        --primary-focus: rgba(3, 155, 229, 0.125);
+        --primary-inverse: #FFF;
+      }
+      .blue-theme h3 {
+        color: #039be5;
+      }
+      .blue-theme input:not([type=submit],[type=button],[type=reset],[role=switch],[readonly]):is(:active,:focus) {
+        --border-color: #039be5;
+      }
+      .blue-theme input:not([type=submit],[type=button],[type=reset],[type=range],[type=file],[readonly]):focus,
+      .blue-theme select:focus,
+      .blue-theme textarea:focus {
+        --box-shadow: 0 0 0 3px rgba(3, 155, 229, 0.125);
+      }
+      @media (max-width: 992px) {
+        .grid .grid {
+          display: flex;
+        }
+        .grid .grid div {
+          display: flex;
+          flex-direction: column;
+          flex: 1;
         }
       }
+    </style>
 
-      line += ' -6000\n';
+    <script>
+      function decToBin(num, length) {
+        var res = (num >>> 0).toString(2);
 
-      var res = '';
+        while (res.length < length) {
+          res = '0' + res;
+        }
 
-      for (var r = 0; r < repeats; r++) {
-        res += line;
+        return res;
       }
 
-      return res;
-    }
-
-    function genKeyFile(keyData) {
-      var header = 'Filetype: Flipper SubGhz Key File\nVersion: 1\nFrequency: 433920000\nPreset: FuriHalSubGhzPresetOok650Async\nProtocol: Princeton\nBit: 24\n';
-      var footer = 'TE: 271\n';
-
-      return header + keyData + footer;
-    }
-
-    function genRawFile(rawData) {
-      var header = 'Filetype: Flipper SubGhz RAW File\nVersion: 1\nFrequency: 433920000\nPreset: FuriHalSubGhzPresetOok650Async\nProtocol: RAW\n'
-
-      return header + rawData;
-    }
-
-    function calcNumToHex() {
-      var station = Number(document.getElementById('station-num-kp').value);
-      var pager = Number(document.getElementById('pager-num-kp').value);
-      var action = Number(document.getElementById('action-num-kp').value);
-
-      station = reverse(decToBin(station, 13));
-      pager = reverse(decToBin(pager, 10));
-      action = reverse(decToBin(action, 1));
-
-      var hex = binToHex(station + pager + action);
-      document.getElementById('hex-key-kp').value = hex;
-    }
-
-    function calcHexToNum() {
-      var hex = document.getElementById('hex-key-kp').value.toString();
-      bin = hexToBin(hex);
-
-      var station = binToDec(reverse(bin.substring(0,13)));
-      var pager = binToDec(reverse(bin.substring(13,23)));
-      var action = binToDec(reverse(bin.substring(23,24)));
-
-      document.getElementById('station-num-kp').value = station;
-      document.getElementById('pager-num-kp').value = pager;
-      document.getElementById('action-num-kp').value = action;
-    }
-
-    function downloadKeyFile() {
-      var hex = document.getElementById('hex-key-kp').value.toString();
-      var keyData = genKeyData(hex);
-      var file = genKeyFile(keyData);
-
-      var station = Number(document.getElementById('station-num-kp').value);
-      var pager = Number(document.getElementById('pager-num-kp').value);
-      var action = Number(document.getElementById('action-num-kp').value);
+      function binToDec(bits) {
+        return parseInt(bits, 2);
+      }
       
-      var hiddenElement = document.createElement('a');
-      hiddenElement.href = 'data:attachment/text,' + encodeURI(file);
-      hiddenElement.target = '_blank';
-      hiddenElement.download = station + '-' + pager + '-' + action + '.sub';
-      hiddenElement.click();
-    }
-
-    function downloadRawFile() {
-      var stationFrom = Number(document.getElementById('station-num-from-rp').value);
-      var stationTo = Number(document.getElementById('station-num-to-rp').value);
-      var pagerFrom = Number(document.getElementById('pager-num-from-rp').value);
-      var pagerTo = Number(document.getElementById('pager-num-to-rp').value);
-      var action = Number(document.getElementById('action-num-rp').value);
-
-      var rawData = '';
-      var actionBin = reverse(decToBin(action, 1));
-
-      for (var s = stationFrom; s <= stationTo; s++) {
-        var stationBin = reverse(decToBin(s, 13));
-
-        for (var p = pagerFrom; p <= pagerTo; p++) {
-          var pagerBin = reverse(decToBin(p, 10));
-
-          var bin = encManchester(stationBin + pagerBin + actionBin, 0);
-          var raw26 = genRawData(200, 600, 10, bin);
-          var raw38 = genRawData(300, 800, 10, bin);
-          
-          rawData += raw26 + raw38;
-        }
+      function hexToBin(hex) {
+        return (parseInt(hex, 16).toString(2)).toUpperCase().padStart(24, '0');
       }
 
-      var file = genRawFile(rawData);
+      function binToHex(bits) {
+        return parseInt(bits, 2).toString(16).toUpperCase().padStart(6, '0');
+      }
+      
+      function invert(bits) {
+        return bits.split('').map(function(b) {
+          return (1 - b).toString();
+        }).join('');
+      }
 
-      var hiddenElement = document.createElement('a');
-      hiddenElement.href = 'data:attachment/text,' + encodeURI(file);
-      hiddenElement.target = '_blank';
-      hiddenElement.download = stationFrom + '_' + stationTo + '-' + pagerFrom + '_' + pagerTo + '-' + action + '.sub';
-      hiddenElement.click();
-    }
-  </script>
+      function reverse(bits) {
+        return bits.split('').reverse().join('');
+      }
+
+      function encManchester(bits, mode) {
+        var res = '';
+
+        for (var i = 0; i < bits.length; i++) {
+          var c = bits.charAt(i);
+          '0' == c ? res += mode ? '10' : '01' : '1' == c ? res += mode ? '01' : '10' : res += 'EE';
+        }
+
+        return res;
+      }
+
+      function decManchester(bits, mode) {
+        var res = '';
+
+        for (var i = 1; i < bits.length; i += 2) {
+          var c = bits.charAt(i);
+          var p = bits.charAt(i - 1);
+          '0' == p && '1' == c ? res += mode ? '1' : '0' : '1' == p && '0' == c ? res += mode ? '0' : '1' : res += 'E';
+        }
+
+        return res;
+      }
+
+      function genKeyData(hex) {
+        var formatted = hex.replace(/(.{2})/g, '$1 ').trim();
+        var res = 'Key: '+formatted+'\n';
+
+        return res;
+      }
+
+      function genRawData(zero, one, repeats, bits) {
+        bits += '0';
+        var line = 'RAW_Data: -6000';
+
+        for (var i = 0; i < bits.length; i++) {
+          var c = bits.charAt(i);
+          var p = bits.charAt(i - 1);
+          var t = c == '0' ? zero : one;
+
+          if (i % 2 == 0) {
+            line += ' ' + t;
+          } else {
+            line += ' -' + t;
+          }
+        }
+
+        line += ' -6000\n';
+
+        var res = '';
+
+        for (var r = 0; r < repeats; r++) {
+          res += line;
+        }
+
+        return res;
+      }
+
+      function genKeyFile(keyData) {
+        var header = 'Filetype: Flipper SubGhz Key File\nVersion: 1\nFrequency: 433920000\nPreset: FuriHalSubGhzPresetOok650Async\nProtocol: Princeton\nBit: 24\n';
+        var footer = 'TE: 271\n';
+
+        return header + keyData + footer;
+      }
+
+      function genRawFile(rawData) {
+        var header = 'Filetype: Flipper SubGhz RAW File\nVersion: 1\nFrequency: 433920000\nPreset: FuriHalSubGhzPresetOok650Async\nProtocol: RAW\n'
+
+        return header + rawData;
+      }
+
+      function calcNumToHex(station, pager, action) {
+        station = reverse(decToBin(station, 13));
+        pager = reverse(decToBin(pager, 10));
+        action = reverse(decToBin(action, 1));
+
+        var hex = binToHex(station + pager + action);
+
+        return hex;
+      }
+
+      function calcHexToNum() {
+        var hex = document.getElementById('hex-key-sp').value.toString();
+        var bin = hexToBin(hex);
+
+        var station = binToDec(reverse(bin.substring(0,13)));
+        var pager = binToDec(reverse(bin.substring(13,23)));
+        var action = binToDec(reverse(bin.substring(23,24)));
+
+        document.getElementById('station-num-kp').value = station;
+        document.getElementById('pager-num-kp').value = pager;
+        document.getElementById('action-num-kp').value = action;
+
+        document.getElementById('station-num-from-rp').value = station;
+        document.getElementById('station-num-to-rp').value = station;
+        document.getElementById('pager-num-from-rp').value = 1;
+        document.getElementById('pager-num-to-rp').value = 100;
+        document.getElementById('action-num-rp').value = action;
+
+        document.getElementById('station-num-tp').value = station;
+      }
+
+      function downloadKeyFile() {
+        document.getElementById('key-download').setAttribute('aria-busy', true);
+
+        var station = Number(document.getElementById('station-num-kp').value);
+        var pager = Number(document.getElementById('pager-num-kp').value);
+        var action = Number(document.getElementById('action-num-kp').value);
+
+        var hex = calcNumToHex(station, pager, action).toString().padStart(16, '0');
+        var keyData = genKeyData(hex);
+        var file = genKeyFile(keyData);
+        
+        var hiddenElement = document.createElement('a');
+        hiddenElement.href = 'data:attachment/text,' + encodeURI(file);
+        hiddenElement.target = '_blank';
+        hiddenElement.download = station + '-' + pager + '-' + action + '.sub';
+        hiddenElement.click();
+
+        document.getElementById('key-download').setAttribute('aria-busy', false);
+      }
+
+      function downloadRawFile() {
+        document.getElementById('raw-download').setAttribute('aria-busy', true);
+
+        var stationFrom = Number(document.getElementById('station-num-from-rp').value);
+        var stationTo = Number(document.getElementById('station-num-to-rp').value);
+        var pagerFrom = Number(document.getElementById('pager-num-from-rp').value);
+        var pagerTo = Number(document.getElementById('pager-num-to-rp').value);
+        var action = Number(document.getElementById('action-num-rp').value);
+
+        var rawData = '';
+        var actionBin = reverse(decToBin(action, 1));
+
+        for (var s = stationFrom; s <= stationTo; s++) {
+          var stationBin = reverse(decToBin(s, 13));
+
+          for (var p = pagerFrom; p <= pagerTo; p++) {
+            var pagerBin = reverse(decToBin(p, 10));
+
+            var bin = encManchester(stationBin + pagerBin + actionBin, 0);
+            var raw26 = genRawData(200, 600, 10, bin);
+            var raw38 = genRawData(300, 800, 10, bin);
+            
+            rawData += raw26 + raw38;
+          }
+        }
+
+        var file = genRawFile(rawData);
+
+        var hiddenElement = document.createElement('a');
+        hiddenElement.href = 'data:attachment/text,' + encodeURI(file);
+        hiddenElement.target = '_blank';
+        hiddenElement.download = stationFrom + '_' + stationTo + '-' + pagerFrom + '_' + pagerTo + '-' + action + '.sub';
+        hiddenElement.click();
+
+        document.getElementById('raw-download').setAttribute('aria-busy', false);
+      }
+
+      function downloadTurnOffFile() {
+        document.getElementById('turnoff-download').setAttribute('aria-busy', true);
+
+        var station = Number(document.getElementById('station-num-tp').value);
+        var pager = Number(1005);
+        var action = Number(0);
+
+        var hex = calcNumToHex(station, pager, action).toString().padStart(16, '0');
+        var keyData = genKeyData(hex);
+        var file = genKeyFile(keyData);
+        
+        var hiddenElement = document.createElement('a');
+        hiddenElement.href = 'data:attachment/text,' + encodeURI(file);
+        hiddenElement.target = '_blank';
+        hiddenElement.download = station + '-turnoff.sub';
+        hiddenElement.click();
+
+        document.getElementById('turnoff-download').setAttribute('aria-busy', false);
+      }
+    </script>
   </head>
   
   <body>
-    <div id="main">
+    <main class="container">
 
-      <div class="generator-title">
-        <div class="title-model">RETEKESS T119</div>
-        <div class="title-github"><a href="https://github.com/meoker/pagger">Github</a></div>
-        <div class="title-home"><a href="https://meoker.github.io/pagger">Home</a></div>
-      </div>
+      <header>
+        <h1 class="title">RETEKESS T119</h1>
+      </header>
 
-      <div id="key-pane">
-        <div class="pane-title">FLIPPER ZERO KEY FILE GENERATOR</div>
-        <div class="pane-body">
+      <article id="signal-pane" class="orange-theme">
+        <header><h3>SIGNAL</h3></header>
+        <div class="grid">
+          <div></div>
           <div>
-            <label for="station-num-kp">Station number:</label>
-            <input type="number" name="station-num-kp" id="station-num-kp" min="0" max="8191" placeholder="from 0 to 8191">
+            <label for="hex-key-sp">Hex key:</label>
+            <input name="hex-key-sp" id="hex-key-sp" placeholder="00AABB" minlength="6" maxlength="6">
+          </div>
+          <div></div>
+        </div>
+        <div class="grid">
+          <div></div>
+          <button onclick="calcHexToNum()">Calculate &#8595</button>
+          <div></div>
+        </div>
+        <footer>
+          Put here the hex key you got from the read.
+        </footer>
+      </article>
+
+      <article id="key-pane" class="green-theme">
+        <header><h3>KEY FILE</h3></header>
+        <div class="grid">
+          <div>
+            <label for="station-num-kp">Station:</label>
+            <input type="number" name="station-num-kp" id="station-num-kp" min="0" max="8191" placeholder="0 - 8191">
           </div>
           <div>
-            <label for="pager-num-kp">Pager number:</label>
-            <input type="number" name="pager-num-kp" id="pager-num-kp" min="0" max="999" placeholder="from 0 to 999">
+            <label for="pager-num-kp">Pager:</label>
+            <input type="number" name="pager-num-kp" id="pager-num-kp" min="0" max="999" placeholder="0 - 999">
           </div>
           <div>
-            <label for="action-num-kp">Action number:</label>
+            <label for="action-num-kp">Action:</label>
             <input type="number" name="action-num-kp" id="action-num-kp" min="0" max="1" placeholder="0 ring - 1 mute">
           </div>
-          <div>
-            <button onclick="calcNumToHex()">Calculate &#8594</button>
-            <button onclick="calcHexToNum()">&#8592 Calculate</button>
+        </div>
+        <div class="grid">
+          <div></div>
+          <button id="key-download" onclick="downloadKeyFile()">Download</button>
+          <div></div>
+        </div>
+        <footer>
+          This single key file will call a single pager.
+        </footer>
+      </article>
+
+      <article id="raw-pane" class="green-theme">
+        <header><h3>RAW FILE</h3></header>
+        <div class="grid">
+          <div class="grid">
+            <div>
+              <label for="station-num-from-rp">Station (from):</label>
+              <input type="number" name="station-num-from-rp" id="station-num-from-rp" min="0" max="8191" placeholder="0 - 8191">
+            </div>
+            <div>
+              <label for="station-num-to-rp">Station (to):</label>
+              <input type="number" name="station-num-to-rp" id="station-num-to-rp" min="0" max="8191" placeholder="0 - 8191">
+            </div>  
           </div>
-          <div>
-            <label for="hex-key-kp">Hex key:</label>
-            <input name="hex-key-kp" id="hex-key-kp" placeholder="00AABB">
+          <div class="grid">
+            <div>
+              <label for="pager-num-from-rp">Pager (from):</label>
+              <input type="number" name="pager-num-from-rp" id="pager-num-from-rp" min="0" max="999" placeholder="0 - 999">
+            </div>
+            <div>
+              <label for="pager-num-to-rp">Pager (to):</label>
+              <input type="number" name="pager-num-to-rp" id="pager-num-to-rp" min="0" max="999" placeholder="0 - 999">
+            </div>
           </div>
-          <div>
-            <button onclick="downloadKeyFile()">Download<br/>key file</button>
+          <div class="grid">
+            <div>
+              <label for="action-num-rp">Action:</label>
+              <input type="number" name="action-num-rp" id="action-num-rp" min="0" max="1" placeholder="0 ring - 1 mute">
+            </div>
           </div>
         </div>
-      </div>
-
-      <div id="raw-pane">
-        <div class="pane-title">FLIPPER ZERO RAW FILE GENERATOR</div>
-        <div class="pane-body">
-          <div>
-            <label for="station-num-from-rp">Station number (from):</label>
-            <input type="number" name="station-num-from-rp" id="station-num-from-rp" min="0" max="8191" placeholder="from 0 to 8191">
-          </div>
-          <div>
-            <label for="station-num-to-rp">Station number (to):</label>
-            <input type="number" name="station-num-to-rp" id="station-num-to-rp" min="0" max="8191" placeholder="from 0 to 8191">
-          </div>
-          <div>
-            <label for="pager-num-from-rp">Pager number (from):</label>
-            <input type="number" name="pager-num-from-rp" id="pager-num-from-rp" min="0" max="999" placeholder="from 0 to 999">
-          </div>
-          <div>
-            <label for="pager-num-to-rp">Pager number (to):</label>
-            <input type="number" name="pager-num-to-rp" id="pager-num-to-rp" min="0" max="999" placeholder="from 0 to 999">
-          </div>
-          <div>
-            <label for="action-num-rp">Action number:</label>
-            <input type="number" name="action-num-rp" id="action-num-rp" min="0" max="1" placeholder="0 ring - 1 mute">
-          </div>
-          <div>
-            <button onclick="downloadRawFile()">Download<br/>raw file</button>
-          </div>
+        <div class="grid">
+          <div></div>
+          <button id="raw-download" onclick="downloadRawFile()">Download</button>
+          <div></div>
         </div>
-      </div>
+        <footer>
+          This combo raw file will call multiple pagers.
+        </footer>
+      </article>
 
-    </div>
+      <article id="turnoff-pane" class="green-theme">
+        <header><h3>TURN-OFF FILE</h3></header>
+        <div class="grid">
+          <div></div>
+          <div>
+            <label for="station-num-tp">Station:</label>
+            <input type="number" name="station-num-tp" id="station-num-tp" min="0" max="8191" placeholder="0 - 8191">
+            <button id="turnoff-download" onclick="downloadTurnOffFile()">Download</button>
+          </div>
+          <div></div>
+        </div>
+        <footer>
+          This special action file will turn off all the pagers of a given station.
+        </footer>
+      </article>
+
+      <article id="bruteforce-pane" class="blue-theme">
+        <header><h3>BRUTEFORCE FILES</h3></header>
+        <div class="grid">
+          <div></div>
+          <button onclick="window.location.href='https://github.com/meoker/pagger/tree/main/retekess-t119/bruteforce-t119.zip'">Download</button>
+          <div></div>
+        </div>
+        <footer>
+          As explained <a href="https://meoker.github.io/pagger/#why-not-a-bruteforcer">here</a> I don't think the bruteforce is a viable approach... <br/>Anyway if you wanted to try it, these are the files to call the first 10 pagers for all stations. 
+        </footer>
+      </article>
+
+      <footer>
+        <div class="title">Pagger - Flipper Zero Generator</div>
+        <div class="github"><a href="https://github.com/meoker/pagger">Github</a></div>
+        <div class="home"><a href="https://meoker.github.io/pagger">Home</a></div>
+      </footer>
+
+    </main>
   </body>
 
 </html>

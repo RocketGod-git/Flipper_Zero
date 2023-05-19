@@ -1,12 +1,8 @@
-### DTK_Downloader
-
-The DTK(ducktoolkit user script https://ducktoolkit.com/userscripts) downloader doesn't work. So if you get it to work send in a PR and I will add the resulting dump here.
-
 # Writing duckyScript
 
-https://github.com/dekuNukem/duckyPad
+From the duckypad repo https://github.com/dekuNukem/duckyPad
 
-[Get duckyPad](https://www.tindie.com/products/21984/) | [Official Discord](https://discord.gg/4sJCBx5) | [Getting Started](getting_started.md) | [Table of Contents](#table-of-contents)
+[Get duckyPad](https://www.tindie.com/products/21984/) | [Official Discord](https://discord.gg/4sJCBx5)
 
 ------
 
@@ -393,31 +389,13 @@ ENTER
 
 * This command is experimental, if you run into any bugs, [let me know](#questions-or-comments)!
 
-## Table of Contents
-
-[Main page](README.md)
-
-[Getting Started Guide](getting_started.md)
-
-[Kit Assembly Guide](kit_assembly_guide.md)
-
-[Using duckyScript](duckyscript_info.md)
-
-[Common issues / Troubleshooting](troubleshooting.md)
-
-[Firmware Updates and Version History](firmware_updates_and_version_history.md)
-
-[Make Your Own Keymap](./keymap_instructions.md)
-
-[Manual Setup](./manual_setup.md)
-
-[Build a duckyPad Yourself](build_it_yourself.md)
-
-[Kickstarter Backer Acknowledgments](kickstarter_backers.md)
-
 ## Questions or Comments?
 
 Please feel free to [open an issue](https://github.com/dekuNukem/duckypad/issues), ask in the [official duckyPad discord](https://discord.gg/4sJCBx5), DM me on discord `dekuNukem#6998`, or email `dekuNukem`@`gmail`.`com` for inquires.
+
+-----
+# Flipper zero related
+-----
 
 ## From this gist
 https://gist.github.com/methanoliver/efebfe8f4008e167417d4ab96e5e3cac
@@ -452,3 +430,123 @@ There is *no* support for `STRINGLN`.
 + `DEFAULT_DELAY`, `DEFAULTDELAY`
 + `REPEAT`
 + `DUCKY_LANG` - ignored, recognized as a command purely for compatibility with existing scripts.
+
+-----
+
+# Official documentation
+https://github.com/DarkFlippers/unleashed-firmware/blob/dev/documentation/file_formats/BadUsbScriptFormat.md
+
+# Command syntax
+BadUsb app uses extended Duckyscript syntax. It is compatible with classic USB Rubber Ducky 1.0 scripts, but provides some additional commands and features, such as custom USB ID, ALT+Numpad input method, SYSRQ command and more functional keys.
+# Script file format
+BadUsb app can execute only text scrips from .txt files, no compilation is required. Both `\n` and `\r\n` line endings are supported. Empty lines are allowed. You can use spaces ore tabs for line indentation.
+# Command set
+## Comment line
+Just a single comment line. All text after REM command will be ignored by interpreter
+|Command|Parameters|Notes|
+|-|-|-|
+|REM|Comment text||
+
+## Delay
+Pause script execution by defined time
+|Command|Parameters|Notes|
+|-|-|-|
+|DELAY|Delay value in ms|Single delay|
+|DEFAULT_DELAY|Delay value in ms|Add delay before every next command|
+|DEFAULTDELAY|Delay value in ms|Same as DEFAULT_DELAY|
+
+## Special keys
+|Command|Notes|
+|-|-|
+|DOWNARROW / DOWN||
+|LEFTARROW / LEFT||
+|RIGHTARROW / RIGHT||
+|UPARROW / UP||
+|ENTER||
+|DELETE||
+|BACKSPACE||
+|END||
+|HOME||
+|ESCAPE / ESC||
+|INSERT||
+|PAGEUP||
+|PAGEDOWN||
+|CAPSLOCK||
+|NUMLOCK||
+|SCROLLLOCK||
+|PRINTSCREEN||
+|BREAK|Pause/Break key|
+|PAUSE|Pause/Break key|
+|SPACE||
+|TAB||
+|MENU|Context menu key|
+|APP|Same as MENU|
+|Fx|F1-F12 keys|
+
+## Modifier keys
+Can be combined with special key command or single character
+|Command|Notes|
+|-|-|
+|CONTROL / CTRL||
+|SHIFT||
+|ALT||
+|WINDOWS / GUI||
+|CTRL-ALT|CTRL+ALT|
+|CTRL-SHIFT|CTRL+SHIFT|
+|ALT-SHIFT|ALT+SHIFT|
+|ALT-GUI|ALT+WIN|
+|GUI-SHIFT|WIN+SHIFT|
+## String
+|Command|Parameters|Notes|
+|-|-|-|
+|STRING|Text string|Print text string|
+## Repeat
+|Command|Parameters|Notes|
+|-|-|-|
+|REPEAT|Number of additional repeats|Repeat previous command|
+## ALT+Numpad input
+On Windows and some Linux systems you can print character by pressing ALT key and entering its code on numpad
+|Command|Parameters|Notes|
+|-|-|-|
+|ALTCHAR|Character code|Print single character|
+|ALTSTRING|Text string|Print text string using ALT+Numpad method|
+|ALTCODE|Text string|Same as ALTSTRING, presents in some Duckyscript implementations|
+## SysRq
+Send [SysRq command](https://en.wikipedia.org/wiki/Magic_SysRq_key)
+|Command|Parameters|Notes|
+|-|-|-|
+|SYSRQ|Single character||
+## USB device ID
+You can set custom ID of Flipper USB HID device. ID command should be in the **first line** of script, it is executed before script run.
+
+|Command|Parameters|Notes|
+|-|-|-|
+|ID|VID:PID Manufacturer:Product||
+
+Example:
+`ID 1234:abcd Flipper Devices:Flipper Zero`
+
+VID and PID are hex codes and are mandatory, Manufacturer and Product are text strings and are optional.
+
+-----
+
+## DTK user script downloader
+https://github.com/cribb-it/DTKDownloader
+The DTK(ducktoolkit user script https://ducktoolkit.com/userscripts) downloader doesn't work for me. So if you get it to work send in a PR and I will add the resulting dump here.
+
+-----
+
+# Helpful hints
+
+Here are a bunch of cheatsheets for use in building your scripts [here](https://github.com/FalsePhilosopher/BadUSB-Playground/tree/main/Misc/Cheat_Sheets)
+
+Shorten your payloads as much as possible by stringing multiple commands together with variables like `&&` and `;;`, read more into each OS/shell you are targeting and how to achieve this.
+
+RTFM for CMD
+https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/cmd
+
+RTFM for powershell
+https://learn.microsoft.com/en-us/powershell/scripting/learn/ps101/04-pipelines?view=powershell-7.3
+
+Other ducky scripts can be found here
+http://www.theatomheart.net/post/rubber-ducky-payloads/

