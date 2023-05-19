@@ -1,0 +1,19 @@
+REM Title: Nope-Pad-Instant
+REM Author: Kavitate
+REM Target:  Windows (Laptop)
+REM Version: 1.0
+REM Category: Prank
+REM Operation: Disables the built-in touchpad of the laptop instantly.
+GUI
+DELAY 950
+STRING touchpad on
+DELAY 950
+ENTER
+DELAY 950
+ENTER
+DELAY 950
+SPACE
+DELAY 950
+ALT SPACE
+DELAY 950
+STRING C

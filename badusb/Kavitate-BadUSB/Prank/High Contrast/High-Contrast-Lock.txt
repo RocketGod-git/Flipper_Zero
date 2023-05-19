@@ -1,0 +1,11 @@
+REM Title: High-Contrast-Lock
+REM Author: Kavitate
+REM Target: Windows
+REM Version: 1.0
+REM Category: Prank
+REM Operation: Activates the high contrast setting within Windows from the lock screen making everything appear darker.
+STRING k
+DELAY 950
+ALT-SHIFT PRINTSCREEN
+DELAY 950
+ENTER

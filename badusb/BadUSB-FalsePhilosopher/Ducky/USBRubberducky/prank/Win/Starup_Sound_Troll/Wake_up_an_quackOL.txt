@@ -1,0 +1,12 @@
+REM Title: Startup sound troll POC version WIP
+REM Author: FalsePhilosopher
+REM Target:  Windows 7 and up may idk probably win 10+
+REM Props: Hak5, jakoby for the one liner and memes
+REM Version: 1.0
+REM Category: Prank
+REM Turns on the startup sound and changes it to X sound
+
+DELAY 500
+GUI r
+DELAY 1000
+STRING one liner here

@@ -1,0 +1,10 @@
+REM Title: Nope-Pad
+REM Author: Kavitate
+REM Target:  Windows (Laptop)
+REM Version: 1.0
+REM Category: Prank
+REM Operation: Disables the built-in touchpad of the laptop. PC needs to reboot for the changes to take effect.
+GUI r
+DELAY 500
+STRING powershell Set-ItemProperty -Path HKCU:\SOFTWARE\Microsoft\Windows\CurrentVersion\PrecisionTouchPad\Status -Name Enabled -Value 0
+ENTER

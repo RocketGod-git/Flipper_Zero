@@ -1,0 +1,31 @@
+REM Version 1.0
+REM OS: iOS
+REM Author: Peaakss
+REM Description: A simple payload to send a email from the Mail app 
+REM NOTICE (Replace "TEXT" within the string commands with the desired text | EXAMPLE: STRING example@gmail.com
+REM NOITCE Payload was made on iOS 16.1 - iPhone | Timing may have have to be changed based on version/model
+REM NOTICE Lighting to USB-A or USB-C camera adapter is needed to run this payload, ative end of the O.MG cable must be plugged into the end of the converter 
+
+GUI h
+DELAY 150
+GUI SPACE 
+DELAY 150
+BACKSPACE
+DELAY 150
+STRING Mail
+DELAY 150
+ENTER 
+GUI N
+STRING "TO-ADRESS"
+DELAY 200
+ENTER
+TAB
+DELAY 200
+STRING "SUBJECT"
+DELAY 200
+ENTER
+DELAY 200
+STRING "MESSAGE"
+GUI-SHIFT d
+DELAY 200 
+ENTER

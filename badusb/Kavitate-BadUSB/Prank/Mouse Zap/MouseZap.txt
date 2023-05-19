@@ -1,0 +1,34 @@
+REM Title: MouseZap
+REM Author: Kavitate
+REM Target:  Windows
+REM Version: 1.0
+REM Category: Prank
+REM Operation: Changes the primary mouse button and sets the cursor speed to slow.
+DELAY 500
+GUI r
+DELAY 500
+STRING C:\Windows\System32\main.cpl
+DELAY 500
+ENTER
+DELAY 500
+STRING S
+TAB
+TAB
+TAB
+TAB
+TAB
+TAB
+RIGHT ARROW
+RIGHT ARROW
+TAB
+LEFT ARROW
+LEFT ARROW
+LEFT ARROW
+LEFT ARROW
+LEFT ARROW
+LEFT ARROW
+LEFT ARROW
+LEFT ARROW
+LEFT ARROW
+LEFT ARROW
+ENTER

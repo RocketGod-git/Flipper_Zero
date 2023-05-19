@@ -1,0 +1,20 @@
+REM Title: TelnetStarWars
+REM Author: Kavitate
+REM Target:  Windows
+REM Version: 1.2
+REM Category: Prank
+REM Credit: https://asciimation.co.nz/index.php
+REM Operation: Opens command prompt to activate Telnet then plays a Star Wars scene.
+DELAY 900
+GUI r
+DELAY 900
+STRING cmd
+CTRL-SHIFT ENTER
+DELAY 900
+ALT y
+DELAY 1500
+STRING dism /online /Enable-Feature /FeatureName:TelnetClient
+ENTER
+DELAY 3000
+STRING telnet towel.blinkenlights.nl
+ENTER

