@@ -1,0 +1,19 @@
+UP: /ext/subghz/example.sub
+
+DOWN: /ext/subghz/example.sub
+
+LEFT: /ext/subghz/example.sub
+
+RIGHT: /ext/subghz/example.sub
+
+OK: /ext/subghz/example.sub
+
+ULABEL: example text
+
+DLABEL: example text
+
+LLABEL: example text
+
+RLABEL: example text
+
+OKLABEL: example text

@@ -1,0 +1,10 @@
+UP: /ext/subghz/Walgreens/Button Resets/PhotoCounter_RESET.sub
+DOWN: /ext/subghz/Walgreens/Button Resets/Photo_RESET.sub
+LEFT: /ext/subghz/Walgreens/Call Buttons/FedExOnSite.sub
+RIGHT: /ext/subghz/Walgreens/Button Resets/FedExOnSite_RESET.sub
+OK: /ext/subghz/Walgreens/Handheld Call Button/IC3.sub
+ULABEL: PhotoCntr_OFF
+DLABEL: Photo_OFF
+LLABEL: FedEx
+RLABEL: FedEx_OFF
+OKLABEL: IC3
