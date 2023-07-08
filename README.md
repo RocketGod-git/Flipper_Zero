@@ -13,7 +13,7 @@ Buy cool hacker toys here and use code ROCKETGOD for 5% discount<br>
 <a href="https://lab401.com/r?id=iop7bf">Lab401</a><br>
 <br>
 Come hang out with me at:<br>
-<a href="https://discord.gg/5DMM6RNtG8">The Pirates' Plunder (Discord)</a><br>
+The Pirates' Plunder (Discord) Ask me for an invite<br>
 <br>
 Pretty much everything here is from @UberGuidoZ repo.<br>
 <a href="https://github.com/UberGuidoZ/Flipper">https://github.com/UberGuidoZ/Flipper</a><br>
