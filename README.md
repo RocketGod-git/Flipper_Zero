@@ -24,4 +24,4 @@ Tokens/NFT<br>
 <br>
 <a href="https://www.buymeacoffee.com/RocketGod">Buy me a coffee! I appreciate anything to help pay for server costs 🥰</a>
 
-![rocketgod_logo_transparent](https://user-images.githubusercontent.com/57732082/213221533-171b37da-46e5-4661-ac47-c7f23d24b816.png)
+![RocketGod](https://github.com/RocketGod-git/Flipper_Zero/assets/57732082/f5d67cfd-585d-4b23-905f-37151e3d6a7d)
