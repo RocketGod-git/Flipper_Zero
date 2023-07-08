@@ -19,9 +19,6 @@ Pretty much everything here is from @UberGuidoZ repo.<br>
 <a href="https://github.com/UberGuidoZ/Flipper">https://github.com/UberGuidoZ/Flipper</a><br>
 All updates and additions go there. You only need to use my repo if you know what you're looking for isn't there.<br>
 <br>
-Tokens/NFT<br>
-0x5717085c2c9e9a0e2fcafad4faff03dd5c75295<br>
-<br>
 <a href="https://www.buymeacoffee.com/RocketGod">Buy me a coffee! I appreciate anything to help pay for server costs 🥰</a>
 
 ![RocketGod](https://github.com/RocketGod-git/Flipper_Zero/assets/57732082/f5d67cfd-585d-4b23-905f-37151e3d6a7d)
