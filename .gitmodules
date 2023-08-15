@@ -4,3 +4,6 @@
 [submodule "BadUSB/InfoSecREDD/REPG"]
 	path = BadUSB/InfoSecREDD/REPG
 	url = https://github.com/InfoSecREDD/REPG.git
+[submodule "BadUSB/InfoSecREDD/omg-payloads"]
+	path = BadUSB/InfoSecREDD/omg-payloads
+	url = https://github.com/InfoSecREDD/omg-payloads.git
