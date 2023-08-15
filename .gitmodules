@@ -1,3 +1,6 @@
 [submodule "subghz/Customer_Assistance_Buttons/CVS/customer-assistance-buttons-sdr"]
 	path = subghz/Customer_Assistance_Buttons/CVS/customer-assistance-buttons-sdr
 	url = https://github.com/jimilinuxguy/customer-assistance-buttons-sdr.git
+[submodule "BadUSB/InfoSecREDD/REPG"]
+	path = BadUSB/InfoSecREDD/REPG
+	url = https://github.com/InfoSecREDD/REPG.git
