@@ -1,0 +1,11 @@
+diff --git a/.vscode/settings.json b/.vscode/settings.json
+new file mode 100644
+--- /dev/null
++++ b/.vscode/settings.json
+@@ -0,0 +1,5 @@
++{
++    "githubPullRequests.ignoredPullRequestBranches": [
++        "main"
++    ]
++}
+\ No newline at end of file
